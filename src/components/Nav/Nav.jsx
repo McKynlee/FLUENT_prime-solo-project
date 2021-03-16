@@ -8,6 +8,7 @@ import img from '../images/fluent-logo.png';
 
 function Nav() {
   const user = useSelector((store) => store.user);
+  // console.log('nav user=', user);
 
   let loginLinkData = {
     path: '/login',
@@ -15,36 +16,57 @@ function Nav() {
   };
 
   if (user.id != null) {
-    loginLinkData.path = '/user';
-    loginLinkData.text = 'Home';
+    if (user.type === 'instructor') {
+      loginLinkData.path = '/instructor';
+      loginLinkData.text = 'Your Profile';
+    }
+    else {
+      loginLinkData.path = '/learner';
+      loginLinkData.text = 'Your Profile';
+    }
+  }
+
+  let userTypeLinkData = {
+    path: '/learner',
+    text: 'New Challenge'
+  }
+  if (user.type === 'instructor') {
+    userTypeLinkData.path = '/instructor',
+      userTypeLinkData.text = 'You are an instructor!'
   }
 
   return (
     <div>
       <div className="nav">
         <Link to="/home">
-          <h2 className="nav-title">Prime Solo Project</h2>
+          <img className="nav-logo" src={img} />
+          {/* <h2 className="nav-title">F.L.U.E.N.T.</h2> */}
         </Link>
         <div>
+          {/* <Link className="navLink" to="/about">
+            About
+          </Link> */}
           <Link className="navLink" to={loginLinkData.path}>
             {loginLinkData.text}
+          </Link>
+
+          <Link className="navLink" to={userTypeLinkData.path}>
+            {userTypeLinkData.text}
           </Link>
 
           {user.id && (
             <>
               <Link className="navLink" to="/info">
-                Info Page
+                Review Submissions
             </Link>
               <LogOutButton className="navLink" />
             </>
           )}
 
-          <Link className="navLink" to="/about">
-            About
-        </Link>
+
         </div>
       </div>
-      <img src={img} />
+
     </div>
   );
 }

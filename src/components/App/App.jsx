@@ -53,7 +53,7 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/learner"
           >
             <UserPage />
           </ProtectedRoute>
@@ -75,7 +75,7 @@ function App() {
             // - else shows LoginPage at /login
             exact
             path="/login"
-            authRedirect="/user"
+            authRedirect="/learner"
           >
             <LoginPage />
           </ProtectedRoute>
@@ -86,7 +86,7 @@ function App() {
             // - else shows RegisterPage at "/registration"
             exact
             path="/registration"
-            authRedirect="/user"
+            authRedirect="/learner"
           >
             <RegisterPage />
           </ProtectedRoute>
@@ -97,7 +97,7 @@ function App() {
             // - else shows LandingPage at "/home"
             exact
             path="/home"
-            authRedirect="/user"
+            authRedirect="/learner"
           >
             <LandingPage />
           </ProtectedRoute>
