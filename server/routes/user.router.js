@@ -30,10 +30,10 @@ router.post('/register', (req, res, next) => {
   const skill_level = req.body.languageSkill;
 
 
-  const queryText = `INSERT INTO "users" ("username", "password")
-    VALUES ($1, $2) RETURNING id`;
+  const queryText = `INSERT INTO "users" ("language_id", "pronouns_id", "first_name", "last_name", "username", "password", "type")
+    VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`;
   pool
-    .query(queryText, [username, password])
+    .query(queryText, [language_id, pronouns_id, first_name, last_name, username, password, type])
     .then(() => res.sendStatus(201))
     .catch((err) => {
       console.log('User registration failed: ', err);

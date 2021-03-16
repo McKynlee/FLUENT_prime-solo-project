@@ -17,6 +17,19 @@ function RegisterForm() {
   const [targetLanguage, setTargetLanguage] = useState('');
   const [languageSkill, setLanguageSkill] = useState(0);
 
+  // Test to make sure input info is captured:
+  let userInfoOnRegister = {
+    username,
+    password,
+    firstName,
+    lastName,
+    pronoun,
+    targetLanguage,
+    languageSkill,
+    userType
+  }
+  console.log('userInfoOnRegister:', userInfoOnRegister);
+
 
   // Bring in data from db for dropdown options:
   // useEffect(() => {
@@ -35,8 +48,14 @@ function RegisterForm() {
     dispatch({
       type: 'REGISTER',
       payload: {
-        username: username,
-        password: password,
+        username,
+        password,
+        firstName,
+        lastName,
+        pronoun,
+        targetLanguage,
+        languageSkill,
+        userType
       },
     });
   }; // end registerUser
