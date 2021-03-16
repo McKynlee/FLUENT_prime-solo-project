@@ -5,7 +5,14 @@ function RegisterForm() {
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
-  // Pronouns from reducer:
+  // Call for pronouns -->pronounSaga --> pronoun.router
+  // --> db --> pronounReducer
+  useEffect(() => {
+    dispatch({ type: 'FETCH_PRONOUNS' });
+  }, [dispatch]);
+
+
+  // Pull in pronouns from pronounReducer:
   const pronounList = useSelector((store) => store.pronouns)
   console.log('pronounList:', pronounList);
 
@@ -34,17 +41,6 @@ function RegisterForm() {
   }
   console.log('userInfoOnRegister:', userInfoOnRegister);
 
-
-  // Bring in data from db for dropdown options:
-  useEffect(() => {
-    fetchDropdownData()
-  }, [])
-
-  const fetchDropdownData = () => {
-    dispatch({
-      type: 'FETCH_PRONOUNS'
-    })
-  } // end fetchDropdownData
 
   const registerUser = (event) => {
     event.preventDefault();
