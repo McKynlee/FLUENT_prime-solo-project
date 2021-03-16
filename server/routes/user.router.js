@@ -20,8 +20,17 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
+  const first_name = req.body.firstName;
+  const last_name = req.body.lastName;
+  const pronouns_id = req.body.pronoun;
+  const language_id = req.body.targetLanguage;
+  const type = req.body.userType;
 
-  const queryText = `INSERT INTO "user" (username, password)
+  // Send specifically to learner's table:
+  const skill_level = req.body.languageSkill;
+
+
+  const queryText = `INSERT INTO "users" ("username", "password")
     VALUES ($1, $2) RETURNING id`;
   pool
     .query(queryText, [username, password])

@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
+
+import img from './fluent-logo.png';
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -18,28 +20,31 @@ function Nav() {
   }
 
   return (
-    <div className="nav">
-      <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
-      </Link>
-      <div>
-        <Link className="navLink" to={loginLinkData.path}>
-          {loginLinkData.text}
+    <div>
+      <div className="nav">
+        <Link to="/home">
+          <h2 className="nav-title">Prime Solo Project</h2>
         </Link>
+        <div>
+          <Link className="navLink" to={loginLinkData.path}>
+            {loginLinkData.text}
+          </Link>
 
-        {user.id && (
-          <>
-            <Link className="navLink" to="/info">
-              Info Page
+          {user.id && (
+            <>
+              <Link className="navLink" to="/info">
+                Info Page
             </Link>
-            <LogOutButton className="navLink" />
-          </>
-        )}
+              <LogOutButton className="navLink" />
+            </>
+          )}
 
-        <Link className="navLink" to="/about">
-          About
+          <Link className="navLink" to="/about">
+            About
         </Link>
+        </div>
       </div>
+      <img src={img} />
     </div>
   );
 }
