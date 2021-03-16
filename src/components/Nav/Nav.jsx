@@ -4,7 +4,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 
-import img from './fluent-logo.png';
+import img from '../images/fluent-logo.png';
 
 function Nav() {
   const user = useSelector((store) => store.user);

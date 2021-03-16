@@ -3,6 +3,8 @@ import { combineReducers } from 'redux';
 // loginMessage holds the string that will display
 // on the login screen if there's an error
 const loginMessage = (state = '', action) => {
+  console.log('loginMessage action:', action);
+
   switch (action.type) {
     case 'CLEAR_LOGIN_ERROR':
       return '';
