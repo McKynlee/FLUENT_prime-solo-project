@@ -28,13 +28,25 @@ router.post('/register', (req, res, next) => {
 
   // Send specifically to learner's table:
   const skill_level = req.body.languageSkill;
+  const moneda_count = 5;
 
+  const queryTextMakeUser = `INSERT INTO "users" ("language_id", "pronouns_id", "first_name", "last_name", "username", "password", "type")
+    VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id;`;
 
-  const queryText = `INSERT INTO "users" ("language_id", "pronouns_id", "first_name", "last_name", "username", "password", "type")
-    VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`;
+  const queryTextMakeLearner = `INSERT INTO "learners" ("user_id", "skill_level", "moneda_count")
+  VALUES ($1, $2, $3) RETURNING id;`;
+
   pool
-    .query(queryText, [language_id, pronouns_id, first_name, last_name, username, password, type])
-    .then(() => res.sendStatus(201))
+    .query(queryTextMakeUser, [language_id, pronouns_id, first_name, last_name, username, password, type])
+    .then(dbRes => {
+      // console.log('ddRes.rows[0].id:', dbRes.rows[0].id);
+      pool.query(queryTextMakeLearner, [dbRes.rows[0].id, skill_level, moneda_count])
+        .then(() => res.sendStatus(201))
+        .catch(err => {
+          console.log('ERROR adding Learner:', err);
+          res.sendStatus(500)
+        })
+    })
     .catch((err) => {
       console.log('User registration failed: ', err);
       res.sendStatus(500);

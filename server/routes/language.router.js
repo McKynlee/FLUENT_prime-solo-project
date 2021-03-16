@@ -2,16 +2,16 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-// GET all pronouns from pronouns table in db:
+// GET all languages from table in db:
 router.get('/', (req, res) => {
-  const sqlQuery = 'SELECT * FROM "pronouns";';
+  const sqlQuery = 'SELECT * FROM "languages";';
 
   pool.query(sqlQuery)
     .then(dbRes => {
       res.send(dbRes.rows)
     })
     .catch(err => {
-      console.log('error GETting pronouns:', err);
+      console.log('error GETting languages:', err);
       res.sendStatus(500);
     })
 });
