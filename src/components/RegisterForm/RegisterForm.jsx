@@ -184,7 +184,7 @@ function RegisterForm() {
         </h4>
       <div>
         <label htmlFor="username">
-          Username:
+          Email address:
           <input
             type="text"
             name="username"

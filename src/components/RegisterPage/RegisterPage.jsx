@@ -7,7 +7,8 @@ function RegisterPage() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  // Fetch all languages (would prefer to do this along with fetch_pronouns in RegisterForm)
+  // Fetch all languages on load:
+  // (would prefer to do this along with fetch_pronouns in RegisterForm)
   useEffect(() => {
     dispatch({
       type: 'FETCH_LANGUAGES',
