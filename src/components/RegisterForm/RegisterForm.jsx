@@ -5,6 +5,10 @@ function RegisterForm() {
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
+  // Pronouns from reducer:
+  const pronounList = useSelector((store) => store.pronouns)
+  console.log('pronounList:', pronounList);
+
   // All the info a user needs to register (learner OR instructor):
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -32,15 +36,15 @@ function RegisterForm() {
 
 
   // Bring in data from db for dropdown options:
-  // useEffect(() => {
-  //   fetchDropdownData()
-  // }, [])
+  useEffect(() => {
+    fetchDropdownData()
+  }, [])
 
-  // const fetchDropdownData = () => {
-  //   dispatch({
-  //     type: 'FETCH_PRONOUNS'
-  //   })
-  // } // end fetchDropdownData
+  const fetchDropdownData = () => {
+    dispatch({
+      type: 'FETCH_PRONOUNS'
+    })
+  } // end fetchDropdownData
 
   const registerUser = (event) => {
     event.preventDefault();
