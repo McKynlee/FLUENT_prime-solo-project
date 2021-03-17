@@ -12,6 +12,8 @@ body {
 img {
   display: inline-block;
   max-width: 100%;
+  min-width: 5rem;
+  margin: auto
 }
 
 /* --------------------------------------------------------------------------------
@@ -97,7 +99,7 @@ Form Treatment
 
 .formPanel {
   box-sizing: border-box;
-  width: 400px;
+  width: 75%;
   max-width: 100%;
   padding: 25px;
   margin: 0 auto 20px;
