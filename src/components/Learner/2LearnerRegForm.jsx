@@ -58,35 +58,48 @@ function LearnerRegistration2() {
       )}
 
       {instructorList.map((instructor) => {
-        // Set learnerLanguage based on how many learners the
-        // instructor is working with:
-        let learnerLanguage = 'learners';
-        if (Number(instructor.learner_count) === 1) {
-          learnerLanguage = `${instructor.first_name} is currently working with
-          ${instructor.learner_count} other learner`
-        }
-        if (instructor.learner_count > 1) {
-          learnerLanguage = `${instructor.first_name} is currently working with
-          ${instructor.learner_count} other learners`
-        }
-        if (Number(instructor.learner_count) === 0) {
-          learnerLanguage = `${instructor.first_name} is not currently working with
-          any other learners`
-        }
+        //Only render instructors whose learner_capacity is
+        //greater than current learner_count
+        let availableInstructors = [];
 
+        if (instructor.learner_capacity > Number(instructor.learner_count)) {
+          availableInstructors.push(instructor)
+        }
         return (
-          <section className="learner-instructor-section"
-            key={instructor.id}
-            value={instructor.id}
-          >
-            <div>{instructor.first_name} {instructor.last_name}</div>
-            <div>{instructor.pronoun}</div>
-            <div>{instructor.bio}</div>
-            <img src={instructor.avatar} />
-            <div>{learnerLanguage}</div>
-            <button>More Info</button>
-            <button>Select Instructor</button>
-          </section>
+          availableInstructors.map((availableInstructor) => {
+            // Set "learnerLanguage" based on how many learners the
+            // instructor is working with:
+            let learnerLanguage = 'learners';
+
+            if (Number(availableInstructor.learner_count) === 1) {
+              learnerLanguage = `${availableInstructor.first_name} is currently working with
+    ${availableInstructor.learner_count} other learner`
+            }
+            if (availableInstructor.learner_count > 1) {
+              learnerLanguage = `${availableInstructor.first_name} is currently working with
+    ${availableInstructor.learner_count} other learners`
+            }
+            if (Number(availableInstructor.learner_count) === 0) {
+              learnerLanguage = `${availableInstructor.first_name} is not currently working with
+    any other learners`
+            }
+
+            return (
+              <section className="learner-instructor-section"
+                key={availableInstructor.id}
+                value={availableInstructor.id}
+              >
+                <div>{availableInstructor.first_name} {availableInstructor.last_name}</div>
+                <div>{availableInstructor.pronoun}</div>
+                <div>{availableInstructor.bio}</div>
+                <img src={availableInstructor.avatar} />
+                <div>{learnerLanguage}</div>
+                <button>More Info</button>
+                <button>Select Instructor</button>
+              </section>
+
+            )
+          })
         )
       })}
 
