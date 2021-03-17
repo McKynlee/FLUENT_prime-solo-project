@@ -23,18 +23,53 @@ router.post('/register', (req, res, next) => {
   const first_name = req.body.firstName;
   const last_name = req.body.lastName;
   const pronouns_id = req.body.pronoun;
-  const language_id = req.body.targetLanguage;
   const type = req.body.userType;
+
+  // set language_id based on receiving learner/instructor data:
+  let language_id;
+  if (type === 'learner') {
+    language_id = req.body.targetLanguage;
+  } else {
+    language_id = req.body.knownLanguage;
+  }
 
   // Send specifically to learner's table:
   const skill_level = req.body.languageSkill;
+  const moneda_count = 5;
 
+  // Send specifically to instructor's table:
+  const bio = req.body.bio;
+  const avatar = req.body.avatar;
+  const learner_capacity = req.body.instructorCapacity;
 
-  const queryText = `INSERT INTO "users" ("username", "password")
-    VALUES ($1, $2) RETURNING id`;
+  const queryTextMakeUser = `INSERT INTO "users" ("language_id", "pronouns_id", "first_name", "last_name", "username", "password", "type")
+    VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id;`;
+
   pool
-    .query(queryText, [username, password])
-    .then(() => res.sendStatus(201))
+    .query(queryTextMakeUser, [language_id, pronouns_id, first_name, last_name, username, password, type])
+    .then(dbRes => {
+      // console.log('ddRes.rows[0].id:', dbRes.rows[0].id);
+      // Determine what the second query text is depending on user type (learner vs. instructor):
+      let queryTextMakeSpecific;
+      let queryParamSpecific;
+
+      if (type === 'learner') {
+        queryTextMakeSpecific = `INSERT INTO "learners" ("user_id", "skill_level", "moneda_count")
+    VALUES ($1, $2, $3) RETURNING id;`;
+        queryParamSpecific = [dbRes.rows[0].id, skill_level, moneda_count];
+      } else {
+        queryTextMakeSpecific = `INSERT INTO "instructors" ("user_id", "bio", "avatar", "learner_capacity")
+    VALUES ($1, $2, $3, $4) RETURNING id;`;
+        queryParamSpecific = [dbRes.rows[0].id, bio, avatar, learner_capacity];
+      }
+
+      pool.query(queryTextMakeSpecific, queryParamSpecific)
+        .then(() => res.sendStatus(201))
+        .catch(err => {
+          console.log('ERROR adding Learner:', err);
+          res.sendStatus(500)
+        })
+    })
     .catch((err) => {
       console.log('User registration failed: ', err);
       res.sendStatus(500);

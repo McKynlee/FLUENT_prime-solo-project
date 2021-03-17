@@ -1,9 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+// Step 1 of 2 for learner to register:
 function RegisterForm() {
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
+
+  // Call for pronouns on page load -->pronounSaga 
+  // --> pronoun.router --> db --> pronounReducer
+  useEffect(() => {
+    dispatch({
+      type: 'FETCH_PRONOUNS',
+    });
+  }, []);
+
+
+  // Pull in pronouns from pronounReducer:
+  const pronounList = useSelector((store) => store.pronouns)
+  console.log('pronounList:', pronounList);
+
+  // Pull in languages from languageReducer:
+  const languageList = useSelector((store) => store.languages)
+  console.log('pronounList:', pronounList);
+
+  console.log('languageList:', languageList);
 
   // All the info a user needs to register (learner OR instructor):
   const [username, setUsername] = useState('');
@@ -17,17 +37,19 @@ function RegisterForm() {
   const [targetLanguage, setTargetLanguage] = useState('');
   const [languageSkill, setLanguageSkill] = useState(0);
 
+  // Test to make sure input info is captured:
+  let userInfoOnRegister = {
+    username,
+    password,
+    firstName,
+    lastName,
+    pronoun,
+    targetLanguage,
+    languageSkill,
+    userType
+  }
+  console.log('userInfoOnRegister:', userInfoOnRegister);
 
-  // Bring in data from db for dropdown options:
-  // useEffect(() => {
-  //   fetchDropdownData()
-  // }, [])
-
-  // const fetchDropdownData = () => {
-  //   dispatch({
-  //     type: 'FETCH_PRONOUNS'
-  //   })
-  // } // end fetchDropdownData
 
   const registerUser = (event) => {
     event.preventDefault();
@@ -35,8 +57,14 @@ function RegisterForm() {
     dispatch({
       type: 'REGISTER',
       payload: {
-        username: username,
-        password: password,
+        username,
+        password,
+        firstName,
+        lastName,
+        pronoun,
+        targetLanguage,
+        languageSkill,
+        userType
       },
     });
   }; // end registerUser
@@ -92,9 +120,16 @@ function RegisterForm() {
             required
             onChange={(event) => setPronoun(event.target.value)}
           >
-            <option value=''>Choose Pronouns</option>
-            <option value='1'>test pronoun 1</option>
-            <option value='2'>test pronoun 2</option>
+            <option value=''>Choose One</option>
+            {pronounList.map((pronoun) => {
+              return (
+                <option key={pronoun.id}
+                  value={pronoun.id}
+                >
+                  {pronoun.pronoun}
+                </option>
+              )
+            })}
           </select>
         </label>
       </div>
@@ -110,8 +145,15 @@ function RegisterForm() {
             onChange={(event) => setTargetLanguage(event.target.value)}
           >
             <option value=''>Choose One</option>
-            <option value='1'>test lang 1</option>
-            <option value='2'>test lang 2</option>
+            {languageList.map((language) => {
+              return (
+                <option key={language.id}
+                  value={language.id}
+                >
+                  {language.name}
+                </option>
+              )
+            })}
           </select>
         </label>
       </div>
@@ -127,8 +169,11 @@ function RegisterForm() {
             onChange={(event) => setLanguageSkill(event.target.value)}
           >
             <option value=''>Choose One</option>
-            <option value='1'>test skill 1</option>
-            <option value='2'>test skill 2</option>
+            <option value='1'>1: I know a few words.</option>
+            <option value='2'>2: I can kind of make a sentence.</option>
+            <option value='3'>3: I'm feeling strong with writing sentences.</option>
+            <option value='4'>4: I can speak some.</option>
+            <option value='5'>5: I can speak well, maybe just some grammar tweaks.</option>
           </select>
         </label>
       </div>
@@ -140,7 +185,7 @@ function RegisterForm() {
         </h4>
       <div>
         <label htmlFor="username">
-          Username:
+          Email address:
           <input
             type="text"
             name="username"
@@ -163,7 +208,7 @@ function RegisterForm() {
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
+        <input className="btn" type="submit" name="submit" value="Go to Step 2" />
       </div>
     </form>
   );
