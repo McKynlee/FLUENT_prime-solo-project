@@ -45,12 +45,12 @@ function Nav() {
     text: 'Register to learn'
   }
   if (user.type === 'instructor') {
-    userTypeLinkData.path = '/instructor',
-      userTypeLinkData.text = 'Instructor Path?'
+    userTypeLinkData2.path = '/instructor',
+      userTypeLinkData2.text = 'Instructor Path?'
   }
   if (user.type === 'learner') {
-    userTypeLinkData.path = '/challenge',
-      userTypeLinkData.text = 'Learner Path?'
+    userTypeLinkData2.path = '',
+      userTypeLinkData2.text = ''
   }
 
   let userTypeLinkData3 = {
@@ -58,12 +58,12 @@ function Nav() {
     text: 'Register to instruct'
   }
   if (user.type === 'instructor') {
-    userTypeLinkData.path = '/instructor',
-      userTypeLinkData.text = 'Instructor Path?'
+    userTypeLinkData3.path = '/instructor',
+      userTypeLinkData3.text = 'Instructor Path?'
   }
   if (user.type === 'learner') {
-    userTypeLinkData.path = '/challenge',
-      userTypeLinkData.text = 'Learner Path?'
+    userTypeLinkData3.path = '',
+      userTypeLinkData3.text = ''
   }
 
   return (
