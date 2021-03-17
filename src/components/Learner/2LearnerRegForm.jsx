@@ -22,6 +22,8 @@ function LearnerRegistration2() {
   const learnerInfoOnRegister1 = useSelector(store => store.user)
   console.log('userInfoOnRegister1:', learnerInfoOnRegister1);
 
+
+
   // Variable to capture selected instructor:
   const [selectedInstructor, setSelectedInstructor] = useState(0);
 
@@ -56,6 +58,22 @@ function LearnerRegistration2() {
       )}
 
       {instructorList.map((instructor) => {
+        // Set learnerLanguage based on how many learners the
+        // instructor is working with:
+        let learnerLanguage = 'learners';
+        if (Number(instructor.learner_count) === 1) {
+          learnerLanguage = `${instructor.first_name} is currently working with
+          ${instructor.learner_count} other learner`
+        }
+        if (instructor.learner_count > 1) {
+          learnerLanguage = `${instructor.first_name} is currently working with
+          ${instructor.learner_count} other learners`
+        }
+        if (Number(instructor.learner_count) === 0) {
+          learnerLanguage = `${instructor.first_name} is not currently working with
+          any other learners`
+        }
+
         return (
           <section className="learner-instructor-section"
             key={instructor.id}
@@ -65,9 +83,7 @@ function LearnerRegistration2() {
             <div>{instructor.pronoun}</div>
             <div>{instructor.bio}</div>
             <img src={instructor.avatar} />
-            <div>{instructor.first_name} is currently working with
-              {instructor.learner_count} other learner(s)
-            </div>
+            <div>{learnerLanguage}</div>
             <button>More Info</button>
             <button>Select Instructor</button>
           </section>
