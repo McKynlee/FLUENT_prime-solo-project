@@ -1,24 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import RegisterForm from '../RegisterForm/RegisterForm';
+import InstructorRegisterForm from './InstructorRegisterForm';
 
-function RegisterPage() {
+function InstructorRegisterPage() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  // Fetch all languages on load:
-  // (would prefer to do this along with fetch_pronouns in RegisterForm)
-  useEffect(() => {
-    dispatch({
-      type: 'FETCH_LANGUAGES',
-    });
-  }, []);
-
-
   return (
     <div>
-      <RegisterForm />
+      <InstructorRegisterForm />
 
       <center>
         <button
@@ -35,4 +26,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default InstructorRegisterPage;

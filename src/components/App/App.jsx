@@ -8,17 +8,18 @@ import {
 
 import { useDispatch } from 'react-redux';
 
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
+import Nav from '../AllUser/Nav/Nav';
+import Footer from '../AllUser/Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
+import LearnerProfile from '../Learner/ProfilePage';
+import ChallengePage from '../Learner/ChallengePage';
+import LandingPage from '../AllUser/LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
+import LearnerRegistration from '../Learner/RegisterPage';
+import InstructorRegistration from '../Instructor/InstructorRegisterPage'
 
 import './App.css';
 
@@ -38,13 +39,13 @@ function App() {
           <Redirect exact from="/" to="/home" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
-          <Route
+          {/* <Route
             // shows AboutPage at all times (logged in or not)
             exact
             path="/about"
           >
             <AboutPage />
-          </Route>
+          </Route> */}
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
@@ -55,15 +56,15 @@ function App() {
             exact
             path="/learner"
           >
-            <UserPage />
+            <LearnerProfile />
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            // logged in shows Challenge Page else shows LoginPage
             exact
-            path="/info"
+            path="/challenge"
           >
-            <InfoPage />
+            <ChallengePage />
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will
@@ -88,7 +89,7 @@ function App() {
             path="/registration"
             authRedirect="/learner"
           >
-            <RegisterPage />
+            <LearnerRegistration />
           </ProtectedRoute>
 
           <ProtectedRoute

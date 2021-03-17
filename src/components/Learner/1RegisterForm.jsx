@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+// Step 1 of 2 for learner to register:
 function RegisterForm() {
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
@@ -207,7 +208,7 @@ function RegisterForm() {
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
+        <input className="btn" type="submit" name="submit" value="Go to Step 2" />
       </div>
     </form>
   );

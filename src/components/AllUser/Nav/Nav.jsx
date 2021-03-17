@@ -4,7 +4,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 
-import img from '../images/fluent-logo.png';
+import img from '../../images/fluent-logo.png';
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -27,12 +27,16 @@ function Nav() {
   }
 
   let userTypeLinkData = {
-    path: '/learner',
-    text: 'New Challenge'
+    path: '/login',
+    text: ''
   }
   if (user.type === 'instructor') {
     userTypeLinkData.path = '/instructor',
       userTypeLinkData.text = 'You are an instructor!'
+  }
+  if (user.type === 'learner') {
+    userTypeLinkData.path = '/challenge',
+      userTypeLinkData.text = 'New Challenge'
   }
 
   return (
