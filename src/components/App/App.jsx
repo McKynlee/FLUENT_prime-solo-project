@@ -13,12 +13,11 @@ import Footer from '../AllUser/Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import AboutPage from '../AboutPage/AboutPage';
 import LearnerProfile from '../Learner/ProfilePage';
 import ChallengePage from '../Learner/ChallengePage';
 import LandingPage from '../AllUser/LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
-import LearnerRegistration from '../Learner/RegisterPage';
+import LearnerRegistration1 from '../Learner/RegisterPage';
 import InstructorRegistration from '../Instructor/InstructorRegisterPage'
 
 import './App.css';
@@ -38,23 +37,14 @@ function App() {
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
 
-          {/* Visiting localhost:3000/about will show the about page. */}
-          {/* <Route
-            // shows AboutPage at all times (logged in or not)
-            exact
-            path="/about"
-          >
-            <AboutPage />
-          </Route> */}
-
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
-            If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
+            If the user is not logged in, the ProtectedRoute will show the LandingPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/learner"
+            path="/user"
           >
             <LearnerProfile />
           </ProtectedRoute>
@@ -76,7 +66,7 @@ function App() {
             // - else shows LoginPage at /login
             exact
             path="/login"
-            authRedirect="/learner"
+            authRedirect="/user"
           >
             <LoginPage />
           </ProtectedRoute>
@@ -84,12 +74,12 @@ function App() {
           <ProtectedRoute
             // with authRedirect:
             // - if logged in, redirects to "/user"
-            // - else shows RegisterPage at "/registration"
+            // - else shows Landing Page at "/home" to start registration
             exact
-            path="/registration"
-            authRedirect="/learner"
+            path="/home"
+            authRedirect="/user"
           >
-            <LearnerRegistration />
+            <LandingPage />
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -98,10 +88,23 @@ function App() {
             // - else shows LandingPage at "/home"
             exact
             path="/home"
-            authRedirect="/learner"
+            authRedirect="/user"
           >
             <LandingPage />
           </ProtectedRoute>
+
+          {/* Anyone can access registration pages: */}
+          <Route exact
+            path="/instructor/registration"
+          >
+            <InstructorRegistration />
+          </Route>
+
+          <Route exact
+            path="/learner/registration"
+          >
+            <LearnerRegistration1 />
+          </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

@@ -23,8 +23,15 @@ router.post('/register', (req, res, next) => {
   const first_name = req.body.firstName;
   const last_name = req.body.lastName;
   const pronouns_id = req.body.pronoun;
-  const language_id = req.body.targetLanguage;
   const type = req.body.userType;
+
+  // set language_id based on receiving learner/instructor data:
+  let language_id;
+  if (type === 'learner') {
+    language_id = req.body.targetLanguage;
+  } else {
+    language_id = req.body.knownLanguage;
+  }
 
   // Send specifically to learner's table:
   const skill_level = req.body.languageSkill;
@@ -33,12 +40,10 @@ router.post('/register', (req, res, next) => {
   // Send specifically to instructor's table:
   const bio = req.body.bio;
   const avatar = req.body.avatar;
-  const learner_capacity = req.body.learnerCapacity;
+  const learner_capacity = req.body.instructorCapacity;
 
   const queryTextMakeUser = `INSERT INTO "users" ("language_id", "pronouns_id", "first_name", "last_name", "username", "password", "type")
     VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id;`;
-
-
 
   pool
     .query(queryTextMakeUser, [language_id, pronouns_id, first_name, last_name, username, password, type])

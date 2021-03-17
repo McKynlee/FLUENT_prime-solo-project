@@ -44,12 +44,8 @@ function Nav() {
       <div className="nav">
         <Link to="/home">
           <img className="nav-logo" src={img} />
-          {/* <h2 className="nav-title">F.L.U.E.N.T.</h2> */}
         </Link>
         <div>
-          {/* <Link className="navLink" to="/about">
-            About
-          </Link> */}
           <Link className="navLink" to={loginLinkData.path}>
             {loginLinkData.text}
           </Link>

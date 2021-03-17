@@ -8,8 +8,8 @@ function InstructorRegisterForm() {
 
   // Call for pronouns and languages on page load 
   useEffect(() => {
-    fetchPronouns(),
-      fetchLanguages()
+    fetchPronouns,
+      fetchLanguages
   }, []);
 
   // Get pronouns -->pronounSaga --> pronoun.router --> db --> pronounReducer
@@ -31,9 +31,6 @@ function InstructorRegisterForm() {
 
   // Pull in languages from languageReducer:
   const languageList = useSelector((store) => store.languages)
-  console.log('pronounList:', pronounList);
-
-  console.log('languageList:', languageList);
 
   // All the info a user needs to register (learner OR instructor):
   const [username, setUsername] = useState('');
@@ -44,7 +41,9 @@ function InstructorRegisterForm() {
 
   // Extra info for learner's to register:
   const [instructorCapacity, setInstructorCapacity] = useState(0);
-  const knownLanguages = [];
+  const [avatar, setAvatar] = useState('');
+  const [bio, setBio] = useState('');
+  const [knownLanguage, setKnownLanguage] = useState(0);
   const userType = 'instructor';
 
   // Test to make sure input info is captured:
@@ -54,7 +53,9 @@ function InstructorRegisterForm() {
     firstName,
     lastName,
     pronoun,
-    knownLanguages,
+    knownLanguage,
+    bio,
+    avatar,
     instructorCapacity,
     userType
   }
@@ -138,13 +139,13 @@ function InstructorRegisterForm() {
 
       <div>
         <label htmlFor="language">
-          Languages you are able to teach:
+          Language you are able to teach:
           <select
             type="text"
             name="language"
-            // value={targetLanguage}
+            value={knownLanguage}
             required
-            onChange={(event) => knownLanguages.push(event.target.value)}
+            onChange={(event) => setKnownLanguage(event.target.value)}
           >
             <option value=''>Choose One</option>
             {languageList.map((language) => {
@@ -161,9 +162,20 @@ function InstructorRegisterForm() {
       </div>
 
       <div>
-        <label htmlFor="language">
+        <label htmlFor="avatar">
+          Insert an image URL that represents you:
+          <input type="text" value={avatar}
+            onChange={(event) => setAvatar(event.target.value)} />
+        </label>
+      </div>
+
+      <div>
+        <label htmlFor="bio">
           Tell us a little about yourself:
-          <textarea>Bio</textarea>
+          <textarea value={bio}
+            onChange={(event) => setBio(event.target.value)}>
+            Bio
+          </textarea>
         </label>
       </div>
 
@@ -183,6 +195,11 @@ function InstructorRegisterForm() {
             <option value='3'>3</option>
             <option value='4'>4</option>
             <option value='5'>5</option>
+            <option value='6'>6</option>
+            <option value='7'>7</option>
+            <option value='8'>8</option>
+            <option value='9'>9</option>
+            <option value='10'>10</option>
           </select>
         </label>
       </div>
@@ -221,7 +238,7 @@ function InstructorRegisterForm() {
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Go to Step 2" />
+        <input className="btn" type="submit" name="submit" value="Register" />
       </div>
     </form>
   );
