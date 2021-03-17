@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // Step 1 of 2 for learner to register:
-function RegisterForm() {
+function LearnerRegistration1() {
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -224,4 +224,4 @@ function RegisterForm() {
   );
 }
 
-export default RegisterForm;
+export default LearnerRegistration1;

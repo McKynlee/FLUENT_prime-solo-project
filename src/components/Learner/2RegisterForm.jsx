@@ -16,6 +16,7 @@ function LearnerRegistration2() {
   }, []);
 
   // Bring available instructors in from the store
+  const instructorList = useSelector(store => store.instructors);
 
   // Bring in learner 1RegisterForm inputs so instructor_id can be added:
   const learnerInfoOnRegister1 = useSelector(store => store.user)
@@ -54,15 +55,15 @@ function LearnerRegistration2() {
         </h3>
       )}
 
-      {/* {languageList.map((language) => {
-              return (
-                <option key={language.id}
-                  value={language.id}
-                >
-                  {language.name}
-                </option>
-              )
-            })} */}
+      {instructorList.map((instructor) => {
+        return (
+          <div key={instructor.id}
+            value={instructor.id}
+          >
+            {instructor.bio}
+          </div>
+        )
+      })}
 
     </div>
   );
