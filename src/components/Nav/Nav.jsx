@@ -94,7 +94,7 @@ function Nav() {
             <>
               <Link className="navLink" to="/home">
                 Review Submissions
-            </Link>
+              </Link>
               <LogOutButton className="navLink" />
             </>
           )}

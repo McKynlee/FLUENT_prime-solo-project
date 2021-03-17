@@ -5,19 +5,18 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-
 import { useDispatch } from 'react-redux';
-
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
+// CUSTOM COMPONENTS:
+import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 import LearnerProfile from '../Learner/ProfilePage';
 import ChallengePage from '../Learner/ChallengePage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
-import LearnerRegistration1 from '../Learner/RegisterPage';
+import LearnerRegistration1 from '../Learner/1RegisterForm';
+import LearnerRegistration2 from '../Learner/2RegisterForm';
 import InstructorRegistration from '../Instructor/InstructorRegisterPage'
 
 import './App.css';
@@ -104,6 +103,12 @@ function App() {
             path="/learner/registration"
           >
             <LearnerRegistration1 />
+          </Route>
+
+          <Route exact
+            path="/learner/registration2"
+          >
+            <LearnerRegistration2 />
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}

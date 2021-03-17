@@ -1,43 +1,58 @@
+// Part 1 of learner registration: reached at nav link '/learner/registration'
+
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 // Step 1 of 2 for learner to register:
 function RegisterForm() {
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  // Call for pronouns on page load -->pronounSaga 
-  // --> pronoun.router --> db --> pronounReducer
+  // Call for pronouns and languages on page load 
   useEffect(() => {
+    fetchPronouns();
+    fetchLanguages();
+  }, []);
+
+  // Get pronouns -->pronounSaga --> pronoun.router --> db --> pronounReducer
+  const fetchPronouns = () => {
     dispatch({
       type: 'FETCH_PRONOUNS',
     });
-  }, []);
+  }
 
+  const fetchLanguages = () => {
+    dispatch({
+      type: 'FETCH_LANGUAGES',
+    });
+  }
 
   // Pull in pronouns from pronounReducer:
   const pronounList = useSelector((store) => store.pronouns)
-  console.log('pronounList:', pronounList);
+  // console.log('pronounList:', pronounList);
 
   // Pull in languages from languageReducer:
   const languageList = useSelector((store) => store.languages)
-  console.log('pronounList:', pronounList);
-
-  console.log('languageList:', languageList);
+  // console.log('languageList:', languageList);
 
   // All the info a user needs to register (learner OR instructor):
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [pronoun, setPronoun] = useState('');
-  const [userType, setUserType] = useState('learner');
+  const [pronoun, setPronoun] = useState(0);
 
   // Extra info for learner's to register:
-  const [targetLanguage, setTargetLanguage] = useState('');
+  const [targetLanguage, setTargetLanguage] = useState(0);
   const [languageSkill, setLanguageSkill] = useState(0);
+  const userType = 'learner';
 
-  // Test to make sure input info is captured:
+  // instructor_id will be set in 2RegisterForm, but needs to have placeholder:
+  let instructor_id = 0;
+
+  // Variable to represent captured input info to send to user reducer:
   let userInfoOnRegister = {
     username,
     password,
@@ -45,32 +60,27 @@ function RegisterForm() {
     lastName,
     pronoun,
     targetLanguage,
+    instructor_id,
     languageSkill,
     userType
   }
-  console.log('userInfoOnRegister:', userInfoOnRegister);
+  // console.log('userInfoOnRegister:', userInfoOnRegister);
 
-
-  const registerUser = (event) => {
+  // Send user input info to reducer, and navigate to 2RegisterForm:
+  const goToStep2 = (event) => {
     event.preventDefault();
 
     dispatch({
-      type: 'REGISTER',
-      payload: {
-        username,
-        password,
-        firstName,
-        lastName,
-        pronoun,
-        targetLanguage,
-        languageSkill,
-        userType
-      },
+      type: 'SET_USER',
+      payload: userInfoOnRegister
     });
-  }; // end registerUser
+
+    //navigate to part 2 of learner registration:
+    history.push('/learner/registration2')
+  }; // end goToStep2
 
   return (
-    <form className="formPanel" onSubmit={registerUser}>
+    <form className="formPanel" onSubmit={goToStep2}>
       <h2>Register to become FLUENT:</h2>
 
       <h3><em>Step 1 of 2</em></h3>
