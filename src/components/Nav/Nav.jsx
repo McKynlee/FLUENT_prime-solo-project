@@ -4,7 +4,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 
-import img from '../../images/fluent-logo.png';
+import img from '../images/fluent-logo.png';
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -33,7 +33,7 @@ function Nav() {
   }
   if (user.type === 'instructor') {
     userTypeLinkData.path = '/instructor',
-      userTypeLinkData.text = 'You are an instructor!'
+      userTypeLinkData.text = 'Instructor Path1'
   }
   if (user.type === 'learner') {
     userTypeLinkData.path = '/challenge',
@@ -46,7 +46,7 @@ function Nav() {
   }
   if (user.type === 'instructor') {
     userTypeLinkData2.path = '/instructor',
-      userTypeLinkData2.text = 'Instructor Path?'
+      userTypeLinkData2.text = 'Instructor Path2?'
   }
   if (user.type === 'learner') {
     userTypeLinkData2.path = '',
@@ -59,7 +59,7 @@ function Nav() {
   }
   if (user.type === 'instructor') {
     userTypeLinkData3.path = '/instructor',
-      userTypeLinkData3.text = 'Instructor Path?'
+      userTypeLinkData3.text = 'Instructor Path3?'
   }
   if (user.type === 'learner') {
     userTypeLinkData3.path = '',
@@ -92,7 +92,7 @@ function Nav() {
 
           {user.id && (
             <>
-              <Link className="navLink" to="/info">
+              <Link className="navLink" to="/home">
                 Review Submissions
             </Link>
               <LogOutButton className="navLink" />

@@ -8,14 +8,14 @@ import {
 
 import { useDispatch } from 'react-redux';
 
-import Nav from '../AllUser/Nav/Nav';
-import Footer from '../AllUser/Footer/Footer';
+import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import LearnerProfile from '../Learner/ProfilePage';
 import ChallengePage from '../Learner/ChallengePage';
-import LandingPage from '../AllUser/LandingPage/LandingPage';
+import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import LearnerRegistration1 from '../Learner/RegisterPage';
 import InstructorRegistration from '../Instructor/InstructorRegisterPage'
