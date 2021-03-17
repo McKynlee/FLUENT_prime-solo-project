@@ -4,7 +4,7 @@ import './LandingPage.css';
 import img from '../images/fluent-logo.png';
 
 // CUSTOM COMPONENTS
-import RegisterForm from '../Learner/1RegisterForm';
+import RegisterForm from '../Learner/1LearnerRegForm';
 
 function LandingPage() {
   const [heading, setHeading] = useState('Welcome to');

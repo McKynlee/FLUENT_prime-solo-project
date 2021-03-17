@@ -4,7 +4,11 @@ const router = express.Router();
 
 // GET all available instructors from db:
 router.get('/', (req, res) => {
-  const sqlQuery = 'SELECT * FROM "instructors";';
+  const sqlQuery = `SELECT "instructors".id, "instructors".avatar, "instructors".bio, "instructors".learner_capacity, count("learners") as "learner_count", "users".first_name, "users".last_name, "pronouns".pronoun FROM "instructors"
+  JOIN "users" ON "instructors".user_id = "users".id
+  JOIN "pronouns" ON "users".pronouns_id = "pronouns".id
+  JOIN "learners" ON "users".id = "learners".user_id
+  GROUP BY "instructors".id, "users".first_name, "users".last_name, "pronouns".pronoun;`;
 
   pool.query(sqlQuery)
     .then(dbRes => {

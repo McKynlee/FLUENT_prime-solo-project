@@ -5,7 +5,10 @@ const instructorReducer = (state = [{
   avatar: "",
   bio: "",
   learner_capacity: 0,
-  user_id: 0
+  user_id: 0,
+  first_name: '',
+  last_name: '',
+  pronouns_id: 0
 }], action) => {
   switch (action.type) {
     case 'SET_INSTRUCTORS':

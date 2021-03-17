@@ -15,8 +15,8 @@ import LearnerProfile from '../Learner/ProfilePage';
 import ChallengePage from '../Learner/ChallengePage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
-import LearnerRegistration1 from '../Learner/1RegisterForm';
-import LearnerRegistration2 from '../Learner/2RegisterForm';
+import LearnerRegistration1 from '../Learner/1LearnerRegForm';
+import LearnerRegistration2 from '../Learner/2LearnerRegForm';
 import InstructorRegistration from '../Instructor/InstructorRegisterPage'
 
 import './App.css';
