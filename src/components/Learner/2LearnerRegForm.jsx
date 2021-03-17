@@ -57,11 +57,20 @@ function LearnerRegistration2() {
 
       {instructorList.map((instructor) => {
         return (
-          <div key={instructor.id}
+          <section className="learner-instructor-section"
+            key={instructor.id}
             value={instructor.id}
           >
-            {instructor.bio}
-          </div>
+            <div>{instructor.first_name} {instructor.last_name}</div>
+            <div>{instructor.pronoun}</div>
+            <div>{instructor.bio}</div>
+            <img src={instructor.avatar} />
+            <div>{instructor.first_name} is currently working with
+              {instructor.learner_count} other learner(s)
+            </div>
+            <button>More Info</button>
+            <button>Select Instructor</button>
+          </section>
         )
       })}
 
