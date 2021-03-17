@@ -10,6 +10,14 @@ function LandingPage() {
   const [heading, setHeading] = useState('Welcome to');
   const history = useHistory();
 
+  const learnerRegistration = () => {
+    history.push('/learner/registration');
+  }
+
+  const instructorRegistration = () => {
+    history.push('/instructor/registration');
+  }
+
   return (
     <div className="container">
       <h2>{heading}</h2>
@@ -20,7 +28,11 @@ function LandingPage() {
       <h4>Register to either:</h4>
 
       <div className="landing-learner">
-        <p>Become a Learner:</p>
+        <button onClick={learnerRegistration}
+        >
+          Become a Learner:
+        </button>
+
         <p>1. Tell us about so so that we
           tailor your learning experience.</p>
         <p>2. Complete languages to enhance your
@@ -31,7 +43,9 @@ function LandingPage() {
       </div>
 
       <div className="landing-instructor">
-        <p>Become an Instructor:</p>
+        <button onClick={instructorRegistration}>
+          Become an Instructor:
+        </button>
         <p>1. Create a bio so learners can know
         who you are.
         </p>
