@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 const pronounRouter = require('./routes/pronoun.router');
 const languageRouter = require('./routes/language.router');
 const instructorRouter = require('./routes/instructor.router');
+const learnerRouter = require('./routes/learner.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -29,6 +30,7 @@ app.use('/api/user', userRouter);
 app.use('/api/pronouns', pronounRouter);
 app.use('/api/languages', languageRouter);
 app.use('/api/instructors', instructorRouter);
+app.use('/api/learner', learnerRouter);
 
 // Serve static files
 app.use(express.static('build'));

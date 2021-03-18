@@ -10,6 +10,7 @@ function LearnerReviewFeedback() {
   return (
     <div>
       <h1>Learner Review Feedback</h1>
+      <LogOutButton className="btn" />
     </div>
   )
 }
