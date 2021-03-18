@@ -9,7 +9,14 @@ function* registerUser(action) {
     // clear any existing error on the registration page
     yield put({ type: 'CLEAR_REGISTRATION_ERROR' });
 
-    // passes the first, last, pronoun, username, password,
+    // Pass selected instructor id to instructor saga to store
+    // instructor details for Learner Profile page:
+    yield put({
+      type: 'FETCH_PAIRED_INSTRUCTOR',
+      payload: action.payload.instructor_id
+    })
+
+    // passes the first, last, pronoun, username, password, instructor_id
     // language, skill level, user type from the payload to the server
     yield axios.post('/api/user/register', action.payload);
 

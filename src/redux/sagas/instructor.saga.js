@@ -10,13 +10,28 @@ function* fetchInstructors() {
 
     // Send retrieved data to reducer:
     yield put({ type: 'SET_INSTRUCTORS', payload: response.data });
-  } catch (error) {
+  }
+  catch (error) {
     console.log('Instructor get request failed', error);
+  }
+}
+
+function* fetchLearnersInstructor(action) {
+  console.log('fetchLearnersInstructor action:', action);
+  try {
+    const response = yield axios.get(`/api/instructors/${action.payload}`);
+
+    // Send retrieved data to reducer:
+    yield put({ type: 'SET_PAIRED_INSTRUCTOR', payload: response.data })
+  }
+  catch (error) {
+    console.log('Paired Instructor get request failed', error);
   }
 }
 
 function* instructorSaga() {
   yield takeLatest('FETCH_INSTRUCTORS', fetchInstructors);
+  yield takeLatest('FETCH_PAIRED_INSTRUCTOR', fetchLearnersInstructor)
 }
 
 export default instructorSaga;
