@@ -13,6 +13,8 @@ const instructorReducer = (state = [{
   switch (action.type) {
     case 'SET_INSTRUCTORS':
       return action.payload;
+    case 'SELECT_INSTRUCTOR':
+      return state.filter(instructor => instructor.id == action.payload.id)
     default:
       return state;
   }

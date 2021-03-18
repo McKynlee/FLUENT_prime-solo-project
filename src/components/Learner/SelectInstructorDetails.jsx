@@ -24,6 +24,12 @@ function SelectInstructorDetails() {
   const instructorDetails = useSelector(store => store.instructors);
   console.log('instructor details:', instructorDetails);
 
+  // Register learner if they select this instructor:
+  const registerLearner = () => {
+    console.log('registerLearner');
+  }
+
+  // Go back to full list of available instructors
   const backToList = () => {
     history.push('/learner/registration2');
   }
@@ -32,6 +38,10 @@ function SelectInstructorDetails() {
   return (
     <div>
       <h1>Instructor Details</h1>
+
+      <button onClick={registerLearner}>
+        Select this Instructor
+      </button>
       <button onClick={backToList}>
         Back to Available Instructors
       </button>

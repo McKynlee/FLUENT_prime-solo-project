@@ -3,6 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
+
+
 
 // Step 2 of 2 for learner to register: add instructor_id
 function LearnerRegistration2() {
@@ -26,19 +29,38 @@ function LearnerRegistration2() {
 
 
   // on Click of 'Select Instructor', pair instructor_id with learner
-  const onSelectInstructor = (selectedInstructorId) => {
-    console.log('selectedInstructorId:', selectedInstructorId);
+  const onSelectInstructor = (selectedInstructor) => {
+    console.log('selectedInstructorId:', selectedInstructor);
+
     // Update learner info with selected instructor_id:
-    learnerInfoOnRegister1.instructor_id = Number(selectedInstructorId);
-    console.log('learner complete info:', learnerInfoOnRegister1);
-    // Now that info is complete, Register learner in db:
-    registerUser(learnerInfoOnRegister1);
+    learnerInfoOnRegister1.instructor_id = Number(selectedInstructor.id);
+
+    // Alert learner to confirm that this is their instructor choice:
+    swal({
+      title: `Pair with ${selectedInstructor.first_name}?`,
+      text: "This will finalize your registration.",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((register) => {
+        if (register) {
+          // Now that info is complete, Register learner in db:
+          registerUser(learnerInfoOnRegister1);
+
+          swal("You're all set- Welcome to F.L.U.E.N.T.!", {
+            icon: "success",
+          });
+        }
+      });
+
+
+
   }
 
-  const registerUser = (learner) => {
+  const registerUser = () => {
     dispatch({
       type: 'REGISTER',
-      payload: learner,
+      payload: learnerInfoOnRegister1,
     });
 
     // and navigate to Learner Profile page:
@@ -105,7 +127,7 @@ function LearnerRegistration2() {
                 <button onClick={() => onMoreInfo(availableInstructor.id)}>
                   More Info
                 </button>
-                <button onClick={() => onSelectInstructor(availableInstructor.id)}>
+                <button onClick={() => onSelectInstructor(availableInstructor)}>
                   Select Instructor
                 </button>
               </section>
