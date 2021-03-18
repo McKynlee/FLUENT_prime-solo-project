@@ -5,20 +5,20 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-
 import { useDispatch } from 'react-redux';
-
-import Nav from '../AllUser/Nav/Nav';
-import Footer from '../AllUser/Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import LearnerProfile from '../Learner/ProfilePage';
+// CUSTOM COMPONENTS:
+import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
+import LearnerProfile from '../Learner/LearnerProfilePage';
 import ChallengePage from '../Learner/ChallengePage';
-import LandingPage from '../AllUser/LandingPage/LandingPage';
+import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
-import LearnerRegistration1 from '../Learner/RegisterPage';
-import InstructorRegistration from '../Instructor/InstructorRegisterPage'
+import LearnerRegistration1 from '../Learner/1LearnerRegForm';
+import LearnerRegistration2 from '../Learner/2LearnerRegForm';
+import InstructorRegistration from '../Instructor/InstructorRegisterPage';
+import SelectInstructorDetails from '../Learner/SelectInstructorDetails';
 
 import './App.css';
 
@@ -44,7 +44,7 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/learner"
           >
             <LearnerProfile />
           </ProtectedRoute>
@@ -104,6 +104,18 @@ function App() {
             path="/learner/registration"
           >
             <LearnerRegistration1 />
+          </Route>
+
+          <Route exact
+            path="/learner/registration2"
+          >
+            <LearnerRegistration2 />
+          </Route>
+
+          <Route exact
+            path="/learner/instructor/details/:id"
+          >
+            <SelectInstructorDetails />
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}

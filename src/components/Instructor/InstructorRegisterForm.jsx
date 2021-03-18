@@ -8,8 +8,8 @@ function InstructorRegisterForm() {
 
   // Call for pronouns and languages on page load 
   useEffect(() => {
-    fetchPronouns,
-      fetchLanguages
+    fetchPronouns();
+    fetchLanguages();
   }, []);
 
   // Get pronouns -->pronounSaga --> pronoun.router --> db --> pronounReducer

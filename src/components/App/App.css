@@ -112,3 +112,15 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+/* --------------------------------------------------------------------------------
+Select Instructor Layout: 2LearnerRegForm.jsx
+-------------------------------------------------------------------------------- */
+
+.learner-instructor-section {
+  border: 0.2rem solid black;
+}
+
+.learner-instructor-avatar {
+  height: 10rem;
+}

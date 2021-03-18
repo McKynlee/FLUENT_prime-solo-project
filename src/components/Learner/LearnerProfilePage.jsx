@@ -1,5 +1,7 @@
+
+
 import React from 'react';
-import LogOutButton from '../AllUser/LogOutButton/LogOutButton';
+import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector } from 'react-redux';
 
 function LearnerProfile() {

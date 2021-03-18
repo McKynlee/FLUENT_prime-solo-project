@@ -4,7 +4,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 
-import img from '../../images/fluent-logo.png';
+import img from '../images/fluent-logo.png';
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -33,7 +33,7 @@ function Nav() {
   }
   if (user.type === 'instructor') {
     userTypeLinkData.path = '/instructor',
-      userTypeLinkData.text = 'You are an instructor!'
+      userTypeLinkData.text = 'Instructor Path1'
   }
   if (user.type === 'learner') {
     userTypeLinkData.path = '/challenge',
@@ -45,12 +45,12 @@ function Nav() {
     text: 'Register to learn'
   }
   if (user.type === 'instructor') {
-    userTypeLinkData.path = '/instructor',
-      userTypeLinkData.text = 'Instructor Path?'
+    userTypeLinkData2.path = '/instructor',
+      userTypeLinkData2.text = 'Instructor Path2?'
   }
   if (user.type === 'learner') {
-    userTypeLinkData.path = '/challenge',
-      userTypeLinkData.text = 'Learner Path?'
+    userTypeLinkData2.path = '',
+      userTypeLinkData2.text = ''
   }
 
   let userTypeLinkData3 = {
@@ -58,18 +58,33 @@ function Nav() {
     text: 'Register to instruct'
   }
   if (user.type === 'instructor') {
-    userTypeLinkData.path = '/instructor',
-      userTypeLinkData.text = 'Instructor Path?'
+    userTypeLinkData3.path = '/instructor',
+      userTypeLinkData3.text = 'Instructor Path3?'
   }
   if (user.type === 'learner') {
-    userTypeLinkData.path = '/challenge',
-      userTypeLinkData.text = 'Learner Path?'
+    userTypeLinkData3.path = '',
+      userTypeLinkData3.text = ''
+  }
+
+  // Have logo click link to /home if not logged in, or
+  // respective profile pages if logged in:
+  let loginLinkData4 = {
+    path: '/home',
+  };
+
+  if (user.id != null) {
+    if (user.type === 'instructor') {
+      loginLinkData4.path = '/instructor';
+    }
+    else {
+      loginLinkData4.path = '/learner';
+    }
   }
 
   return (
     <div>
       <div className="nav">
-        <Link to="/home">
+        <Link to={loginLinkData4.path}>
           <img className="nav-logo" src={img} />
         </Link>
         <div>
@@ -92,9 +107,9 @@ function Nav() {
 
           {user.id && (
             <>
-              <Link className="navLink" to="/info">
+              <Link className="navLink" to="/home">
                 Review Submissions
-            </Link>
+              </Link>
               <LogOutButton className="navLink" />
             </>
           )}
