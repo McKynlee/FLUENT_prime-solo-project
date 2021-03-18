@@ -11,7 +11,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 // CUSTOM COMPONENTS:
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-import LearnerProfile from '../Learner/ProfilePage';
+import LearnerProfile from '../Learner/LearnerProfilePage';
 import ChallengePage from '../Learner/ChallengePage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -44,7 +44,7 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/learner"
           >
             <LearnerProfile />
           </ProtectedRoute>

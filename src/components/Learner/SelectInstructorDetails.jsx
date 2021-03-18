@@ -12,7 +12,7 @@ function SelectInstructorDetails() {
 
   console.log('instructorIdParam:', instructorIdParam);
 
-  // on page load, grab specific instructor info from reducer:
+  // on page load, ask for specific instructor info from reducer:
   useEffect(() => {
     dispatch({
       type: 'SELECT_INSTRUCTOR',
@@ -21,12 +21,47 @@ function SelectInstructorDetails() {
   }, []);
 
   // Bring in specific instructor details from reducer:
-  const instructorDetails = useSelector(store => store.instructors);
+  const instructorDetails = useSelector(store => store.instructors[0]);
   console.log('instructor details:', instructorDetails);
 
-  // Register learner if they select this instructor:
-  const registerLearner = () => {
-    console.log('registerLearner');
+  // Bring in learner info to register them if they select instructor:
+  const learnerInfo = useSelector(store => store.user);
+
+
+  // on Click of 'Select Instructor', pair instructor_id with learner
+  const onSelectInstructor = (selectedInstructor) => {
+    console.log('selectedInstructorId:', selectedInstructor);
+
+    // Update learner info with selected instructor_id:
+    learnerInfo.instructor_id = Number(selectedInstructor.id);
+
+    // Alert learner to confirm that this is their instructor choice:
+    swal({
+      title: `Pair with ${selectedInstructor.first_name}?`,
+      text: "This will finalize your registration.",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((register) => {
+        if (register) {
+          // Now that info is complete, Register learner in db:
+          registerUser(learnerInfo);
+
+          swal("You're all set- Welcome to F.L.U.E.N.T.!", {
+            icon: "success",
+          });
+        }
+      });
+  }
+
+  const registerUser = (learnerDetails) => {
+    dispatch({
+      type: 'REGISTER',
+      payload: learnerDetails,
+    });
+
+    // and navigate to Learner Profile page:
+    history.push('/learner');
   }
 
   // Go back to full list of available instructors
@@ -39,7 +74,18 @@ function SelectInstructorDetails() {
     <div>
       <h1>Instructor Details</h1>
 
-      <button onClick={registerLearner}>
+      <section className="select-instructor-details"
+        key={instructorDetails.id}
+        value={instructorDetails.id}
+      >
+        <div>{instructorDetails.first_name} {instructorDetails.last_name}</div>
+        <div>{instructorDetails.pronoun}</div>
+        <img src={instructorDetails.avatar} />
+        <h4>A little bit about </h4>
+        <div>{instructorDetails.bio}</div>
+      </section>
+
+      <button onClick={() => onSelectInstructor(instructorDetails)}>
         Select this Instructor
       </button>
       <button onClick={backToList}>

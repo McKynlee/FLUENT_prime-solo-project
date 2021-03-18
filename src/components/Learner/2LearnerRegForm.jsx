@@ -52,15 +52,12 @@ function LearnerRegistration2() {
           });
         }
       });
-
-
-
   }
 
-  const registerUser = () => {
+  const registerUser = (learner) => {
     dispatch({
       type: 'REGISTER',
-      payload: learnerInfoOnRegister1,
+      payload: learner,
     });
 
     // and navigate to Learner Profile page:
@@ -121,8 +118,8 @@ function LearnerRegistration2() {
               >
                 <div>{availableInstructor.first_name} {availableInstructor.last_name}</div>
                 <div>{availableInstructor.pronoun}</div>
-                <div>{availableInstructor.bio}</div>
-                <img src={availableInstructor.avatar} />
+                <img className="learner-instructor-avatar"
+                  src={availableInstructor.avatar} alt="Representative photo selected by instructor" />
                 <div>{learnerLanguage}</div>
                 <button onClick={() => onMoreInfo(availableInstructor.id)}>
                   More Info
