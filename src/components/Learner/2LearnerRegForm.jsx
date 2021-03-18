@@ -2,11 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 // Step 2 of 2 for learner to register: add instructor_id
 function LearnerRegistration2() {
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // On page load, GET available instructor info:
   useEffect(() => {
@@ -20,31 +22,33 @@ function LearnerRegistration2() {
 
   // Bring in learner 1RegisterForm inputs so instructor_id can be added:
   const learnerInfoOnRegister1 = useSelector(store => store.user)
-  console.log('userInfoOnRegister1:', learnerInfoOnRegister1);
+  console.log('learnerInfoOnRegister1:', learnerInfoOnRegister1);
 
-
-
-  // Variable to capture selected instructor:
-  const [selectedInstructor, setSelectedInstructor] = useState(0);
 
   // on Click of 'Select Instructor', pair instructor_id with learner
-  const onSelectInstructor = () => {
+  const onSelectInstructor = (selectedInstructorId) => {
+    console.log('selectedInstructorId:', selectedInstructorId);
     // Update learner info with selected instructor_id:
-    learnerInfoOnRegister1.instructor_id = selectedInstructor;
-
+    learnerInfoOnRegister1.instructor_id = Number(selectedInstructorId);
+    console.log('learner complete info:', learnerInfoOnRegister1);
     // Now that info is complete, Register learner in db:
-    registerLearner();
+    registerUser(learnerInfoOnRegister1);
   }
 
-  const registerLearner = (event) => {
-    event.preventDefault();
-
-    // Register user with complete info
+  const registerUser = (learner) => {
     dispatch({
       type: 'REGISTER',
-      payload: learnerInfoOnRegister1,
+      payload: learner,
     });
-  }; // end registerUser
+
+    // and navigate to Learner Profile page:
+    history.push('/learner');
+  }
+
+
+  const onMoreInfo = (selectedInstructorId) => {
+    console.log('selectedInstructorId:', selectedInstructorId);
+  }
 
   return (
     <div>
@@ -72,16 +76,18 @@ function LearnerRegistration2() {
             let learnerLanguage = 'learners';
 
             if (Number(availableInstructor.learner_count) === 1) {
-              learnerLanguage = `${availableInstructor.first_name} is currently working with
-    ${availableInstructor.learner_count} other learner`
+              learnerLanguage = `${availableInstructor.first_name} 
+              is currently working with ${availableInstructor.learner_count} 
+              other learner`
             }
             if (availableInstructor.learner_count > 1) {
-              learnerLanguage = `${availableInstructor.first_name} is currently working with
-    ${availableInstructor.learner_count} other learners`
+              learnerLanguage = `${availableInstructor.first_name} 
+              is currently working with ${availableInstructor.learner_count} 
+              other learners`
             }
             if (Number(availableInstructor.learner_count) === 0) {
-              learnerLanguage = `${availableInstructor.first_name} is not currently working with
-    any other learners`
+              learnerLanguage = `${availableInstructor.first_name} 
+              is not currently working with any other learners`
             }
 
             return (
@@ -94,8 +100,12 @@ function LearnerRegistration2() {
                 <div>{availableInstructor.bio}</div>
                 <img src={availableInstructor.avatar} />
                 <div>{learnerLanguage}</div>
-                <button>More Info</button>
-                <button>Select Instructor</button>
+                <button onClick={() => onMoreInfo(availableInstructor.id)}>
+                  More Info
+                </button>
+                <button onClick={() => onSelectInstructor(availableInstructor.id)}>
+                  Select Instructor
+                </button>
               </section>
 
             )

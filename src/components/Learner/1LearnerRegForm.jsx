@@ -128,7 +128,7 @@ function LearnerRegistration1() {
             name="pronoun"
             value={pronoun}
             required
-            onChange={(event) => setPronoun(event.target.value)}
+            onChange={(event) => setPronoun(Number(event.target.value))}
           >
             <option value=''>Choose One</option>
             {pronounList.map((pronoun) => {
@@ -152,7 +152,7 @@ function LearnerRegistration1() {
             name="language"
             value={targetLanguage}
             required
-            onChange={(event) => setTargetLanguage(event.target.value)}
+            onChange={(event) => setTargetLanguage(Number(event.target.value))}
           >
             <option value=''>Choose One</option>
             {languageList.map((language) => {
@@ -176,7 +176,7 @@ function LearnerRegistration1() {
             name="skill"
             value={languageSkill}
             required
-            onChange={(event) => setLanguageSkill(event.target.value)}
+            onChange={(event) => setLanguageSkill(Number(event.target.value))}
           >
             <option value=''>Choose One</option>
             <option value='1'>1: I know a few words.</option>

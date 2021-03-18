@@ -36,6 +36,7 @@ router.post('/register', (req, res, next) => {
   // Send specifically to learner's table:
   const skill_level = req.body.languageSkill;
   const moneda_count = 5;
+  const instructor_id = req.body.instructor_id;
 
   // Send specifically to instructor's table:
   const bio = req.body.bio;
@@ -54,9 +55,9 @@ router.post('/register', (req, res, next) => {
       let queryParamSpecific;
 
       if (type === 'learner') {
-        queryTextMakeSpecific = `INSERT INTO "learners" ("user_id", "skill_level", "moneda_count")
-    VALUES ($1, $2, $3) RETURNING id;`;
-        queryParamSpecific = [dbRes.rows[0].id, skill_level, moneda_count];
+        queryTextMakeSpecific = `INSERT INTO "learners" ("user_id", "skill_level", "moneda_count", "instructor_id")
+    VALUES ($1, $2, $3, $4) RETURNING id;`;
+        queryParamSpecific = [dbRes.rows[0].id, skill_level, moneda_count, instructor_id];
       } else {
         queryTextMakeSpecific = `INSERT INTO "instructors" ("user_id", "bio", "avatar", "learner_capacity")
     VALUES ($1, $2, $3, $4) RETURNING id;`;
