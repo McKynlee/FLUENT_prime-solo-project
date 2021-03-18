@@ -47,7 +47,7 @@ function LearnerProfile() {
 
       <div className="learner-profile-personal">
         <h4>Your Information:</h4>
-        <p></p>
+        <p>Language you're learning: {user.language}</p>
         <p></p>
         <p></p>
         <p></p>

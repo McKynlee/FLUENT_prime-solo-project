@@ -43,7 +43,9 @@ router.post('/register', (req, res, next) => {
   const avatar = req.body.avatar;
   const learner_capacity = req.body.instructorCapacity;
 
-  const queryTextMakeUser = `INSERT INTO "users" ("language_id", "pronouns_id", "first_name", "last_name", "username", "password", "type")
+  const queryTextMakeUser = `INSERT INTO "users" 
+  ("language_id", "pronouns_id", "first_name", "last_name", 
+  "username", "password", "type")
     VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id;`;
 
   pool
