@@ -40,7 +40,6 @@ function SelectInstructorDetails() {
       title: `Pair with ${selectedInstructor.first_name}?`,
       text: "This will finalize your registration.",
       buttons: true,
-      dangerMode: true,
     })
       .then((register) => {
         if (register) {

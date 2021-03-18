@@ -66,10 +66,25 @@ function Nav() {
       userTypeLinkData3.text = ''
   }
 
+  // Have logo click link to /home if not logged in, or
+  // respective profile pages if logged in:
+  let loginLinkData4 = {
+    path: '/home',
+  };
+
+  if (user.id != null) {
+    if (user.type === 'instructor') {
+      loginLinkData4.path = '/instructor';
+    }
+    else {
+      loginLinkData4.path = '/learner';
+    }
+  }
+
   return (
     <div>
       <div className="nav">
-        <Link to="/home">
+        <Link to={loginLinkData4.path}>
           <img className="nav-logo" src={img} />
         </Link>
         <div>
