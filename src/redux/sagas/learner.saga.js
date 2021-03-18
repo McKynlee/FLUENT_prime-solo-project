@@ -7,7 +7,7 @@ function* fetchLearner(action) {
 
     // 'response' is variable to hold data once retrieved from server:
     const response = yield axios.get(`/api/learner/${action.payload}`);
-    console.log('learner response:', response);
+    // console.log('learner response:', response);
 
     // Send retrieved data to reducer:
     yield put({ type: 'SET_LEARNER', payload: response.data });

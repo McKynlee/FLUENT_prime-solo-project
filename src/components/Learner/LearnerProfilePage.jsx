@@ -17,7 +17,7 @@ function LearnerProfile() {
       type: 'FETCH_LEARNER',
       payload: Number(user.id)
     })
-  });
+  }, []);
 
   // Bring in learner's learner data:
   const learner = useSelector((store) => store.learner[0]);
@@ -29,6 +29,11 @@ function LearnerProfile() {
     monedaLanguage = 'moneda';
   }
 
+  // Open Edit information pop-up when Edit Your Info button clicked:
+  const editLearnerInfo = () => {
+    console.log('editLearnerInfo');
+  }
+
   return (
     <div className="container">
       <h1>{user.first_name}, you're on your way to being F.L.U.E.N.T!</h1>
@@ -38,6 +43,17 @@ function LearnerProfile() {
       </p>
       <div className='learner-profile-moneda'>
         You have {learner.moneda_count} {monedaLanguage}!
+      </div>
+
+      <div className="learner-profile-personal">
+        <h4>Your Information:</h4>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <button onClick={editLearnerInfo}>
+          Edit Your Information
+        </button>
       </div>
 
       <LogOutButton className="btn" />
