@@ -5,7 +5,7 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 // CUSTOM COMPONENTS:
@@ -19,6 +19,7 @@ import LearnerRegistration1 from '../Learner/1LearnerRegForm';
 import LearnerRegistration2 from '../Learner/2LearnerRegForm';
 import InstructorRegistration from '../Instructor/InstructorRegisterPage';
 import SelectInstructorDetails from '../Learner/SelectInstructorDetails';
+import LearnerReviewFeedback from '../Learner/LearnerReviewFeedback';
 
 import './App.css';
 
@@ -28,6 +29,18 @@ function App() {
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
+
+  // Conditional render links depending if user.type = 
+  // learner OR instructor:
+  const user = useSelector((store) => store.user);
+  let userTypeLink;
+
+  if (user.type === 'instructor') {
+    userTypeLink = '/instructor';
+  }
+  if (user.type === 'learner') {
+    userTypeLink = '/learner';
+  }
 
   return (
     <Router>
@@ -44,7 +57,7 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/learner"
+            path='/learner'
           >
             <LearnerProfile />
           </ProtectedRoute>
@@ -62,37 +75,47 @@ function App() {
             be taken to the component and path supplied. */}
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to userTypeLink (set above)
             // - else shows LoginPage at /login
             exact
             path="/login"
-            authRedirect="/user"
+            authRedirect={userTypeLink}
           >
             <LoginPage />
           </ProtectedRoute>
 
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to userTypeLink (set above)
             // - else shows Landing Page at "/home" to start registration
             exact
             path="/home"
-            authRedirect="/user"
+            authRedirect={userTypeLink}
           >
             <LandingPage />
           </ProtectedRoute>
 
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to userTypeLink (set above)
             // - else shows LandingPage at "/home"
             exact
             path="/home"
-            authRedirect="/user"
+            authRedirect={userTypeLink}
           >
             <LandingPage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // with authRedirect:
+            // - if logged in, redirects to "/learner/review"
+            // - else shows LandingPage at "/home"
+            exact
+            path="/learner/review"
+          // authRedirect="/learner/review"
+          >
+            <LearnerReviewFeedback />
+          </ProtectedRoute>
           {/* Anyone can access registration pages: */}
           <Route exact
             path="/instructor/registration"
