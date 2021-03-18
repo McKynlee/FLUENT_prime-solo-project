@@ -17,7 +17,8 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import LearnerRegistration1 from '../Learner/1LearnerRegForm';
 import LearnerRegistration2 from '../Learner/2LearnerRegForm';
-import InstructorRegistration from '../Instructor/InstructorRegisterPage'
+import InstructorRegistration from '../Instructor/InstructorRegisterPage';
+import SelectInstructorDetails from '../Learner/SelectInstructorDetails';
 
 import './App.css';
 
@@ -109,6 +110,12 @@ function App() {
             path="/learner/registration2"
           >
             <LearnerRegistration2 />
+          </Route>
+
+          <Route exact
+            path="/learner/instructor/details/:id"
+          >
+            <SelectInstructorDetails />
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}

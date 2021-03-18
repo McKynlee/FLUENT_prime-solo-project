@@ -48,6 +48,8 @@ function LearnerRegistration2() {
 
   const onMoreInfo = (selectedInstructorId) => {
     console.log('selectedInstructorId:', selectedInstructorId);
+
+    history.push(`/learner/instructor/details/${selectedInstructorId}`);
   }
 
   return (
