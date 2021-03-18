@@ -16,7 +16,7 @@ function* fetchInstructors() {
   }
 }
 
-function* fetchLearnersInstructor(action) {
+function* fetchPairedInstructor(action) {
   console.log('fetchLearnersInstructor action:', action);
   try {
     const response = yield axios.get(`/api/instructors/${action.payload}`);
@@ -31,7 +31,7 @@ function* fetchLearnersInstructor(action) {
 
 function* instructorSaga() {
   yield takeLatest('FETCH_INSTRUCTORS', fetchInstructors);
-  yield takeLatest('FETCH_PAIRED_INSTRUCTOR', fetchLearnersInstructor)
+  yield takeLatest('FETCH_PAIRED_INSTRUCTOR', fetchPairedInstructor)
 }
 
 export default instructorSaga;

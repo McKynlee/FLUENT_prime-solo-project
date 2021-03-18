@@ -11,14 +11,10 @@ function LearnerProfile() {
   const user = useSelector((store) => store.user);
   console.log('learner profile user:', user);
 
-  // Bring in instructor data (with whom learner is paired):
-  const pairedInstructor = useSelector((store) => store.pairedInstructor);
-  console.log('pairedInstructor:', pairedInstructor[0]);
-
-  // on page load, call for this learner's learner data:
+  // on page load, call for this learner's learner data, and paired instructor data:
   useEffect(() => {
     dispatch({
-      type: 'FETCH_LEARNER',
+      type: 'FETCH_LEARNER_INFO',
       payload: Number(user.id)
     })
   }, []);
@@ -26,6 +22,10 @@ function LearnerProfile() {
   // Bring in learner's learner data:
   const learner = useSelector((store) => store.learner[0]);
   console.log('learner profile learner:', learner);
+
+  // Bring in instructor data (with whom learner is paired):
+  const pairedInstructor = useSelector((store) => store.pairedInstructor[0]);
+  console.log('pairedInstructor:', pairedInstructor);
 
   // Control grammar depending on number of monedas:
   let monedaLanguage = 'monedas';
@@ -61,6 +61,18 @@ function LearnerProfile() {
         <button onClick={editLearnerInfo}>
           Edit Your Information
         </button>
+      </div>
+
+      <div className="learner-profile-personal">
+        <h4>Your Instructor:</h4>
+        <p>Name: {pairedInstructor.first_name}</p>
+        <p>Last name: {pairedInstructor.last_name}</p>
+        <p>Preferred Pronouns: {pairedInstructor.pronoun}</p>
+        <p>Language taught: {pairedInstructor.languages_taught}</p>
+
+        {/* <button onClick={changeInstructor}>
+          Change Instructor
+        </button> */}
       </div>
 
       <LogOutButton className="btn" />
