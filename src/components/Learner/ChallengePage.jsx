@@ -105,7 +105,7 @@ function InfoPage() {
 
   // When speak button is clicked, capture text in input area
   // inside inputToSpeak variable:
-  const onWordClick = (SPEAK) => {
+  const onWordClick = (speakThis) => {
     // console.log('on button click, inputToSpeak.current:', textInput.current.value);
 
     // // .current points to the mounted text input element
@@ -120,10 +120,10 @@ function InfoPage() {
     // });
 
     // Specify what voice you want speaking the message:
-    // msg.voice = speechSynthesis.getVoices().filter(function (voice) { return voice.name == 'Paulina'; })[0];
+    msg.voice = speechSynthesis.getVoices().filter(function (voice) { return voice.name == 'Paulina'; })[0];
     msg.lang = "es-MX";
     msg.rate = 0.8;
-    msg.text = SPEAK;
+    msg.text = speakThis;
     msg.volume = 10;
     speechSynthesis.speak(msg);
   }
@@ -155,11 +155,11 @@ function InfoPage() {
 
       <form onSubmit={submitChallenge}>
         <section className='challenge-picture-section'>
-          <h4 value={textToSpeak} onClick={() => onWordClick(textToSpeak)}>
-            La primera misión:</h4>
+          <h4>La primera misión:</h4>
           <p><em>The first mission:</em></p>
           <label>Describe esta foto:
-            <textarea value={photoDescription}
+            <textarea rows="4" cols="50"
+              value={photoDescription}
               onClick={() => onWordClick(photoDescription)}
               onChange={(event) => setPhotoDescription(event.target.value)}
               placeholder="Describe this photo"></textarea>
@@ -171,7 +171,9 @@ function InfoPage() {
           <h4>La segunda misión:</h4>
           <p><em>The second mission:</em></p>
           <label>Escribe una frase con esta palabra: {randomWord}
-            <textarea value={wordSentence}
+            <textarea rows="4" cols="50"
+              value={wordSentence}
+              onClick={() => onWordClick(wordSentence)}
               onChange={(event) => setWordSentence(event.target.value)}
               placeholder="Write a complete sentence using this word.">
             </textarea>
