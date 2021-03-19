@@ -6,6 +6,7 @@ import languages from './languages.reducer';
 import instructors from './instructor.reducer';
 import learner from './learner.reducer';
 import pairedInstructor from './pairedInstructor.reducer';
+import words from './words.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   instructors, // list of registered instructors for learners to choose from
   learner, // details for specific logged-in learner
   pairedInstructor, // details for instructor the current learner is paired with
+  words, // all available foreign language words from the db
 });
 
 export default rootReducer;
