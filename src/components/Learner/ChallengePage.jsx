@@ -54,6 +54,8 @@ function InfoPage() {
 
   const randomWord = words[0].word;
   console.log('randomWord:', randomWord);
+  const wordId = words[0].id;
+  console.log('wordId:', wordId);
 
   // Bring in random photo_id:
   const photoId = useSelector((store) => store.photo);
@@ -96,6 +98,10 @@ function InfoPage() {
   ///////////////////MANAGE CAPTURING INPUTS://///////////////
   const [photoDescription, setPhotoDescription] = useState('');
   const [wordSentence, setWordSentence] = useState('');
+  const [qForInstructor, setQForInstructor] = useState('');
+
+  console.log('photoDescription:', photoDescription);
+  console.log('wordSentence:', wordSentence);
 
   // When form is submitted, save inputs to db:
   const submitChallenge = () => {
@@ -104,7 +110,7 @@ function InfoPage() {
 
 
   ///////////////////SEND INPUTS TO SAGA://///////////////
-  // dispatch: imageSRC, photoDescription, wordSentence, randomWord, user.id
+  // dispatch: imageSRC, photoDescription, wordSentence, wordId, learner.id, qForInstructor
 
 
   return (
@@ -117,7 +123,9 @@ function InfoPage() {
           <h4>La primera misión:</h4>
           <p><em>The first mission:</em></p>
           <label>Describe esta foto:
-            <textarea placeholder="Describe this photo"></textarea>
+            <textarea value={photoDescription}
+              onChange={(event) => setPhotoDescription(event.target.value)}
+              placeholder="Describe this photo"></textarea>
           </label>
           <img src={imageSRC} alt="randomly-generated photo" />
         </section>
@@ -131,9 +139,20 @@ function InfoPage() {
             </textarea>
           </label>
         </section>
+
+        <section className='challenge-word-section'>
+          <h4>Preguntas generales:</h4>
+          <p><em>General questions:</em></p>
+          <label>
+            <textarea
+              placeholder="Write any questions you have for your instructor.">
+            </textarea>
+          </label>
+        </section>
+
         <button>Submit</button>
       </form>
-      <LogOutButton className="btn" />
+      {/* <LogOutButton className="btn" /> */}
     </div >
   );
 }
