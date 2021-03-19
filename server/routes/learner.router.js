@@ -9,7 +9,8 @@ router.get('/:userId', (req, res) => {
 
   pool.query(sqlQuery, [learnerId])
     .then(dbRes => {
-      res.send(dbRes.rows)
+      console.log('selected learner:', dbRes.rows[0]);
+      res.send(dbRes.rows[0])
     })
     .catch(err => {
       console.log('error GETting current learner:', err);

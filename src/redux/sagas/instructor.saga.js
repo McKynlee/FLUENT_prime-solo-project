@@ -22,7 +22,7 @@ function* fetchPairedInstructor(action) {
     const response = yield axios.get(`/api/instructors/${action.payload}`);
 
     // Send retrieved data to reducer:
-    yield put({ type: 'SET_PAIRED_INSTRUCTOR', payload: response.data })
+    yield put({ type: 'SET_PAIRED_INSTRUCTOR', payload: response.data[0] })
   }
   catch (error) {
     console.log('Paired Instructor get request failed', error);

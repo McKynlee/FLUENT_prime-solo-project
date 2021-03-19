@@ -1,20 +1,20 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-// worker Saga: will be fired on "FETCH_INSTRUCTORS" actions
+// worker Saga: will be fired on 'FETCH_LEARNER' actions
 function* fetchLearner(action) {
   console.log('fetchLearner action:', action);
   try {
 
     // 'response' is variable to hold data once retrieved from server:
     const response = yield axios.get(`/api/learner/${action.payload}`);
-    console.log('learner response:', response.data[0].instructor_id);
+    console.log('learner response:', response.data.instructor_id);
 
     // Pass selected instructor id to instructor saga to store
     // instructor details for Learner Profile page:
     yield put({
       type: 'FETCH_PAIRED_INSTRUCTOR',
-      payload: response.data[0].instructor_id
+      payload: response.data.instructor_id
     })
 
     // Send retrieved data to reducer:
@@ -25,7 +25,7 @@ function* fetchLearner(action) {
 }
 
 function* learnerSaga() {
-  yield takeLatest('FETCH_LEARNER_INFO', fetchLearner);
+  yield takeLatest('FETCH_LEARNER', fetchLearner);
 }
 
 export default learnerSaga;

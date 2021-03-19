@@ -5,9 +5,11 @@ import React, { useEffect, useState } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
 import swal from 'sweetalert';
+import { useHistory } from 'react-router-dom';
 
 function InfoPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   ///////////////////GENERATE RANDOM WORD ID://///////////////
   function getRandomWordInt(max) {
@@ -67,11 +69,11 @@ function InfoPage() {
   console.log('user:', user);
 
   // Bring in learner's learner data:
-  const learner = useSelector((store) => store.learner[0]);
+  const learner = useSelector((store) => store.learner);
   console.log('learner:', learner);
 
   // Bring in instructor data (with whom learner is paired):
-  const pairedInstructor = useSelector((store) => store.pairedInstructor[0]);
+  const pairedInstructor = useSelector((store) => store.pairedInstructor);
   console.log('pairedInstructor:', pairedInstructor);
 
 
@@ -125,7 +127,7 @@ function InfoPage() {
 
 
   ///////////////////SEND INPUTS TO SAGA://///////////////
-  // dispatch: imageSRC, photoDescription, wordSentence, wordId, learner.id, qForInstructor
+  // dispatch: imageSRC, photoDescription, wordSentence, randomWord, learner.id, qForInstructor
   // When form is submitted, save inputs to db:
   const submitChallenge = () => {
     swal({
@@ -143,10 +145,11 @@ function InfoPage() {
               learnerId,
               imageSRC,
               photoDescription,
-              wordId,
+              randomWord,
               wordSentence,
               qForInstructor
-            }
+            },
+            onComplete: history.push('/success')
           })
         }
         // else {

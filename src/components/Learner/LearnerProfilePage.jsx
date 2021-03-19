@@ -12,19 +12,19 @@ function LearnerProfile() {
   console.log('learner profile user:', user);
 
   // on page load, call for this learner's learner data, and paired instructor data:
-  useEffect(() => {
-    dispatch({
-      type: 'FETCH_LEARNER_INFO',
-      payload: Number(user.id)
-    })
-  }, []);
+  // useEffect(() => {
+  //   dispatch({
+  //     type: 'FETCH_LEARNER',
+  //     payload: Number(user.id)
+  //   })
+  // }, []);
 
   // Bring in learner's learner data:
-  const learner = useSelector((store) => store.learner[0]);
+  const learner = useSelector((store) => store.learner);
   console.log('learner profile learner:', learner);
 
   // Bring in instructor data (with whom learner is paired):
-  const pairedInstructor = useSelector((store) => store.pairedInstructor[0]);
+  const pairedInstructor = useSelector((store) => store.pairedInstructor);
   console.log('pairedInstructor:', pairedInstructor);
 
   // Control grammar depending on number of monedas:

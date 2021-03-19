@@ -62,7 +62,7 @@ CREATE TABLE "learners" (
 CREATE TABLE "learner_submissions"(
     "id" SERIAL PRIMARY KEY,
     "learner_id" INT REFERENCES "learners",
-    "word_id" INT REFERENCES "words",
+    "word" VARCHAR(80),
     "picture_url" VARCHAR (12555) NOT NULL,
     "picture_description" VARCHAR (12555) NOT NULL,
     "word_sentence" VARCHAR (12555) NOT NULL,
