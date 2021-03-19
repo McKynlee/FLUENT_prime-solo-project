@@ -11,11 +11,11 @@ const submissionReducer = (state = [{
   q_for_instructor: '',
   time_stamp: '',
 
-  // instructor_feedback_id: 0,
-  // inst_picture_description: '',
-  // inst_word_sentence: '',
-  // instructor_q_response: '',
-  // time_stamp: '',
+  instructor_feedback_id: 0,
+  inst_picture_description: '',
+  inst_word_sentence: '',
+  instructor_q_response: '',
+  time_stamp: '',
 }], action) => {
   switch (action.type) {
     case 'SET_SUBMISSIONS':
