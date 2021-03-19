@@ -93,6 +93,40 @@ function InfoPage() {
 
 
   ///////////////////MANAGE TEXT TO SPEECH://///////////////
+  const [textToSpeak, setTextToSpeak] = useState('');
+  // useRef hook returns a mutable object with .current property,
+  // refs are React's equivalent to the vanillaJS document.querySelector,
+  // useRef allows us to keep non-state per-component info around, like the text we want spoken:
+  // const textInput = useRef(null);
+
+
+  // Info from Web API for mexican spanish female voice:
+  // let paulinasVoice = { id: 48, voiceURI: "Paulina", name: "Paulina", lang: "es-MX", localService: true };
+
+  // When speak button is clicked, capture text in input area
+  // inside inputToSpeak variable:
+  const onWordClick = (SPEAK) => {
+    // console.log('on button click, inputToSpeak.current:', textInput.current.value);
+
+    // // .current points to the mounted text input element
+    // let textToSpeak = textInput.current.value;
+
+    let msg = new SpeechSynthesisUtterance();
+    console.log('msg:', msg);
+
+    // LIST OF AVAILABLE VOICES:
+    // speechSynthesis.getVoices().forEach(function (voice) {
+    //   console.log('voice:', voice.name, voice.default ? voice.default : '');
+    // });
+
+    // Specify what voice you want speaking the message:
+    // msg.voice = speechSynthesis.getVoices().filter(function (voice) { return voice.name == 'Paulina'; })[0];
+    msg.lang = "es-MX";
+    msg.rate = 0.8;
+    msg.text = SPEAK;
+    msg.volume = 10;
+    speechSynthesis.speak(msg);
+  }
 
 
   ///////////////////MANAGE CAPTURING INPUTS://///////////////
@@ -121,10 +155,12 @@ function InfoPage() {
 
       <form onSubmit={submitChallenge}>
         <section className='challenge-picture-section'>
-          <h4>La primera misión:</h4>
+          <h4 value={textToSpeak} onClick={() => onWordClick(textToSpeak)}>
+            La primera misión:</h4>
           <p><em>The first mission:</em></p>
           <label>Describe esta foto:
             <textarea value={photoDescription}
+              onClick={() => onWordClick(photoDescription)}
               onChange={(event) => setPhotoDescription(event.target.value)}
               placeholder="Describe this photo"></textarea>
           </label>
