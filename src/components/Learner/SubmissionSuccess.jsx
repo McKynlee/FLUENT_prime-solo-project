@@ -1,9 +1,9 @@
 // Celebratory page to confirm learner's challenge has been submitted
 // '/success'
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 function SubmissionSuccess() {
@@ -11,11 +11,11 @@ function SubmissionSuccess() {
 
   // Bring in learner's user data:
   const user = useSelector((store) => store.user);
-  console.log('user:', user);
+  // console.log('user:', user);
 
   // Bring in learner's learner data:
   const learner = useSelector((store) => store.learner);
-  console.log('learner:', learner);
+  // console.log('learner:', learner);
 
   return (
     <div>

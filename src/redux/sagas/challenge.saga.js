@@ -21,18 +21,21 @@ function* fetchSubmissions(action) {
 // worker Saga: will be fired on 'CREATE_SUBMISSION' 
 function* createSubmission(action) {
   console.log('createSubmission action:', action);
+  console.log('action.payload:', action.payload);
+
   try {
-
     // 'response' is variable to hold data once retrieved from server:
-    yield axios.post('/api/challenge');
+    yield axios.post('/api/challenge', action.payload);
+    // yield action.payload.onComplete();
 
-    // Update submissions reducer:
+    // Update submissions reducer since we've added a submission:
     yield put({ type: 'FETCH_SUBMISSIONS' });
 
   } catch (error) {
     console.log('Challenge submission POST failed', error);
   }
 } //end createSubmission
+
 
 function* challengeSaga() {
   yield takeLatest('FETCH_SUBMISSIONS', fetchSubmissions);

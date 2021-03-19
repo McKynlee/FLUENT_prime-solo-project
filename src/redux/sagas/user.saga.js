@@ -14,7 +14,7 @@ function* fetchUser() {
     // If a user is logged in, this will return their information
     // from the server session (req.user)
     const response = yield axios.get('/api/user', config);
-    console.log('fetch user response:', response);
+    // console.log('fetch user response:', response);
 
     // If the user is a learner, fetch learner data
     if (response.data.type === 'learner') {

@@ -8,7 +8,7 @@ function* fetchLearner(action) {
 
     // 'response' is variable to hold data once retrieved from server:
     const response = yield axios.get(`/api/learner/${action.payload}`);
-    console.log('learner response:', response.data.instructor_id);
+    // console.log('learner response:', response.data.instructor_id);
 
     // Pass selected instructor id to instructor saga to store
     // instructor details for Learner Profile page:

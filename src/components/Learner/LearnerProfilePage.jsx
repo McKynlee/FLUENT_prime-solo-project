@@ -1,6 +1,6 @@
 // Learner's main landing page, reached by "/learner"
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -10,14 +10,6 @@ function LearnerProfile() {
   // Bring in learner's user data:
   const user = useSelector((store) => store.user);
   console.log('learner profile user:', user);
-
-  // on page load, call for this learner's learner data, and paired instructor data:
-  // useEffect(() => {
-  //   dispatch({
-  //     type: 'FETCH_LEARNER',
-  //     payload: Number(user.id)
-  //   })
-  // }, []);
 
   // Bring in learner's learner data:
   const learner = useSelector((store) => store.learner);

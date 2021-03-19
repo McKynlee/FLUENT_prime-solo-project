@@ -22,7 +22,7 @@ function* fetchRandomWord(action) {
     const response = yield axios.get(`/api/words/${action.payload}`);
 
     // Send retrieved data to reducer:
-    yield put({ type: 'SET_RANDOM_WORD', payload: response.data });
+    yield put({ type: 'SET_RANDOM_WORD', payload: response.data[0] });
   } catch (error) {
     console.log('Words get request failed', error);
   }

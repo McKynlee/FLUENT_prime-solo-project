@@ -17,7 +17,7 @@ function InfoPage() {
   }
 
   let randomWordId = getRandomWordInt(75);
-  console.log('randomWordInt:', randomWordId);
+  // console.log('randomWordInt:', randomWordId);
 
 
   ///////////////////GENERATE RANDOM PHOTO ID://///////////////
@@ -27,7 +27,7 @@ function InfoPage() {
   }
 
   let randomPhotoId = getRandomPhotoId(207);
-  console.log('randomPhotoInt:', randomPhotoId);
+  // console.log('randomPhotoInt:', randomPhotoId);
 
 
   ///////////////////FETCH RANDOM WORD AND PHOTO_ID FROM DB://///////////////
@@ -53,28 +53,26 @@ function InfoPage() {
   ///////////////////BRING IN DATA FROM REDUCERS://///////////////
   // Bring in all available words in foreign language:
   const words = useSelector((store) => store.words);
-  console.log('words:', words);
+  // console.log('words:', words);
 
-  const randomWord = words[0].word;
-  console.log('randomWord:', randomWord);
-  const wordId = words[0].id;
-  console.log('wordId:', wordId);
+  const randomWord = words.word;
+  // console.log('randomWord:', randomWord);
 
   // Bring in random photo_id:
   const photoId = useSelector((store) => store.photo);
-  console.log('photoId:', photoId);
+  // console.log('photoId:', photoId);
 
   // Bring in learner's user data:
   const user = useSelector((store) => store.user);
-  console.log('user:', user);
+  // console.log('user:', user);
 
   // Bring in learner's learner data:
   const learner = useSelector((store) => store.learner);
-  console.log('learner:', learner);
+  // console.log('learner:', learner);
 
   // Bring in instructor data (with whom learner is paired):
   const pairedInstructor = useSelector((store) => store.pairedInstructor);
-  console.log('pairedInstructor:', pairedInstructor);
+  // console.log('pairedInstructor:', pairedInstructor);
 
 
   /////////////////// GET LOREM PICSUM PHOTO URL TO RENDER: /////////////////
@@ -121,9 +119,9 @@ function InfoPage() {
   const [qForInstructor, setQForInstructor] = useState('');
   const learnerId = learner.id;
 
-  console.log('photoDescription:', photoDescription);
-  console.log('wordSentence:', wordSentence);
-  console.log('qForInstructor:', qForInstructor);
+  // console.log('photoDescription:', photoDescription);
+  // console.log('wordSentence:', wordSentence);
+  // console.log('qForInstructor:', qForInstructor);
 
 
   ///////////////////SEND INPUTS TO SAGA://///////////////
@@ -148,8 +146,7 @@ function InfoPage() {
               randomWord,
               wordSentence,
               qForInstructor
-            },
-            onComplete: history.push('/success')
+            }
           })
         }
         // else {
@@ -158,7 +155,7 @@ function InfoPage() {
       });
   } //end submitChallenge
 
-
+  // onComplete: history.push('/success')
 
   return (
     <div className="container">

@@ -17,7 +17,7 @@ function* fetchInstructors() {
 }
 
 function* fetchPairedInstructor(action) {
-  console.log('fetchLearnersInstructor action:', action);
+  // console.log('fetchLearnersInstructor action:', action);
   try {
     const response = yield axios.get(`/api/instructors/${action.payload}`);
 
