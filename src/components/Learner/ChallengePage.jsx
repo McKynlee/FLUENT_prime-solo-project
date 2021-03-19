@@ -102,6 +102,7 @@ function InfoPage() {
 
   console.log('photoDescription:', photoDescription);
   console.log('wordSentence:', wordSentence);
+  console.log('qForInstructor:', qForInstructor);
 
   // When form is submitted, save inputs to db:
   const submitChallenge = () => {
@@ -134,7 +135,8 @@ function InfoPage() {
           <h4>La segunda misión:</h4>
           <p><em>The second mission:</em></p>
           <label>Escribe una frase con esta palabra: {randomWord}
-            <textarea
+            <textarea value={wordSentence}
+              onChange={(event) => setWordSentence(event.target.value)}
               placeholder="Write a complete sentence using this word.">
             </textarea>
           </label>
@@ -144,7 +146,8 @@ function InfoPage() {
           <h4>Preguntas generales:</h4>
           <p><em>General questions:</em></p>
           <label>
-            <textarea
+            <textarea value={qForInstructor}
+              onChange={(event) => setQForInstructor(event.target.value)}
               placeholder="Write any questions you have for your instructor.">
             </textarea>
           </label>
