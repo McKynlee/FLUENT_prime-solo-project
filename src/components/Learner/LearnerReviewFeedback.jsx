@@ -2,7 +2,7 @@
 // alongside corresponding instructor feedback
 // path: '/learner/review'
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -11,9 +11,25 @@ function LearnerReviewFeedback() {
 
   // Bring in logged in user's data:
   const user = useSelector((store) => store.user);
-  console.log('learner profile user:', user);
+  // console.log('learner profile user:', user);
 
-  // Ask for corresponding instructor info
+  // Bring in learner's learner data:
+  const learner = useSelector((store) => store.learner);
+  // console.log('learner:', learner);
+  const learnerId = learner.id
+
+  // On page load, ask for all submissions corresponding with logged-in learner ID:
+  useEffect(() => {
+    dispatch({
+      type: 'FETCH_SUBMISSIONS',
+      payload: learnerId
+    })
+  }, [])
+
+
+  // Bring in submission info:
+  const submissionList = useSelector((store) => store.submissions);
+  console.log('submissions:', submissionList);
 
 
   return (

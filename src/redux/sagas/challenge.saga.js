@@ -6,8 +6,8 @@ function* fetchSubmissions(action) {
   console.log('fetchSubmission action:', action);
   try {
 
-    // 'response' is variable to hold data once retrieved from server:
-    const response = yield axios.get('/api/challenge');
+    // 'response' is variable to hold all submissions linked with logged-in user's id:
+    const response = yield axios.get(`/api/challenge/${action.payload}`);
     console.log('All Submissions response:', response.data);
 
     // Send retrieved data to reducer:
@@ -29,7 +29,10 @@ function* createSubmission(action) {
     // yield action.payload.onComplete();
 
     // Update submissions reducer since we've added a submission:
-    yield put({ type: 'FETCH_SUBMISSIONS' });
+    yield put({
+      type: 'FETCH_SUBMISSIONS',
+      payload: action.payload.learnerId
+    });
 
   } catch (error) {
     console.log('Challenge submission POST failed', error);
