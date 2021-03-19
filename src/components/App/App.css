@@ -124,3 +124,11 @@ Select Instructor Layout: 2LearnerRegForm.jsx
 .learner-instructor-avatar {
   height: 10rem;
 }
+
+/* --------------------------------------------------------------------------------
+LearnerProfilePage.jsx
+-------------------------------------------------------------------------------- */
+
+.learner-profile-personal {
+  border: 0.2rem solid black;
+}

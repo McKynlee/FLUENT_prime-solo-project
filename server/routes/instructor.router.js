@@ -4,7 +4,9 @@ const router = express.Router();
 
 // GET all available instructors from db:
 router.get('/', (req, res) => {
-  const sqlQuery = `SELECT "instructors".id, "instructors".avatar, "instructors".bio, "instructors".learner_capacity, count("learners") as "learner_count", "users".first_name, "users".last_name, "pronouns".pronoun FROM "instructors"
+  const sqlQuery = `SELECT "instructors".id, "instructors".avatar, 
+  "instructors".bio, "instructors".learner_capacity, count("learners") as "learner_count", 
+  "users".first_name, "users".last_name, "pronouns".pronoun FROM "instructors"
   JOIN "users" ON "instructors".user_id = "users".id
   JOIN "pronouns" ON "users".pronouns_id = "pronouns".id
   JOIN "learners" ON "users".id = "learners".user_id
@@ -23,8 +25,19 @@ router.get('/', (req, res) => {
 // Select specific instructor for detailed view
 router.get('/:id', (req, res) => {
   const instructorId = req.params.id;
+  // console.log('instructorId:', instructorId);
 
-  const sqlQuery = 'SELECT * FROM "instructors" WHERE "id" = $1;';
+  const sqlQuery = ` SELECT "instructors".id, "instructors".avatar, 
+  "instructors".bio, "instructors".learner_capacity, 
+  "languages".name as "languages_taught", count("learners") as "learner_count", 
+  "users".first_name, "users".last_name, "pronouns".pronoun FROM "instructors"
+  JOIN "users" ON "instructors".user_id = "users".id
+  JOIN "pronouns" ON "users".pronouns_id = "pronouns".id
+  JOIN "languages" ON "users".language_id = "languages".id
+  JOIN "learners" ON "users".id = "learners".user_id
+  WHERE "instructors".id = $1
+  GROUP BY "instructors".id, "users".first_name, "users".last_name, 
+  "pronouns".pronoun, "languages".name;`;
 
   pool.query(sqlQuery, [instructorId])
     .then(dbRes => {

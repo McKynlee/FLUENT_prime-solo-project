@@ -14,15 +14,26 @@ function* fetchUser() {
     // If a user is logged in, this will return their information
     // from the server session (req.user)
     const response = yield axios.get('/api/user', config);
+    // console.log('fetch user response:', response);
+
+    // If the user is a learner, fetch learner data
+    if (response.data.type === 'learner') {
+      yield put({ type: 'FETCH_LEARNER', payload: response.data.id });
+    }
 
     // now that the session has given us a user object
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in
     yield put({ type: 'SET_USER', payload: response.data });
+
+
+
   } catch (error) {
     console.log('User get request failed', error);
   }
 }
+
+
 
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);

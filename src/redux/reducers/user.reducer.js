@@ -9,6 +9,16 @@ const userReducer = (state = {}, action) => {
   }
 };
 
+// export const editUser = (state ={}, action) => {
+//   switch (action.type) {
+//     case 'UPDATE_USER':
+//       return {...state, [action.payload.key]: action.payload}
+//   }
+// }
+
+// //then
+// import state, { editUser } from './'
+
 // user will be on the redux state at:
 // state.user
 export default userReducer;

@@ -9,7 +9,11 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
   pool
-    .query('SELECT * FROM "users" WHERE id = $1', [id])
+    .query(`SELECT "users".id, "languages".name as "language", 
+    "pronouns".pronoun as "pronouns", "users".first_name, 
+    "users".last_name, "users".username, "users".type FROM "users" 
+    JOIN "languages" ON "languages".id = "users".language_id
+    JOIN "pronouns" ON "pronouns".id = "users".pronouns_id WHERE "users".id = $1`, [id])
     .then((result) => {
       // Handle Errors
       const user = result && result.rows && result.rows[0];
