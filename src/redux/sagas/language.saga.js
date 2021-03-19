@@ -5,10 +5,10 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* fetchLanguages() {
   try {
 
-    // 'response' is variable to hold pronouns once retrieved from server:
+    // 'response' is variable to hold data once retrieved from server:
     const response = yield axios.get('/api/languages');
 
-    // Send retrieved pronouns to pronoun reducer:
+    // Send retrieved data to reducer:
     yield put({ type: 'SET_LANGUAGES', payload: response.data });
   } catch (error) {
     console.log('Language get request failed', error);

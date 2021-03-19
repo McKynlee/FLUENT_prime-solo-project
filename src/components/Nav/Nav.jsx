@@ -39,6 +39,7 @@ function Nav() {
     userTypeLinkData.path = '/challenge',
       userTypeLinkData.text = 'New Challenge'
   }
+  //////////////////////////////////////////////////////////
 
   let userTypeLinkData2 = {
     path: '/learner/registration',
@@ -52,6 +53,7 @@ function Nav() {
     userTypeLinkData2.path = '',
       userTypeLinkData2.text = ''
   }
+  //////////////////////////////////////////////////////////
 
   let userTypeLinkData3 = {
     path: '/instructor/registration',
@@ -64,6 +66,15 @@ function Nav() {
   if (user.type === 'learner') {
     userTypeLinkData3.path = '',
       userTypeLinkData3.text = ''
+  }
+  //////////////////////////////////////////////////////////
+  let userTypeLinkData4;
+
+  if (user.type === 'instructor') {
+    userTypeLinkData4 = '/instructor/review';
+  }
+  if (user.type === 'learner') {
+    userTypeLinkData4 = '/learner/review';
   }
 
   // Have logo click link to /home if not logged in, or
@@ -105,11 +116,15 @@ function Nav() {
             {userTypeLinkData.text}
           </Link>
 
+          <Link className="navLink" to={userTypeLinkData4}>
+            Review Submissions
+          </Link>
+
           {user.id && (
             <>
-              <Link className="navLink" to="/home">
+              {/* <Link className="navLink" to="/home">
                 Review Submissions
-              </Link>
+              </Link> */}
               <LogOutButton className="navLink" />
             </>
           )}

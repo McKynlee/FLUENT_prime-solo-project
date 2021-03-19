@@ -5,6 +5,10 @@ import userSaga from './user.saga';
 import pronounSaga from './pronoun.saga';
 import languageSaga from './language.saga';
 import instructorSaga from './instructor.saga';
+import learnerSaga from './learner.saga';
+import wordSaga from './words.saga';
+import photoSaga from './photo.saga';
+import challengeSaga from './challenge.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +25,9 @@ export default function* rootSaga() {
     pronounSaga(),
     languageSaga(),
     instructorSaga(),
+    learnerSaga(),
+    wordSaga(),
+    photoSaga(),
+    challengeSaga(),
   ]);
 }
