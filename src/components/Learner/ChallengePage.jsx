@@ -8,18 +8,36 @@ import { useDispatch, useSelector } from 'react-redux';
 function InfoPage() {
   const dispatch = useDispatch();
 
-  ///////////////////FETCH WORDS FROM DB://///////////////
+  ///////////////////MANAGE RANDOM WORD ID://///////////////
+  function getRandomWordInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  let randomWordId = getRandomWordInt(75);
+  console.log('randomWordInt:', randomWordId);
+
+
+  ///////////////////FETCH RANDOM WORD FROM DB://///////////////
   useEffect(() => {
     dispatch({
-      type: 'FETCH_WORDS'
+      type: 'FETCH_RANDOM_WORD',
+      payload: randomWordId
     })
   }, []);
+
 
 
   ///////////////////BRING IN DATA FROM REDUCERS://///////////////
   // Bring in all available words in foreign language:
   const words = useSelector((store) => store.words);
   console.log('words:', words);
+
+  const randomWord = words[0].word;
+  console.log('randomWord:', randomWord);
+
+  // Bring in specific word with randomId in foreign language list:
+  // const randomWord = useSelector((store) => store.randomWord);
+  // console.log('randomWord:', randomWord);
 
   // Bring in learner's user data:
   const user = useSelector((store) => store.user);
@@ -32,6 +50,7 @@ function InfoPage() {
   // Bring in instructor data (with whom learner is paired):
   const pairedInstructor = useSelector((store) => store.pairedInstructor[0]);
   console.log('pairedInstructor:', pairedInstructor);
+
 
   ///////////////////CONDITIONAL RENDERING://///////////////
   // Control grammar of welcome message depending on pronouns:
@@ -46,30 +65,17 @@ function InfoPage() {
   ///////////////////MANAGE RANDOM PHOTO://///////////////
   // Function to generate random id number to pull new photo from Lorem Picsum:
   // I know there are at least 1,000 but less than 1,100 photo ID's available.
-  function getRandomPhotoInt(max) {
+  function getRandomPhotoId(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
-  console.log('getRandomInt:', getRandomPhotoInt(1000));
 
   // Capture random Int
-  let randomPhotoInt = getRandomPhotoInt(1000);
+  let randomPhotoId = getRandomPhotoId(1000);
+  console.log('randomPhotoInt:', randomPhotoId);
 
   // Incorporate random Int as photo ID to be used in JSX:
   // Send this to db as picture_url
-  let imageSRC = `https://picsum.photos/id/${randomPhotoInt}/200/300`
-
-  ///////////////////MANAGE RANDOM WORD://///////////////
-  function getRandomWordInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
-  console.log('getRandomInt:', getRandomWordInt(75));
-
-  // Capture random Int
-  let randomWordInt = getRandomWordInt(75);
-  console.log('randomWordInt:', randomWordInt);
-
-  let randomWord = words[30].word;
-  console.log('randomWord:', randomWord);
+  let imageSRC = `https://picsum.photos/id/${randomPhotoId}/200/300`
 
 
   ///////////////////MANAGE TEXT TO SPEECH://///////////////
@@ -96,7 +102,7 @@ function InfoPage() {
       </section>
 
       <LogOutButton className="btn" />
-    </div>
+    </div >
   );
 }
 
