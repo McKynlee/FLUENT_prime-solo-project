@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
+import swal from 'sweetalert';
 
 function InfoPage() {
   const dispatch = useDispatch();
@@ -61,9 +62,6 @@ function InfoPage() {
   const photoId = useSelector((store) => store.photo);
   console.log('photoId:', photoId);
 
-  // const loremPicsumId = photoId[0].photo_id
-  // console.log('randomPhotoId', loremPicsumId);
-
   // Bring in learner's user data:
   const user = useSelector((store) => store.user);
   console.log('user:', user);
@@ -77,11 +75,11 @@ function InfoPage() {
   console.log('pairedInstructor:', pairedInstructor);
 
 
-  ///////////////////GET LOREM PICSUM PHOTO URL TO RENDER://///////////////
+  /////////////////// GET LOREM PICSUM PHOTO URL TO RENDER: /////////////////
   let imageSRC = `https://picsum.photos/id/${photoId}/200/300`
 
 
-  ///////////////////CONDITIONAL RENDERING://///////////////
+  /////////////////// CONDITIONAL RENDERING: /////////////////
   // Control grammar of welcome message depending on pronouns:
   let welcomeMessage = '¡Bienvenidos!';
   if (user.pronouns === 'she/her/hers') {
@@ -92,16 +90,7 @@ function InfoPage() {
   }
 
 
-  ///////////////////MANAGE TEXT TO SPEECH://///////////////
-  const [textToSpeak, setTextToSpeak] = useState('');
-  // useRef hook returns a mutable object with .current property,
-  // refs are React's equivalent to the vanillaJS document.querySelector,
-  // useRef allows us to keep non-state per-component info around, like the text we want spoken:
-  // const textInput = useRef(null);
-
-
-  // Info from Web API for mexican spanish female voice:
-  // let paulinasVoice = { id: 48, voiceURI: "Paulina", name: "Paulina", lang: "es-MX", localService: true };
+  /////////////////// MANAGE TEXT TO SPEECH: /////////////////
 
   // When speak button is clicked, capture text in input area
   // inside inputToSpeak variable:
@@ -114,12 +103,7 @@ function InfoPage() {
     let msg = new SpeechSynthesisUtterance();
     console.log('msg:', msg);
 
-    // LIST OF AVAILABLE VOICES:
-    // speechSynthesis.getVoices().forEach(function (voice) {
-    //   console.log('voice:', voice.name, voice.default ? voice.default : '');
-    // });
-
-    // Specify what voice you want speaking the message:
+    // Specify how voice will speak the message:
     msg.voice = speechSynthesis.getVoices().filter(function (voice) { return voice.name == 'Paulina'; })[0];
     msg.lang = "es-MX";
     msg.rate = 0.8;
@@ -129,23 +113,48 @@ function InfoPage() {
   }
 
 
-  ///////////////////MANAGE CAPTURING INPUTS://///////////////
+  /////////////////// MANAGE CAPTURING INPUTS: /////////////////
   const [photoDescription, setPhotoDescription] = useState('');
   const [wordSentence, setWordSentence] = useState('');
   const [qForInstructor, setQForInstructor] = useState('');
+  const learnerId = learner.id;
 
   console.log('photoDescription:', photoDescription);
   console.log('wordSentence:', wordSentence);
   console.log('qForInstructor:', qForInstructor);
 
-  // When form is submitted, save inputs to db:
-  const submitChallenge = () => {
-    console.log('submitChallenge');
-  }
-
 
   ///////////////////SEND INPUTS TO SAGA://///////////////
   // dispatch: imageSRC, photoDescription, wordSentence, wordId, learner.id, qForInstructor
+  // When form is submitted, save inputs to db:
+  const submitChallenge = () => {
+    swal({
+      title: "Submit this challenge?",
+      buttons: true,
+    })
+      .then((confirmSubmit) => {
+        if (confirmSubmit) {
+          swal("Your challenge has been successfully submitted!", {
+            icon: "success",
+          });
+          dispatch({
+            type: 'CREATE_SUBMISSION',
+            payload: {
+              learnerId,
+              imageSRC,
+              photoDescription,
+              wordId,
+              wordSentence,
+              qForInstructor
+            }
+          })
+        }
+        // else {
+        //   swal("Your imaginary file is safe!");
+        // }
+      });
+  } //end submitChallenge
+
 
 
   return (
@@ -191,7 +200,9 @@ function InfoPage() {
           </label>
         </section>
 
-        <button>Submit</button>
+        <button>
+          Submit
+        </button>
       </form>
       {/* <LogOutButton className="btn" /> */}
     </div >
