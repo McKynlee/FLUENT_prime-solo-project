@@ -1,14 +1,14 @@
 // Main page learners will use to practice the foreign language
 // '/challenge'
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
 
 function InfoPage() {
   const dispatch = useDispatch();
 
-  ///////////////////MANAGE RANDOM WORD ID://///////////////
+  ///////////////////GENERATE RANDOM WORD ID://///////////////
   function getRandomWordInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
@@ -17,15 +17,35 @@ function InfoPage() {
   console.log('randomWordInt:', randomWordId);
 
 
-  ///////////////////FETCH RANDOM WORD FROM DB://///////////////
+  ///////////////////GENERATE RANDOM PHOTO ID://///////////////
+  // Function to generate random id number to pull new photo from Lorem Picsum:
+  function getRandomPhotoId(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  let randomPhotoId = getRandomPhotoId(207);
+  console.log('randomPhotoInt:', randomPhotoId);
+
+
+  ///////////////////FETCH RANDOM WORD AND PHOTO_ID FROM DB://///////////////
   useEffect(() => {
+    fetchRandomWord();
+    fetchRandomPhotoId();
+  }, []);
+
+  const fetchRandomWord = () => {
     dispatch({
       type: 'FETCH_RANDOM_WORD',
       payload: randomWordId
     })
-  }, []);
+  }
 
-
+  const fetchRandomPhotoId = () => {
+    dispatch({
+      type: 'FETCH_RANDOM_PHOTO',
+      payload: randomPhotoId
+    })
+  }
 
   ///////////////////BRING IN DATA FROM REDUCERS://///////////////
   // Bring in all available words in foreign language:
@@ -35,9 +55,12 @@ function InfoPage() {
   const randomWord = words[0].word;
   console.log('randomWord:', randomWord);
 
-  // Bring in specific word with randomId in foreign language list:
-  // const randomWord = useSelector((store) => store.randomWord);
-  // console.log('randomWord:', randomWord);
+  // Bring in random photo_id:
+  const photoId = useSelector((store) => store.photo);
+  console.log('photoId:', photoId);
+
+  // const loremPicsumId = photoId[0].photo_id
+  // console.log('randomPhotoId', loremPicsumId);
 
   // Bring in learner's user data:
   const user = useSelector((store) => store.user);
@@ -52,6 +75,10 @@ function InfoPage() {
   console.log('pairedInstructor:', pairedInstructor);
 
 
+  ///////////////////GET LOREM PICSUM PHOTO URL TO RENDER://///////////////
+  let imageSRC = `https://picsum.photos/id/${photoId}/200/300`
+
+
   ///////////////////CONDITIONAL RENDERING://///////////////
   // Control grammar of welcome message depending on pronouns:
   let welcomeMessage = '¡Bienvenidos!';
@@ -62,23 +89,22 @@ function InfoPage() {
     welcomeMessage = '¡Bienvenido!';
   }
 
-  ///////////////////MANAGE RANDOM PHOTO://///////////////
-  // Function to generate random id number to pull new photo from Lorem Picsum:
-  // I know there are at least 1,000 but less than 1,100 photo ID's available.
-  function getRandomPhotoId(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
-
-  // Capture random Int
-  let randomPhotoId = getRandomPhotoId(1000);
-  console.log('randomPhotoInt:', randomPhotoId);
-
-  // Incorporate random Int as photo ID to be used in JSX:
-  // Send this to db as picture_url
-  let imageSRC = `https://picsum.photos/id/${randomPhotoId}/200/300`
-
 
   ///////////////////MANAGE TEXT TO SPEECH://///////////////
+
+
+  ///////////////////MANAGE CAPTURING INPUTS://///////////////
+  const [photoDescription, setPhotoDescription] = useState('');
+  const [wordSentence, setWordSentence] = useState('');
+
+  // When form is submitted, save inputs to db:
+  const submitChallenge = () => {
+    console.log('submitChallenge');
+  }
+
+
+  ///////////////////SEND INPUTS TO SAGA://///////////////
+  // dispatch: imageSRC, photoDescription, wordSentence, randomWord, user.id
 
 
   return (
@@ -86,21 +112,27 @@ function InfoPage() {
       <h1>Welcome, {user.first_name}</h1>
       <h2>{welcomeMessage}</h2>
 
-      <section className='challenge-picture-section'>
-        <h4>La primera misión:</h4>
-        <p><em>The first mission:</em></p>
-        <label>Describe esta foto:<textarea placeholder="Describe this photo"></textarea></label>
-        <img src={imageSRC} alt="randomly-generated photo" />
-      </section>
+      <form onSubmit={submitChallenge}>
+        <section className='challenge-picture-section'>
+          <h4>La primera misión:</h4>
+          <p><em>The first mission:</em></p>
+          <label>Describe esta foto:
+            <textarea placeholder="Describe this photo"></textarea>
+          </label>
+          <img src={imageSRC} alt="randomly-generated photo" />
+        </section>
 
-      <section className='challenge-word-section'>
-        <h4>La segunda misión:</h4>
-        <p><em>The second mission:</em></p>
-        <label>Escribe una frase con esta palabra: {randomWord}
-          <textarea placeholder="Write a complete sentence using this word."></textarea>
-        </label>
-      </section>
-
+        <section className='challenge-word-section'>
+          <h4>La segunda misión:</h4>
+          <p><em>The second mission:</em></p>
+          <label>Escribe una frase con esta palabra: {randomWord}
+            <textarea
+              placeholder="Write a complete sentence using this word.">
+            </textarea>
+          </label>
+        </section>
+        <button>Submit</button>
+      </form>
       <LogOutButton className="btn" />
     </div >
   );

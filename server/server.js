@@ -14,6 +14,7 @@ const languageRouter = require('./routes/language.router');
 const instructorRouter = require('./routes/instructor.router');
 const learnerRouter = require('./routes/learner.router');
 const wordRouter = require('./routes/word.router');
+const photoRouter = require('./routes/photo.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -33,6 +34,7 @@ app.use('/api/languages', languageRouter);
 app.use('/api/instructors', instructorRouter);
 app.use('/api/learner', learnerRouter);
 app.use('/api/words', wordRouter);
+app.use('/api/photo', photoRouter);
 
 // Serve static files
 app.use(express.static('build'));
