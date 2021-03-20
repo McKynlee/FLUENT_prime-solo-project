@@ -26,14 +26,15 @@ function Nav() {
       loginLinkData.text = 'Your Profile';
     }
   }
+
   // Condition rendering nav links depending on whether instructor vs. learner:
   let userTypeLinkData = {
     path: '/login',
     text: ''
   }
   if (user.type === 'instructor') {
-    userTypeLinkData.path = '/instructor',
-      userTypeLinkData.text = 'Instructor Path1'
+    userTypeLinkData.path = '',
+      userTypeLinkData.text = ''
   }
   if (user.type === 'learner') {
     userTypeLinkData.path = '/challenge',
@@ -46,8 +47,8 @@ function Nav() {
     text: 'Register to learn'
   }
   if (user.type === 'instructor') {
-    userTypeLinkData2.path = '/instructor',
-      userTypeLinkData2.text = 'Instructor Path2?'
+    userTypeLinkData2.path = '',
+      userTypeLinkData2.text = ''
   }
   if (user.type === 'learner') {
     userTypeLinkData2.path = '',
@@ -60,8 +61,8 @@ function Nav() {
     text: 'Register to instruct'
   }
   if (user.type === 'instructor') {
-    userTypeLinkData3.path = '/instructor',
-      userTypeLinkData3.text = 'Instructor Path3?'
+    userTypeLinkData3.path = '',
+      userTypeLinkData3.text = ''
   }
   if (user.type === 'learner') {
     userTypeLinkData3.path = '',
