@@ -21,6 +21,7 @@ import InstructorRegistration from '../Instructor/InstructorRegisterPage';
 import SelectInstructorDetails from '../Learner/SelectInstructorDetails';
 import LearnerReviewFeedback from '../Learner/LearnerReviewFeedback';
 import SubmissionSuccess from '../Learner/SubmissionSuccess';
+import InstructorProfile from '../Instructor/InstructorProfilePage';
 
 import './App.css';
 
@@ -62,6 +63,15 @@ function App() {
           >
             <LearnerProfile />
           </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path='/instructor'
+          >
+            <InstructorProfile />
+          </ProtectedRoute>
+
 
           <ProtectedRoute
             // logged in shows Challenge Page else shows LoginPage

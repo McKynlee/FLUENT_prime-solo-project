@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 // Step 1 of 1 for instructor to register:
 function InstructorRegisterForm() {
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // Call for pronouns and languages on page load 
   useEffect(() => {
@@ -67,7 +69,8 @@ function InstructorRegisterForm() {
 
     dispatch({
       type: 'REGISTER',
-      payload: instructorInfoOnRegister
+      payload: instructorInfoOnRegister,
+      onComplete: history.push('/instructor')
     });
   }; // end registerInstructor
 
