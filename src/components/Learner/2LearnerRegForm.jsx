@@ -1,6 +1,7 @@
-// Part 2 of learner registration: reached at nav link '/learner/registration2'
+// Part 2 of learner registration to select instructor: 
+// reached at nav link '/learner/registration2'
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -13,15 +14,15 @@ function LearnerRegistration2() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // Bring available instructors in from the store
-  const instructorList = useSelector(store => store.instructors);
+  ////////////////////// BRING IN USER REDUCER DATA /////////////////////
+  // Bring in saved user inputs so instructor_id can be added:
+  const user = useSelector(store => store.user)
+  console.log('user on Learner reg:', user);
 
-  // Bring in learner 1RegisterForm inputs so instructor_id can be added:
-  const learnerInfoOnRegister1 = useSelector(store => store.user)
-  console.log('learnerInfoOnRegister1:', learnerInfoOnRegister1);
 
-  const userLanguageId = learnerInfoOnRegister1.targetLanguage;
-  // console.log('userLanguage:', userLanguageId);
+  /////// ASK FOR INSTRUCTORS WHO SPEAK TARGET LANGUAGE ////////////
+  const userLanguageId = Number(user.targetLanguage);
+  console.log('userLanguage:', userLanguageId);
 
   // On page load, GET available instructor info:
   useEffect(() => {
@@ -31,12 +32,19 @@ function LearnerRegistration2() {
     })
   }, []);
 
+
+  ///////////////// BRING IN INSTRUCTOR REDUCER DATA ////////////////
+  const instructorList = useSelector(store => store.instructors);
+  console.log('instructorList:', instructorList);
+
+
+  ///////////////// PAIR USER WITH SELECTED INSTRUCTOR ///////////////
   // on Click of 'Select Instructor', pair instructor_id with learner
   const onSelectInstructor = (selectedInstructor) => {
     console.log('selectedInstructorId:', selectedInstructor);
 
     // Update learner info with selected instructor_id:
-    learnerInfoOnRegister1.instructor_id = Number(selectedInstructor.id);
+    user.instructor_id = Number(selectedInstructor.instructorId);
 
     // Alert learner to confirm that this is their instructor choice:
     swal({
@@ -47,15 +55,17 @@ function LearnerRegistration2() {
       .then((register) => {
         if (register) {
           // Now that info is complete, Register learner in db:
-          registerUser(learnerInfoOnRegister1);
+          registerUser(user);
 
           swal("You're all set- Welcome to F.L.U.E.N.T.!", {
             icon: "success",
           });
         }
       });
-  }
+  } // end onSelectInstructor
 
+
+  ////////////////////// REGISTER USER AS LEARNER /////////////////////
   const registerUser = (learner) => {
     dispatch({
       type: 'REGISTER',
@@ -67,12 +77,15 @@ function LearnerRegistration2() {
   }
 
 
-  const onMoreInfo = (selectedInstructorId) => {
-    console.log('selectedInstructorId:', selectedInstructorId);
+  /////////////// USE INSTRUCTOR USER ID TO SHOW DETAIL VIEW //////////////
+  const onMoreInfo = (selectedInstructorUserId) => {
+    console.log('selectedInstructorId:', selectedInstructorUserId);
 
-    history.push(`/learner/instructor/details/${selectedInstructorId}`);
+    history.push(`/learner/instructor/details/${selectedInstructorUserId}`);
   }
 
+
+  ////////////////////// JSX TO RENDER /////////////////////
   return (
     <div>
       <h2>Choose Your Instructor:</h2>
@@ -84,6 +97,7 @@ function LearnerRegistration2() {
         </h3>
       )}
 
+      {/* LOOP THROUGH INSTRUCTOR LIST */}
       {instructorList.map((instructor) => {
         //Only render instructors whose learner_capacity is
         //greater than current learner_count
@@ -92,38 +106,41 @@ function LearnerRegistration2() {
         if (instructor.learner_capacity > Number(instructor.learner_count)) {
           availableInstructors.push(instructor)
         }
+
+
+        {/* LOOP THROUGH ONLY AVAILABLE INSTRUCTORS FROM INSTRUCTOR LIST */ }
         return (
-          availableInstructors.map((availableInstructor) => {
-            // Set "learnerLanguage" based on how many learners the
-            // instructor is working with:
-            let learnerLanguage = 'learners';
+          availableInstructors.map((availableInstructor, i) => {
+            // Set "learnerCountDescription" based on how many learners the
+            // instructor is already working with:
+            let learnerCountDescription = 'learners';
 
             if (Number(availableInstructor.learner_count) === 1) {
-              learnerLanguage = `${availableInstructor.first_name} 
-              is currently working with ${availableInstructor.learner_count} 
+              learnerCountDescription = `${availableInstructor.first_name} 
+              is currently working with ${Number(availableInstructor.learner_count)} 
               other learner`
             }
-            if (availableInstructor.learner_count > 1) {
-              learnerLanguage = `${availableInstructor.first_name} 
-              is currently working with ${availableInstructor.learner_count} 
+            if (Number(availableInstructor.learner_count) > 1) {
+              learnerCountDescription = `${availableInstructor.first_name} 
+              is currently working with ${Number(availableInstructor.learner_count)} 
               other learners`
             }
             if (Number(availableInstructor.learner_count) === 0) {
-              learnerLanguage = `${availableInstructor.first_name} 
+              learnerCountDescription = `${availableInstructor.first_name} 
               is not currently working with any other learners`
             }
 
             return (
               <section className="learner-instructor-section"
-                key={availableInstructor.id}
-                value={availableInstructor.id}
+                key={i}
+                value={availableInstructor.instructorID}
               >
                 <div>{availableInstructor.first_name} {availableInstructor.last_name}</div>
                 <div>{availableInstructor.pronoun}</div>
                 <img className="learner-instructor-avatar"
                   src={availableInstructor.avatar} alt="Representative photo selected by instructor" />
-                <div>{learnerLanguage}</div>
-                <button onClick={() => onMoreInfo(availableInstructor.id)}>
+                <div>{learnerCountDescription}</div>
+                <button onClick={() => onMoreInfo(availableInstructor.user_id)}>
                   More Info
                 </button>
                 <button onClick={() => onSelectInstructor(availableInstructor)}>

@@ -2,9 +2,12 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-// GET all available instructors from db:
-router.get('/all', (req, res) => {
-  const sqlQuery = `SELECT "instructors".id as "instructorID", "instructors".avatar, 
+// GET all available instructors in specific language from db:
+router.get('/all/:id', (req, res) => {
+  const instructorLanguageId = req.params.id;
+  console.log('instructorLanguageId:', instructorLanguageId);
+
+  const sqlQuery = `SELECT "instructors".user_id, "instructors".id as "instructorID", "instructors".avatar, 
   "instructors".bio, "instructors".learner_capacity, 
   "languages".name as "languages_taught",
   count("learners") as "learner_count", 
@@ -16,10 +19,7 @@ router.get('/all', (req, res) => {
   WHERE "users".type = 'instructor' AND "languages".id = $1
   GROUP BY "instructors".id, "users".first_name, "users".last_name, "pronouns".pronoun, "languages".name;`;
 
-  const instructorLanguage = req.body.language;
-  console.log('req.body:', req.body);
-
-  pool.query(sqlQuery, [instructorLanguage])
+  pool.query(sqlQuery, [instructorLanguageId])
     .then(dbRes => {
       res.send(dbRes.rows)
     })
@@ -30,7 +30,7 @@ router.get('/all', (req, res) => {
 });
 
 // Select specific instructor for detailed view on learner registration
-router.get('/:id', (req, res) => {
+router.get('/detail/:id', (req, res) => {
   const instructorId = req.params.id;
   // console.log('instructorId:', instructorId);
 
@@ -58,10 +58,10 @@ router.get('/:id', (req, res) => {
 
 // Select specific instructor for detailed view
 router.get('/profile/:id', (req, res) => {
-  const instructorId = req.params.id;
-  console.log('instructorId:', instructorId);
+  const userId = Number(req.params.id);
+  console.log('instructorUserId:', userId);
 
-  const sqlQuery = `SELECT "instructors".id, "instructors".avatar, 
+  const sqlQuery = `SELECT "instructors".user_id, "instructors".id as "instructorId", "instructors".avatar, 
   "instructors".bio, "instructors".learner_capacity, 
   "languages".name as "languages_taught",
   count("learners") as "learner_count", 
@@ -73,7 +73,7 @@ router.get('/profile/:id', (req, res) => {
   WHERE "users".id = $1
   GROUP BY "instructors".id, "users".first_name, "users".last_name, "pronouns".pronoun, "languages".name;`;
 
-  pool.query(sqlQuery, [instructorId])
+  pool.query(sqlQuery, [userId])
     .then(dbRes => {
       res.send(dbRes.rows)
     })

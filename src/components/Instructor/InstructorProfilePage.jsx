@@ -40,8 +40,8 @@ function InstructorProfile() {
       <h1>Instructor Profile</h1>
 
       <section className="instructor-profile"
-        key={thisInstructor.id}
-        value={thisInstructor.id}
+        key={thisInstructor.instructorId}
+        value={thisInstructor.instructorId}
       >
         <h4>Your Information:</h4>
         <div>Name: {thisInstructor.first_name} {thisInstructor.last_name}</div>
