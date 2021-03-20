@@ -12,11 +12,23 @@ function InstructorProfile() {
   console.log('learner profile user:', user);
 
   // Bring in instructor-specific data:
-
+  const thisInstructor = useSelector((store) => store.instructors);
+  console.log('thisInstructor:', thisInstructor);
 
   // Request information about learners paired with instructor:
 
 
+  // Control grammar depending on number of paired learners:
+  let learnerCountLanguage;
+  if (Number(thisInstructor.learner_count) === 1) {
+    learnerCountLanguage = 'You are currently working with 1 learner.';
+  }
+  if (Number(thisInstructor.learner_count) === 0) {
+    learnerCountLanguage = 'You are not currently paired with any learners.';
+  }
+  if (Number(thisInstructor.learner_count) > 1) {
+    learnerCountLanguage = `You are currently working with ${thisInstructor.learner_count} learner.`;
+  }
 
   // Open Edit information pop-up when Edit Your Info button clicked:
   const editInstructorInfo = () => {
@@ -26,38 +38,32 @@ function InstructorProfile() {
   return (
     <div className="instructor-container">
       <h1>Instructor Profile</h1>
-      {/* <h1>{user.first_name}, you're on your way to being F.L.U.E.N.T!</h1>
-      <p>
-        Placeholder for calculating learner submission streak
-        once submissions are saving in db
-      </p>
-      <div className='learner-profile-moneda'>
-        You have {learner.moneda_count} {monedaLanguage}!
-      </div> */}
 
-      {/* <div className="learner-profile-personal">
+      <section className="instructor-profile"
+        key={thisInstructor.id}
+        value={thisInstructor.id}
+      >
         <h4>Your Information:</h4>
-        <p>First name: {user.first_name}</p>
-        <p>Last name: {user.last_name}</p>
-        <p>Preferred Pronouns: {user.pronouns}</p>
-        <p>You are currently paired with XX(link to review?) learners.</p>
-        <img src={pairedInstructor.avatar} alt={pairedInstructor.first_name} />
-        <p>Language taught: {pairedInstructor.languages_taught}</p>
-        <p>Username: {user.username}</p>
+        <div>Name: {thisInstructor.first_name} {thisInstructor.last_name}</div>
+        <div>Preferred Pronouns:{thisInstructor.pronoun}</div>
+        <div>Username: {user.username}</div>
+        <div>Languages you can teach: {thisInstructor.languages_taught}</div>
+        <img src={thisInstructor.avatar} />
+        <div>Bio: </div>
+        <div>{thisInstructor.bio}</div>
         <button onClick={editInstructorInfo}>
           Edit Your Information
         </button>
-      </div> */}
+      </section>
+
+      <section>
+        <h4>Your learners:</h4>
+        <div>{learnerCountLanguage}</div>
+
+      </section>
 
 
-
-
-      {/* <button onClick={changeInstructor}>
-          Change Instructor
-        </button> */}
-
-
-      <LogOutButton className="btn" />
+      {/* <LogOutButton className="btn" /> */}
     </div>
   );
 }

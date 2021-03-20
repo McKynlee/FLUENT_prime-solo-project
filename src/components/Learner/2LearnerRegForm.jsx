@@ -13,13 +13,6 @@ function LearnerRegistration2() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // On page load, GET available instructor info:
-  useEffect(() => {
-    dispatch({
-      type: 'FETCH_INSTRUCTORS'
-    })
-  }, []);
-
   // Bring available instructors in from the store
   const instructorList = useSelector(store => store.instructors);
 
@@ -27,6 +20,16 @@ function LearnerRegistration2() {
   const learnerInfoOnRegister1 = useSelector(store => store.user)
   console.log('learnerInfoOnRegister1:', learnerInfoOnRegister1);
 
+  const userLanguageId = learnerInfoOnRegister1.targetLanguage;
+  // console.log('userLanguage:', userLanguageId);
+
+  // On page load, GET available instructor info:
+  useEffect(() => {
+    dispatch({
+      type: 'FETCH_INSTRUCTORS',
+      payload: userLanguageId
+    })
+  }, []);
 
   // on Click of 'Select Instructor', pair instructor_id with learner
   const onSelectInstructor = (selectedInstructor) => {
