@@ -132,3 +132,16 @@ LearnerProfilePage.jsx
 .learner-profile-personal {
   border: 0.2rem solid black;
 }
+
+
+/* -----------------------------------------------
+LearnerProfilePage.jsx
+-------------------------------------------------- */
+.learner-review-table, tr, td {
+  border: 0.2rem solid black;
+  border-collapse: collapse;
+}
+
+.learner-table-feedback-row {
+  color: red;
+}
