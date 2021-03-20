@@ -8,15 +8,14 @@ const instructorReducer = (state = [{
   user_id: 0,
   first_name: '',
   last_name: '',
-  pronouns_id: 0
+  pronouns_id: 0,
+  learner_count: 0
 }], action) => {
   switch (action.type) {
     case 'SET_INSTRUCTORS':
       return action.payload;
     case 'SELECT_INSTRUCTOR':
       return state.filter(instructor => instructor.id == action.payload.id);
-    case 'SET_THIS_INSTRUCTOR':
-      return action.payload;
     default:
       return state;
   }

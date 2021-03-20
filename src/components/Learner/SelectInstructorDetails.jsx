@@ -8,20 +8,22 @@ import { useEffect } from 'react';
 function SelectInstructorDetails() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const instructorIdParam = useParams(':id');
+  const idParam = useParams(':id');
+  const instructorIdParam = idParam.id
 
+  console.log('idParam:', idParam);
   console.log('instructorIdParam:', instructorIdParam);
 
   // on page load, ask for specific instructor info from reducer:
   useEffect(() => {
     dispatch({
-      type: 'SELECT_INSTRUCTOR',
+      type: 'FETCH_THIS_INSTRUCTOR',
       payload: instructorIdParam
     });
   }, []);
 
   // Bring in specific instructor details from reducer:
-  const instructorDetails = useSelector(store => store.instructors[0]);
+  const instructorDetails = useSelector(store => store.thisInstructor);
   console.log('instructor details:', instructorDetails);
 
   // Bring in learner info to register them if they select instructor:
@@ -74,8 +76,8 @@ function SelectInstructorDetails() {
       <h1>Instructor Details</h1>
 
       <section className="select-instructor-details"
-        key={instructorDetails.id}
-        value={instructorDetails.id}
+        key={instructorDetails.instructorID}
+        value={instructorDetails.instructorID}
       >
         <div>{instructorDetails.first_name} {instructorDetails.last_name}</div>
         <div>{instructorDetails.pronoun}</div>
