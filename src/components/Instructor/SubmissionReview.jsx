@@ -1,30 +1,28 @@
 // Page to render all historical learner challenge submissions
-// alongside corresponding instructor feedback
-// path: '/learner/review'
+// that are linked with the logged-in instructor
+// path: '/instructor/review'
 
 import React, { useEffect } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 
-function LearnerReviewFeedback() {
+function InstructorReviewSubmissions() {
   const dispatch = useDispatch();
 
   // Bring in logged in user's data:
   const user = useSelector((store) => store.user);
   // console.log('learner profile user:', user);
 
-  // Bring in learner's learner data:
-  const learner = useSelector((store) => store.learner);
-  // console.log('learner:', learner);
-  const learnerId = learner.id
+  // Bring in instructor-specific data:
+
 
   // On page load, ask for all submissions corresponding with logged-in learner ID:
-  useEffect(() => {
-    dispatch({
-      type: 'FETCH_SUBMISSIONS',
-      payload: learnerId
-    })
-  }, [])
+  // useEffect(() => {
+  //   dispatch({
+  //     type: 'FETCH_INSTRUCTOR_SUBMISSIONS',
+  //     payload: instructorId
+  //   })
+  // }, [])
 
 
   // Bring in submission info:
@@ -34,8 +32,8 @@ function LearnerReviewFeedback() {
 
   return (
     <div>
-      <h1>Learner Review Feedback</h1>
-      <table className="learner-review-table">
+      <h1>Instructor Review Submissions</h1>
+      <table className="instructor-review-table">
         <thead>
           <tr>
             <th></th>
@@ -84,7 +82,6 @@ function LearnerReviewFeedback() {
             );
           })}
 
-
         </tbody>
       </table>
 
@@ -92,4 +89,4 @@ function LearnerReviewFeedback() {
   )
 }
 
-export default LearnerReviewFeedback
+export default InstructorReviewSubmissions
