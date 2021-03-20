@@ -2,11 +2,12 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_INSTRUCTORS" actions
-function* fetchInstructors() {
+// fetch ALL instructors for a given language name
+function* fetchInstructors(action) {
   try {
 
     // 'response' is variable to hold data once retrieved from server:
-    const response = yield axios.get('/api/instructors');
+    const response = yield axios.get('/api/instructors/all', action.payload);
 
     // Send retrieved data to reducer:
     yield put({ type: 'SET_INSTRUCTORS', payload: response.data });
@@ -29,6 +30,7 @@ function* fetchPairedInstructor(action) {
   }
 } //end fetchPairedInstructor
 
+
 // worker Saga: will be fired on 'FETCH_THIS_INSTRUCTOR' actions
 function* fetchThisInstructor(action) {
   console.log('fetchThisInstructor action:', action);
@@ -37,7 +39,7 @@ function* fetchThisInstructor(action) {
 
     // 'response' is variable to hold data once retrieved from server:
     const response = yield axios.get(`/api/instructors/profile/${action.payload}`);
-    console.log('thisInstructor response:', response.data);
+    console.log('thisInstructor response:', response.data[0]);
 
     // Pass thisInstructor's ID to learner saga to fetch corresponding learners
     // for Instructor Profile page:
@@ -47,7 +49,7 @@ function* fetchThisInstructor(action) {
     // })
 
     // Send retrieved data to reducer:
-    yield put({ type: 'SET_THIS_INSTRUCTOR', payload: response.data });
+    yield put({ type: 'SET_THIS_INSTRUCTOR', payload: response.data[0] });
   } catch (error) {
     console.log('thisInstructor get request failed', error);
   }
