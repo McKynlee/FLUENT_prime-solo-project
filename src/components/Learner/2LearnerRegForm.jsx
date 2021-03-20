@@ -41,10 +41,13 @@ function LearnerRegistration2() {
   ///////////////// PAIR USER WITH SELECTED INSTRUCTOR ///////////////
   // on Click of 'Select Instructor', pair instructor_id with learner
   const onSelectInstructor = (selectedInstructor) => {
-    console.log('selectedInstructorId:', selectedInstructor);
+    console.log('selectedInstructor:', selectedInstructor);
 
     // Update learner info with selected instructor_id:
-    user.instructor_id = Number(selectedInstructor.instructorId);
+    let instructorIdToPair = selectedInstructor.instructorID;
+    console.log('instructorIdToPair:', instructorIdToPair);
+
+    user.instructor_id = instructorIdToPair;
 
     // Alert learner to confirm that this is their instructor choice:
     swal({

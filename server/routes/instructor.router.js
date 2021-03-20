@@ -7,7 +7,7 @@ router.get('/all/:id', (req, res) => {
   const instructorLanguageId = req.params.id;
   console.log('instructorLanguageId:', instructorLanguageId);
 
-  const sqlQuery = `SELECT "instructors".user_id, "instructors".id as "instructorID", "instructors".avatar, 
+  const sqlQuery = `  SELECT "instructors".user_id, "instructors".id as "instructorID", "instructors".avatar, 
   "instructors".bio, "instructors".learner_capacity, 
   "languages".name as "languages_taught",
   count("learners") as "learner_count", 
@@ -16,8 +16,8 @@ router.get('/all/:id', (req, res) => {
   FULL OUTER JOIN "learners" ON "instructors".id = "learners".instructor_id
   JOIN "pronouns" ON "users".pronouns_id = "pronouns".id
   JOIN "languages" ON "users".language_id = "languages".id
-  WHERE "users".type = 'instructor' AND "languages".id = $1
-  GROUP BY "instructors".id, "users".first_name, "users".last_name, "pronouns".pronoun, "languages".name;`;
+  WHERE "instructors".id = 14
+  GROUP BY "instructors".id, "users".first_name, "users".last_name, "pronouns".pronoun, "languages".name`;
 
   pool.query(sqlQuery, [instructorLanguageId])
     .then(dbRes => {
@@ -31,20 +31,23 @@ router.get('/all/:id', (req, res) => {
 
 // Select specific instructor for detailed view on learner registration
 router.get('/detail/:id', (req, res) => {
-  const instructorId = req.params.id;
-  // console.log('instructorId:', instructorId);
+  const instructorId = Number(req.params.id);
+  console.log('instructorId:', instructorId);
 
-  const sqlQuery = `SELECT "instructors".id, "instructors".avatar, 
+  const sqlQuery = `  SELECT "instructors".user_id, 
+  "instructors".id as "instructorID", "instructors".avatar, 
   "instructors".bio, "instructors".learner_capacity, 
-  "languages".name as "languages_taught", count("learners") as "learner_count", 
-  "users".first_name, "users".last_name, "pronouns".pronoun FROM "instructors"
-  JOIN "users" ON "instructors".user_id = "users".id
+  "languages".name as "languages_taught",
+  count("learners") as "learner_count", 
+  "users".first_name, "users".last_name, "pronouns".pronoun, 
+  JSON_AGG(learners.user_id) FROM "instructors"
+  FULL OUTER JOIN "users" ON "instructors".user_id = "users".id
+  FULL OUTER JOIN "learners" ON "instructors".id = "learners".instructor_id
   JOIN "pronouns" ON "users".pronouns_id = "pronouns".id
   JOIN "languages" ON "users".language_id = "languages".id
-  JOIN "learners" ON "users".id = "learners".user_id
   WHERE "instructors".id = $1
   GROUP BY "instructors".id, "users".first_name, "users".last_name, 
-  "pronouns".pronoun, "languages".name;`;
+  "pronouns".pronoun, "languages".name`;
 
   pool.query(sqlQuery, [instructorId])
     .then(dbRes => {

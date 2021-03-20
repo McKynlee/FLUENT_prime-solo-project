@@ -21,8 +21,10 @@ function* fetchInstructors(action) {
 
 function* fetchPairedInstructor(action) {
   // console.log('fetchLearnersInstructor action:', action);
+  const instructorToPairInstructorId = action.payload;
+
   try {
-    const response = yield axios.get(`/api/instructors/detail/${action.payload}`);
+    const response = yield axios.get(`/api/instructors/detail/${instructorToPairInstructorId}`);
 
     // Send retrieved data to reducer:
     yield put({ type: 'SET_PAIRED_INSTRUCTOR', payload: response.data[0] })
