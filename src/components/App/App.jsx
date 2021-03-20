@@ -35,13 +35,22 @@ function App() {
   // Conditional render links depending if user.type = 
   // learner OR instructor:
   const user = useSelector((store) => store.user);
+
   let userTypeLink;
 
-  if (user.type === 'instructor') {
-    userTypeLink = '/instructor';
-  }
-  if (user.type === 'learner') {
-    userTypeLink = '/learner';
+  // if (user.type === 'instructor') {
+  //   userTypeLink = '/instructor';
+  // }
+  // if (user.type === 'learner') {
+  //   userTypeLink = '/learner';
+  // }
+  if (user.id != null) {
+    if (user.type === 'instructor') {
+      userTypeLink = '/instructor'
+    }
+    else if (user.type === 'learner') {
+      userTypeLink = '/learner'
+    }
   }
 
   return (
