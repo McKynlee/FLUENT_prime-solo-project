@@ -21,7 +21,7 @@ function Nav() {
       loginLinkData.path = '/instructor';
       loginLinkData.text = 'Your Profile';
     }
-    else {
+    else if (user.type === 'learner') {
       loginLinkData.path = '/learner';
       loginLinkData.text = 'Your Profile';
     }
@@ -89,7 +89,7 @@ function Nav() {
       loginLinkData4.path = '/instructor';
       loginLinkData4.text = 'Review Submissions'
     }
-    else {
+    else if (user.type === 'learner') {
       loginLinkData4.path = '/learner';
       loginLinkData4.text = 'Review Submissions'
     }
