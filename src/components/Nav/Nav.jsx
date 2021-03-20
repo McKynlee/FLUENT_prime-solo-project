@@ -87,9 +87,11 @@ function Nav() {
   if (user.id != null) {
     if (user.type === 'instructor') {
       loginLinkData4.path = '/instructor';
+      loginLinkData4.text = 'Review Submissions'
     }
     else {
       loginLinkData4.path = '/learner';
+      loginLinkData4.text = 'Review Submissions'
     }
   }
 
@@ -118,7 +120,7 @@ function Nav() {
           </Link>
 
           <Link className="navLink" to={userTypeLinkData4}>
-            Review Submissions
+            {loginLinkData4.text}
           </Link>
 
           {user.id && (
