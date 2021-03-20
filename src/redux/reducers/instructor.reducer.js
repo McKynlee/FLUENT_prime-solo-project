@@ -14,7 +14,9 @@ const instructorReducer = (state = [{
     case 'SET_INSTRUCTORS':
       return action.payload;
     case 'SELECT_INSTRUCTOR':
-      return state.filter(instructor => instructor.id == action.payload.id)
+      return state.filter(instructor => instructor.id == action.payload.id);
+    case 'SET_THIS_INSTRUCTOR':
+      return action.payload;
     default:
       return state;
   }
