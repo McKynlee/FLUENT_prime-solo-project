@@ -35,6 +35,60 @@ function LearnerReviewFeedback() {
   return (
     <div>
       <h1>Learner Review Feedback</h1>
+      <table className="learner-review-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>
+              Given Image
+            </th>
+            <th>
+              Image Description
+            </th>
+            <th>
+              Given Word
+            </th>
+            <th>
+              Sentence with Word
+            </th>
+            <th>
+              Q & A
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {submissionList.map((submission) => {
+            return (
+              <>
+                <tr>
+                  <td>
+                    Your response:
+                  </td>
+                  <td>{submission.picture_url}</td>
+                  <td>{submission.picture_description}</td>
+                  <td>{submission.word}</td>
+                  <td>{submission.word_sentence}</td>
+                  <td>{submission.q_for_instructor}</td>
+                </tr>
+                <tr className="learner-table-feedback-row">
+                  <td>
+                    Instructor's Feedback:
+                  </td>
+                  <td></td>
+                  <td>{submission.instructor_picture_response}</td>
+                  <td></td>
+                  <td>{submission.instructor_word_response}</td>
+                  <td>{submission.instructor_q_response}</td>
+                </tr>
+              </>
+            );
+          })}
+
+
+        </tbody>
+      </table>
+
+
       <LogOutButton className="btn" />
     </div>
   )
