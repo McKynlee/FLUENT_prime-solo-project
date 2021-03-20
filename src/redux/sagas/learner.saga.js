@@ -22,7 +22,7 @@ function* fetchLearner(action) {
   } catch (error) {
     console.log('Learner get request failed', error);
   }
-}
+} //end fetchLearner
 
 function* learnerSaga() {
   yield takeLatest('FETCH_LEARNER', fetchLearner);

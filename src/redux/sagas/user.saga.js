@@ -21,6 +21,11 @@ function* fetchUser() {
       yield put({ type: 'FETCH_LEARNER', payload: response.data.id });
     }
 
+    // If the user is a learner, fetch learner data
+    if (response.data.type === 'instructor') {
+      yield put({ type: 'FETCH_THIS_INSTRUCTOR', payload: response.data.id });
+    }
+
     // now that the session has given us a user object
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in

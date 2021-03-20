@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
   const instructorId = req.params.id;
   // console.log('instructorId:', instructorId);
 
-  const sqlQuery = ` SELECT "instructors".id, "instructors".avatar, 
+  const sqlQuery = `SELECT "instructors".id, "instructors".avatar, 
   "instructors".bio, "instructors".learner_capacity, 
   "languages".name as "languages_taught", count("learners") as "learner_count", 
   "users".first_name, "users".last_name, "pronouns".pronoun FROM "instructors"
@@ -47,6 +47,33 @@ router.get('/:id', (req, res) => {
       console.log('error GETting instructor detail view:', err);
       res.sendStatus(500);
     })
-});
+}); // end detail view instructor GET
+
+// Select specific instructor for detailed view
+router.get('/profile/:id', (req, res) => {
+  const instructorId = req.params.id;
+  // console.log('instructorId:', instructorId);
+
+  const sqlQuery = `  SELECT "instructors".id, "instructors".avatar, 
+  "instructors".bio, "instructors".learner_capacity, 
+  "languages".name as "languages_taught",
+  count("learners") as "learner_count", 
+  "users".first_name, "users".last_name, "pronouns".pronoun, JSON_AGG(learners.user_id) FROM "instructors"
+  FULL OUTER JOIN "users" ON "instructors".user_id = "users".id
+  FULL OUTER JOIN "learners" ON "instructors".id = "learners".instructor_id
+  JOIN "pronouns" ON "users".pronouns_id = "pronouns".id
+  JOIN "languages" ON "users".language_id = "languages".id
+  WHERE "instructors".id = $1
+  GROUP BY "instructors".id, "users".first_name, "users".last_name, "pronouns".pronoun, "languages".name;`;
+
+  pool.query(sqlQuery, [instructorId])
+    .then(dbRes => {
+      res.send(dbRes.rows)
+    })
+    .catch(err => {
+      console.log('error GETting instructor detail view:', err);
+      res.sendStatus(500);
+    })
+}); // end logged-in instructor GET
 
 module.exports = router;
