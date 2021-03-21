@@ -48,12 +48,14 @@ function* fetchThisInstructor(action) {
     const response = yield axios.get(`/api/instructors/profile/${userId}`);
     // console.log('thisInstructor response:', response.data[0]);
 
+    const thisInstructorInfo = response.data[0];
+
     // Pass thisInstructor's ID to learner saga to fetch corresponding learners
     // for Instructor Profile page:
-    // yield put({
-    //   type: 'FETCH_PAIRED_LEARNERS',
-    //   payload: response.data.
-    // })
+    yield put({
+      type: 'FETCH_PAIRED_LEARNERS',
+      payload: thisInstructorInfo.instructorId
+    })
 
     // Send retrieved data to reducer:
     yield put({ type: 'SET_THIS_INSTRUCTOR', payload: response.data[0] });

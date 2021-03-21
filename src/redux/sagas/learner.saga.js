@@ -28,8 +28,25 @@ function* fetchLearner(action) {
   }
 } //end fetchLearner
 
+// worker Saga: fired on "FETCH_PAIRED_LEARNERS" to
+// GET all learners associated with thisInstructor's ID:
+function* fetchPairedLearners(action) {
+  const thisInstructorId = action.payload;
+
+  try {
+    const response = yield axios.get(`/api/learner/paired/${thisInstructorId}`);
+
+    // Send retrieved list of learners to reducer:
+    yield put({ type: 'SET_PAIRED_LEARNERS', payload: response.data })
+  }
+  catch (error) {
+    console.log('Paired Learners get request failed', error);
+  }
+} // end fetchPairedLearners
+
 function* learnerSaga() {
   yield takeLatest('FETCH_LEARNER', fetchLearner);
+  yield takeLatest('FETCH_PAIRED_LEARNERS', fetchPairedLearners)
 }
 
 export default learnerSaga;
