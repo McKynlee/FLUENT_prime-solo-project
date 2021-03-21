@@ -1,4 +1,4 @@
-// Instructor's main landing page, reached by "/instructor"
+// Instructor's main landing/profile page, reached by "/instructor"
 
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
@@ -12,7 +12,7 @@ function InstructorProfile() {
   console.log('learner profile user:', user);
 
   // Bring in instructor-specific data:
-  const thisInstructor = useSelector((store) => store.instructors);
+  const thisInstructor = useSelector((store) => store.thisInstructor);
   console.log('thisInstructor:', thisInstructor);
 
   // Request information about learners paired with instructor:
@@ -27,7 +27,7 @@ function InstructorProfile() {
     learnerCountLanguage = 'You are not currently paired with any learners.';
   }
   if (Number(thisInstructor.learner_count) > 1) {
-    learnerCountLanguage = `You are currently working with ${thisInstructor.learner_count} learner.`;
+    learnerCountLanguage = `You are currently working with ${thisInstructor.learner_count} learners.`;
   }
 
   // Open Edit information pop-up when Edit Your Info button clicked:
