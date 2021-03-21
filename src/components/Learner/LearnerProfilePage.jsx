@@ -9,11 +9,11 @@ function LearnerProfile() {
 
   // Bring in learner's user data:
   const user = useSelector((store) => store.user);
-  console.log('learner profile user:', user);
+  // console.log('learner profile user:', user);
 
   // Bring in learner's learner data:
   const learner = useSelector((store) => store.learner);
-  console.log('learner profile learner:', learner);
+  // console.log('learner profile learner:', learner);
 
   // Bring in instructor data (with whom learner is paired):
   const pairedInstructor = useSelector((store) => store.pairedInstructor);
@@ -60,6 +60,7 @@ function LearnerProfile() {
         <p>Name: {pairedInstructor.first_name}</p>
         <p>Last name: {pairedInstructor.last_name}</p>
         <p>Preferred Pronouns: {pairedInstructor.pronoun}</p>
+        <p>A little about {pairedInstructor.first_name}: {pairedInstructor.bio}</p>
         <img src={pairedInstructor.avatar} alt={pairedInstructor.first_name} />
         <p>Language taught: {pairedInstructor.languages_taught}</p>
 

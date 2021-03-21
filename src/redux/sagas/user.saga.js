@@ -16,9 +16,14 @@ function* fetchUser() {
     const response = yield axios.get('/api/user', config);
     // console.log('fetch user response:', response);
 
-    // If the user is a learner, fetch learner data
+    // If the user is a learner, fetch specific learner data
     if (response.data.type === 'learner') {
       yield put({ type: 'FETCH_LEARNER', payload: response.data.id });
+    }
+
+    // If the user is a instructor, fetch specific instructor data
+    if (response.data.type === 'instructor') {
+      yield put({ type: 'FETCH_THIS_INSTRUCTOR', payload: response.data.id });
     }
 
     // now that the session has given us a user object
