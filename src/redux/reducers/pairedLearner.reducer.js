@@ -7,7 +7,8 @@ const CurrentPairedLearnersReducer = (state = [{
   pronouns: '',
   language: '',
   username: '',
-  skill_level: ''
+  skill_level: '',
+  learner_id: 0
 }], action) => {
   switch (action.type) {
     case 'SET_PAIRED_LEARNERS':

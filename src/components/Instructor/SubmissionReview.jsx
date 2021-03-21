@@ -73,13 +73,16 @@ function InstructorReviewSubmissions() {
         </thead>
         <tbody>
           {submissionList.map((submission, i) => {
+            let correspondingPairedLearner;
+
+
             return (
               <>
                 <tr key={i}>
                   <td>
                     Learner's response:
                   </td>
-                  <td>
+                  <td rowspan="2">
                     <img src={submission.picture_url}
                       alt="randomly-generated photo for learner challenge" />
                   </td>
@@ -97,7 +100,7 @@ function InstructorReviewSubmissions() {
                   <td>
                     Your Feedback:
                   </td>
-                  <td></td>
+
                   <td>{submission.instructor_picture_response}</td>
                   <td></td>
                   <td>{submission.instructor_word_response}</td>

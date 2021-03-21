@@ -25,7 +25,7 @@ router.get('/paired/:instructorId', (req, res) => {
   const sqlQuery = ` SELECT "users".id as "user_id", 
   "pronouns".pronoun as "pronouns", "languages".name as "language", 
   "users".first_name, "users".last_name, "users".username, 
-  "learners".skill_level FROM "users"
+  "learners".skill_level, "learners".id as "learner_id" FROM "users"
   JOIN "pronouns" ON "users".pronouns_id = "pronouns".id
   JOIN "languages" ON "users".language_id = "languages".id
   FULL OUTER JOIN "learners" ON "learners".user_id = "users".id

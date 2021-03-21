@@ -62,7 +62,7 @@ router.get('/detail/:id', (req, res) => {
 // Select specific instructor for detailed view
 router.get('/profile/:id', (req, res) => {
   const userId = Number(req.params.id);
-  console.log('instructorUserId:', userId);
+  // console.log('instructorUserId:', userId);
 
   const sqlQuery = `SELECT "instructors".user_id, 
   "instructors".id as "instructorId", "instructors".avatar, 
