@@ -154,3 +154,8 @@ InstructorProfilePage.jsx
   border: 0.2rem solid black;
   border-collapse: collapse;
 }
+
+.instructor-table-feedback-row {
+  background-color: #008183;
+  color: whitesmoke;
+}
