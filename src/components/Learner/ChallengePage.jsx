@@ -118,6 +118,7 @@ function InfoPage() {
   const [wordSentence, setWordSentence] = useState('');
   const [qForInstructor, setQForInstructor] = useState('');
   const learnerId = learner.id;
+  const userId = user.id;
 
   // console.log('photoDescription:', photoDescription);
   // console.log('wordSentence:', wordSentence);
@@ -145,7 +146,8 @@ function InfoPage() {
               photoDescription,
               randomWord,
               wordSentence,
-              qForInstructor
+              qForInstructor,
+              userId
             },
             onComplete: history.push('/success')
           })

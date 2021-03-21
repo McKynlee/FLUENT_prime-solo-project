@@ -44,21 +44,28 @@ function* fetchInstructorSubmissions(action) {
 // worker Saga: will be fired on 'CREATE_SUBMISSION' 
 function* createSubmission(action) {
   console.log('createSubmission action:', action);
-  console.log('action.payload:', action.payload);
+
+  const learnerSubmissionInputs = action.payload;
 
   try {
     // 'response' is variable to hold data once retrieved from server:
-    yield axios.post('/api/challenge', action.payload);
+    yield axios.post('/api/challenge', learnerSubmissionInputs);
     // yield action.payload.onComplete();
 
-    //learner_id
     const learnerId = action.payload.learnerId;
+    const userId = action.payload.userId;
 
     // Update submissions reducer since we've added a submission:
     yield put({
       type: 'FETCH_LEARNER_SUBMISSIONS',
       payload: learnerId
     });
+
+    // Add monedas each time the learner submits a challenge:
+    yield put({
+      type: 'INCREASE_MONEDAS',
+      payload: userId
+    })
 
   } catch (error) {
     console.log('Challenge submission POST failed', error);
