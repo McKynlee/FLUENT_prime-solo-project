@@ -21,6 +21,8 @@ import InstructorRegistration from '../Instructor/InstructorRegisterPage';
 import SelectInstructorDetails from '../Learner/SelectInstructorDetails';
 import LearnerReviewFeedback from '../Learner/LearnerReviewFeedback';
 import SubmissionSuccess from '../Learner/SubmissionSuccess';
+import InstructorProfile from '../Instructor/InstructorProfilePage';
+import InstructorSubmissionReview from '../Instructor/SubmissionReview';
 
 import './App.css';
 
@@ -34,13 +36,22 @@ function App() {
   // Conditional render links depending if user.type = 
   // learner OR instructor:
   const user = useSelector((store) => store.user);
+
   let userTypeLink;
 
-  if (user.type === 'instructor') {
-    userTypeLink = '/instructor';
-  }
-  if (user.type === 'learner') {
-    userTypeLink = '/learner';
+  // if (user.type === 'instructor') {
+  //   userTypeLink = '/instructor';
+  // }
+  // if (user.type === 'learner') {
+  //   userTypeLink = '/learner';
+  // }
+  if (user.id != null) {
+    if (user.type === 'instructor') {
+      userTypeLink = '/instructor'
+    }
+    else if (user.type === 'learner') {
+      userTypeLink = '/learner'
+    }
   }
 
   return (
@@ -64,6 +75,15 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path='/instructor'
+          >
+            <InstructorProfile />
+          </ProtectedRoute>
+
+
+          <ProtectedRoute
             // logged in shows Challenge Page else shows LoginPage
             exact
             path="/challenge"
@@ -77,6 +97,14 @@ function App() {
             path="/success"
           >
             <SubmissionSuccess />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows Submission Success Page else shows LoginPage
+            exact
+            path="/instructor/review"
+          >
+            <InstructorSubmissionReview />
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will

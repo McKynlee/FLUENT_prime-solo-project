@@ -146,7 +146,8 @@ function InfoPage() {
               randomWord,
               wordSentence,
               qForInstructor
-            }
+            },
+            onComplete: history.push('/success')
           })
         }
         // else {
@@ -154,8 +155,6 @@ function InfoPage() {
         // }
       });
   } //end submitChallenge
-
-  // onComplete: history.push('/success')
 
   return (
     <div className="container">
