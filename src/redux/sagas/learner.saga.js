@@ -3,13 +3,14 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on 'FETCH_LEARNER' actions
 function* fetchLearner(action) {
-  console.log('fetchLearner action:', action);
+  // console.log('fetchLearner action:', action);
 
-  const registeredLearnerId = action.payload;
+  const userId = action.payload;
+
   try {
 
     // 'response' is variable to hold data once retrieved from server:
-    const response = yield axios.get(`/api/learner/${registeredLearnerId}`);
+    const response = yield axios.get(`/api/learner/${userId}`);
     console.log('learner response:', response.data);
 
     const allLearnerInfo = response.data;

@@ -58,14 +58,14 @@ function LearnerReviewFeedback() {
           </tr>
         </thead>
         <tbody>
-          {submissionList.map((submission) => {
+          {submissionList.map((submission, i) => {
             return (
               <>
-                <tr>
+                <tr key={i}>
                   <td>
                     Your response:
                   </td>
-                  <td>{submission.picture_url}</td>
+                  <td><img src={submission.picture_url} /></td>
                   <td>{submission.picture_description}</td>
                   <td>{submission.word}</td>
                   <td>{submission.word_sentence}</td>
