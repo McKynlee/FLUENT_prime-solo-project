@@ -94,7 +94,41 @@ router.post('/', (req, res) => {
       console.log('ERROR posting submission:', err);
       res.sendStatus(500);
     })
-});
+}); // end Create new submission
 
+// Add 5 to moneda count each time a learner submits a challenge:
+router.put('/monedas/:userId', (req, res) => {
+  const userId = req.params.userId;
+  console.log('userId in monedas:', userId);
+
+  // select specific moneda count to increase:
+  const sqlQuery1 = `SELECT "moneda_count" FROM "learners" 
+  WHERE "user_id" = $1;`
+
+  // update the selected moneda count (from above):
+  const sqlQuery2 = `UPDATE "learners"
+  SET "moneda_count" = $1 + 5
+  WHERE "user_id" = $2;`
+
+  pool.query(sqlQuery1, [userId])
+    .then(dbRes => {
+      console.log('monedas dbRes1.rows[0].moneda_count:', dbRes.rows[0].moneda_count);
+      const ogMonedaCount = dbRes.rows[0].moneda_count;
+
+      // Send selected moneda count into second query to be updated
+      pool.query(sqlQuery2, [ogMonedaCount, userId])
+        .then(dbResult => {
+          res.sendStatus(200)
+        })
+        .catch(err => {
+          console.log('error with monedas sqlQuery2:', err);
+          res.sendStatus(500);
+        })
+    })
+    .catch(error => {
+      console.log('error updating monedas:', error);
+      res.sendStatus(501);
+    })
+})
 
 module.exports = router;
