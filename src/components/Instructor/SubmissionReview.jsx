@@ -5,9 +5,11 @@
 import React, { useEffect } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function InstructorReviewSubmissions() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
 
   /////// BRING IN ALREADY-STORED REDUCER DATA ////////
@@ -40,8 +42,11 @@ function InstructorReviewSubmissions() {
 
   ////////////// HANDLE 'GIVE FEEDBACK' CLICK ///////////////////
   // When instructor selects 'Give Feedback' button, open submission detail view
-  const giveFeedback = () => {
-    console.log('giveFeedback');
+  const giveFeedback = (submissionId) => {
+    console.log('submissionId:', submissionId);
+
+    // navigate to Give Feedback view passing submission id as param:
+    history.push(`/instructor/feedback/${submissionId}`)
   }
 
 
@@ -95,7 +100,7 @@ function InstructorReviewSubmissions() {
                   <td>{submission.word_sentence}</td>
                   <td>{submission.q_for_instructor}</td>
                   <td>
-                    <button onClick={giveFeedback}>
+                    <button onClick={() => giveFeedback(submission.submission_id)}>
                       Give Feedback
                     </button>
                   </td>
