@@ -1,13 +1,16 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-// worker Saga: will be fired on "FETCH_SUBMISSIONS" 
-function* fetchSubmissions(action) {
-  console.log('fetchSubmission action:', action);
+// worker Saga: will be fired on "FETCH_LEARNER_SUBMISSIONS" 
+function* fetchLearnerSubmissions(action) {
+  // console.log('fetchSubmission action:', action);
+
+  const learnerId = action.payload;
+
   try {
 
     // 'response' is variable to hold all submissions linked with logged-in user's id:
-    const response = yield axios.get(`/api/challenge/${action.payload}`);
+    const response = yield axios.get(`/api/challenge/${learnerId}`);
     console.log('All Submissions response:', response.data);
 
     // Send retrieved data to reducer:
@@ -15,7 +18,27 @@ function* fetchSubmissions(action) {
   } catch (error) {
     console.log('Challenge submission GET failed', error);
   }
-} // end fetchSubmissions
+} // end fetchLearnerSubmissions
+
+
+// worker Saga: will be fired on "FETCH_INSTRUCTOR_SUBMISSIONS" 
+function* fetchInstructorSubmissions(action) {
+  console.log('fetchInstructorSubmission action:', action);
+
+  const InstructorId = action.payload;
+
+  try {
+
+    // 'response' is variable to hold all submissions linked with logged-in user's id:
+    const response = yield axios.get(`/api/challenge/${InstructorId}`);
+    console.log('All Submissions response:', response.data);
+
+    // Send retrieved data to reducer:
+    yield put({ type: 'SET_SUBMISSIONS', payload: response.data });
+  } catch (error) {
+    console.log('Challenge submission GET failed', error);
+  }
+} // end fetchInstructorSubmissions
 
 
 // worker Saga: will be fired on 'CREATE_SUBMISSION' 
@@ -30,7 +53,7 @@ function* createSubmission(action) {
 
     // Update submissions reducer since we've added a submission:
     yield put({
-      type: 'FETCH_SUBMISSIONS',
+      type: 'FETCH_LEARNER_SUBMISSIONS',
       payload: action.payload.learnerId
     });
 
@@ -41,8 +64,9 @@ function* createSubmission(action) {
 
 
 function* challengeSaga() {
-  yield takeLatest('FETCH_SUBMISSIONS', fetchSubmissions);
+  yield takeLatest('FETCH_LEARNER_SUBMISSIONS', fetchLearnerSubmissions);
   yield takeLatest('CREATE_SUBMISSION', createSubmission);
+  yield takeLatest('FETCH_INSTRUCTOR_SUBMISSIONS', fetchInstructorSubmissions)
 }
 
 export default challengeSaga;

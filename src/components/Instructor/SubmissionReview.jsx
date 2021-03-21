@@ -11,18 +11,20 @@ function InstructorReviewSubmissions() {
 
   // Bring in logged in user's data:
   const user = useSelector((store) => store.user);
-  // console.log('learner profile user:', user);
+  console.log('learner profile user:', user);
+  const userId = user.id;
 
   // Bring in instructor-specific data:
-
+  const thisInstructor = useSelector((store) => store.thisInstructor);
+  console.log('instructorId submission review:', thisInstructor);
 
   // On page load, ask for all submissions corresponding with logged-in learner ID:
-  // useEffect(() => {
-  //   dispatch({
-  //     type: 'FETCH_INSTRUCTOR_SUBMISSIONS',
-  //     payload: instructorId
-  //   })
-  // }, [])
+  useEffect(() => {
+    dispatch({
+      type: 'FETCH_INSTRUCTOR_SUBMISSIONS',
+      payload: userId
+    })
+  }, [])
 
 
   // Bring in submission info:
@@ -55,10 +57,10 @@ function InstructorReviewSubmissions() {
           </tr>
         </thead>
         <tbody>
-          {submissionList.map((submission) => {
+          {submissionList.map((submission, i) => {
             return (
               <>
-                <tr>
+                <tr key={i}>
                   <td>
                     Your response:
                   </td>

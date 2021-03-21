@@ -21,7 +21,7 @@ function LearnerReviewFeedback() {
   // On page load, ask for all submissions corresponding with logged-in learner ID:
   useEffect(() => {
     dispatch({
-      type: 'FETCH_SUBMISSIONS',
+      type: 'FETCH_LEARNER_SUBMISSIONS',
       payload: learnerId
     })
   }, [])

@@ -37,16 +37,16 @@ function* fetchPairedInstructor(action) {
 
 // worker Saga: will be fired on 'FETCH_THIS_INSTRUCTOR' actions
 function* fetchThisInstructor(action) {
-  console.log('fetchThisInstructor action:', action);
+  // console.log('fetchThisInstructor action:', action);
 
   const userId = action.payload;
-  console.log('Saga userId:', userId);
+  // console.log('Saga userId:', userId);
 
   try {
 
     // 'response' is variable to hold data once retrieved from server:
     const response = yield axios.get(`/api/instructors/profile/${userId}`);
-    console.log('thisInstructor response:', response.data[0]);
+    // console.log('thisInstructor response:', response.data[0]);
 
     // Pass thisInstructor's ID to learner saga to fetch corresponding learners
     // for Instructor Profile page:
