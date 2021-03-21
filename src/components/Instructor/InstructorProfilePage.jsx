@@ -15,14 +15,6 @@ function InstructorProfile() {
   const thisInstructor = useSelector((store) => store.thisInstructor);
   console.log('thisInstructor:', thisInstructor);
 
-
-  // On page load, request information about learners paired with instructor:
-  useEffect(() => {
-    dispatch({
-      type: 'FETCH_PAIRED_LEARNERS'
-    })
-  }, [])
-
   // Bring in paired learners:
   const learnerList = useSelector((store) => store.pairedLearners);
   // console.log('learnerList:', learnerList);

@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
 // Select all submission sent to a specific instructor
 router.get('/:id', (req, res) => {
   const userId = req.params.id;
-  console.log('instructorId:', userId);
+  // console.log('instructorId:', userId);
 
   const sqlQuery = `SELECT "learner_submissions".id as "submission_id", 
   "learner_submissions".learner_id, "users".first_name, "users".last_name, 
