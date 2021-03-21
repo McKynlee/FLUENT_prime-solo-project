@@ -2,8 +2,10 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-// GET all available submissions + corresponding feedback from db:
-router.get('/', (req, res) => {
+// GET all submissions + corresponding feedback linked with logged-in learner:
+router.get('/learner/:userId', (req, res) => {
+  const userId = req.params.userId;
+
   const sqlQuery = `SELECT "learner_submissions".id as "submission_id", 
   "learner_submissions".learner_id, "users".first_name, "users".last_name, 
   "learner_submissions".picture_url, 
@@ -20,9 +22,10 @@ router.get('/', (req, res) => {
   JOIN "users" ON "users".id = "learners".user_id
   JOIN "instructors" ON "learners".instructor_id = "instructors".id
   FULL OUTER JOIN "instructor_feedback" ON 
-  "learner_submissions".id = "instructor_feedback".submission_id;`;
+  "learner_submissions".id = "instructor_feedback".submission_id
+  WHERE "users".id = $1;`;
 
-  pool.query(sqlQuery)
+  pool.query(sqlQuery, [userId])
     .then(dbRes => {
       res.send(dbRes.rows)
     })
@@ -33,12 +36,14 @@ router.get('/', (req, res) => {
 });
 
 // Select all submission sent to a specific instructor
-router.get('/:id', (req, res) => {
-  const userId = req.params.id;
-  // console.log('instructorId:', userId);
+router.get('/instructor/:userId', (req, res) => {
+  const userId = req.params.userId;
+  // console.log('userId:', userId);
 
   const sqlQuery = `SELECT "learner_submissions".id as "submission_id", 
-  "learner_submissions".learner_id, "users".first_name, "users".last_name, 
+  "learner_submissions".learner_id, "users".id as "learners_userId",
+  "users".first_name as "instructor_firstName",
+  "users".last_name as "instructor_lastName", 
   "learner_submissions".picture_url, 
   "learner_submissions".picture_description, "learner_submissions".word, 
   "learner_submissions".word_sentence, "learner_submissions".q_for_instructor, 
@@ -47,7 +52,8 @@ router.get('/:id', (req, res) => {
   "instructor_feedback".picture_description as "instructor_pic_response", 
   "instructor_feedback".word_sentence as "instructor_word_response", 
   "instructor_feedback".q_for_instructor as "instructor_q_response", 
-  "instructor_feedback".time_stamp as "instructor_time_stamp", "instructors".id
+  "instructor_feedback".time_stamp as "instructor_time_stamp", 
+  "instructors".id as "instructor_id"
   FROM "learner_submissions"
   JOIN "learners" ON "learners".id = "learner_submissions".learner_id
   JOIN "instructors" ON "learners".instructor_id = "instructors".id

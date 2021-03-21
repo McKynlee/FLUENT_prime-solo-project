@@ -12,17 +12,18 @@ function LearnerReviewFeedback() {
   // Bring in logged in user's data:
   const user = useSelector((store) => store.user);
   // console.log('learner profile user:', user);
+  const userId = user.id
 
   // Bring in learner's learner data:
   const learner = useSelector((store) => store.learner);
   // console.log('learner:', learner);
-  const learnerId = learner.id
+
 
   // On page load, ask for all submissions corresponding with logged-in learner ID:
   useEffect(() => {
     dispatch({
       type: 'FETCH_LEARNER_SUBMISSIONS',
-      payload: learnerId
+      payload: userId
     })
   }, [])
 

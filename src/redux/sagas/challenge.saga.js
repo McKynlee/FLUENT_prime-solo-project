@@ -5,12 +5,12 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* fetchLearnerSubmissions(action) {
   // console.log('fetchSubmission action:', action);
 
-  const learnerId = action.payload;
+  const userId = action.payload;
 
   try {
 
     // 'response' is variable to hold all submissions linked with logged-in user's id:
-    const response = yield axios.get(`/api/challenge/${learnerId}`);
+    const response = yield axios.get(`/api/challenge/learner/${userId}`);
     console.log('All Submissions response:', response.data);
 
     // Send retrieved data to reducer:
@@ -25,12 +25,12 @@ function* fetchLearnerSubmissions(action) {
 function* fetchInstructorSubmissions(action) {
   console.log('fetchInstructorSubmission action:', action);
 
-  const InstructorId = action.payload;
+  const userId = action.payload;
 
   try {
 
     // 'response' is variable to hold all submissions linked with logged-in user's id:
-    const response = yield axios.get(`/api/challenge/${InstructorId}`);
+    const response = yield axios.get(`/api/challenge/instructor/${userId}`);
     console.log('All Submissions response:', response.data);
 
     // Send retrieved data to reducer:
@@ -51,10 +51,13 @@ function* createSubmission(action) {
     yield axios.post('/api/challenge', action.payload);
     // yield action.payload.onComplete();
 
+    //learner_id
+    const learnerId = action.payload.learnerId;
+
     // Update submissions reducer since we've added a submission:
     yield put({
       type: 'FETCH_LEARNER_SUBMISSIONS',
-      payload: action.payload.learnerId
+      payload: learnerId
     });
 
   } catch (error) {
