@@ -60,6 +60,7 @@ function LearnerProfile() {
         <p>Name: {pairedInstructor.first_name}</p>
         <p>Last name: {pairedInstructor.last_name}</p>
         <p>Preferred Pronouns: {pairedInstructor.pronoun}</p>
+        <p>A little about {pairedInstructor.first_name}: {pairedInstructor.bio}</p>
         <img src={pairedInstructor.avatar} alt={pairedInstructor.first_name} />
         <p>Language taught: {pairedInstructor.languages_taught}</p>
 
