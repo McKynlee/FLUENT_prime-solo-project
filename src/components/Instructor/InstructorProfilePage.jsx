@@ -25,7 +25,7 @@ function InstructorProfile() {
 
   // Bring in paired learners:
   const learnerList = useSelector((store) => store.pairedLearners);
-  console.log('learnerList:', learnerList);
+  // console.log('learnerList:', learnerList);
 
 
   // Control grammar depending on number of paired learners:
