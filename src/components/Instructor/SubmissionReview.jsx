@@ -9,6 +9,8 @@ import { useSelector, useDispatch } from 'react-redux';
 function InstructorReviewSubmissions() {
   const dispatch = useDispatch();
 
+
+  /////// BRING IN ALREADY-STORED REDUCER DATA ////////
   // Bring in logged in user's data:
   const user = useSelector((store) => store.user);
   console.log('learner profile user:', user);
@@ -18,6 +20,12 @@ function InstructorReviewSubmissions() {
   const thisInstructor = useSelector((store) => store.thisInstructor);
   console.log('instructorId submission review:', thisInstructor);
 
+  // Bring in paired learners:  
+  const learnerList = useSelector((store) => store.pairedLearners);
+  // console.log('learnerList:', learnerList);
+
+
+  /////////// ASK FOR ALL SUBMISSIONS LINKED TO THIS INSTRUCTOR /////////////
   // On page load, ask for all submissions corresponding with logged-in learner ID:
   useEffect(() => {
     dispatch({
@@ -26,16 +34,18 @@ function InstructorReviewSubmissions() {
     })
   }, [])
 
-
   // Bring in submission info:
   const submissionList = useSelector((store) => store.submissions);
   console.log('submissions:', submissionList);
 
+  ////////////// HANDLE 'GIVE FEEDBACK' CLICK ///////////////////
   // When instructor selects 'Give Feedback' button, open submission detail view
   const giveFeedback = () => {
     console.log('giveFeedback');
   }
 
+
+  //////////////////// RENDER JSX ////////////////////////
   return (
     <div>
       <h1>Instructor Review Submissions</h1>
