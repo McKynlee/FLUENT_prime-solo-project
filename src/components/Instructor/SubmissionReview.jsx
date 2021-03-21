@@ -74,13 +74,17 @@ function InstructorReviewSubmissions() {
         <tbody>
           {submissionList.map((submission, i) => {
             let correspondingPairedLearner;
-
+            for (let learner of learnerList) {
+              if (learner.learner_id === submission.learner_id) {
+                correspondingPairedLearner = learner.first_name;
+              }
+            }
 
             return (
               <>
                 <tr key={i}>
                   <td>
-                    Learner's response:
+                    {correspondingPairedLearner}'s response:
                   </td>
                   <td rowspan="2">
                     <img src={submission.picture_url}
@@ -96,7 +100,7 @@ function InstructorReviewSubmissions() {
                     </button>
                   </td>
                 </tr>
-                <tr className="learner-table-feedback-row">
+                <tr className="instructor-table-feedback-row">
                   <td>
                     Your Feedback:
                   </td>
@@ -105,6 +109,7 @@ function InstructorReviewSubmissions() {
                   <td></td>
                   <td>{submission.instructor_word_response}</td>
                   <td>{submission.instructor_q_response}</td>
+                  <td></td>
                 </tr>
               </>
             );
