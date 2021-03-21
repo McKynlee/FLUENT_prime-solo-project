@@ -4,8 +4,9 @@ const router = express.Router();
 
 // GET all available submissions + corresponding feedback from db:
 router.get('/', (req, res) => {
-  const sqlQuery = ` SELECT "learner_submissions".id as "submission_id", 
-  "learner_submissions".learner_id, "learner_submissions".picture_url, 
+  const sqlQuery = `SELECT "learner_submissions".id as "submission_id", 
+  "learner_submissions".learner_id, "users".first_name, "users".last_name, 
+  "learner_submissions".picture_url, 
   "learner_submissions".picture_description, "learner_submissions".word, 
   "learner_submissions".word_sentence, "learner_submissions".q_for_instructor, 
   "learner_submissions".time_stamp as "learner_time_stamp", 
@@ -13,9 +14,13 @@ router.get('/', (req, res) => {
   "instructor_feedback".picture_description as "instructor_pic_response", 
   "instructor_feedback".word_sentence as "instructor_word_response", 
   "instructor_feedback".q_for_instructor as "instructor_q_response", 
-  "instructor_feedback".time_stamp as "instructor_time_stamp"
+  "instructor_feedback".time_stamp as "instructor_time_stamp", "instructors".id
   FROM "learner_submissions"
-  FULL OUTER JOIN "instructor_feedback" ON "learner_submissions".id = "instructor_feedback".submission_id`;
+  JOIN "learners" ON "learners".id = "learner_submissions".learner_id
+  JOIN "users" ON "users".id = "learners".user_id
+  JOIN "instructors" ON "learners".instructor_id = "instructors".id
+  FULL OUTER JOIN "instructor_feedback" ON 
+  "learner_submissions".id = "instructor_feedback".submission_id;`;
 
   pool.query(sqlQuery)
     .then(dbRes => {
@@ -27,13 +32,14 @@ router.get('/', (req, res) => {
     })
 });
 
-// Select specific instructor for detailed view
+// Select all submission sent to a specific instructor
 router.get('/:id', (req, res) => {
-  const submissionId = req.params.id;
-  // console.log('instructorId:', instructorId);
+  const userId = req.params.id;
+  console.log('instructorId:', userId);
 
-  const sqlQuery = `  SELECT "learner_submissions".id as "submission_id", 
-  "learner_submissions".learner_id, "learner_submissions".picture_url, 
+  const sqlQuery = `SELECT "learner_submissions".id as "submission_id", 
+  "learner_submissions".learner_id, "users".first_name, "users".last_name, 
+  "learner_submissions".picture_url, 
   "learner_submissions".picture_description, "learner_submissions".word, 
   "learner_submissions".word_sentence, "learner_submissions".q_for_instructor, 
   "learner_submissions".time_stamp as "learner_time_stamp", 
@@ -41,20 +47,24 @@ router.get('/:id', (req, res) => {
   "instructor_feedback".picture_description as "instructor_pic_response", 
   "instructor_feedback".word_sentence as "instructor_word_response", 
   "instructor_feedback".q_for_instructor as "instructor_q_response", 
-  "instructor_feedback".time_stamp as "instructor_time_stamp"
+  "instructor_feedback".time_stamp as "instructor_time_stamp", "instructors".id
   FROM "learner_submissions"
-  FULL OUTER JOIN "instructor_feedback" ON "learner_submissions".id = "instructor_feedback".submission_id
-  WHERE "learner_submissions".learner_id = $1;`;
+  JOIN "learners" ON "learners".id = "learner_submissions".learner_id
+  JOIN "instructors" ON "learners".instructor_id = "instructors".id
+  JOIN "users" ON "users".id = "instructors".user_id
+  FULL OUTER JOIN "instructor_feedback" ON 
+  "learner_submissions".id = "instructor_feedback".submission_id
+  WHERE "users".id = $1;`;
 
-  pool.query(sqlQuery, [submissionId])
+  pool.query(sqlQuery, [userId])
     .then(dbRes => {
       res.send(dbRes.rows)
     })
     .catch(err => {
-      console.log('error GETting specific submission:', err);
+      console.log('error GETting specific submission set:', err);
       res.sendStatus(500);
     })
-});
+}); // end GET specific instructor's submissions
 
 // Create new submission:
 router.post('/', (req, res) => {

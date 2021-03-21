@@ -22,6 +22,7 @@ import SelectInstructorDetails from '../Learner/SelectInstructorDetails';
 import LearnerReviewFeedback from '../Learner/LearnerReviewFeedback';
 import SubmissionSuccess from '../Learner/SubmissionSuccess';
 import InstructorProfile from '../Instructor/InstructorProfilePage';
+import InstructorSubmissionReview from '../Instructor/SubmissionReview';
 
 import './App.css';
 
@@ -96,6 +97,14 @@ function App() {
             path="/success"
           >
             <SubmissionSuccess />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows Submission Success Page else shows LoginPage
+            exact
+            path="/instructor/review"
+          >
+            <InstructorSubmissionReview />
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will
