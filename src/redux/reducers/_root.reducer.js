@@ -10,6 +10,7 @@ import words from './words.reducer';
 import photo from './photo.reducer';
 import submissions from './challenge.reducer';
 import thisInstructor from './thisInstructor.reducer';
+import pairedLearners from './pairedLearner.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   photo, // random photo id to be used on Lorem Picsum to generate photo
   submissions,
   thisInstructor, // specific clicked-on instructor for detail view
+  pairedLearners, // all learners paired with logged-in instructor
 });
 
 export default rootReducer;

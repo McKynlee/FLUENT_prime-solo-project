@@ -31,6 +31,10 @@ function InstructorReviewSubmissions() {
   const submissionList = useSelector((store) => store.submissions);
   console.log('submissions:', submissionList);
 
+  // When instructor selects 'Give Feedback' button, open submission detail view
+  const giveFeedback = () => {
+    console.log('giveFeedback');
+  }
 
   return (
     <div>
@@ -54,6 +58,7 @@ function InstructorReviewSubmissions() {
             <th>
               Q & A
             </th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -62,17 +67,25 @@ function InstructorReviewSubmissions() {
               <>
                 <tr key={i}>
                   <td>
-                    Your response:
+                    Learner's response:
                   </td>
-                  <td>{submission.picture_url}</td>
+                  <td>
+                    <img src={submission.picture_url}
+                      alt="randomly-generated photo for learner challenge" />
+                  </td>
                   <td>{submission.picture_description}</td>
                   <td>{submission.word}</td>
                   <td>{submission.word_sentence}</td>
                   <td>{submission.q_for_instructor}</td>
+                  <td>
+                    <button onClick={giveFeedback}>
+                      Give Feedback
+                    </button>
+                  </td>
                 </tr>
                 <tr className="learner-table-feedback-row">
                   <td>
-                    Instructor's Feedback:
+                    Your Feedback:
                   </td>
                   <td></td>
                   <td>{submission.instructor_picture_response}</td>

@@ -1,6 +1,6 @@
 // Instructor's main landing/profile page, reached by "/instructor"
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -15,7 +15,17 @@ function InstructorProfile() {
   const thisInstructor = useSelector((store) => store.thisInstructor);
   console.log('thisInstructor:', thisInstructor);
 
-  // Request information about learners paired with instructor:
+
+  // On page load, request information about learners paired with instructor:
+  useEffect(() => {
+    dispatch({
+      type: 'FETCH_PAIRED_LEARNERS'
+    })
+  }, [])
+
+  // Bring in paired learners:
+  const learnerList = useSelector((store) => store.pairedLearners);
+  console.log('learnerList:', learnerList);
 
 
   // Control grammar depending on number of paired learners:
@@ -59,7 +69,15 @@ function InstructorProfile() {
       <section>
         <h4>Your learners:</h4>
         <div>{learnerCountLanguage}</div>
-
+        <ul>
+          {learnerList.map((learner, i) => {
+            return (
+              <li>{learner.first_name} {learner.last_name}, {learner.pronouns},
+              is learning {learner.language} and self-ranked at level
+                {learner.skill_level} out of 5.  Contact {learner.first_name} at {learner.username}</li>
+            )
+          })}
+        </ul>
       </section>
 
 

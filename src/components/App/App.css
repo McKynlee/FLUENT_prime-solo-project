@@ -137,11 +137,20 @@ LearnerProfilePage.jsx
 /* -----------------------------------------------
 LearnerProfilePage.jsx
 -------------------------------------------------- */
-.learner-review-table, tr, td {
+.learner-review-table, th, tr, td {
   border: 0.2rem solid black;
   border-collapse: collapse;
 }
 
 .learner-table-feedback-row {
   color: red;
+}
+
+/* -----------------------------------------------
+InstructorProfilePage.jsx
+-------------------------------------------------- */
+
+.instructor-review-table, th, tr, td {
+  border: 0.2rem solid black;
+  border-collapse: collapse;
 }
