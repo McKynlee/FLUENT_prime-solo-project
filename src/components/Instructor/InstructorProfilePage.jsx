@@ -3,9 +3,11 @@
 import React, { useEffect } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function InstructorProfile() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // Bring in learner's user data:
   const user = useSelector((store) => store.user);
@@ -35,6 +37,10 @@ function InstructorProfile() {
   // Open Edit information pop-up when Edit Your Info button clicked:
   const editInstructorInfo = () => {
     console.log('editInstructorInfo');
+  }
+
+  const reviewSubmissions = () => {
+    history.push('/instructor/review');
   }
 
   return (
@@ -70,6 +76,9 @@ function InstructorProfile() {
             )
           })}
         </ul>
+        <button onClick={reviewSubmissions}>
+          Review Your Learner's Submissions
+        </button>
       </section>
 
 
