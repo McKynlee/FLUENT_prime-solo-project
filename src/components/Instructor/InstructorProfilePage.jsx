@@ -70,7 +70,8 @@ function InstructorProfile() {
         <ul>
           {learnerList.map((learner, i) => {
             return (
-              <li>{learner.first_name} {learner.last_name}, {learner.pronouns},
+              <li key={i}>
+                {learner.first_name} {learner.last_name}, {learner.pronouns},
               is learning {learner.language} and self-ranked at level
                 {learner.skill_level} out of 5.  Contact {learner.first_name} at {learner.username}</li>
             )

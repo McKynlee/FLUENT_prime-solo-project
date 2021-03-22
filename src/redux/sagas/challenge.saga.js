@@ -40,6 +40,25 @@ function* fetchInstructorSubmissions(action) {
   }
 } // end fetchInstructorSubmissions
 
+// worker Saga: will be fired on "FETCH_SUBMISSION_STREAK" 
+function* fetchStreak(action) {
+  const learnerId = action.payload;
+  console.log('fetchStreak learnerId:', learnerId);
+
+  try {
+    // 'response' captures streak number calculated on server:
+    const response = yield axios.get(`/api/challenge/streak/${learnerId}`);
+    console.log('fetchStreak challengeSaga response:', response.data);
+
+    const streakNumber = response.data.length;
+
+    // Send retrieved data to reducer:
+    yield put({ type: 'SET_STREAK', payload: streakNumber });
+  } catch (error) {
+    console.log('Challenge submission GET failed', error);
+  }
+}//end fetchStreak
+
 
 // worker Saga: will be fired on 'CREATE_SUBMISSION' 
 function* createSubmission(action) {
@@ -72,6 +91,7 @@ function* createSubmission(action) {
   }
 } //end createSubmission
 
+
 function* createFeedback(action) {
   console.log('createSubmission action:', action);
 
@@ -95,6 +115,7 @@ function* createFeedback(action) {
   }
 } // end createFeedback
 
+
 function* fetchThisSubmission(action) {
   // console.log('fetchThisSubmission action:', action);
 
@@ -116,6 +137,7 @@ function* fetchThisSubmission(action) {
   }
 } //end thisSubmission
 
+
 // Delete row of feedback by id:
 function* deleteFeedback(action) {
   const feedbackId = action.payload.feedbackId;
@@ -133,7 +155,8 @@ function* deleteFeedback(action) {
   catch (error) {
     console.log('deleteFeedback saga failed', error);
   }
-}
+} // end deleteFeedback
+
 
 function* challengeSaga() {
   yield takeLatest('FETCH_LEARNER_SUBMISSIONS', fetchLearnerSubmissions);
@@ -141,7 +164,8 @@ function* challengeSaga() {
   yield takeLatest('FETCH_INSTRUCTOR_SUBMISSIONS', fetchInstructorSubmissions);
   yield takeLatest('FETCH_THIS_SUBMISSION', fetchThisSubmission);
   yield takeLatest('CREATE_FEEDBACK', createFeedback);
-  yield takeLatest('DELETE_FEEDBACK', deleteFeedback)
+  yield takeLatest('DELETE_FEEDBACK', deleteFeedback);
+  yield takeLatest('FETCH_SUBMISSION_STREAK', fetchStreak);
 }
 
 export default challengeSaga;

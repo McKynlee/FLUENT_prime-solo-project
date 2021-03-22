@@ -12,6 +12,7 @@ import submissions from './challenge.reducer';
 import thisInstructor from './thisInstructor.reducer';
 import pairedLearners from './pairedLearner.reducer';
 import thisSubmission from './thisSubmission.reducer';
+import submissionStreak from './streak.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   thisInstructor, // specific clicked-on instructor for detail view
   pairedLearners, // all learners paired with logged-in instructor
   thisSubmission, // specific submission selected by instructor to review
+  submissionStreak, // number of consecutive days logged-in learner has submitted challenge
 });
 
 export default rootReducer;

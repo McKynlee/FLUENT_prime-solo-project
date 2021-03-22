@@ -108,6 +108,43 @@ router.get('/this/:submissionId', (req, res) => {
     })
 }); // end get THIS submission
 
+
+// GET learner's streak of consecutive-days of submissions:
+router.get('/streak/:learnerId', (req, res) => {
+  const learnerId = req.params.learnerId;
+  console.log('streak learnerId:', learnerId);
+
+  const sqlQuery = ` WITH "submission_dates" AS (
+    SELECT DISTINCT "time_stamp"::date "created_date"
+    FROM "learner_submissions"
+    WHERE "learner_id" = $1
+    ),
+    "submission_date_groups" AS (
+    SELECT
+      row_number() OVER (ORDER BY "created_date"),
+      "created_date",
+      "created_date"::DATE - CAST(row_number() OVER (ORDER BY "created_date") as INT) AS "grp"
+    FROM "submission_dates"
+      )
+    SELECT
+      max("created_date") - min("created_date") + 1 AS "length" 
+     FROM "submission_date_groups"
+     GROUP BY "grp"
+     ORDER BY "length" DESC
+     LIMIT 1;`
+
+  pool.query(sqlQuery, [learnerId])
+    .then(dbRes => {
+      console.log('streak dbRes.rows:', dbRes.rows);
+      res.send(dbRes.rows[0])
+    })
+    .catch(err => {
+      console.log('ERROR getting challenge streak:', err);
+      res.sendStatus(500);
+    })
+})
+
+
 // Create new submission:
 router.post('/', (req, res) => {
   // console.log('submission req.body:', req.body);
@@ -157,6 +194,7 @@ router.post('/feedback', (req, res) => {
     })
 }); // end Create new feedback
 
+
 // Add 5 to moneda count each time a learner submits a challenge:
 router.put('/monedas/:userId', (req, res) => {
   const userId = req.params.userId;
@@ -192,6 +230,8 @@ router.put('/monedas/:userId', (req, res) => {
     })
 }); // end add monedas with each submission
 
+
+// Delete specific instructor feedback by feedback ID
 router.delete('/delete/:feedbackId', (req, res) => {
   const feedbackId = req.params.feedbackId;
   console.log('Delete this feedback id:', feedbackId);

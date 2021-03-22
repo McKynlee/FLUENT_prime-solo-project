@@ -22,6 +22,13 @@ function* fetchLearner(action) {
       payload: allLearnerInfo.instructor_id
     })
 
+    // Pass learner id to challenge saga to fetch
+    // streak of how many consecutive submission days learner has:
+    yield put({
+      type: 'FETCH_SUBMISSION_STREAK',
+      payload: allLearnerInfo.id
+    })
+
     // Send retrieved data to reducer:
     yield put({ type: 'SET_LEARNER', payload: allLearnerInfo });
   } catch (error) {
