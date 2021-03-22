@@ -47,9 +47,9 @@ function InstructorGiveFeedback() {
   const [wordSentence, setWordSentence] = useState('');
   const [answerToQ, setAnswerToQ] = useState('');
 
-  // console.log('picDescription:', picDescription);
-  // console.log('wordSentence:', wordSentence);
-  // console.log('answerToQ:', answerToQ);
+  console.log('picDescription:', picDescription);
+  console.log('wordSentence:', wordSentence);
+  console.log('answerToQ:', answerToQ);
 
   /////// HANDLE SUBMIT FEEDBACK ////////
   // on Click of 'Submit Feedback', pair instructor feedback
@@ -155,18 +155,16 @@ function InstructorGiveFeedback() {
               <td>
                 Your Feedback:
               </td>
-              <td><textarea value={picDescription} placeholder={submissionDetails.picture_description}
+              <td><textarea value={picDescription}
                 onChange={(event) => setPicDescription(event.target.value)}
               ></textarea></td>
               <td>
                 <textarea value={wordSentence}
-                  placeholder={submissionDetails.word_sentence}
                   onChange={(event) => setWordSentence(event.target.value)}>
                 </textarea>
               </td>
               <td>
                 <textarea value={answerToQ}
-                  placeholder={submissionDetails.q_for_instructor}
                   onChange={(event) => setAnswerToQ(event.target.value)}
                 >
                 </textarea>
