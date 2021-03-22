@@ -57,10 +57,10 @@ function InstructorGiveFeedback() {
   const onSubmitFeedback = () => {
     console.log(':',);
 
-    // Update this submission info with instructor's feedback:
-    // submissionDetails.instructor_pic_response = ;
-    // submissionDetails.instructor_q_response = ;
-    // submissionDetails.instructor_word_response = ;
+    // Update this submission info with instructor's inputs:
+    submissionDetails.instructor_pic_response = picDescription;
+    submissionDetails.instructor_q_response = answerToQ;
+    submissionDetails.instructor_word_response = wordSentence;
 
 
     // Alert instructor to confirm that they are ready to share feedback with learner:
@@ -72,7 +72,7 @@ function InstructorGiveFeedback() {
       .then((submit) => {
         if (submit) {
           // Now that info is complete, send feedback to db:
-          submitFeedback(submissionDetails);
+          saveFeedback(submissionDetails);
 
           swal("Your feedback has been shared!", {
             icon: "success",
@@ -81,6 +81,33 @@ function InstructorGiveFeedback() {
       });
   }; //end onSubmitFeedback
 
+  const saveFeedback = (feedback) => {
+    dispatch({
+      type: 'CREATE_FEEDBACK',
+      payload: feedback,
+    });
+
+    // and navigate to Learner Profile page:
+    history.push('/instructor/review');
+  }
+
+  // Go back to full list of available instructors
+  const onCancel = () => {
+
+    // Alert instructor to confirm that they are ready to share feedback with learner:
+    swal({
+      title: 'Lose your feedback and go back?',
+      text: "This will delete any edits you made.",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((cancel) => {
+        if (cancel) {
+          history.push('/instructor/review');
+        }
+      });
+  }
 
   //////////////////// RENDER JSX ////////////////////////
   return (
@@ -128,11 +155,22 @@ function InstructorGiveFeedback() {
               <td>
                 Your Feedback:
               </td>
-              <td><textarea value={submissionDetails.picture_description}
+              <td><textarea value={picDescription} placeholder={submissionDetails.picture_description}
                 onChange={(event) => setPicDescription(event.target.value)}
               ></textarea></td>
-              <td><textarea value={submissionDetails.word_sentence}></textarea></td>
-              <td><textarea value={submissionDetails.q_for_instructor}></textarea></td>
+              <td>
+                <textarea value={wordSentence}
+                  placeholder={submissionDetails.word_sentence}
+                  onChange={(event) => setWordSentence(event.target.value)}>
+                </textarea>
+              </td>
+              <td>
+                <textarea value={answerToQ}
+                  placeholder={submissionDetails.q_for_instructor}
+                  onChange={(event) => setAnswerToQ(event.target.value)}
+                >
+                </textarea>
+              </td>
               <td>
                 <button>
                   Submit Feedback
@@ -143,6 +181,9 @@ function InstructorGiveFeedback() {
           </tbody>
         </table>
       </form>
+      <button onClick={onCancel}>
+        Go Back
+      </button>
     </div>
   )
 }
