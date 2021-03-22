@@ -2,7 +2,7 @@
 // so the instructor may leave corresponding feedback
 // path: '/instructor/feedback'
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
@@ -28,11 +28,11 @@ function InstructorGiveFeedback() {
 
   // Bring in specific submission details from reducer:
   const submissionDetails = useSelector(store => store.thisSubmission);
-  console.log('submission details:', submissionDetails);
+  // console.log('submission details:', submissionDetails);
 
 
   /////// BRING IN ALREADY-STORED REDUCER DATA ////////
-  // Bring in logged in user's data:
+  // Bring in logged-in user's data:
   const user = useSelector((store) => store.user);
   console.log('give feedback "user":', user);
   const userId = user.id;
@@ -41,54 +41,51 @@ function InstructorGiveFeedback() {
   const thisInstructor = useSelector((store) => store.thisInstructor);
   console.log('instructorId give feedback:', thisInstructor);
 
-  // Bring in paired learners:  
-  const learnerList = useSelector((store) => store.pairedLearners);
-  console.log('learnerList:', learnerList);
 
+  /////// CREATE VARIABLE TO HOLD INPUT DATA ////////
+  const [picDescription, setPicDescription] = useState('');
+  const [wordSentence, setWordSentence] = useState('');
+  const [answerToQ, setAnswerToQ] = useState('');
 
+  console.log('picDescription:', picDescription);
+  console.log('wordSentence:', wordSentence);
+  console.log('answerToQ:', answerToQ);
 
-
+  /////// HANDLE SUBMIT FEEDBACK ////////
   // on Click of 'Submit Feedback', pair instructor feedback
   // with learner submission
   const onSubmitFeedback = () => {
     console.log(':',);
 
     // Update this submission info with instructor's feedback:
-    // thisSubmission.instructor_pic_response = ;
-    // thisSubmission.instructor_q_response = ;
-    // thisSubmission.instructor_word_response = ;
+    // submissionDetails.instructor_pic_response = ;
+    // submissionDetails.instructor_q_response = ;
+    // submissionDetails.instructor_word_response = ;
 
 
-    // Alert learner to confirm that this is their instructor choice:
+    // Alert instructor to confirm that they are ready to share feedback with learner:
     swal({
-      title: `Pair with ${selectedInstructor.first_name}?`,
-      text: "This will finalize your registration.",
+      title: `Submit feedback?`,
+      text: "This will share your feedback with the learner.",
       buttons: true,
     })
-      .then((register) => {
-        if (register) {
-          // Now that info is complete, Register learner in db:
-          registerUser(learnerInfo);
+      .then((submit) => {
+        if (submit) {
+          // Now that info is complete, send feedback to db:
+          submitFeedback(submissionDetails);
 
-          swal("You're all set- Welcome to F.L.U.E.N.T.!", {
+          swal("Your feedback has been shared!", {
             icon: "success",
           });
         }
       });
-  }
-
-
-  //////////////////// RENDER JSX ////////////////////////
-
-  // Bring in submission info:
-  const submissionList = useSelector((store) => store.submissions);
-  console.log('submissions:', submissionList);
+  }; //end onSubmitFeedback
 
 
   //////////////////// RENDER JSX ////////////////////////
   return (
     <div>
-      <h1>Instructor Review Submissions</h1>
+      <h1>Give Feedback to your Learner</h1>
       <form onSubmit={onSubmitFeedback}>
         <table className="instructor-review-table">
           <thead>
@@ -117,31 +114,29 @@ function InstructorGiveFeedback() {
               <td>
                 LearnerName's response:
                   </td>
-              {/* <td rowspan="2">
-                    <img src={submission.picture_url}
-                      alt="randomly-generated photo for learner challenge" />
-                  </td>
-                  <td><input value={thisSubmission.picture_description} /></td>
-                  <td>{submission.word}</td>
-                  <td>{submission.word_sentence}</td>
-                  <td>{submission.q_for_instructor}</td> */}
-              <td>
+              <td rowspan="2">
+                <img src={submissionDetails.picture_url}
+                  alt="randomly-generated photo for learner challenge" />
               </td>
+              <td>{submissionDetails.picture_description}</td>
+              <td rowspan="2">{submissionDetails.word}</td>
+              <td>{submissionDetails.word_sentence}</td>
+              <td>{submissionDetails.q_for_instructor}</td>
+              <td></td>
             </tr>
             <tr className="instructor-table-feedback-row">
               <td>
                 Your Feedback:
-                  </td>
-
-              {/* <td>{submission.instructor_picture_response}</td>
-                  <td></td>
-                  <td>{submission.instructor_word_response}</td>
-                  <td>{submission.instructor_q_response}</td>
-                  <td></td> */}
+              </td>
+              <td><textarea value={submissionDetails.picture_description}
+                onChange={(event) => setPicDescription(event.target.value)}
+              ></textarea></td>
+              <td><textarea value={submissionDetails.word_sentence}></textarea></td>
+              <td><textarea value={submissionDetails.q_for_instructor}></textarea></td>
               <td>
                 <button>
                   Submit Feedback
-                    </button>
+                </button>
               </td>
             </tr>
 
