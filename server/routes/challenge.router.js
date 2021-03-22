@@ -41,7 +41,7 @@ router.get('/instructor/:userId', (req, res) => {
   // console.log('userId:', userId);
 
   const sqlQuery = `SELECT "learner_submissions".id as "submission_id", 
-  "learner_submissions".learner_id, "users".id as "learners_userId",
+  "learner_submissions".learner_id, "users".id as "instructors_userId",
   "users".first_name as "instructor_firstName",
   "users".last_name as "instructor_lastName", 
   "learner_submissions".picture_url, 
@@ -192,6 +192,22 @@ router.put('/monedas/:userId', (req, res) => {
     })
 }); // end add monedas with each submission
 
+router.delete('/delete/:feedbackId', (req, res) => {
+  const feedbackId = req.params.feedbackId;
+  console.log('Delete this feedback id:', feedbackId);
 
+  const sqlQuery = `DELETE FROM "instructor_feedback" 
+  WHERE "id"= $1;`
+
+  pool.query(sqlQuery, [feedbackId])
+    .then(dbRes => {
+      console.log('Feedback deleted');
+      res.sendStatus(200);
+    })
+    .catch(err => {
+      console.log('ERROR deleting feedback:', err);
+      res.sendStatus(500);
+    })
+}); // end delete feedback
 
 module.exports = router;

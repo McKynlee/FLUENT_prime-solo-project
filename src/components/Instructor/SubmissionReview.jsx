@@ -49,6 +49,23 @@ function InstructorReviewSubmissions() {
     history.push(`/instructor/feedback/${submissionId}`)
   }
 
+  ////////////// HANDLE 'GIVE FEEDBACK' CLICK ///////////////////
+  const deleteFeedback = (submission) => {
+    const feedbackId = submission.feedback_id
+    console.log('deleteFeedback:', feedbackId);
+
+    const instructorUserId = submission.instructors_userId
+    console.log('instructorUserId:', instructorUserId);
+
+    dispatch({
+      type: 'DELETE_FEEDBACK',
+      payload: {
+        feedbackId,
+        instructorUserId
+      }
+    })
+  } // end deleteFeedback
+
 
   //////////////////// RENDER JSX ////////////////////////
   return (
@@ -86,7 +103,7 @@ function InstructorReviewSubmissions() {
             </button>;
             if (submission.feedback_id) {
               existingFeedback = <button className="delete-btn"
-                onClick={() => deleteFeedback(feedback)}>
+                onClick={() => deleteFeedback(submission)}>
                 DELETE
                 </button>
             }
