@@ -24,6 +24,7 @@ import SubmissionSuccess from '../Learner/SubmissionSuccess';
 import InstructorProfile from '../Instructor/InstructorProfilePage';
 import InstructorSubmissionReview from '../Instructor/SubmissionReview';
 import InstructorGiveFeedback from '../Instructor/GiveFeedback';
+import EditLearnerProfile from '../Learner/EditLearnerProfile';
 
 import './App.css';
 
@@ -187,6 +188,11 @@ function App() {
             <SelectInstructorDetails />
           </Route>
 
+          <Route exact
+            path="/learner/edit"
+          >
+            <EditLearnerProfile />
+          </Route>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>
