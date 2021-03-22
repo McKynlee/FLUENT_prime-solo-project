@@ -87,7 +87,7 @@ function InstructorGiveFeedback() {
       payload: feedback,
     });
 
-    // and navigate to Learner Profile page:
+    // and navigate to Instructor's review page:
     history.push('/instructor/review');
   }
 

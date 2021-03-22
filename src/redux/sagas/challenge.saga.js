@@ -72,6 +72,27 @@ function* createSubmission(action) {
   }
 } //end createSubmission
 
+function* createFeedback(action) {
+  console.log('createSubmission action:', action);
+
+  const instructorFeedbackInputs = action.payload;
+
+  try {
+    // 'response' is variable to hold data once retrieved from server:
+    yield axios.post('/api/challenge/feedback', instructorFeedbackInputs);
+
+    const instructorUserId = instructorFeedbackInputs.learners_userId;
+
+    // Update submissions reducer since we've added feedback:
+    yield put({
+      type: 'FETCH_INSTRUCTOR_SUBMISSIONS',
+      payload: instructorId
+    });
+
+  } catch (error) {
+    console.log('Feedback submission POST failed', error);
+  }
+} // end createFeedback
 
 function* fetchThisSubmission(action) {
   // console.log('fetchThisSubmission action:', action);
@@ -100,6 +121,7 @@ function* challengeSaga() {
   yield takeLatest('CREATE_SUBMISSION', createSubmission);
   yield takeLatest('FETCH_INSTRUCTOR_SUBMISSIONS', fetchInstructorSubmissions);
   yield takeLatest('FETCH_THIS_SUBMISSION', fetchThisSubmission);
+  yield takeLatest('CREATE_FEEDBACK', createFeedback)
 }
 
 export default challengeSaga;
