@@ -63,10 +63,6 @@ function LearnerProfile() {
         <p>A little about {pairedInstructor.first_name}: {pairedInstructor.bio}</p>
         <img src={pairedInstructor.avatar} alt={pairedInstructor.first_name} />
         <p>Language taught: {pairedInstructor.languages_taught}</p>
-
-        {/* <button onClick={changeInstructor}>
-          Change Instructor
-        </button> */}
       </div>
 
       <LogOutButton className="btn" />
