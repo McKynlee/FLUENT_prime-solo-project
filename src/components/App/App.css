@@ -159,3 +159,12 @@ InstructorProfilePage.jsx
   background-color: #008183;
   color: whitesmoke;
 }
+
+/* -----------------------------------------------
+Instructor GiveFeedback.jsx
+-------------------------------------------------- */
+
+.delete-btn{
+background-color: red;
+color: whitesmoke;
+}
