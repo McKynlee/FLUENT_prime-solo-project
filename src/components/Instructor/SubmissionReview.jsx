@@ -5,9 +5,11 @@
 import React, { useEffect } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function InstructorReviewSubmissions() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
 
   /////// BRING IN ALREADY-STORED REDUCER DATA ////////
@@ -40,9 +42,29 @@ function InstructorReviewSubmissions() {
 
   ////////////// HANDLE 'GIVE FEEDBACK' CLICK ///////////////////
   // When instructor selects 'Give Feedback' button, open submission detail view
-  const giveFeedback = () => {
-    console.log('giveFeedback');
+  const giveFeedback = (submissionId) => {
+    console.log('submissionId:', submissionId);
+
+    // navigate to Give Feedback view passing submission id as param:
+    history.push(`/instructor/feedback/${submissionId}`)
   }
+
+  ////////////// HANDLE 'GIVE FEEDBACK' CLICK ///////////////////
+  const deleteFeedback = (submission) => {
+    const feedbackId = submission.feedback_id
+    console.log('deleteFeedback:', feedbackId);
+
+    const instructorUserId = submission.instructors_userId
+    console.log('instructorUserId:', instructorUserId);
+
+    dispatch({
+      type: 'DELETE_FEEDBACK',
+      payload: {
+        feedbackId,
+        instructorUserId
+      }
+    })
+  } // end deleteFeedback
 
 
   //////////////////// RENDER JSX ////////////////////////
@@ -73,12 +95,28 @@ function InstructorReviewSubmissions() {
         </thead>
         <tbody>
           {submissionList.map((submission, i) => {
+            // Render a delete button at end of row if feedback
+            // already exists
+            let existingFeedback = <button
+              onClick={() => giveFeedback(submission.submission_id)}>
+              Give Feedback
+            </button>;
+            if (submission.feedback_id) {
+              existingFeedback = <button className="delete-btn"
+                onClick={() => deleteFeedback(submission)}>
+                DELETE
+                </button>
+            }
+
+            // Render learner's name next to submission row:
             let correspondingPairedLearner;
             for (let learner of learnerList) {
               if (learner.learner_id === submission.learner_id) {
                 correspondingPairedLearner = learner.first_name;
               }
             }
+
+
 
             return (
               <>
@@ -91,25 +129,20 @@ function InstructorReviewSubmissions() {
                       alt="randomly-generated photo for learner challenge" />
                   </td>
                   <td>{submission.picture_description}</td>
-                  <td>{submission.word}</td>
+                  <td rowspan="2">{submission.word}</td>
                   <td>{submission.word_sentence}</td>
                   <td>{submission.q_for_instructor}</td>
-                  <td>
-                    <button onClick={giveFeedback}>
-                      Give Feedback
-                    </button>
-                  </td>
+                  <td></td>
                 </tr>
                 <tr className="instructor-table-feedback-row">
                   <td>
                     Your Feedback:
                   </td>
 
-                  <td>{submission.instructor_picture_response}</td>
-                  <td></td>
+                  <td>{submission.instructor_pic_response}</td>
                   <td>{submission.instructor_word_response}</td>
                   <td>{submission.instructor_q_response}</td>
-                  <td></td>
+                  <td>{existingFeedback}</td>
                 </tr>
               </>
             );

@@ -143,7 +143,8 @@ LearnerProfilePage.jsx
 }
 
 .learner-table-feedback-row {
-  color: red;
+  color: whitesmoke;
+  background-color: teal;
 }
 
 /* -----------------------------------------------
@@ -158,4 +159,13 @@ InstructorProfilePage.jsx
 .instructor-table-feedback-row {
   background-color: #008183;
   color: whitesmoke;
+}
+
+/* -----------------------------------------------
+Instructor GiveFeedback.jsx
+-------------------------------------------------- */
+
+.delete-btn{
+background-color: red;
+color: whitesmoke;
 }
