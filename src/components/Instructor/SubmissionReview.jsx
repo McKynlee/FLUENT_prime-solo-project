@@ -168,7 +168,7 @@ function InstructorReviewSubmissions() {
                   <td>
                     Your Feedback:
                   </td>
-
+                  <td></td>
                   <td>{submission.instructor_pic_response}</td>
                   <td>{submission.instructor_word_response}</td>
                   <td>{submission.instructor_q_response}</td>
