@@ -78,12 +78,28 @@ function InstructorReviewSubmissions() {
         </thead>
         <tbody>
           {submissionList.map((submission, i) => {
+            // Render a delete button at end of row if feedback
+            // already exists
+            let existingFeedback = <button
+              onClick={() => giveFeedback(submission.submission_id)}>
+              Give Feedback
+            </button>;
+            if (submission.feedback_id) {
+              existingFeedback = <button className="delete-btn"
+                onClick={() => deleteFeedback(feedback)}>
+                DELETE
+                </button>
+            }
+
+            // Render learner's name next to submission row:
             let correspondingPairedLearner;
             for (let learner of learnerList) {
               if (learner.learner_id === submission.learner_id) {
                 correspondingPairedLearner = learner.first_name;
               }
             }
+
+
 
             return (
               <>
@@ -99,11 +115,7 @@ function InstructorReviewSubmissions() {
                   <td rowspan="2">{submission.word}</td>
                   <td>{submission.word_sentence}</td>
                   <td>{submission.q_for_instructor}</td>
-                  <td>
-                    <button onClick={() => giveFeedback(submission.submission_id)}>
-                      Give Feedback
-                    </button>
-                  </td>
+                  <td></td>
                 </tr>
                 <tr className="instructor-table-feedback-row">
                   <td>
@@ -113,7 +125,7 @@ function InstructorReviewSubmissions() {
                   <td>{submission.instructor_pic_response}</td>
                   <td>{submission.instructor_word_response}</td>
                   <td>{submission.instructor_q_response}</td>
-                  <td></td>
+                  <td>{existingFeedback}</td>
                 </tr>
               </>
             );
