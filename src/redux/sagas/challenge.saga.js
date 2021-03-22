@@ -82,6 +82,7 @@ function* createFeedback(action) {
     yield axios.post('/api/challenge/feedback', instructorFeedbackInputs);
 
     const instructorUserId = instructorFeedbackInputs.instructors_userId;
+    console.log('instructorUserId:', instructorUserId);
 
     // Update submissions reducer since we've added feedback:
     yield put({

@@ -37,8 +37,8 @@ router.get('/learner/:userId', (req, res) => {
 
 // Select all submissions sent to a specific instructor
 router.get('/instructor/:userId', (req, res) => {
-  const userId = req.params.userId;
-  // console.log('userId:', userId);
+  const userId = Number(req.params.userId);
+  console.log('userId:', userId);
 
   const sqlQuery = `SELECT "learner_submissions".id as "submission_id", 
   "learner_submissions".learner_id, "users".id as "instructors_userId",
@@ -74,11 +74,11 @@ router.get('/instructor/:userId', (req, res) => {
 
 // get specific submission for detail view:
 router.get('/this/:submissionId', (req, res) => {
-  const submissionId = req.params.submissionId;
+  const submissionId = Number(req.params.submissionId);
   console.log('submissionId:', submissionId);
 
   const sqlQuery = `SELECT "learner_submissions".id as "submission_id", 
-  "learner_submissions".learner_id, "users".id as "learners_userId",
+  "learner_submissions".learner_id, "users".id as "instructors_userId",
   "learner_submissions".picture_url, 
   "learner_submissions".picture_description, "learner_submissions".word, 
   "learner_submissions".word_sentence, "learner_submissions".q_for_instructor, 
