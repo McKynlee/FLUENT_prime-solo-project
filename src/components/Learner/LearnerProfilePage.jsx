@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 function LearnerProfile() {
   const dispatch = useDispatch();
 
+  ////////////////// BRING IN REDUCER DATA ////////////////////
   // Bring in learner's user data:
   const user = useSelector((store) => store.user);
   // console.log('learner profile user:', user);
@@ -19,17 +20,28 @@ function LearnerProfile() {
   const pairedInstructor = useSelector((store) => store.pairedInstructor);
   console.log('pairedInstructor:', pairedInstructor);
 
-  // Control grammar depending on number of monedas:
+  // Bring in submission streak data 
+  // (consecutive days this learner has submitted a challenge)
+  const submissionStreak = useSelector((store) => store.submissionStreak);
+  console.log('submissionStreak on learner profile:', submissionStreak);
+
+
+  ///////////////// CONDITIONAL RENDERING /////////////////////
+  // Control grammar depending on number of monedas learner has:
   let monedaLanguage = 'monedas';
   if (learner.moneda_count === 1) {
     monedaLanguage = 'moneda';
   }
 
+
+  ///////////////////// HANDLE EDIT INFORMATION ///////////////////////
   // Open Edit information pop-up when Edit Your Info button clicked:
   const editLearnerInfo = () => {
     console.log('editLearnerInfo');
-  }
+  } // end editLearnerInfo
 
+
+  ///////////////////// RENDER JSX ///////////////////////
   return (
     <div className="container">
       <h1>{user.first_name}, you're on your way to being F.L.U.E.N.T!</h1>
