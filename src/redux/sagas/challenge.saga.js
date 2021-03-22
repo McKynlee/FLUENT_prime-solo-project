@@ -81,7 +81,7 @@ function* createFeedback(action) {
     // 'response' is variable to hold data once retrieved from server:
     yield axios.post('/api/challenge/feedback', instructorFeedbackInputs);
 
-    const instructorUserId = instructorFeedbackInputs.learners_userId;
+    const instructorUserId = instructorFeedbackInputs.instructors_userId;
 
     // Update submissions reducer since we've added feedback:
     yield put({
@@ -115,13 +115,32 @@ function* fetchThisSubmission(action) {
   }
 } //end thisSubmission
 
+// Delete row of feedback by id:
+function* deleteFeedback(action) {
+  const feedbackId = action.payload.feedbackId;
+  const instructorUserId = action.payload.instructorUserId;
+
+  try {
+    yield axios.delete(`/api/challenge/delete/${feedbackId}`)
+
+    // Update submissions reducer since we've deleted a feedback:
+    yield put({
+      type: 'FETCH_INSTRUCTOR_SUBMISSIONS',
+      payload: instructorUserId
+    });
+  }
+  catch (error) {
+    console.log('deleteFeedback saga failed', error);
+  }
+}
 
 function* challengeSaga() {
   yield takeLatest('FETCH_LEARNER_SUBMISSIONS', fetchLearnerSubmissions);
   yield takeLatest('CREATE_SUBMISSION', createSubmission);
   yield takeLatest('FETCH_INSTRUCTOR_SUBMISSIONS', fetchInstructorSubmissions);
   yield takeLatest('FETCH_THIS_SUBMISSION', fetchThisSubmission);
-  yield takeLatest('CREATE_FEEDBACK', createFeedback)
+  yield takeLatest('CREATE_FEEDBACK', createFeedback);
+  yield takeLatest('DELETE_FEEDBACK', deleteFeedback)
 }
 
 export default challengeSaga;
