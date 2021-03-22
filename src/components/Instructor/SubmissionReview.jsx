@@ -110,7 +110,7 @@ function InstructorReviewSubmissions() {
                     Your Feedback:
                   </td>
 
-                  <td>{submission.instructor_picture_response}</td>
+                  <td>{submission.instructor_pic_response}</td>
                   <td>{submission.instructor_word_response}</td>
                   <td>{submission.instructor_q_response}</td>
                   <td></td>
