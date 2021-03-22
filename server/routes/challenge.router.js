@@ -7,6 +7,7 @@ router.get('/learner/:userId', (req, res) => {
   const userId = req.params.userId;
 
   const sqlQuery = `SELECT "learner_submissions".id as "submission_id", 
+  "learner_submissions".time_stamp::date as "date_submitted",
   "learner_submissions".learner_id, "users".first_name, "users".last_name, 
   "learner_submissions".picture_url, 
   "learner_submissions".picture_description, "learner_submissions".word, 
@@ -42,6 +43,10 @@ router.get('/instructor/:userId', (req, res) => {
   console.log('userId:', userId);
 
   const sqlQuery = `SELECT "learner_submissions".id as "submission_id", 
+  extract(DAY FROM "learner_submissions".time_stamp) as "day", 
+  extract(MONTH FROM "learner_submissions".time_stamp) as "month", 
+  extract(YEAR FROM "learner_submissions".time_stamp) as "year", 
+  extract(DOW FROM "learner_submissions".time_stamp) as "DOW",
   "learner_submissions".learner_id, "users".id as "instructors_userId",
   "users".first_name as "instructor_firstName",
   "users".last_name as "instructor_lastName", 
