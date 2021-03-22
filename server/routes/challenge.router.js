@@ -23,7 +23,8 @@ router.get('/learner/:userId', (req, res) => {
   JOIN "instructors" ON "learners".instructor_id = "instructors".id
   FULL OUTER JOIN "instructor_feedback" ON 
   "learner_submissions".id = "instructor_feedback".submission_id
-  WHERE "users".id = $1;`;
+  WHERE "users".id = $1
+  ORDER BY "learner_submissions".time_stamp;`;
 
   pool.query(sqlQuery, [userId])
     .then(dbRes => {
@@ -60,7 +61,8 @@ router.get('/instructor/:userId', (req, res) => {
   JOIN "users" ON "users".id = "instructors".user_id
   FULL OUTER JOIN "instructor_feedback" ON 
   "learner_submissions".id = "instructor_feedback".submission_id
-  WHERE "users".id = $1;`;
+  WHERE "users".id = $1
+  ORDER BY "learner_submissions".time_stamp;`;
 
   pool.query(sqlQuery, [userId])
     .then(dbRes => {
