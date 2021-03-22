@@ -17,7 +17,7 @@ router.get('/all/:id', (req, res) => {
   FULL OUTER JOIN "learners" ON "instructors".id = "learners".instructor_id
   JOIN "pronouns" ON "users".pronouns_id = "pronouns".id
   JOIN "languages" ON "users".language_id = "languages".id
-  WHERE "instructors".id = $1
+  WHERE "languages".id = $1
   GROUP BY "instructors".id, "users".first_name, "users".last_name, "pronouns".pronoun, "languages".name`;
 
   pool.query(sqlQuery, [instructorLanguageId])
@@ -80,7 +80,7 @@ router.get('/profile/:id', (req, res) => {
 
   pool.query(sqlQuery, [userId])
     .then(dbRes => {
-      res.send(dbRes.rows)
+      res.send(dbRes.rows[0])
     })
     .catch(err => {
       console.log('error GETting instructor detail view:', err);
