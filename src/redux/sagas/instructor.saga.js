@@ -58,7 +58,7 @@ function* fetchThisInstructor(action) {
     })
 
     // Send retrieved data to reducer:
-    yield put({ type: 'SET_THIS_INSTRUCTOR', payload: response.data[0] });
+    yield put({ type: 'SET_THIS_INSTRUCTOR', payload: thisInstructorInfo });
   } catch (error) {
     console.log('thisInstructor get request failed', error);
   }
@@ -67,7 +67,7 @@ function* fetchThisInstructor(action) {
 function* instructorSaga() {
   yield takeLatest('FETCH_INSTRUCTORS', fetchInstructors);
   yield takeLatest('FETCH_PAIRED_INSTRUCTOR', fetchPairedInstructor);
-  yield takeLatest('FETCH_THIS_INSTRUCTOR', fetchThisInstructor)
+  yield takeLatest('FETCH_THIS_INSTRUCTOR', fetchThisInstructor);
 }
 
 export default instructorSaga;

@@ -11,6 +11,7 @@ import photo from './photo.reducer';
 import submissions from './challenge.reducer';
 import thisInstructor from './thisInstructor.reducer';
 import pairedLearners from './pairedLearner.reducer';
+import thisSubmission from './thisSubmission.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   submissions,
   thisInstructor, // specific clicked-on instructor for detail view
   pairedLearners, // all learners paired with logged-in instructor
+  thisSubmission, // specific submission selected by instructor to review
 });
 
 export default rootReducer;

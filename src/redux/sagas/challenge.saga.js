@@ -73,10 +73,33 @@ function* createSubmission(action) {
 } //end createSubmission
 
 
+function* fetchThisSubmission(action) {
+  // console.log('fetchThisSubmission action:', action);
+
+  const submissionId = Number(action.payload);
+  console.log('Saga submissionId:', submissionId);
+
+  try {
+
+    // 'response' is variable to hold this submission data once retrieved from server:
+    const response = yield axios.get(`/api/challenge/this/${submissionId}`);
+    console.log('thisSubmission response:', response.data[0]);
+
+    const thisSubmissionInfo = response.data[0];
+
+    // Send retrieved data to reducer:
+    yield put({ type: 'SET_THIS_SUBMISSION', payload: thisSubmissionInfo });
+  } catch (error) {
+    console.log('thisSubmission get request failed', error);
+  }
+} //end thisSubmission
+
+
 function* challengeSaga() {
   yield takeLatest('FETCH_LEARNER_SUBMISSIONS', fetchLearnerSubmissions);
   yield takeLatest('CREATE_SUBMISSION', createSubmission);
-  yield takeLatest('FETCH_INSTRUCTOR_SUBMISSIONS', fetchInstructorSubmissions)
+  yield takeLatest('FETCH_INSTRUCTOR_SUBMISSIONS', fetchInstructorSubmissions);
+  yield takeLatest('FETCH_THIS_SUBMISSION', fetchThisSubmission);
 }
 
 export default challengeSaga;

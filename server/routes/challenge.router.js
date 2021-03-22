@@ -35,7 +35,7 @@ router.get('/learner/:userId', (req, res) => {
     })
 });
 
-// Select all submission sent to a specific instructor
+// Select all submissions sent to a specific instructor
 router.get('/instructor/:userId', (req, res) => {
   const userId = req.params.userId;
   // console.log('userId:', userId);
@@ -129,6 +129,42 @@ router.put('/monedas/:userId', (req, res) => {
       console.log('error updating monedas:', error);
       res.sendStatus(501);
     })
-})
+}); // end add monedas with each submission
+
+// get specific submission for detail view:
+router.get('/this/:submissionId', (req, res) => {
+  const submissionId = req.params.submissionId;
+  console.log('submissionId:', submissionId);
+
+  const sqlQuery = `SELECT "learner_submissions".id as "submission_id", 
+  "learner_submissions".learner_id, "users".id as "learners_userId",
+  "learner_submissions".picture_url, 
+  "learner_submissions".picture_description, "learner_submissions".word, 
+  "learner_submissions".word_sentence, "learner_submissions".q_for_instructor, 
+  "learner_submissions".time_stamp as "learner_time_stamp", 
+  "instructor_feedback".id as "feedback_id", 
+  "instructor_feedback".picture_description as "instructor_pic_response", 
+  "instructor_feedback".word_sentence as "instructor_word_response", 
+  "instructor_feedback".q_for_instructor as "instructor_q_response", 
+  "instructor_feedback".time_stamp as "instructor_time_stamp", 
+  "instructors".id as "instructor_id"
+  FROM "learner_submissions"
+  JOIN "learners" ON "learners".id = "learner_submissions".learner_id
+  JOIN "instructors" ON "learners".instructor_id = "instructors".id
+  JOIN "users" ON "users".id = "instructors".user_id
+  FULL OUTER JOIN "instructor_feedback" ON 
+  "learner_submissions".id = "instructor_feedback".submission_id
+  WHERE "learner_submissions".id = $1;`;
+
+  pool.query(sqlQuery, [submissionId])
+    .then(dbRes => {
+      console.log('thisSubmission dbRes.rows:', dbRes.rows);
+      res.send(dbRes.rows)
+    })
+    .catch(err => {
+      console.log('ERROR GETting specific submission:', err);
+      res.sendStatus(500);
+    })
+}); // end get THIS submission
 
 module.exports = router;

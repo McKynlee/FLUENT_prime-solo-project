@@ -27,8 +27,8 @@ function InstructorGiveFeedback() {
   }, [])
 
   // Bring in specific submission details from reducer:
-  // const submissionDetails = useSelector(store => store.thisSubmission);
-  // console.log('submission details:', submissionDetails);
+  const submissionDetails = useSelector(store => store.thisSubmission);
+  console.log('submission details:', submissionDetails);
 
 
   /////// BRING IN ALREADY-STORED REDUCER DATA ////////
