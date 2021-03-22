@@ -86,7 +86,7 @@ function* createFeedback(action) {
     // Update submissions reducer since we've added feedback:
     yield put({
       type: 'FETCH_INSTRUCTOR_SUBMISSIONS',
-      payload: instructorId
+      payload: instructorUserId
     });
 
   } catch (error) {
