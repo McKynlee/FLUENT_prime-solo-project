@@ -65,7 +65,7 @@ function LearnerReviewFeedback() {
                   <td>
                     Your response:
                   </td>
-                  <td><img src={submission.picture_url} /></td>
+                  <td rowspan="2"><img src={submission.picture_url} /></td>
                   <td>{submission.picture_description}</td>
                   <td rowspan="2">{submission.word}</td>
                   <td>{submission.word_sentence}</td>
@@ -75,8 +75,7 @@ function LearnerReviewFeedback() {
                   <td>
                     Instructor's Feedback:
                   </td>
-                  <td></td>
-                  <td>{submission.instructor_picture_response}</td>
+                  <td>{submission.instructor_pic_response}</td>
                   <td>{submission.instructor_word_response}</td>
                   <td>{submission.instructor_q_response}</td>
                 </tr>

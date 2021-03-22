@@ -47,9 +47,9 @@ function InstructorGiveFeedback() {
   const [wordSentence, setWordSentence] = useState('');
   const [answerToQ, setAnswerToQ] = useState('');
 
-  console.log('picDescription:', picDescription);
-  console.log('wordSentence:', wordSentence);
-  console.log('answerToQ:', answerToQ);
+  // console.log('picDescription:', picDescription);
+  // console.log('wordSentence:', wordSentence);
+  // console.log('answerToQ:', answerToQ);
 
   /////// HANDLE SUBMIT FEEDBACK ////////
   // on Click of 'Submit Feedback', pair instructor feedback
