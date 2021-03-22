@@ -41,6 +41,9 @@ function LearnerReviewFeedback() {
           <tr>
             <th></th>
             <th>
+              Date Submitted
+            </th>
+            <th>
               Given Image
             </th>
             <th>
