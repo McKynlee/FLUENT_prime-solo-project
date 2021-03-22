@@ -33,6 +33,18 @@ function LearnerProfile() {
     monedaLanguage = 'moneda';
   }
 
+  // Control grammar depending on number of days in learner's submission streak:
+  let streakDescription;
+  if (submissionStreak === 0) {
+    streakDescription = "You're at the very beginning of a new submission streak!"
+  }
+  if (submissionStreak === 1) {
+    streakDescription = "You're 1 day into your new submission streak!"
+  }
+  if (submissionStreak > 1) {
+    streakDescription = `You have a ${submissionStreak}-day submission streak - keep it up!`
+  }
+
 
   ///////////////////// HANDLE EDIT INFORMATION ///////////////////////
   // Open Edit information pop-up when Edit Your Info button clicked:
@@ -46,8 +58,7 @@ function LearnerProfile() {
     <div className="container">
       <h1>{user.first_name}, you're on your way to being F.L.U.E.N.T!</h1>
       <p>
-        Placeholder for calculating learner submission streak
-        once submissions are saving in db
+        {streakDescription}
       </p>
       <div className='learner-profile-moneda'>
         You have {learner.moneda_count} {monedaLanguage}!
