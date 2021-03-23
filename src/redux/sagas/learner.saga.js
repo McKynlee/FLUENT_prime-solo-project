@@ -52,9 +52,24 @@ function* fetchPairedLearners(action) {
   }
 } // end fetchPairedLearners
 
+
+function* updateLearner(action) {
+  const learnerEdits = action.payload
+  // looks like:
+  // firstName: ''
+  // lastName: ''
+  // languageSkill: # 
+  // pronoun: # 
+  // targetLanguage: # 
+  // userId: # 
+  // userType: 'learner'
+  // username: ''
+}
+
 function* learnerSaga() {
   yield takeLatest('FETCH_LEARNER', fetchLearner);
   yield takeLatest('FETCH_PAIRED_LEARNERS', fetchPairedLearners)
+  yield takeLatest('UPDATE_LEARNER', updateLearner)
 }
 
 export default learnerSaga;
