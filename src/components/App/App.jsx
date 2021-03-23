@@ -60,6 +60,11 @@ function App() {
           {/* ///////// ALL USER ROUTES ////////// */}
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
+          {/* Home landing page available to all: */}
+          <Route exact
+            path="/home">
+            <LandingPage />
+          </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
@@ -70,16 +75,6 @@ function App() {
           {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}
-          <ProtectedRoute
-            // with authRedirect:
-            // - if logged in, redirects to userTypeLink (set above)
-            // - else shows LoginPage at /login
-            exact
-            path="/login"
-            authRedirect={userTypeLink}
-          >
-            <LoginPage />
-          </ProtectedRoute>
 
           <ProtectedRoute
             // with authRedirect:
@@ -95,17 +90,17 @@ function App() {
           <ProtectedRoute
             // with authRedirect:
             // - if logged in, redirects to userTypeLink (set above)
-            // - else shows LandingPage at "/home"
+            // - else shows LoginPage at /login
             exact
-            path="/home"
+            path="/login"
             authRedirect={userTypeLink}
           >
-            <LandingPage />
+            <LoginPage />
           </ProtectedRoute>
 
 
-
           {/* ///////// LEARNER ROUTES ////////// */}
+          {/* Registration available to non-users, so not protected */}
           <Route exact
             path="/learner/registration"
           >
@@ -125,9 +120,9 @@ function App() {
           </Route>
 
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows LearnerPage else shows LoginPage
             exact
-            path='/learner'
+            path="/learner"
           >
             <LearnerProfile />
           </ProtectedRoute>
@@ -177,7 +172,7 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path='/instructor'
+            path="/instructor"
           >
             <InstructorProfile />
           </ProtectedRoute>

@@ -29,12 +29,8 @@ function Nav() {
 
   // Condition rendering nav links depending on whether instructor vs. learner:
   let userTypeLinkData = {
-    path: '/login',
+    path: '',
     text: ''
-  }
-  if (user.type === 'instructor') {
-    userTypeLinkData.path = '',
-      userTypeLinkData.text = ''
   }
   if (user.type === 'learner') {
     userTypeLinkData.path = '/challenge',
@@ -82,18 +78,19 @@ function Nav() {
   // respective profile pages if logged in:
   let loginLinkData4 = {
     path: '/home',
+    text: ''
   };
 
-  if (user.id != null) {
-    if (user.type === 'instructor') {
-      loginLinkData4.path = '/instructor';
-      loginLinkData4.text = 'Review Submissions'
-    }
-    else if (user.type === 'learner') {
-      loginLinkData4.path = '/learner';
-      loginLinkData4.text = 'Review Submissions'
-    }
+  // if (user.id != null) {
+  if (user.type === 'instructor') {
+    loginLinkData4.path = '/instructor';
+    loginLinkData4.text = 'Review Submissions'
   }
+  else if (user.type === 'learner') {
+    loginLinkData4.path = '/learner';
+    loginLinkData4.text = 'Review Submissions'
+  }
+  // }
 
   return (
     <div>
@@ -124,11 +121,9 @@ function Nav() {
             {loginLinkData4.text}
           </Link>
 
+
           {user.id && (
             <>
-              {/* <Link className="navLink" to="/home">
-                Review Submissions
-              </Link> */}
               <LogOutButton className="navLink" />
             </>
           )}
