@@ -3,9 +3,11 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function LearnerProfile() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   ////////////////// BRING IN REDUCER DATA ////////////////////
   // Bring in learner's user data:
@@ -50,6 +52,8 @@ function LearnerProfile() {
   // Open Edit information pop-up when Edit Your Info button clicked:
   const editLearnerInfo = () => {
     console.log('editLearnerInfo');
+
+    history.push('/learner/edit')
   } // end editLearnerInfo
 
 
