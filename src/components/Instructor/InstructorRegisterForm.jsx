@@ -183,7 +183,7 @@ function InstructorRegisterForm() {
       </div>
 
       <div>
-        <label htmlFor="language">
+        <label htmlFor="capacity">
           Maximum learners with whom you'd like to work:
           <select
             type="text"

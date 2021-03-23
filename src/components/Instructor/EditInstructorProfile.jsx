@@ -178,7 +178,8 @@ function EditInstructorProfile() {
       )}
       <h3>Personal Information:</h3>
       <h4>
-        We use this information to tailor your learning experience!
+        We use this information to let learners know a bit
+        about you as they select their instructor.
       </h4>
       <p><em>*Denotes a required field.</em></p>
       <div>
@@ -235,13 +236,13 @@ function EditInstructorProfile() {
 
       <div>
         <label htmlFor="language">
-          Language You Want to Learn:
+          Language you are able to teach:
           <select
             type="text"
             name="language"
-            value={targetLanguage}
+            value={knownLanguage}
             required
-            onChange={(event) => setTargetLanguage(event.target.value)}
+            onChange={(event) => setKnownLanguage(event.target.value)}
           >
             <option value=''>Choose One</option>
             {languageList.map((language) => {
@@ -258,24 +259,48 @@ function EditInstructorProfile() {
       </div>
 
       <div>
-        <label htmlFor="language">
-          Current Skill Level with your Selected Language:
+        <label htmlFor="avatar">
+          Insert an image URL that represents you:
+          <input type="text" value={avatar}
+            onChange={(event) => setAvatar(event.target.value)} />
+        </label>
+      </div>
+
+      <div>
+        <label htmlFor="bio">
+          Tell us a little about yourself:
+          <textarea value={bio}
+            onChange={(event) => setBio(event.target.value)}>
+            Bio
+          </textarea>
+        </label>
+      </div>
+
+      <div>
+        <label htmlFor="capacity">
+          Maximum learners with whom you'd like to work:
           <select
             type="text"
-            name="skill"
-            value={languageSkill}
+            name="capacity"
+            value={instructorCapacity}
             required
-            onChange={(event) => setLanguageSkill(event.target.value)}
+            onChange={(event) => setInstructorCapacity(event.target.value)}
           >
             <option value=''>Choose One</option>
-            <option value='1'>1: I know a few words.</option>
-            <option value='2'>2: I can kind of make a sentence.</option>
-            <option value='3'>3: I'm feeling strong with writing sentences.</option>
-            <option value='4'>4: I can speak some.</option>
-            <option value='5'>5: I can speak well, maybe just some grammar tweaks.</option>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+            <option value='6'>6</option>
+            <option value='7'>7</option>
+            <option value='8'>8</option>
+            <option value='9'>9</option>
+            <option value='10'>10</option>
           </select>
         </label>
       </div>
+
 
       <h3>Your Log-In Information:</h3>
       <h4>
