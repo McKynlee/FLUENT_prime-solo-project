@@ -55,7 +55,7 @@ function* fetchPairedLearners(action) {
 
 function* learnerSaga() {
   yield takeLatest('FETCH_LEARNER', fetchLearner);
-  yield takeLatest('FETCH_PAIRED_LEARNERS', fetchPairedLearners)
+  yield takeLatest('FETCH_PAIRED_LEARNERS', fetchPairedLearners);
 }
 
 export default learnerSaga;

@@ -25,6 +25,7 @@ import InstructorProfile from '../Instructor/InstructorProfilePage';
 import InstructorSubmissionReview from '../Instructor/SubmissionReview';
 import InstructorGiveFeedback from '../Instructor/GiveFeedback';
 import EditLearnerProfile from '../Learner/EditLearnerProfile';
+import EditInstructorProfile from '../Instructor/EditInstructorProfile';
 
 import './App.css';
 
@@ -41,12 +42,6 @@ function App() {
 
   let userTypeLink;
 
-  // if (user.type === 'instructor') {
-  //   userTypeLink = '/instructor';
-  // }
-  // if (user.type === 'learner') {
-  //   userTypeLink = '/learner';
-  // }
   if (user.id != null) {
     if (user.type === 'instructor') {
       userTypeLink = '/instructor'
@@ -61,6 +56,8 @@ function App() {
       <div>
         <Nav />
         <Switch>
+
+          {/* ///////// ALL USER ROUTES ////////// */}
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
 
@@ -68,54 +65,7 @@ function App() {
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LandingPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
-          <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
-            exact
-            path='/learner'
-          >
-            <LearnerProfile />
-          </ProtectedRoute>
 
-          <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
-            exact
-            path='/instructor'
-          >
-            <InstructorProfile />
-          </ProtectedRoute>
-
-
-          <ProtectedRoute
-            // logged in shows Challenge Page else shows LoginPage
-            exact
-            path="/challenge"
-          >
-            <ChallengePage />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-            // logged in shows Submission Success Page else shows LoginPage
-            exact
-            path="/success"
-          >
-            <SubmissionSuccess />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-            // logged in shows Submission Success Page else shows LoginPage
-            exact
-            path="/instructor/review"
-          >
-            <InstructorSubmissionReview />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-            // logged in shows Submission Success Page else shows LoginPage
-            exact
-            path="/instructor/feedback/:id"
-          >
-            <InstructorGiveFeedback />
-          </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
@@ -153,23 +103,9 @@ function App() {
             <LandingPage />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            // with authRedirect:
-            // - if logged in, redirects to "/learner/review"
-            // - else shows LandingPage at "/home"
-            exact
-            path="/learner/review"
-          // authRedirect="/learner/review"
-          >
-            <LearnerReviewFeedback />
-          </ProtectedRoute>
-          {/* Anyone can access registration pages: */}
-          <Route exact
-            path="/instructor/registration"
-          >
-            <InstructorRegistration />
-          </Route>
 
+
+          {/* ///////// LEARNER ROUTES ////////// */}
           <Route exact
             path="/learner/registration"
           >
@@ -188,11 +124,92 @@ function App() {
             <SelectInstructorDetails />
           </Route>
 
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path='/learner'
+          >
+            <LearnerProfile />
+          </ProtectedRoute>
+
           <Route exact
             path="/learner/edit"
           >
             <EditLearnerProfile />
           </Route>
+
+          <ProtectedRoute
+            // logged in shows Challenge Page else shows LoginPage
+            exact
+            path="/challenge"
+          >
+            <ChallengePage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows Submission Success Page else shows LoginPage
+            exact
+            path="/success"
+          >
+            <SubmissionSuccess />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // with authRedirect:
+            // - if logged in, redirects to "/learner/review"
+            // - else shows LandingPage at "/home"
+            exact
+            path="/learner/review"
+          // authRedirect="/learner/review"
+          >
+            <LearnerReviewFeedback />
+          </ProtectedRoute>
+
+
+
+          {/* ///////// INSTRUCTOR ROUTES ////////// */}
+          <Route exact
+            path="/instructor/registration"
+          >
+            <InstructorRegistration />
+          </Route>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path='/instructor'
+          >
+            <InstructorProfile />
+          </ProtectedRoute>
+
+          <Route exact
+            path="/instructor/edit"
+          >
+            <EditInstructorProfile />
+          </Route>
+
+          <ProtectedRoute
+            // logged in shows Instructor's review table of Learner submissions 
+            // else shows LoginPage
+            exact
+            path="/instructor/review"
+          >
+            <InstructorSubmissionReview />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows page for instructor to write feedback to learners 
+            // else shows LoginPage
+            exact
+            path="/instructor/feedback/:id"
+          >
+            <InstructorGiveFeedback />
+          </ProtectedRoute>
+
+
+
+
+          {/* ///////// IF NO MATCHING ROUTES ////////// */}
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>
