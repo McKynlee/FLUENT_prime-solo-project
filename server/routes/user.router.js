@@ -95,11 +95,30 @@ router.post('/logout', (req, res) => {
 });
 
 // Update user info with edits
-router.put('/:updatedUserInfo', (req, res) => {
-  const updatedUserInfo = req.params.updatedUserInfo;
-  console.log('updatedUserInfo:', updatedUserInfo);
+router.put('/:userId', (req, res) => {
+  const userId = req.params.userId;
+  // console.log('userId for put:', userId);
 
+  console.log('user put req.body:', req.body);
 
+  const username = req.body.username;
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const pronounId = req.body.pronoun;
+  const languageId = req.body.targetLanguage;
+
+  const sqlQuery = `UPDATE "users"
+  SET "language_id" = $1, "username" = $2, 
+  "first_name" = $3, "last_name" = $4, "pronouns_id" = $5
+  WHERE "id" = $6;`
+
+  pool.query(sqlQuery, [languageId, username,
+    firstName, lastName, pronounId, userId])
+    .then(dbRes => res.sendStatus(200))
+    .catch(err => {
+      console.log('ERROR updating user:', err);
+      res.sendStatus(500);
+    })
 })
 
 module.exports = router;

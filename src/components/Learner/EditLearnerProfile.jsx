@@ -57,18 +57,22 @@ function EditLearnerProfile() {
   const [lastName, setLastName] = useState(user.last_name);
   const [pronoun, setPronoun] = useState(user.pronouns);
   const [targetLanguage, setTargetLanguage] = useState(user.language);
+  const userId = user.id;
+  const userType = 'learner';
 
   // Extra info for learner's to register:
   const [languageSkill, setLanguageSkill] = useState(learner.skill_level);
 
   // Variable to represent captured input info to send to user reducer:
   let userLearnerEdits = {
+    userId,
     username,
     firstName,
     lastName,
     pronoun,
     targetLanguage,
     languageSkill,
+    userType
   }
   // console.log('userLearnerEdits:', userLearnerEdits);
 
@@ -86,6 +90,62 @@ function EditLearnerProfile() {
     })
       .then((update) => {
         if (update) {
+
+          /////////////// CONVERT NECESSARY VALUES TO NUMBERS ///////////////
+          // Transform selected language.name back into language.id:
+          switch (userLearnerEdits.targetLanguage) {
+            case 'Spanish':
+              userLearnerEdits.targetLanguage = 1;
+              break;
+            case 'Italian':
+              userLearnerEdits.targetLanguage = 2;
+              break;
+            case 'French':
+              userLearnerEdits.targetLanguage = 3;
+              break;
+            case 'German':
+              userLearnerEdits.targetLanguage = 4;
+              break;
+            case 'Swedish':
+              userLearnerEdits.targetLanguage = 5;
+              break;
+            case 'Czech':
+              userLearnerEdits.targetLanguage = 6;
+              break;
+            case 'Portuguese':
+              userLearnerEdits.targetLanguage = 7;
+              break;
+            default:
+              userLearnerEdits.targetLanguage = 0;
+          }
+
+          // Transform selected pronoun.pronoun back into pronoun.id:
+          switch (userLearnerEdits.pronoun) {
+            case 'he/him/his':
+              userLearnerEdits.pronoun = 1;
+              break;
+            case 'she/her/hers':
+              userLearnerEdits.pronoun = 2;
+              break;
+            case 'they/them/theirs':
+              userLearnerEdits.pronoun = 3;
+              break;
+            case 'xe/xem/xyr':
+              userLearnerEdits.pronoun = 4;
+              break;
+            case 'zie/hir/hir':
+              userLearnerEdits.pronoun = 5;
+              break;
+            case 'ey/em/eir':
+              userLearnerEdits.pronoun = 6;
+              break;
+            case 'other':
+              userLearnerEdits.pronoun = 7;
+              break;
+            default:
+              userLearnerEdits.pronoun = 0;
+          }
+
           // Send new info to edit learner & user info:
           dispatch({
             type: 'UPDATE_USER',
