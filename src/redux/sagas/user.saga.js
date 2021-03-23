@@ -46,17 +46,8 @@ function* updateUser(action) {
 
   try {
 
+    // update user on server, and subsequently update Learner/Instructor
     yield axios.put(`/api/user/${userId}`, updatedUserInfo);
-
-    // If the user is a learner, update learner data
-    if (action.payload.userType === 'learner') {
-      yield put({ type: 'UPDATE_LEARNER', payload: updatedUserInfo });
-    }
-
-    // If the user is a instructor, fetch specific instructor data
-    if (action.payload.userType === 'instructor') {
-      yield put({ type: 'UPDATE_INSTRUCTOR', payload: updatedUserInfo });
-    }
 
     // update user with edits:
     yield put({ type: 'FETCH_USER' });
