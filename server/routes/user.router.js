@@ -94,4 +94,12 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+// Update user info with edits
+router.put('/:updatedUserInfo', (req, res) => {
+  const updatedUserInfo = req.params.updatedUserInfo;
+  console.log('updatedUserInfo:', updatedUserInfo);
+
+
+})
+
 module.exports = router;

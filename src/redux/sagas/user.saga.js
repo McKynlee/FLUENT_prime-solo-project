@@ -36,12 +36,39 @@ function* fetchUser() {
   } catch (error) {
     console.log('User get request failed', error);
   }
-}
+} // end fetchUser
 
+
+// worker Saga: will be fired on "FETCH_USER" actions
+function* updateUser(action) {
+  const updatedUserInfo = action.payload;
+
+  try {
+
+    yield axios.put(`/api/user/${updatedUserInfo}`);
+
+    // If the user is a learner, update learner data
+    if (response.data.type === 'learner') {
+      yield put({ type: 'UPDATE_LEARNER', payload: updatedUserInfo });
+    }
+
+    // If the user is a instructor, fetch specific instructor data
+    if (response.data.type === 'instructor') {
+      yield put({ type: 'UPDATE_INSTRUCTOR', payload: updatedUserInfo });
+    }
+
+    // update user with edits:
+    yield put({ type: 'FETCH_USER' });
+
+  } catch (error) {
+    console.log('User UPDATE failed', error);
+  }
+} // end updateUser
 
 
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  yield takeLatest('UPDATE_USER', updateUser)
 }
 
 export default userSaga;

@@ -78,12 +78,26 @@ function EditLearnerProfile() {
   const onSubmitEdit = (event) => {
     event.preventDefault();
 
-    dispatch({
-      type: 'UPDATE_USER',
-      payload: userLearnerEdits
-    });
-
-    history.push('/learner')
+    // Alert learner to confirm that this is their instructor choice:
+    swal({
+      title: 'Submit Your Edits?',
+      text: "This will officially change your info to match your edits.",
+      buttons: true,
+    })
+      .then((update) => {
+        if (update) {
+          // Send new info to edit learner & user info:
+          dispatch({
+            type: 'UPDATE_USER',
+            payload: userLearnerEdits
+          })
+          swal("Your information has been updated!", {
+            icon: "success",
+          });
+          // navigate back to learner profile:
+          history.push('/learner')
+        }
+      });
   }; // end onSubmitEdit
 
 
@@ -137,7 +151,7 @@ function EditLearnerProfile() {
             name="pronoun"
             value={pronoun}
             required
-            onChange={(event) => setPronoun(Number(event.target.value))}
+            onChange={(event) => setPronoun(event.target.value)}
           >
             <option value=''>Choose One</option>
             {pronounList.map((pronoun) => {
@@ -163,7 +177,7 @@ function EditLearnerProfile() {
             name="language"
             value={targetLanguage}
             required
-            onChange={(event) => setTargetLanguage(Number(event.target.value))}
+            onChange={(event) => setTargetLanguage(event.target.value)}
           >
             <option value=''>Choose One</option>
             {languageList.map((language) => {
@@ -187,7 +201,7 @@ function EditLearnerProfile() {
             name="skill"
             value={languageSkill}
             required
-            onChange={(event) => setLanguageSkill(Number(event.target.value))}
+            onChange={(event) => setLanguageSkill(event.target.value)}
           >
             <option value=''>Choose One</option>
             <option value='1'>1: I know a few words.</option>
@@ -215,7 +229,7 @@ function EditLearnerProfile() {
             onChange={(event) => setUsername(event.target.value)}
           />
         </label>
-        <input className="btn" type="submit" name="submit" value="Go to Step 2" />
+        <input className="btn" type="submit" name="submit" value="Update Your Info" />
       </div>
     </form>
   );
