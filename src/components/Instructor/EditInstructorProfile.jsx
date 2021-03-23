@@ -97,30 +97,30 @@ function EditInstructorProfile() {
 
           /////////////// CONVERT NECESSARY VALUES TO NUMBERS ///////////////
           // Transform selected language.name back into language.id:
-          switch (userInstructorEdits.targetLanguage) {
+          switch (userInstructorEdits.knownLanguage) {
             case 'Spanish':
-              userInstructorEdits.targetLanguage = 1;
+              userInstructorEdits.knownLanguage = 1;
               break;
             case 'Italian':
-              userInstructorEdits.targetLanguage = 2;
+              userInstructorEdits.knownLanguage = 2;
               break;
             case 'French':
-              userInstructorEdits.targetLanguage = 3;
+              userInstructorEdits.knownLanguage = 3;
               break;
             case 'German':
-              userInstructorEdits.targetLanguage = 4;
+              userInstructorEdits.knownLanguage = 4;
               break;
             case 'Swedish':
-              userInstructorEdits.targetLanguage = 5;
+              userInstructorEdits.knownLanguage = 5;
               break;
             case 'Czech':
-              userInstructorEdits.targetLanguage = 6;
+              userInstructorEdits.knownLanguage = 6;
               break;
             case 'Portuguese':
-              userInstructorEdits.targetLanguage = 7;
+              userInstructorEdits.knownLanguage = 7;
               break;
             default:
-              userInstructorEdits.targetLanguage = 0;
+              userInstructorEdits.knownLanguage = 0;
           }
 
           // Transform selected pronoun.pronoun back into pronoun.id:
