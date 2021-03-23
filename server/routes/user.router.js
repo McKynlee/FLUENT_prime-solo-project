@@ -164,4 +164,19 @@ router.put('/:userId', (req, res) => {
     })
 }); //end UPDATE user + learner/instructor
 
+router.delete('/delete/:userId', (req, res) => {
+  const userId = req.params.userId;
+  console.log('delete userId:', userId);
+
+  const sqlQuery = `DELETE FROM "users"
+  WHERE "id" = $1;`
+
+  pool.query(sqlQuery, [userId])
+    .then(dbRes => res.sendStatus(200))
+    .catch(err => {
+      console.log('ERROR deleting account:', err);
+      res.sendStatus(500);
+    })
+}) // end delete user
+
 module.exports = router;

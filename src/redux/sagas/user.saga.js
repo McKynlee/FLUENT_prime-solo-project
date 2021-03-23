@@ -57,10 +57,22 @@ function* updateUser(action) {
   }
 } // end updateUser
 
+function* deleteAccount(action) {
+  const userId = action.payload;
+
+  try {
+    yield axios.delete(`/api/user/delete/${userId}`)
+  }
+  catch (error) {
+    console.log('Saga ERROR deleting account:', error);
+  }
+}// end deleteAccount
+
 
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
-  yield takeLatest('UPDATE_USER', updateUser)
+  yield takeLatest('UPDATE_USER', updateUser);
+  yield takeLatest('DELETE_ACCOUNT', deleteAccount);
 }
 
 export default userSaga;
