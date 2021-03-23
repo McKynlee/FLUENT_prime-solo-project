@@ -75,7 +75,6 @@ function LearnerProfile() {
         <p>Preferred Pronouns: {user.pronouns}</p>
         <p>Language you're learning: {user.language}</p>
         <p>Skill level in above language: {learner.skill_level}</p>
-        <p>NOTE TO SELF: can we update username?</p>
         <p>Username: {user.username}</p>
         <button onClick={editLearnerInfo}>
           Edit Your Information

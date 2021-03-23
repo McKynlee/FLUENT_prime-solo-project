@@ -42,18 +42,19 @@ function* fetchUser() {
 // worker Saga: will be fired on "FETCH_USER" actions
 function* updateUser(action) {
   const updatedUserInfo = action.payload;
+  const userId = action.payload.userId;
 
   try {
 
-    yield axios.put(`/api/user/${updatedUserInfo}`);
+    yield axios.put(`/api/user/${userId}`, updatedUserInfo);
 
     // If the user is a learner, update learner data
-    if (response.data.type === 'learner') {
+    if (action.payload.userType === 'learner') {
       yield put({ type: 'UPDATE_LEARNER', payload: updatedUserInfo });
     }
 
     // If the user is a instructor, fetch specific instructor data
-    if (response.data.type === 'instructor') {
+    if (action.payload.userType === 'instructor') {
       yield put({ type: 'UPDATE_INSTRUCTOR', payload: updatedUserInfo });
     }
 

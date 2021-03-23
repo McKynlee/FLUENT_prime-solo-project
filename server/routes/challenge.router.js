@@ -122,7 +122,7 @@ router.get('/this/:submissionId', (req, res) => {
 // GET learner's streak of consecutive-days of submissions:
 router.get('/streak/:learnerId', (req, res) => {
   const learnerId = req.params.learnerId;
-  console.log('streak learnerId:', learnerId);
+  // console.log('streak learnerId:', learnerId);
 
   const sqlQuery = ` WITH "submission_dates" AS (
     SELECT DISTINCT "time_stamp"::date "created_date"
@@ -145,7 +145,7 @@ router.get('/streak/:learnerId', (req, res) => {
 
   pool.query(sqlQuery, [learnerId])
     .then(dbRes => {
-      console.log('streak dbRes.rows:', dbRes.rows);
+      // console.log('streak dbRes.rows:', dbRes.rows);
       res.send(dbRes.rows[0])
     })
     .catch(err => {
