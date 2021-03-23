@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
 
 
 function EditLearnerProfile() {
@@ -164,11 +165,29 @@ function EditLearnerProfile() {
   const deleteAccount = () => {
     console.log('deleteAccount');
 
-    // Send out message to 
-    dispatch({
-      type: 'DELETE_ACCOUNT',
-      payload: userId
+    swal({
+      title: 'Delete your account?',
+      text: "All of your information will be permanently deleted.",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
     })
+      .then((deleteUser) => {
+        if (deleteUser) {
+
+          // Delete user account (includes deleting learner info):
+          dispatch({
+            type: 'DELETE_ACCOUNT',
+            payload: userId
+          })
+          swal("Your account has been deleted!", {
+            icon: "success",
+          });
+          // navigate to home page:
+          history.push('/home')
+        }
+      });
+
   } // end deleteAccount
 
 
@@ -309,6 +328,6 @@ function EditLearnerProfile() {
     </button>
     </div>
   );
-}
+} // end EditLearnerProfile
 
 export default EditLearnerProfile;
