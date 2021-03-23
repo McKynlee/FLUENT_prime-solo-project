@@ -11,6 +11,7 @@ function EditLearnerProfile() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  ////////////////// PULL DB DATA FOR DROPDOWNS ////////////////////
   // Call for pronouns and languages on page load 
   useEffect(() => {
     fetchPronouns();
@@ -36,6 +37,10 @@ function EditLearnerProfile() {
   const user = useSelector((store) => store.user);
   // console.log('logged-in user:', user);
 
+  // Bring in learner info:
+  const learner = useSelector((store) => store.learner)
+  // console.log('learner:', learner);
+
   // Bring in pronouns from pronounReducer:
   const pronounList = useSelector((store) => store.pronouns)
   // console.log('pronounList:', pronounList);
@@ -45,52 +50,49 @@ function EditLearnerProfile() {
   // console.log('languageList:', languageList);
 
 
-  ////////////////// Capture new inputs ////////////////////
+  ////////////////// CAPTURE EDIT INPUTS ////////////////////
   // All the info a user needs to register (learner OR instructor):
   const [username, setUsername] = useState(user.username);
   const [firstName, setFirstName] = useState(user.first_name);
   const [lastName, setLastName] = useState(user.last_name);
   const [pronoun, setPronoun] = useState(user.pronouns);
+  const [targetLanguage, setTargetLanguage] = useState(user.language);
 
   // Extra info for learner's to register:
-  const [targetLanguage, setTargetLanguage] = useState(user.language);
-  const [languageSkill, setLanguageSkill] = useState(0);
-  const userType = 'learner';
-
-  // instructor_id will be set in 2RegisterForm, but needs to have placeholder:
-  let instructor_id = 0;
+  const [languageSkill, setLanguageSkill] = useState(learner.skill_level);
 
   // Variable to represent captured input info to send to user reducer:
-  let userInfoOnRegister = {
+  let userLearnerEdits = {
     username,
     firstName,
     lastName,
     pronoun,
     targetLanguage,
-    instructor_id,
     languageSkill,
-    userType
   }
-  // console.log('userInfoOnRegister:', userInfoOnRegister);
+  // console.log('userLearnerEdits:', userLearnerEdits);
 
-  // Send user input info to reducer, and navigate to 2RegisterForm:
-  const goToStep2 = (event) => {
+
+  ////////////////// HANDLE SUBMIT ////////////////////
+  // Send user edits to UPDATE, and navigate back to LearnerProfile:
+  const onSubmitEdit = (event) => {
     event.preventDefault();
 
     dispatch({
-      type: 'SET_USER',
-      payload: userInfoOnRegister
+      type: 'UPDATE_USER',
+      payload: userLearnerEdits
     });
 
-    //navigate to part 2 of learner registration:
-    history.push('/learner/registration2')
-  }; // end goToStep2
+    history.push('/learner')
+  }; // end onSubmitEdit
 
+
+  ////////////////// RENDER JSX ////////////////////
   return (
-    <form className="formPanel" onSubmit={goToStep2}>
-      <h2>Register to become FLUENT:</h2>
+    <form className="formPanel" onSubmit={onSubmitEdit}>
+      <h2>Update Your Info:</h2>
 
-      <h3><em>Step 1 of 2</em></h3>
+      <h3><em>Step 1 of 1</em></h3>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
@@ -139,9 +141,11 @@ function EditLearnerProfile() {
           >
             <option value=''>Choose One</option>
             {pronounList.map((pronoun) => {
+
               return (
                 <option key={pronoun.id}
-                  value={pronoun.id}
+                  value={pronoun.pronoun}
+                  selectedOrNot
                 >
                   {pronoun.pronoun}
                 </option>
@@ -165,7 +169,7 @@ function EditLearnerProfile() {
             {languageList.map((language) => {
               return (
                 <option key={language.id}
-                  value={language.id}
+                  value={language.name}
                 >
                   {language.name}
                 </option>
