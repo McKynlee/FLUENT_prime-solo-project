@@ -104,23 +104,22 @@ router.put('/:userId', (req, res) => {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const pronounId = req.body.pronoun;
-  const languageId = req.body.targetLanguage;
   const userId = req.params.userId;
   const type = req.body.userType;
+
+  // set language_id based on receiving learner/instructor data:
+  let languageId;
+  if (type === 'learner') {
+    languageId = req.body.targetLanguage;
+  } else {
+    languageId = req.body.knownLanguage;
+  }
 
   // Query to update user (for both learners and instructors):
   const sqlQuery = `UPDATE "users"
   SET "language_id" = $1, "username" = $2, 
   "first_name" = $3, "last_name" = $4, "pronouns_id" = $5
   WHERE "id" = $6;`
-
-  // set language_id based on receiving learner/instructor data:
-  let language_id;
-  if (type === 'learner') {
-    language_id = req.body.targetLanguage;
-  } else {
-    language_id = req.body.knownLanguage;
-  }
 
   // Data specific to learners:
   const skill_level = req.body.languageSkill;
@@ -129,6 +128,7 @@ router.put('/:userId', (req, res) => {
   const bio = req.body.bio;
   const avatar = req.body.avatar;
   const learner_capacity = req.body.instructorCapacity;
+
 
   // Initial update for ALL users (both learners and instructors):
   pool.query(sqlQuery, [languageId, username,
@@ -148,7 +148,7 @@ router.put('/:userId', (req, res) => {
         specificQuery = `UPDATE "instructors"
         SET "bio" = $1, "avatar" = $2, "learner_capacity" = $3
         WHERE "user_id" = $4;`;
-        // paramSpecific = [, userId];
+        paramSpecific = [bio, avatar, learner_capacity, userId];
       }
 
       pool.query(specificQuery, paramSpecific)
