@@ -100,6 +100,7 @@ function Nav() {
       <div className="nav">
         <Link to={loginLinkData4.path}>
           <img className="nav-logo" src={img} />
+          <h6>Foreign Language Universal Engagement Tool</h6>
         </Link>
         <div>
 
