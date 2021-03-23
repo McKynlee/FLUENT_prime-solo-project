@@ -16,7 +16,7 @@ function Nav() {
     text: 'Login',
   };
 
-  if (user.id != null) {
+  if (user.id > 0) {
     if (user.type === 'instructor') {
       loginLinkData.path = '/instructor';
       loginLinkData.text = 'Your Profile';
@@ -32,9 +32,11 @@ function Nav() {
     path: '',
     text: ''
   }
-  if (user.type === 'learner') {
-    userTypeLinkData.path = '/challenge',
-      userTypeLinkData.text = 'New Challenge'
+  if (user.id > 0) {
+    if (user.type === 'learner') {
+      userTypeLinkData.path = '/challenge',
+        userTypeLinkData.text = 'New Challenge'
+    }
   }
   //////////////////////////////////////////////////////////
 
@@ -42,13 +44,15 @@ function Nav() {
     path: '/learner/registration',
     text: 'Register to learn'
   }
-  if (user.type === 'instructor') {
-    userTypeLinkData2.path = '',
-      userTypeLinkData2.text = ''
-  }
-  if (user.type === 'learner') {
-    userTypeLinkData2.path = '',
-      userTypeLinkData2.text = ''
+  if (user.id > 0) {
+    if (user.type === 'instructor') {
+      userTypeLinkData2.path = '',
+        userTypeLinkData2.text = ''
+    }
+    else if (user.type === 'learner') {
+      userTypeLinkData2.path = '',
+        userTypeLinkData2.text = ''
+    }
   }
   //////////////////////////////////////////////////////////
 
@@ -56,22 +60,27 @@ function Nav() {
     path: '/instructor/registration',
     text: 'Register to instruct'
   }
-  if (user.type === 'instructor') {
-    userTypeLinkData3.path = '',
-      userTypeLinkData3.text = ''
-  }
-  if (user.type === 'learner') {
-    userTypeLinkData3.path = '',
-      userTypeLinkData3.text = ''
+
+  if (user.id > 0) {
+    if (user.type === 'instructor') {
+      userTypeLinkData3.path = '',
+        userTypeLinkData3.text = ''
+    }
+    else if (user.type === 'learner') {
+      userTypeLinkData3.path = '',
+        userTypeLinkData3.text = ''
+    }
   }
   //////////////////////////////////////////////////////////
   let userTypeLinkData4;
 
-  if (user.type === 'instructor') {
-    userTypeLinkData4 = '/instructor/review';
-  }
-  if (user.type === 'learner') {
-    userTypeLinkData4 = '/learner/review';
+  if (user.id > 0) {
+    if (user.type === 'instructor') {
+      userTypeLinkData4 = '/instructor/review';
+    }
+    else if (user.type === 'learner') {
+      userTypeLinkData4 = '/learner/review';
+    }
   }
 
   // Have logo click link to /home if not logged in, or
@@ -81,16 +90,16 @@ function Nav() {
     text: ''
   };
 
-  // if (user.id != null) {
-  if (user.type === 'instructor') {
-    loginLinkData4.path = '/instructor';
-    loginLinkData4.text = 'Review Submissions'
+  if (user.id > 0) {
+    if (user.type === 'instructor') {
+      loginLinkData4.path = '/instructor';
+      loginLinkData4.text = 'Review Submissions'
+    }
+    else if (user.type === 'learner') {
+      loginLinkData4.path = '/learner';
+      loginLinkData4.text = 'Review Submissions'
+    }
   }
-  else if (user.type === 'learner') {
-    loginLinkData4.path = '/learner';
-    loginLinkData4.text = 'Review Submissions'
-  }
-  // }
 
   return (
     <div>
@@ -123,9 +132,11 @@ function Nav() {
 
 
           {user.id && (
-            <>
+            <div>
+              <Link className="navLink" to="/home">
+              </Link>
               <LogOutButton className="navLink" />
-            </>
+            </div>
           )}
 
 
