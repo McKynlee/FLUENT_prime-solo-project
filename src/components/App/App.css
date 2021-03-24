@@ -35,11 +35,11 @@ Button
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #014041;
+  border-color: #ffc93c;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
-  color: #f8f8f8;
+  background-color: #31326f;
+  color: #dbf6e9;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
@@ -61,7 +61,8 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  background-color: #9ddfd3;
+  color: #31326f;
   text-decoration: none;
 }
 
@@ -78,8 +79,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  border-color: #9ddfd3;
+  color: #9ddfd3;
 }
 
 /* --------------------------------------------------------------------------------
@@ -117,6 +118,113 @@ input {
   margin-bottom: 10px;
 }
 
+/* --------------------------------------------------------------------------------
+All User Landing Page
+-------------------------------------------------------------------------------- */
+.landing-user-description-container {
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-evenly;
+}
+
+.landing-learner, .landing-instructor {
+  background-color: #ffc93c;
+  padding: 1rem;
+  margin: 0 0.5rem;
+  width: 50%;
+  border-radius: 2rem;
+  box-shadow: ;
+}
+.landing-learner ol, .landing-instructor ol {
+  list-style: none;
+  counter-reset: user-explanation-counter;
+}
+
+.landing-learner ol li, .landing-instructor ol li {
+  counter-increment: user-explanation-counter;
+  padding: 2rem;
+  margin: 0;
+  border-top: 0.5rem dashed #31326f;
+  position: relative;
+}
+
+.landing-learner ol li:nth-child(even):before,
+.landing-instructor ol li:nth-child(even):before {
+  content: counter(user-explanation-counter);
+  right: 100%; 
+  margin-right: -20px;
+  position: absolute;
+  border-radius: 50%;
+  padding: 10px;
+  height: 20px;
+  width: 20px;
+  background-color: #31326f;
+  text-align:center;
+  color: white;
+  font-size: 110%;
+}
+
+.landing-learner ol li:nth-child(odd):before,
+.landing-instructor ol li:nth-child(odd):before {
+  content: counter(user-explanation-counter);
+  left: 100%; 
+  margin-left: -20px;
+  position: absolute;
+  border-radius: 50%;
+  padding: 10px;
+  height: 20px;
+  width: 20px;
+  background-color: #31326f;
+  text-align:center;
+  color: white;
+  font-size: 110%;
+}
+
+.landing-learner ol li:nth-child(even),
+.landing-instructor ol li:nth-child(even) {
+  border-left: 2px dashed;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  margin-right: 30px; 
+  padding-right: 0;
+}
+
+.landing-learner ol li:nth-child(odd),
+.landing-instructor ol li:nth-child(odd) {
+  border-right: 2px dashed;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-left: 30px; 
+  padding-left: 0;
+}
+
+.landing-learner ol li:first-child,
+.landing-instructor ol li:first-child {
+  border-top: 0;
+  border-top-right-radius:0;
+  border-top-left-radius:0;
+}
+
+.landing-learner ol li:last-child,
+.landing-instructor ol li:last-child {
+  border-bottom-right-radius:0;
+  border-bottom-left-radius:0;
+}
+
+/* .landing-learner ol li::before, 
+.landing-instructor ol li::before {
+  content: counter(user-explanation-counter)". ";
+  color: #9ddfd3;
+  font-weight: bold;
+  position: absolute;
+  transform: rotate(-10deg);
+  padding: 0.5rem;
+  background-color: #31326f;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 1px 1px 0 #9ddfd3;
+} */
 /* --------------------------------------------------------------------------------
 Select Instructor Layout: 2LearnerRegForm.jsx
 -------------------------------------------------------------------------------- */
