@@ -11,131 +11,108 @@ function Nav() {
   // console.log('nav user=', user);
 
   // Condition rendering nav links depending on whether logged in or not:
-  let loginLinkData = {
+  let loginProfile = {
     path: '/login',
     text: 'Login',
   };
 
-  if (user.id != null) {
+  if (user.id > 0) {
     if (user.type === 'instructor') {
-      loginLinkData.path = '/instructor';
-      loginLinkData.text = 'Your Profile';
+      loginProfile.path = '/instructor';
+      loginProfile.text = 'Your Profile';
     }
     else if (user.type === 'learner') {
-      loginLinkData.path = '/learner';
-      loginLinkData.text = 'Your Profile';
+      loginProfile.path = '/learner';
+      loginProfile.text = 'Your Profile';
     }
   }
 
-  // Condition rendering nav links depending on whether instructor vs. learner:
-  let userTypeLinkData = {
-    path: '/login',
-    text: ''
-  }
-  if (user.type === 'instructor') {
-    userTypeLinkData.path = '',
-      userTypeLinkData.text = ''
-  }
-  if (user.type === 'learner') {
-    userTypeLinkData.path = '/challenge',
-      userTypeLinkData.text = 'New Challenge'
-  }
   //////////////////////////////////////////////////////////
 
-  let userTypeLinkData2 = {
+  let registerChallenge = {
     path: '/learner/registration',
     text: 'Register to learn'
   }
-  if (user.type === 'instructor') {
-    userTypeLinkData2.path = '',
-      userTypeLinkData2.text = ''
+
+  if (user.id > 0) {
+    if (user.type === 'instructor') {
+      registerChallenge.path = '',
+        registerChallenge.text = ''
+    }
+    else if (user.type === 'learner') {
+      registerChallenge.path = '/challenge',
+        registerChallenge.text = 'New Challenge'
+    }
   }
-  if (user.type === 'learner') {
-    userTypeLinkData2.path = '',
-      userTypeLinkData2.text = ''
-  }
+
   //////////////////////////////////////////////////////////
 
-  let userTypeLinkData3 = {
+  let reviewSubmissions = {
     path: '/instructor/registration',
     text: 'Register to instruct'
-  }
-  if (user.type === 'instructor') {
-    userTypeLinkData3.path = '',
-      userTypeLinkData3.text = ''
-  }
-  if (user.type === 'learner') {
-    userTypeLinkData3.path = '',
-      userTypeLinkData3.text = ''
-  }
-  //////////////////////////////////////////////////////////
-  let userTypeLinkData4;
+  };
 
-  if (user.type === 'instructor') {
-    userTypeLinkData4 = '/instructor/review';
+  if (user.id > 0) {
+    if (user.type === 'instructor') {
+      reviewSubmissions.path = '/instructor/review';
+      reviewSubmissions.text = 'Review Submissions';
+    }
+    else if (user.type === 'learner') {
+      reviewSubmissions.path = '/learner/review';
+      reviewSubmissions.text = 'Review Submissions';
+    }
   }
-  if (user.type === 'learner') {
-    userTypeLinkData4 = '/learner/review';
-  }
+
+  //////////////////////////////////////////////////////////
 
   // Have logo click link to /home if not logged in, or
   // respective profile pages if logged in:
-  let loginLinkData4 = {
-    path: '/home',
+  let homeProfile = {
+    path: '/home'
   };
 
-  if (user.id != null) {
+  if (user.id > 0) {
     if (user.type === 'instructor') {
-      loginLinkData4.path = '/instructor';
-      loginLinkData4.text = 'Review Submissions'
+      homeProfile.path = '/instructor'
     }
     else if (user.type === 'learner') {
-      loginLinkData4.path = '/learner';
-      loginLinkData4.text = 'Review Submissions'
+      homeProfile.path = '/learner'
     }
   }
+
+  //////////////////////////////////////////////////////////
 
   return (
     <div>
       <div className="nav">
-        <Link to={loginLinkData4.path}>
+        <Link to={homeProfile.path}>
           <img className="nav-logo" src={img} />
+          <h6>Foreign Language Universal Engagement Tool</h6>
         </Link>
         <div>
 
-          <Link className="navLink" to={userTypeLinkData3.path}>
-            {userTypeLinkData3.text}
+          <Link className="navLink" to={loginProfile.path}>
+            {loginProfile.text}
           </Link>
 
-          <Link className="navLink" to={userTypeLinkData2.path}>
-            {userTypeLinkData2.text}
+          <Link className="navLink" to={registerChallenge.path}>
+            {registerChallenge.text}
           </Link>
 
-          <Link className="navLink" to={loginLinkData.path}>
-            {loginLinkData.text}
+          <Link className="navLink" to={reviewSubmissions.path}>
+            {reviewSubmissions.text}
           </Link>
 
-          <Link className="navLink" to={userTypeLinkData.path}>
-            {userTypeLinkData.text}
-          </Link>
 
-          <Link className="navLink" to={userTypeLinkData4}>
-            {loginLinkData4.text}
-          </Link>
 
-          {user.id && (
+          {user.id > 0 && (
             <>
-              {/* <Link className="navLink" to="/home">
-                Review Submissions
-              </Link> */}
               <LogOutButton className="navLink" />
             </>
           )}
 
-
         </div>
       </div>
-
     </div>
   );
 }

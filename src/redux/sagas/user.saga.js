@@ -36,12 +36,51 @@ function* fetchUser() {
   } catch (error) {
     console.log('User get request failed', error);
   }
-}
+} // end fetchUser
 
+
+// worker Saga: will be fired on "FETCH_USER" actions
+function* updateUser(action) {
+  const updatedUserInfo = action.payload;
+  const userId = action.payload.userId;
+
+  try {
+
+    // update user on server, and subsequently update Learner/Instructor
+    yield axios.put(`/api/user/${userId}`, updatedUserInfo);
+
+    // update user with edits:
+    yield put({ type: 'FETCH_USER' });
+
+  } catch (error) {
+    console.log('User UPDATE failed', error);
+  }
+} // end updateUser
+
+function* deleteAccount(action) {
+  const userId = action.payload.userId;
+  const onComplete = action.payload.onComplete();
+  // console.log('onComplete:', onComplete);
+
+  try {
+    yield axios.delete(`/api/user/delete/${userId}`)
+
+    // update user since we deleted account:
+    yield put({
+      type: 'LOGOUT',
+      payload: onComplete
+    })
+  }
+  catch (error) {
+    console.log('Saga ERROR deleting account:', error);
+  }
+}// end deleteAccount
 
 
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  yield takeLatest('UPDATE_USER', updateUser);
+  yield takeLatest('DELETE_ACCOUNT', deleteAccount);
 }
 
 export default userSaga;

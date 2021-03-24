@@ -18,6 +18,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
 router.post('/register', (req, res, next) => {
+  // Common user data to both learners and instructors:
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
   const first_name = req.body.firstName;
@@ -33,12 +34,12 @@ router.post('/register', (req, res, next) => {
     language_id = req.body.knownLanguage;
   }
 
-  // Send specifically to learner's table:
+  // Data specific to learners:
   const skill_level = req.body.languageSkill;
   const moneda_count = 5;
   const instructor_id = req.body.instructor_id;
 
-  // Send specifically to instructor's table:
+  // Data specific to instructors:
   const bio = req.body.bio;
   const avatar = req.body.avatar;
   const learner_capacity = req.body.instructorCapacity;
@@ -93,5 +94,89 @@ router.post('/logout', (req, res) => {
   req.logout();
   res.sendStatus(200);
 });
+
+// Update user info with edits
+router.put('/:userId', (req, res) => {
+  // console.log('user put req.body:', req.body);
+
+  // Data common to both learners and instructors:
+  const username = req.body.username;
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const pronounId = req.body.pronoun;
+  const userId = req.params.userId;
+  const type = req.body.userType;
+
+  // set language_id based on receiving learner/instructor data:
+  let languageId;
+  if (type === 'learner') {
+    languageId = req.body.targetLanguage;
+  } else {
+    languageId = req.body.knownLanguage;
+  }
+
+  // Query to update user (for both learners and instructors):
+  const sqlQuery = `UPDATE "users"
+  SET "language_id" = $1, "username" = $2, 
+  "first_name" = $3, "last_name" = $4, "pronouns_id" = $5
+  WHERE "id" = $6;`
+
+  // Data specific to learners:
+  const skill_level = req.body.languageSkill;
+
+  // Data specific to instructors:
+  const bio = req.body.bio;
+  const avatar = req.body.avatar;
+  const learner_capacity = req.body.instructorCapacity;
+
+
+  // Initial update for ALL users (both learners and instructors):
+  pool.query(sqlQuery, [languageId, username,
+    firstName, lastName, pronounId, userId])
+    .then(dbRes => {
+
+      // Determine what the second query text is depending on user type (learner vs. instructor):
+      let specificQuery;
+      let paramSpecific;
+
+      if (type === 'learner') {
+        specificQuery = `UPDATE "learners"
+        SET "skill_level" = $1
+        WHERE "user_id" = $2;`;
+        paramSpecific = [skill_level, userId];
+      } else {
+        specificQuery = `UPDATE "instructors"
+        SET "bio" = $1, "avatar" = $2, "learner_capacity" = $3
+        WHERE "user_id" = $4;`;
+        paramSpecific = [bio, avatar, learner_capacity, userId];
+      }
+
+      pool.query(specificQuery, paramSpecific)
+        .then(() => res.sendStatus(200))
+        .catch(err => {
+          console.log('ERROR updating learner/instructor:', err);
+          res.sendStatus(500);
+        })
+    })
+    .catch(err => {
+      console.log('ERROR updating user:', err);
+      res.sendStatus(500);
+    })
+}); //end UPDATE user + learner/instructor
+
+router.delete('/delete/:userId', (req, res) => {
+  const userId = req.params.userId;
+  console.log('delete userId:', userId);
+
+  const sqlQuery = `DELETE FROM "users"
+  WHERE "id" = $1;`
+
+  pool.query(sqlQuery, [userId])
+    .then(dbRes => res.sendStatus(200))
+    .catch(err => {
+      console.log('ERROR deleting account:', err);
+      res.sendStatus(500);
+    })
+}) // end delete user
 
 module.exports = router;

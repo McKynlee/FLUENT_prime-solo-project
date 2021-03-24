@@ -36,7 +36,7 @@ function InstructorProfile() {
 
   // Open Edit information pop-up when Edit Your Info button clicked:
   const editInstructorInfo = () => {
-    console.log('editInstructorInfo');
+    history.push('/instructor/edit')
   }
 
   const reviewSubmissions = () => {
