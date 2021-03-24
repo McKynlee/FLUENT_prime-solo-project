@@ -16,10 +16,10 @@ function Nav() {
     text: 'Login',
   };
 
-  if (user.id <= 0) {
-    loginLinkData.path = '/login',
-      loginLinkData.text = 'Login'
-  }
+  // if (user.id <= 0) {
+  //   loginLinkData.path = '/login',
+  //     loginLinkData.text = 'Login'
+  // }
 
   if (user.id > 0) {
     if (user.type === 'instructor') {
@@ -37,10 +37,10 @@ function Nav() {
     path: '',
     text: ''
   };
-  if (user.id <= 0) {
-    userTypeLinkData.path = '',
-      userTypeLinkData.text = ''
-  };
+  // if (user.id <= 0) {
+  //   userTypeLinkData.path = '',
+  //     userTypeLinkData.text = ''
+  // };
 
   if (user.id > 0) {
     if (user.type === 'learner') {
@@ -58,10 +58,10 @@ function Nav() {
     text: 'Register to learn'
   }
 
-  if (user.id <= 0) {
-    userTypeLinkData2.path = '/learner/registration',
-      userTypeLinkData2.text = 'Register to learn'
-  }
+  // if (user.id <= 0) {
+  //   userTypeLinkData2.path = '/learner/registration',
+  //     userTypeLinkData2.text = 'Register to learn'
+  // }
   if (user.id > 0) {
     if (user.type === 'instructor') {
       userTypeLinkData2.path = '',
@@ -79,10 +79,10 @@ function Nav() {
     text: 'Register to instruct'
   }
 
-  if (user.id <= 0) {
-    userTypeLinkData3.path = '/instructor/registration',
-      userTypeLinkData3.text = 'Register to instruct'
-  }
+  // if (user.id <= 0) {
+  //   userTypeLinkData3.path = '/instructor/registration',
+  //     userTypeLinkData3.text = 'Register to instruct'
+  // }
 
   if (user.id > 0) {
     if (user.type === 'instructor') {
@@ -97,9 +97,9 @@ function Nav() {
   //////////////////////////////////////////////////////////
   let userTypeLinkData4;
 
-  if (user.id <= 0) {
-    userTypeLinkData4 = ''
-  }
+  // if (user.id <= 0) {
+  //   userTypeLinkData4 = ''
+  // }
 
   if (user.id > 0) {
     if (user.type === 'instructor') {

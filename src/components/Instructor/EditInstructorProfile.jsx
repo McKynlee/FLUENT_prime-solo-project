@@ -169,11 +169,32 @@ function EditInstructorProfile() {
   const deleteAccount = () => {
     console.log('deleteAccount');
 
-    // Send out message to 
-    dispatch({
-      type: 'DELETE_ACCOUNT',
-      payload: userId
+    // Confirm that instructor wants to delete account
+    swal({
+      title: 'Delete your account?',
+      text: "All of your information will be permanently deleted.",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
     })
+      .then((deleteUser) => {
+        if (deleteUser) {
+
+          // Delete user account (includes deleting learner info):
+          dispatch({
+            type: 'DELETE_ACCOUNT',
+            payload: {
+              userId,
+              onComplete: () => history.push('/home')
+            }
+          })
+          swal("Your account has been deleted!", {
+            icon: "success",
+          });
+          // navigate to home page:
+          history.push('/home')
+        }
+      });
   } // end deleteAccount
 
 

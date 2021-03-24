@@ -58,13 +58,18 @@ function* updateUser(action) {
 } // end updateUser
 
 function* deleteAccount(action) {
-  const userId = action.payload;
+  const userId = action.payload.userId;
+  const onComplete = action.payload.onComplete;
+  console.log('onComplete:', onComplete);
 
   try {
     yield axios.delete(`/api/user/delete/${userId}`)
 
     // update user since we deleted account:
-    yield put({ type: 'LOGOUT' })
+    yield put({
+      type: 'LOGOUT',
+      payload: onComplete
+    })
   }
   catch (error) {
     console.log('Saga ERROR deleting account:', error);
