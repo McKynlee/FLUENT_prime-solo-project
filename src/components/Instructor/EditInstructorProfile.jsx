@@ -192,7 +192,7 @@ function EditInstructorProfile() {
             icon: "success",
           });
           // navigate to home page:
-          history.push('/home')
+          // history.push('/home')
         }
       });
   } // end deleteAccount

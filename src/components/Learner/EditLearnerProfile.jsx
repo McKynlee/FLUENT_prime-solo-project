@@ -179,13 +179,16 @@ function EditLearnerProfile() {
           // Delete user account (includes deleting learner info):
           dispatch({
             type: 'DELETE_ACCOUNT',
-            payload: userId
+            payload: {
+              userId,
+              onComplete: () => history.push('/home')
+            }
           })
           swal("Your account has been deleted!", {
             icon: "success",
           });
           // navigate to home page:
-          history.push('/home')
+          // history.push('/home')
         }
       });
 
