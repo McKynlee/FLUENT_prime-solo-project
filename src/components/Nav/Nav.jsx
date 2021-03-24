@@ -16,6 +16,11 @@ function Nav() {
     text: 'Login',
   };
 
+  if (user.id <= 0) {
+    loginLinkData.path = '/login',
+      loginLinkData.text = 'Login'
+  }
+
   if (user.id > 0) {
     if (user.type === 'instructor') {
       loginLinkData.path = '/instructor';
@@ -31,11 +36,19 @@ function Nav() {
   let userTypeLinkData = {
     path: '',
     text: ''
-  }
+  };
+  if (user.id <= 0) {
+    userTypeLinkData.path = '',
+      userTypeLinkData.text = ''
+  };
+
   if (user.id > 0) {
     if (user.type === 'learner') {
       userTypeLinkData.path = '/challenge',
         userTypeLinkData.text = 'New Challenge'
+    } else if (user.type === 'instructor') {
+      userTypeLinkData.path = '',
+        userTypeLinkData.text = ''
     }
   }
   //////////////////////////////////////////////////////////
@@ -43,6 +56,11 @@ function Nav() {
   let userTypeLinkData2 = {
     path: '/learner/registration',
     text: 'Register to learn'
+  }
+
+  if (user.id <= 0) {
+    userTypeLinkData2.path = '/learner/registration',
+      userTypeLinkData2.text = 'Register to learn'
   }
   if (user.id > 0) {
     if (user.type === 'instructor') {
@@ -61,6 +79,11 @@ function Nav() {
     text: 'Register to instruct'
   }
 
+  if (user.id <= 0) {
+    userTypeLinkData3.path = '/instructor/registration',
+      userTypeLinkData3.text = 'Register to instruct'
+  }
+
   if (user.id > 0) {
     if (user.type === 'instructor') {
       userTypeLinkData3.path = '',
@@ -73,6 +96,10 @@ function Nav() {
   }
   //////////////////////////////////////////////////////////
   let userTypeLinkData4;
+
+  if (user.id <= 0) {
+    userTypeLinkData4 = ''
+  }
 
   if (user.id > 0) {
     if (user.type === 'instructor') {
@@ -89,6 +116,11 @@ function Nav() {
     path: '/home',
     text: ''
   };
+
+  if (user.id <= 0) {
+    loginLinkData4.path = '/home',
+      loginLinkData4.text = ''
+  }
 
   if (user.id > 0) {
     if (user.type === 'instructor') {
@@ -131,15 +163,15 @@ function Nav() {
           </Link>
 
 
-          {user.id && (
+          {user.id > 0 && (
             <div>
-              <Link className="navLink" to="/home">
-              </Link>
+
               <LogOutButton className="navLink" />
             </div>
           )}
 
-
+          {/* <Link className="navLink" to="/home">
+              </Link> */}
         </div>
       </div>
 
