@@ -122,10 +122,15 @@ function InstructorReviewSubmissions() {
             }
 
             // Render learner's name next to submission row:
-            let correspondingPairedLearner;
+            let correspondingLearnerName;
+            let correspondingLearnerPronoun;
+            let correspondingLearnerSkill;
+
             for (let learner of learnerList) {
               if (learner.learner_id === submission.learner_id) {
-                correspondingPairedLearner = learner.first_name;
+                correspondingLearnerName = learner.first_name;
+                correspondingLearnerPronoun = learner.pronouns;
+                correspondingLearnerSkill = learner.skill_level;
               }
             }
 
@@ -159,7 +164,9 @@ function InstructorReviewSubmissions() {
               <>
                 <tr key={i}>
                   <td>
-                    {correspondingPairedLearner}'s response:
+                    <div>{correspondingLearnerName}'s response:</div>
+                    <div>({correspondingLearnerPronoun})</div>
+                    <div>Self-assessed skill level: {correspondingLearnerSkill}</div>
                   </td>
                   <td>
                     {dayOfWeek}, {submission.month}-{submission.day}-{submission.year}

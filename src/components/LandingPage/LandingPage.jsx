@@ -17,8 +17,8 @@ function LandingPage() {
 
   return (
     <div className="container">
-      <h2>{heading}</h2>
-      <img className="landing-logo" src={img} />
+      <h1>{heading}</h1>
+      <img className="landing-logo" src={img} alt="FLUENT logo" />
       <h3>Foreign Language Universal Engagement Tool</h3>
       <h4>A personalized way to practice a foreign language!</h4>
 
@@ -29,13 +29,17 @@ function LandingPage() {
         >
           Become a Learner:
         </button>
-
-        <p>1. Tell us about so so that we
-          tailor your learning experience.</p>
-        <p>2. Complete languages to enhance your
-            reading, listening, speaking and writing abilities. </p>
-        <p>3. Pair with an instructor and receive
-           feedback to take your skills to the next level!</p>
+        <ol>
+          <li>
+            We get to know you.
+          </li>
+          <li>
+            You complete challenges & earn points!
+          </li>
+          <li>
+            Receive tailored feedback!
+          </li>
+        </ol>
         <p><em>Watch the demo here</em></p>
       </div>
 
@@ -43,12 +47,17 @@ function LandingPage() {
         <button onClick={instructorRegistration}>
           Become an Instructor:
         </button>
-        <p>1. Create a bio so learners can know
-        who you are.
-        </p>
-        <p>2. Set limit on how many learners you would like to work with. </p>
-        <p>3. Pair with a learners and give them real-world language
-          advice to help them grow!</p>
+        <ol>
+          <li>
+            Tell learners who you are.
+          </li>
+          <li>
+            We protect your availability.
+          </li>
+          <li>
+            Share your expertise!
+          </li>
+        </ol>
         <p><em>Watch the demo here</em></p>
       </div>
     </div>
