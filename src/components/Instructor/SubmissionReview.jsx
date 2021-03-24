@@ -66,16 +66,18 @@ function InstructorReviewSubmissions() {
     })
   } // end deleteFeedback
 
-  // When the user clicks on <div>, open the popup
 
 
   //////////////////// RENDER JSX ////////////////////////
   return (
     <div>
 
-      {/* <div class="popup" onclick={myFunction}>Click me!
+
+      {/* W3 schools non-React example:
+      <div class="popup" onclick={myFunction}>Click me!
         <span class="popuptext" id="myPopup">Popup text...</span>
       </div> */}
+
 
 
       <h1>Instructor Review Submissions</h1>
