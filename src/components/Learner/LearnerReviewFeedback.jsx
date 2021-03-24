@@ -3,7 +3,6 @@
 // path: '/learner/review'
 
 import React, { useEffect } from 'react';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 
 function LearnerReviewFeedback() {
@@ -41,6 +40,9 @@ function LearnerReviewFeedback() {
           <tr>
             <th></th>
             <th>
+              Date Submitted
+            </th>
+            <th>
               Given Image
             </th>
             <th>
@@ -59,11 +61,39 @@ function LearnerReviewFeedback() {
         </thead>
         <tbody>
           {submissionList.map((submission, i) => {
+
+            // Render correct Day-of-week for when submitted date:
+            let dayOfWeek;
+            if (submission.DOW === 0) {
+              dayOfWeek = 'Sunday';
+            }
+            if (submission.DOW === 1) {
+              dayOfWeek = 'Monday';
+            }
+            if (submission.DOW === 2) {
+              dayOfWeek = 'Tuesday';
+            }
+            if (submission.DOW === 3) {
+              dayOfWeek = 'Wednesday';
+            }
+            if (submission.DOW === 4) {
+              dayOfWeek = 'Thursday';
+            }
+            if (submission.DOW === 5) {
+              dayOfWeek = 'Friday';
+            }
+            if (submission.DOW === 6) {
+              dayOfWeek = 'Saturday';
+            }
+
             return (
               <>
                 <tr key={i}>
                   <td>
                     Your response:
+                  </td>
+                  <td>
+                    {dayOfWeek}, {submission.month}-{submission.day}-{submission.year}
                   </td>
                   <td rowspan="2"><img src={submission.picture_url} /></td>
                   <td>{submission.picture_description}</td>
@@ -75,6 +105,7 @@ function LearnerReviewFeedback() {
                   <td>
                     Instructor's Feedback:
                   </td>
+                  <td></td>
                   <td>{submission.instructor_pic_response}</td>
                   <td>{submission.instructor_word_response}</td>
                   <td>{submission.instructor_q_response}</td>
@@ -86,8 +117,7 @@ function LearnerReviewFeedback() {
 
         </tbody>
       </table>
-
-    </div>
+    </div >
   )
 }
 

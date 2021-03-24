@@ -6,7 +6,11 @@ const router = express.Router();
 router.get('/learner/:userId', (req, res) => {
   const userId = req.params.userId;
 
-  const sqlQuery = `SELECT "learner_submissions".id as "submission_id", 
+  const sqlQuery = ` SELECT "learner_submissions".id as "submission_id", 
+  extract(DAY FROM "learner_submissions".time_stamp) as "day", 
+  extract(MONTH FROM "learner_submissions".time_stamp) as "month", 
+  extract(YEAR FROM "learner_submissions".time_stamp) as "year", 
+  extract(DOW FROM "learner_submissions".time_stamp) as "DOW",
   "learner_submissions".learner_id, "users".first_name, "users".last_name, 
   "learner_submissions".picture_url, 
   "learner_submissions".picture_description, "learner_submissions".word, 
@@ -23,7 +27,8 @@ router.get('/learner/:userId', (req, res) => {
   JOIN "instructors" ON "learners".instructor_id = "instructors".id
   FULL OUTER JOIN "instructor_feedback" ON 
   "learner_submissions".id = "instructor_feedback".submission_id
-  WHERE "users".id = $1;`;
+  WHERE "users".id = $1
+  ORDER BY "learner_submissions".time_stamp;`;
 
   pool.query(sqlQuery, [userId])
     .then(dbRes => {
@@ -41,6 +46,10 @@ router.get('/instructor/:userId', (req, res) => {
   console.log('userId:', userId);
 
   const sqlQuery = `SELECT "learner_submissions".id as "submission_id", 
+  extract(DAY FROM "learner_submissions".time_stamp) as "day", 
+  extract(MONTH FROM "learner_submissions".time_stamp) as "month", 
+  extract(YEAR FROM "learner_submissions".time_stamp) as "year", 
+  extract(DOW FROM "learner_submissions".time_stamp) as "DOW",
   "learner_submissions".learner_id, "users".id as "instructors_userId",
   "users".first_name as "instructor_firstName",
   "users".last_name as "instructor_lastName", 
@@ -60,7 +69,8 @@ router.get('/instructor/:userId', (req, res) => {
   JOIN "users" ON "users".id = "instructors".user_id
   FULL OUTER JOIN "instructor_feedback" ON 
   "learner_submissions".id = "instructor_feedback".submission_id
-  WHERE "users".id = $1;`;
+  WHERE "users".id = $1
+  ORDER BY "learner_submissions".time_stamp;`;
 
   pool.query(sqlQuery, [userId])
     .then(dbRes => {
@@ -112,7 +122,7 @@ router.get('/this/:submissionId', (req, res) => {
 // GET learner's streak of consecutive-days of submissions:
 router.get('/streak/:learnerId', (req, res) => {
   const learnerId = req.params.learnerId;
-  console.log('streak learnerId:', learnerId);
+  // console.log('streak learnerId:', learnerId);
 
   const sqlQuery = ` WITH "submission_dates" AS (
     SELECT DISTINCT "time_stamp"::date "created_date"
@@ -135,7 +145,7 @@ router.get('/streak/:learnerId', (req, res) => {
 
   pool.query(sqlQuery, [learnerId])
     .then(dbRes => {
-      console.log('streak dbRes.rows:', dbRes.rows);
+      // console.log('streak dbRes.rows:', dbRes.rows);
       res.send(dbRes.rows[0])
     })
     .catch(err => {
