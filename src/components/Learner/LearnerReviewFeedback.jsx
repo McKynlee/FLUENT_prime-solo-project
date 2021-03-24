@@ -3,7 +3,6 @@
 // path: '/learner/review'
 
 import React, { useEffect } from 'react';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 
 function LearnerReviewFeedback() {
@@ -118,8 +117,7 @@ function LearnerReviewFeedback() {
 
         </tbody>
       </table>
-
-    </div>
+    </div >
   )
 }
 
