@@ -165,6 +165,7 @@ function EditLearnerProfile() {
   const deleteAccount = () => {
     console.log('deleteAccount');
 
+    // Confirm that instructor wants to delete account
     swal({
       title: 'Delete your account?',
       text: "All of your information will be permanently deleted.",

@@ -29,7 +29,7 @@ function InstructorRegisterForm() {
 
   // Pull in pronouns from pronounReducer:
   const pronounList = useSelector((store) => store.pronouns)
-  console.log('pronounList:', pronounList);
+  // console.log('pronounList:', pronounList);
 
   // Pull in languages from languageReducer:
   const languageList = useSelector((store) => store.languages)
@@ -61,7 +61,7 @@ function InstructorRegisterForm() {
     instructorCapacity,
     userType
   }
-  console.log('userInfoOnRegister:', instructorInfoOnRegister);
+  // console.log('userInfoOnRegister:', instructorInfoOnRegister);
 
 
   const registerInstructor = (event) => {
