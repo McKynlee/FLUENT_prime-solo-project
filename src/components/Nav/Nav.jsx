@@ -91,6 +91,10 @@ function Nav() {
         </Link>
         <div>
 
+          <Link className="navLink" to={loginProfile.path}>
+            {loginProfile.text}
+          </Link>
+
           <Link className="navLink" to={registerChallenge.path}>
             {registerChallenge.text}
           </Link>
@@ -99,9 +103,7 @@ function Nav() {
             {reviewSubmissions.text}
           </Link>
 
-          <Link className="navLink" to={loginProfile.path}>
-            {loginProfile.text}
-          </Link>
+
 
           {user.id > 0 && (
             <>
@@ -109,11 +111,8 @@ function Nav() {
             </>
           )}
 
-          {/* <Link className="navLink" to="/home">
-              </Link> */}
         </div>
       </div>
-
     </div>
   );
 }
