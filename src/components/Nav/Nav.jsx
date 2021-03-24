@@ -85,12 +85,18 @@ function Nav() {
   return (
     <div>
       <div className="nav">
-        <Link to={homeProfile.path}>
-          <img className="nav-logo" src={img} />
-          <h6>Foreign Language Universal Engagement Tool</h6>
-        </Link>
-        <div>
 
+        <div className="nav-logo-container">
+          <Link to={homeProfile.path}>
+            <img className="nav-logo-img" src={img} alt="FLUENT logo" />
+
+          </Link>
+          <div className="nav-logo-title">
+            Foreign Language Universal Engagement Tool
+            </div>
+        </div>
+
+        <div>
           <Link className="navLink" to={loginProfile.path}>
             {loginProfile.text}
           </Link>
@@ -102,8 +108,6 @@ function Nav() {
           <Link className="navLink" to={reviewSubmissions.path}>
             {reviewSubmissions.text}
           </Link>
-
-
 
           {user.id > 0 && (
             <>
