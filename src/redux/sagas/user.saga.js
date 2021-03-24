@@ -59,8 +59,8 @@ function* updateUser(action) {
 
 function* deleteAccount(action) {
   const userId = action.payload.userId;
-  const onComplete = action.payload.onComplete;
-  console.log('onComplete:', onComplete);
+  const onComplete = action.payload.onComplete();
+  // console.log('onComplete:', onComplete);
 
   try {
     yield axios.delete(`/api/user/delete/${userId}`)
