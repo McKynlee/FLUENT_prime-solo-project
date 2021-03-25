@@ -105,7 +105,7 @@ function LearnerRegistration1() {
             <p><em>*Denotes a required field.</em></p>
             <div>
               <label htmlFor="firstName">
-                First Name:
+                First Name:*
           <input
                   type="text"
                   name="firstName"
@@ -118,7 +118,7 @@ function LearnerRegistration1() {
 
             <div>
               <label htmlFor="lastName">
-                Last Name:
+                Last Name:*
           <input
                   type="text"
                   name="lastName"
@@ -131,7 +131,7 @@ function LearnerRegistration1() {
 
             <div className="select-dropdown-container">
               <label htmlFor="pronoun">
-                Your Preferred Pronouns:
+                Your Preferred Pronouns:*
           <select
                   type="text"
                   name="pronoun"
@@ -155,7 +155,7 @@ function LearnerRegistration1() {
 
             <div>
               <label htmlFor="language">
-                Language You Want to Learn:
+                Language You Want to Learn:*
           <select
                   type="text"
                   name="language"
@@ -179,7 +179,7 @@ function LearnerRegistration1() {
 
             <div>
               <label htmlFor="language">
-                Current Skill Level with your Selected Language:
+                Current Skill Level with your Selected Language:*
           <select
                   type="text"
                   name="skill"
@@ -208,7 +208,7 @@ function LearnerRegistration1() {
         </h4>
           <div>
             <label htmlFor="username">
-              Email address:
+              Email address:*
           <input
                 type="text"
                 name="username"
@@ -220,7 +220,7 @@ function LearnerRegistration1() {
           </div>
           <div>
             <label htmlFor="password">
-              Password:
+              Password:*
           <input
                 type="password"
                 name="password"
@@ -231,7 +231,7 @@ function LearnerRegistration1() {
             </label>
           </div>
           <div>
-            <input className="btn" type="submit" name="submit" value="Go to Step 2" />
+            <input className="btn margin-top" type="submit" name="submit" value="Go to Step 2" />
           </div>
         </div>
       </div>
