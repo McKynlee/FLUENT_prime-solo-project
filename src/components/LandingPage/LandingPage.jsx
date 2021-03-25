@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
+// CUSTOM COMPONENTS:
 import './LandingPage.css';
 import img from '../images/fluent-logo.png';
 
 function LandingPage() {
-  const [heading, setHeading] = useState('Welcome to');
   const history = useHistory();
 
   const learnerRegistration = () => {
@@ -15,18 +16,31 @@ function LandingPage() {
     history.push('/instructor/registration');
   }
 
+  const userLogin = () => {
+    history.push('/login');
+  }
+
   return (
     <div className="landing-container">
-      <h1>{heading}</h1>
-      <img className="landing-logo" src={img} alt="FLUENT logo" />
-      <h3>Foreign Language Universal Engagement Tool</h3>
-      <h4>A personalized way to practice a foreign language!</h4>
-
-      <h4>Register to either:</h4>
+      <h1><em>Welcome to the </em><br />
+        Foreign Language Universal Engagement Tool
+      </h1>
+      <img className="landing-logo"
+        src={img} alt="FLUENT logo" />
+      <h3>A personalized way to practice a foreign language!</h3>
+      <button className="btn margin-btm"
+        onClick={userLogin}
+      >
+        Login
+        </button>
+      <div>
+        Or Register to:
+      </div>
 
       <div className="landing-user-description-container">
         <div className="landing-learner">
-          <button onClick={learnerRegistration}
+          <button className="btn"
+            onClick={learnerRegistration}
           >
             Become a Learner:
         </button>
@@ -38,14 +52,17 @@ function LandingPage() {
               Complete challenges & earn points!
           </li>
             <li>
-              Receive tailored feedback!
+              Receive tailored feedback.
           </li>
           </ol>
-          <p><em>Watch the demo here</em></p>
+          <button className="btn_asLink">
+            <em>Watch the demo here</em>
+          </button>
         </div>
 
         <div className="landing-instructor">
-          <button onClick={instructorRegistration}>
+          <button className="btn"
+            onClick={instructorRegistration}>
             Become an Instructor:
         </button>
           <ol>
@@ -59,7 +76,9 @@ function LandingPage() {
               Share your expertise!
           </li>
           </ol>
-          <p><em>Watch the demo here</em></p>
+          <button className="btn_asLink">
+            <em>Watch the demo here</em>
+          </button>
         </div>
 
       </div>
