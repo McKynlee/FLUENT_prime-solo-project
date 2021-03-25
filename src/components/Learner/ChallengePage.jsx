@@ -131,7 +131,10 @@ function InfoPage() {
   const submitChallenge = () => {
     swal({
       title: "Submit this challenge?",
-      buttons: true,
+      buttons: {
+        cancel: 'Cancel',
+        confirm: { text: 'Confirm', className: 'btn' }
+      },
     })
       .then((confirmSubmit) => {
         if (confirmSubmit) {
@@ -152,9 +155,6 @@ function InfoPage() {
             onComplete: history.push('/success')
           })
         }
-        // else {
-        //   swal("Your imaginary file is safe!");
-        // }
       });
   } //end submitChallenge
 
