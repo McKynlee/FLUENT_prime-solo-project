@@ -117,7 +117,7 @@ input {
 
 /* .meter = Progress Bar: */
 .meter { 
- 
+  width: 50%;
   margin: auto;
   height: 20px;  
   position: relative;
@@ -128,15 +128,15 @@ input {
   box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
 }
 
-.meter .half {
-  width: 75%;
+.half > span {
+  width: 50%;
 }
-.meter .full {
+.meter .full > span {
   width: 100%;
 }
 
 .meter > span {
-  width: 50%;
+  /* width: 50%; */
   display: block;
   height: 100%;
   border-top-right-radius: 8px;
@@ -152,10 +152,13 @@ input {
 }
 
 
-
-.registration-title {
+.text-align-center {
   text-align: center;
 }
+
+.text-align-left {
+  text-align: left;
+} 
 
 
 /* --------------------------------------------------------------------------------

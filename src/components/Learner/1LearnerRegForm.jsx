@@ -81,10 +81,10 @@ function LearnerRegistration1() {
 
   return (
     <form className="main-container" onSubmit={goToStep2}>
-      <div className="registration-title">
+      <div className="text-align-center ">
         <h2 className="teal-underline">Register to become FLUENT:</h2>
         <h3><em>Step 1 of 2</em></h3>
-        <div class="meter half">
+        <div className="meter half">
           <span></span>
         </div>
       </div>
@@ -98,7 +98,7 @@ function LearnerRegistration1() {
       <div className="second-main-container ">
         {/* <div className="registration-container"> */}
         <div className="sub-container-left make-flex ">
-          <div className="justify-left">
+          <div className="text-align-center">
             <h3>Personal Information:</h3>
             <h4>
               We use this information to tailor your learning experience!
@@ -204,7 +204,7 @@ function LearnerRegistration1() {
         <div className="sub-container-left">
           <h3>Your Log-In Information:</h3>
           <h4>
-            your email address and password will be
+            Your email address and password will be
             your log-in credentials each time you return to F.L.U.E.N.T.
         </h4>
           <div>
