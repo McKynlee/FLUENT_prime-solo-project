@@ -49,7 +49,7 @@ function LandingPage() {
               We get to know you.
           </li>
             <li>
-              Complete challenges & earn points!
+              Complete challenges <br />& earn points!
           </li>
             <li>
               Receive tailored feedback.
@@ -70,8 +70,9 @@ function LandingPage() {
               Tell learners who you are.
           </li>
             <li>
-              We protect your availability.
-          </li>
+              We protect your <br />availability.
+            </li>
+
             <li>
               Share your expertise!
           </li>
