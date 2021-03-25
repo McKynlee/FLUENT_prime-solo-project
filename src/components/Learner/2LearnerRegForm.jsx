@@ -53,7 +53,10 @@ function LearnerRegistration2() {
     swal({
       title: `Pair with ${selectedInstructor.first_name}?`,
       text: "This will finalize your registration.",
-      buttons: true,
+      buttons: {
+        cancel: 'Cancel',
+        confirm: { text: 'Confirm', className: 'btn' }
+      },
     })
       .then((register) => {
         if (register) {

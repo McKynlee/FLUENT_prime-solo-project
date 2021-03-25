@@ -30,7 +30,7 @@ Button
   width: 100%;
 }
 
-.btn:hover {
+.btn:not([disabled]):hover, .btn:hover {
   background-color: #9ddfd3;
   color: #31326f;
   text-decoration: none;
