@@ -9,13 +9,13 @@ img {
 }
 
 input {
-  margin: 5px;
+  margin: 0.5rem;
   margin-bottom: 10px;
   border-radius: 0.4rem;
 }
 
 select {
-  margin: 0.25rem;
+  margin: 0.5rem;
   max-width: 7rem;
   }
 

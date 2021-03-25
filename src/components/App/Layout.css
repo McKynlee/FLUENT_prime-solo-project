@@ -22,7 +22,7 @@ LAYOUT TEMPLATES
     padding: 1rem 2rem;
     margin: 0 0.5rem;
     width: 20rem;
-    height: 20rem;
+    height: 100;
     border-radius: 2rem;
     box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3; 
   }
@@ -110,3 +110,6 @@ LAYOUT TEMPLATES
     box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
   }
   
+  .margin-top {
+    margin-top: 5rem;
+  }
