@@ -67,7 +67,10 @@ function InstructorGiveFeedback() {
     swal({
       title: `Submit feedback?`,
       text: "This will share your feedback with the learner.",
-      buttons: true,
+      buttons: {
+        cancel: 'Cancel',
+        confirm: { text: 'Confirm', className: 'btn' }
+      },
     })
       .then((submit) => {
         if (submit) {
@@ -99,7 +102,10 @@ function InstructorGiveFeedback() {
       title: 'Lose your feedback and go back?',
       text: "This will delete any edits you made.",
       icon: "warning",
-      buttons: true,
+      buttons: {
+        cancel: 'Cancel',
+        confirm: { text: 'Confirm', className: 'delete-btn' }
+      },
       dangerMode: true,
     })
       .then((cancel) => {

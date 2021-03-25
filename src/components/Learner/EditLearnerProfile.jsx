@@ -87,7 +87,10 @@ function EditLearnerProfile() {
     swal({
       title: 'Submit Your Edits?',
       text: "This will officially change your info to match your edits.",
-      buttons: true,
+      buttons: {
+        cancel: 'Cancel',
+        confirm: { text: 'Confirm', className: 'btn' }
+      },
     })
       .then((update) => {
         if (update) {
@@ -170,7 +173,10 @@ function EditLearnerProfile() {
       title: 'Delete your account?',
       text: "All of your information will be permanently deleted.",
       icon: "warning",
-      buttons: true,
+      buttons: {
+        cancel: 'Cancel',
+        confirm: { text: 'Confirm', className: 'delete-btn' }
+      },
       dangerMode: true,
     })
       .then((deleteUser) => {
@@ -187,8 +193,6 @@ function EditLearnerProfile() {
           swal("Your account has been deleted!", {
             icon: "success",
           });
-          // navigate to home page:
-          // history.push('/home')
         }
       });
 
