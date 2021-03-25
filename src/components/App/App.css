@@ -13,83 +13,7 @@ body {
   margin: 0;
 }
 
-img {
-  display: inline-block;
-  max-width: 25rem;
-  min-width: 5rem;
-  margin: auto
-}
 
-.margin-btm {
-  margin-bottom: 1rem;
-}
-
-.teal-underline {
-  text-decoration: underline;
-text-decoration-color: #9ddfd3;
-}
-
-/* --------------------------------------------------------------------------------
-Button
--------------------------------------------------------------------------------- */
-
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-color: #9ddfd3;
-  border-width: 1px 1px 3px;
-  border-radius: 0.5rem;
-  background-color: #31326f;
-  color: #dbf6e9;
-  font-size: 1.1rem;
-  outline: 0;
-  cursor: pointer;
-}
-
-.btn_sizeMin {
-  min-height: 50px;
-  min-width: 100px;
-}
-
-.btn_sizeSm {
-  padding: 10px 15px;
-  font-size: 0.8rem;
-}
-
-.btn_sizeFull {
-  display: block;
-  width: 100%;
-}
-
-.btn:hover {
-  background-color: #9ddfd3;
-  color: #31326f;
-  text-decoration: none;
-}
-
-/* .btn_asLink makes buttons look like links */
-.btn_asLink {
-  padding: 0;
-  border-width: 0;
-  border-bottom: 1px solid #31326f;
-  border-radius: 0;
-  background: none;
-  font: inherit;
-  color: #dbf6e9;
-}
-
-.btn_asLink:hover {
-  background-color: #31326f;
-  border-radius: 1rem;
-  box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
-  color: #9ddfd3;
-  padding: 0.25rem;
-}
-
-.delete-btn{
-  background-color: red;
-  color: whitesmoke;
-  }
 /* --------------------------------------------------------------------------------
 Alert
 -------------------------------------------------------------------------------- */
@@ -106,51 +30,21 @@ Alert
 }
 
 /* --------------------------------------------------------------------------------
-Registration (both learners and instructors)
+DETAILED ADD-ONS
 -------------------------------------------------------------------------------- */
 
-input {
-  margin: 5px;
-  margin-bottom: 10px;
-  border-radius: 0.4rem;
+.margin-btm {
+  margin-bottom: 1rem;
 }
 
-/* .meter = Progress Bar: */
-.meter { 
-  width: 50%;
-  margin: auto;
-  height: 20px;  
-  position: relative;
-  background: #a6a9b6;
-  border-radius: 25px;
-  padding: 10px;
-  box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
-  box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
+.margin-top {
+  margin-top: 3rem;
 }
 
-.half > span {
-  width: 50%;
+.teal-underline {
+  text-decoration: underline;
+text-decoration-color: #9ddfd3;
 }
-.meter .full > span {
-  width: 100%;
-}
-
-.meter > span {
-  /* width: 50%; */
-  display: block;
-  height: 100%;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  background-color: rgb(43,194,83);
-  box-shadow: 
-    inset 0 2px 9px  rgba(255,255,255,0.3),
-    inset 0 -2px 6px rgba(0,0,0,0.4);
-  position: relative;
-  overflow: hidden;
-}
-
 
 .text-align-center {
   text-align: center;
@@ -160,132 +54,11 @@ input {
   text-align: left;
 } 
 
-select {
-margin: 0.25rem;
-max-width: 7rem;
-}
-
-/* --------------------------------------------------------------------------------
-All User Landing Page
--------------------------------------------------------------------------------- */
-.main-container{
-text-align: center;
-}
-
-.landing-logo {
-  width: 10rem;
-}
-
-.second-main-container {
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: space-evenly;
-margin-top: 1rem;
-}
-
-.sub-container-left, .sub-container-right {
-  background-color: #a6a9b6;
-  padding: 1rem 2rem;
-  margin: 0 0.5rem;
-  width: 20rem;
-  height: 20rem;
-  border-radius: 2rem;
-  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3; 
-}
-
-.sub-container-left ol, .sub-container-right ol {
-  list-style: none;
-  counter-reset: user-explanation-counter;
-  padding: 1rem;
-  width: 75%;
-  margin: auto;
-}
-
-.sub-container-left ol li, .sub-container-right ol li {
-  counter-increment: user-explanation-counter;
-  padding: 1.5rem;
-  margin: 0;
-  border-top: 0.15rem dashed #31326f;
-  position: relative;
-}
-
-.sub-container-left ol li:nth-child(even):before,
-.sub-container-right ol li:nth-child(even):before {
-  content: counter(user-explanation-counter);
-  right: 100%; 
-  margin-right: -20px;
-  position: absolute;
-  border-radius: 50%;
-  /* transform: rotate(10deg); */
-  padding: 10px;
-  height: 20px;
-  width: 20px;
-  background-color: #31326f;
-  text-align:center;
-  color: #dbf6e9;
-  font-size: 110%;
-  box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
-}
-
-.sub-container-left ol li:nth-child(odd):before,
-.sub-container-right ol li:nth-child(odd):before {
-  content: counter(user-explanation-counter);
-  left: 100%; 
-  margin-left: -20px;
-  position: absolute;
-  border-radius: 50%;
-  /* transform: rotate(10deg); */
-  padding: 10px;
-  height: 20px;
-  width: 20px;
-  background-color: #31326f;
-  text-align:center;
-  color: #dbf6e9;
-  font-size: 110%;
-  box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
-}
-
-.sub-container-left ol li:nth-child(even),
-.sub-container-right ol li:nth-child(even) {
-  border-left: 0.25rem dashed;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 20px;
-  margin-right: 1.85rem; 
-  padding-right: 0rem;
-}
-
-.sub-container-left ol li:nth-child(odd),
-.sub-container-right ol li:nth-child(odd) {
-  border-right: 0.25rem dashed;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 25px;
-  margin-left: 1.7rem; 
-  padding-left: 0;
-}
-
-.sub-container-left ol li:first-child,
-.sub-container-right ol li:first-child {
-  border-top: 0;
-  border-top-right-radius:0;
-  border-top-left-radius:0;
-}
-
-.sub-container-left ol li:last-child,
-.sub-container-right ol li:last-child {
-  border-bottom-right-radius:0;
-  border-bottom-left-radius:0;
-}
-
 .make-flex {
   display: flex;
   flex-direction: column;
 }
 
-/* .justify-left {
-  justify-items: baseline;
-  /* align-items: flex-end; */
-/* } */ 
 /* --------------------------------------------------------------------------------
 2LearnerRegForm.jsx - Select Instructor Layout 
 -------------------------------------------------------------------------------- */
@@ -305,12 +78,6 @@ LearnerProfilePage.jsx
 .learner-profile-personal {
   border: 0.2rem solid black;
 }
-
-/* -----------------------------------------------
-Learner ChallengePage.jsx
--------------------------------------------------- */
-
-
 /* -----------------------------------------------
 LearnerReviewPage.jsx
 -------------------------------------------------- */
@@ -336,15 +103,3 @@ InstructorProfilePage.jsx
 .instructor-table-feedback-row {
   background-color: #9ddfd3;
 }
-
-
-
-/* -----------------------------------------------
-Instructor SubmissionReview.jsx
--------------------------------------------------- */
-
-
-/* -----------------------------------------------
-Instructor GiveFeedback.jsx
--------------------------------------------------- */
-

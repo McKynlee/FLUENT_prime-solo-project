@@ -27,7 +27,11 @@ import InstructorGiveFeedback from '../Instructor/GiveFeedback';
 import EditLearnerProfile from '../Learner/EditLearnerProfile';
 import EditInstructorProfile from '../Instructor/EditInstructorProfile';
 
+// CSS COMPONENTS:
 import './App.css';
+import './Layout.css';
+import './Element.css';
+import './Button.css';
 
 function App() {
   const dispatch = useDispatch();
