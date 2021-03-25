@@ -92,8 +92,8 @@ function Nav() {
 
           </Link>
           <div className="nav-logo-title">
-            Foreign Language Universal Engagement Tool
-            </div>
+            {/* Foreign Language Universal Engagement Tool */}
+          </div>
         </div>
 
         <div>
