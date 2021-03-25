@@ -95,8 +95,7 @@ function LearnerRegistration1() {
         </h3>
       )}
 
-      <div className="second-main-container ">
-        {/* <div className="registration-container"> */}
+      <div className="second-main-container margin-top">
         <div className="sub-container-left make-flex ">
           <div className="text-align-center">
             <h3>Personal Information:</h3>
