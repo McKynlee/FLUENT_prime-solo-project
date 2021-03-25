@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 // CUSTOM COMPONENTS:
-import './LandingPage.css';
+// import './LandingPage.css';
 import img from '../images/fluent-logo.png';
 
 function LandingPage() {
@@ -21,7 +21,7 @@ function LandingPage() {
   }
 
   return (
-    <div className="landing-container">
+    <div className="main-container">
       <h1><em>Welcome to the </em><br />
         Foreign Language Universal Engagement Tool
       </h1>
@@ -37,8 +37,8 @@ function LandingPage() {
         Or Register to:
       </div>
 
-      <div className="landing-user-description-container">
-        <div className="landing-learner">
+      <div className="second-main-container">
+        <div className="sub-container-left">
           <button className="btn"
             onClick={learnerRegistration}
           >
@@ -60,7 +60,7 @@ function LandingPage() {
           </button>
         </div>
 
-        <div className="landing-instructor">
+        <div className="sub-container-right">
           <button className="btn"
             onClick={instructorRegistration}>
             Become an Instructor:

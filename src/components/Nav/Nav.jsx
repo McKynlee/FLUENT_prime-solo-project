@@ -91,9 +91,9 @@ function Nav() {
             <img className="nav-logo-img" src={img} alt="FLUENT logo" />
 
           </Link>
-          <div className="nav-logo-title">
-            {/* Foreign Language Universal Engagement Tool */}
-          </div>
+          {/* <div className="nav-logo-title">
+            Foreign Language Universal Engagement Tool
+          </div> */}
         </div>
 
         <div>

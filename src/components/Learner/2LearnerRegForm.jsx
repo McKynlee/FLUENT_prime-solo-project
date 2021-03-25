@@ -93,6 +93,9 @@ function LearnerRegistration2() {
     <div>
       <h2>Choose Your Instructor:</h2>
       <h3><em>Step 2 of 2</em></h3>
+      <div class="meter full">
+        <span></span>
+      </div>
       <p><em>*Required</em></p>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
