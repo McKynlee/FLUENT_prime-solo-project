@@ -21,7 +21,8 @@ function LandingPage() {
   }
 
   return (
-    <div className="text-center">
+    <div className="text-center hero-img">
+      <div className="hero-text"></div>
       <h1><em>Welcome to the </em><br />
         Foreign Language Universal Engagement Tool
       </h1>

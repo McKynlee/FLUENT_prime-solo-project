@@ -13,6 +13,11 @@ body {
   margin: 0;
 }
 
+.hero-img {
+  background-image: url("../../images/flags.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 /* --------------------------------------------------------------------------------
 Alert
