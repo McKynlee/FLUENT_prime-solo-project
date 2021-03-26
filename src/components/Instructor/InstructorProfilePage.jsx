@@ -72,32 +72,42 @@ function InstructorProfile() {
         </button>
         </section>
 
-        <div className="sub-container-top ">
-          <section>
-            <h4>Your learners:</h4>
-            <div>{learnerCountLanguage}</div>
-            <ul>
-              {learnerList.map((learner, i) => {
-                if (learner.user_id) {
-                  return (
-                    <li key={i}>
-                      {learner.first_name} {learner.last_name}, {learner.pronouns},
-              is learning {learner.language} and self-ranked at level
-                      {learner.skill_level} out of 5.  Contact {learner.first_name} at {learner.username}</li>
-                  )
-                }
-              })}
-            </ul>
-            {(Number(thisInstructor.learner_count) > 0) ?
-              <button onClick={reviewSubmissions}>
-                Review Your Learner's Submissions
-          </button>
-              : <></>}
+        <div >
 
+          <section className="flex-container-column  align-space-around">
+            <div className="sub-container-top">
+              <div className="flex-container-column">
+                <h4 className="teal-underline">Your learners:</h4>
+                <div>{learnerCountLanguage}</div>
+              </div>
+              <div className="learner-list">
+                <ul>
+                  {learnerList.map((learner, i) => {
+                    if (learner.user_id) {
+                      return (
+                        <li key={i}>
+                          <span className="teal-underline">{learner.first_name} {learner.last_name}</span>, {learner.pronouns},
+              is learning {learner.language} and self-ranked at level
+                          {learner.skill_level} out of 5.  Contact {learner.first_name} at {learner.username}</li>
+                      )
+                    }
+                  })}
+                </ul>
+              </div>
+
+              <div>
+                {(Number(thisInstructor.learner_count) > 0) ?
+                  <button className="btn"
+                    onClick={reviewSubmissions}>
+                    Review Your Learner's Submissions
+          </button>
+                  : <></>}
+              </div>
+            </div>
           </section>
+
         </div>
       </div>
-
       {/* <LogOutButton className="btn" /> */}
     </div >
   );

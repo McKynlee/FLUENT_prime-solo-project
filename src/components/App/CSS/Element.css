@@ -10,6 +10,11 @@ img {
   border-radius: 2rem;
 }
 
+img.img-submissions{
+  max-width: 100%;
+  border-radius: 2rem;
+}
+
 input {
   margin: 0.5rem;
   margin-bottom: 10px;

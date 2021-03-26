@@ -1,0 +1,11 @@
+.learner-list {
+  width: 90%;
+  border: 0.25rem dotted #9ddfd3;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+
+.learner-list li {
+  margin: 1rem;
+}
