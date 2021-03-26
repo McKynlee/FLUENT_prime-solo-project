@@ -172,7 +172,8 @@ function InstructorReviewSubmissions() {
                     {dayOfWeek}, {submission.month}-{submission.day}-{submission.year}
                   </td>
                   <td rowspan="2">
-                    <img src={submission.picture_url}
+                    <img className="img-submissions"
+                      src={submission.picture_url}
                       alt="randomly-generated photo for learner challenge" />
                   </td>
                   <td>{submission.picture_description}</td>
@@ -190,10 +191,13 @@ function InstructorReviewSubmissions() {
                   <td>{submission.instructor_word_response}</td>
                   <td>{submission.instructor_q_response}</td>
                   {/* <td>{existingFeedback}</td> */}
-                  <td>{submission.feedback_id &&
+                  <td>{submission.feedback_id ?
                     (<button className="delete-btn"
                       onClick={() => deleteFeedback(submission)}>
                       DELETE
+                    </button>) : (<button className="btn-navy-gray"
+                      onClick={() => giveFeedback(submission.submission_id)}>
+                      Give Feedback
                     </button>)}
                   </td>
                 </tr>

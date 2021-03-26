@@ -2,7 +2,7 @@
 Button
 -------------------------------------------------------------------------------- */
 
-.btn {
+.btn, .btn-navy-gray {
   display: inline-block;
   padding: 10px 20px;
   border-color: #9ddfd3;
@@ -10,6 +10,19 @@ Button
   border-radius: 0.5rem;
   background-color: #31326f;
   color: #dbf6e9;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+}
+
+.btn-navy-gray:hover {
+  display: inline-block;
+  padding: 10px 20px;
+  border-color: #9ddfd3;
+  border-width: 1px 1px 3px;
+  border-radius: 0.5rem;
+  background-color: #a6a9b6;
+  color: #31326f;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;

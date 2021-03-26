@@ -48,6 +48,11 @@ LAYOUT TEMPLATES (used in multiple components)
   margin-top: 1rem;
 }
 
+/* .flex-container-column.align-space-around {
+  justify-content: center;
+  align-items: flex-start;
+} */
+
 /* top/middle/bottom style like on Challenge page */
 .sub-container-top, .sub-container-middle, .sub-container-bottom {
   background-color: #a6a9b6;

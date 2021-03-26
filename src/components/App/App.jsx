@@ -37,6 +37,7 @@ import './CSS/SelectInstructor.css';
 import './CSS/LearnerProfile.css';
 import './CSS/Challenge.css';
 import './CSS/Success.css';
+import './CSS/InstructorProfile.css'
 
 function App() {
   const dispatch = useDispatch();
