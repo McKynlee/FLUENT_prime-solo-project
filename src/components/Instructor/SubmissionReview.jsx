@@ -66,16 +66,18 @@ function InstructorReviewSubmissions() {
     })
   } // end deleteFeedback
 
-  // When the user clicks on <div>, open the popup
 
 
   //////////////////// RENDER JSX ////////////////////////
   return (
     <div>
 
-      {/* <div class="popup" onclick={myFunction}>Click me!
+
+      {/* W3 schools non-React example:
+      <div class="popup" onclick={myFunction}>Click me!
         <span class="popuptext" id="myPopup">Popup text...</span>
       </div> */}
+
 
 
       <h1>Instructor Review Submissions</h1>
@@ -112,18 +114,23 @@ function InstructorReviewSubmissions() {
               onClick={() => giveFeedback(submission.submission_id)}>
               Give Feedback
             </button>;
-            if (submission.feedback_id) {
-              existingFeedback = <button className="delete-btn"
-                onClick={() => deleteFeedback(submission)}>
-                DELETE
-                </button>
-            }
+            // if (submission.feedback_id) {
+            //   existingFeedback = <button className="delete-btn"
+            //     onClick={() => deleteFeedback(submission)}>
+            //     DELETE
+            //     </button>
+            // }
 
             // Render learner's name next to submission row:
-            let correspondingPairedLearner;
+            let correspondingLearnerName;
+            let correspondingLearnerPronoun;
+            let correspondingLearnerSkill;
+
             for (let learner of learnerList) {
               if (learner.learner_id === submission.learner_id) {
-                correspondingPairedLearner = learner.first_name;
+                correspondingLearnerName = learner.first_name;
+                correspondingLearnerPronoun = learner.pronouns;
+                correspondingLearnerSkill = learner.skill_level;
               }
             }
 
@@ -157,7 +164,9 @@ function InstructorReviewSubmissions() {
               <>
                 <tr key={i}>
                   <td>
-                    {correspondingPairedLearner}'s response:
+                    <div>{correspondingLearnerName}'s response:</div>
+                    <div>({correspondingLearnerPronoun})</div>
+                    <div>Self-assessed skill level: {correspondingLearnerSkill}</div>
                   </td>
                   <td>
                     {dayOfWeek}, {submission.month}-{submission.day}-{submission.year}
@@ -180,16 +189,22 @@ function InstructorReviewSubmissions() {
                   <td>{submission.instructor_pic_response}</td>
                   <td>{submission.instructor_word_response}</td>
                   <td>{submission.instructor_q_response}</td>
-                  <td>{existingFeedback}</td>
+                  {/* <td>{existingFeedback}</td> */}
+                  <td>{submission.feedback_id &&
+                    (<button className="delete-btn"
+                      onClick={() => deleteFeedback(submission)}>
+                      DELETE
+                    </button>)}
+                  </td>
                 </tr>
               </>
             );
           })}
 
         </tbody>
-      </table>
+      </table >
 
-    </div>
+    </div >
   )
 }
 

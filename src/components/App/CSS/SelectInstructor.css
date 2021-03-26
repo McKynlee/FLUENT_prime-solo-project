@@ -1,0 +1,21 @@
+.instructor-name-container {
+  background-color: #31326f;
+  color: #9ddfd3;
+  border-radius: 2rem;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 75%;
+}
+
+.pronouns {
+  font-size: 75%;
+  margin-top: 0.5rem;
+}
+
+.detail-avatar {
+  background-color: #9ddfd3;
+  padding: 1rem;
+  margin: 1rem auto;
+  border: 0.15rem solid #31326f;
+  box-shadow: 0.25rem 0.25rem 0.25rem#31326f;
+}
