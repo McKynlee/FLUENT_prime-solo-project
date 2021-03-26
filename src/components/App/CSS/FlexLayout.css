@@ -1,0 +1,165 @@
+/* --------------------------------------------------------------------------------
+LAYOUT TEMPLATES (used in multiple components)
+-------------------------------------------------------------------------------- */
+
+.detail-card {
+  background-color: #a6a9b6;
+  padding: 1rem 2rem;
+  margin: 0 0.5rem;
+  width: 75%;
+  height: 100%;
+  border-radius: 2rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;
+}
+
+.landing-logo {
+  width: 10rem;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.margin-sm-top {
+  margin-top: 1rem;
+}
+
+.margin-md-top {
+  margin-top: 2.5rem;
+}
+
+.margin-top {
+  margin-top: 5rem;
+}
+  
+.main-flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.flex-container-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* top/middle/bottom style like on Challenge page */
+.sub-container-top, .sub-container-middle, .sub-container-bottom {
+  background-color: #a6a9b6;
+  padding: 1rem 2rem;
+  margin: 1rem auto;
+  width: 75%;
+  height: 100%;
+  border-radius: 2rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;
+}
+
+/* top/middle/bottom style like on Challenge page */
+.sub-container-top section, 
+.sub-container-middle section, 
+.sub-container-bottom section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+/* left/right style like Landing Page */
+.sub-container-left, .sub-container-right {
+  background-color: #a6a9b6;
+  padding: 1rem 2rem;
+  margin: 0 0.5rem;
+  width: 20rem;
+  height: 100%;
+  border-radius: 2rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3; 
+}
+  
+.sub-container-left ol, .sub-container-right ol {
+  list-style: none;
+  counter-reset: user-explanation-counter;
+  padding: 1rem;
+  width: 75%;
+  margin: auto;
+}
+  
+  .sub-container-left ol li, .sub-container-right ol li {
+    counter-increment: user-explanation-counter;
+    padding: 1.5rem;
+    margin: 0;
+    border-top: 0.15rem dashed #31326f;
+    position: relative;
+  }
+   
+  .sub-container-left ol li:first-child,
+  .sub-container-right ol li:first-child {
+    border-top: 0;
+    border-top-right-radius:0;
+    border-top-left-radius:0;
+  }
+  
+  .sub-container-left ol li:last-child,
+  .sub-container-right ol li:last-child {
+    border-bottom-right-radius:0;
+    border-bottom-left-radius:0;
+  }
+
+  .sub-container-left ol li:nth-child(even),
+  .sub-container-right ol li:nth-child(even) {
+    border-left: 0.25rem dashed;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 20px;
+    margin-right: 1.85rem; 
+    padding-right: 0rem;
+  }
+  
+  .sub-container-left ol li:nth-child(odd),
+  .sub-container-right ol li:nth-child(odd) {
+    border-right: 0.25rem dashed;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 25px;
+    margin-left: 1.7rem; 
+    padding-left: 0;
+  }
+
+  /* CONTROL <ol> NUMBER DESIGN: */
+  .sub-container-left ol li:nth-child(even):before,
+  .sub-container-right ol li:nth-child(even):before {
+    content: counter(user-explanation-counter);
+    right: 100%; 
+    margin-right: -20px;
+    position: absolute;
+    border-radius: 50%;
+    /* transform: rotate(10deg); */
+    padding: 10px;
+    height: 20px;
+    width: 20px;
+    background-color: #31326f;
+    text-align:center;
+    color: #dbf6e9;
+    font-size: 110%;
+    box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
+  }
+  
+  .sub-container-left ol li:nth-child(odd):before,
+  .sub-container-right ol li:nth-child(odd):before {
+    content: counter(user-explanation-counter);
+    left: 100%; 
+    margin-left: -20px;
+    position: absolute;
+    border-radius: 50%;
+    /* transform: rotate(10deg); */
+    padding: 10px;
+    height: 20px;
+    width: 20px;
+    background-color: #31326f;
+    text-align:center;
+    color: #dbf6e9;
+    font-size: 110%;
+    box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
+  }
+  

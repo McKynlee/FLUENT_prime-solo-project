@@ -90,7 +90,10 @@ function EditInstructorProfile() {
     swal({
       title: 'Submit Your Edits?',
       text: "This will officially change your info to match your edits.",
-      buttons: true,
+      buttons: {
+        cancel: 'Cancel',
+        confirm: { text: 'Confirm', className: 'btn' }
+      },
     })
       .then((update) => {
         if (update) {
@@ -174,7 +177,10 @@ function EditInstructorProfile() {
       title: 'Delete your account?',
       text: "All of your information will be permanently deleted.",
       icon: "warning",
-      buttons: true,
+      buttons: {
+        cancel: 'Cancel',
+        confirm: { text: 'Confirm', className: 'delete-btn' }
+      },
       dangerMode: true,
     })
       .then((deleteUser) => {
@@ -201,7 +207,7 @@ function EditInstructorProfile() {
   ////////////////// RENDER JSX ////////////////////
   return (
     <div>
-      <form className="formPanel" onSubmit={onSubmitEdit}>
+      <form className="text-center" onSubmit={onSubmitEdit}>
         <h2>Update Your Info:</h2>
 
         <h3><em>Step 1 of 1</em></h3>

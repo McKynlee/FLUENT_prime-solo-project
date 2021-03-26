@@ -27,7 +27,16 @@ import InstructorGiveFeedback from '../Instructor/GiveFeedback';
 import EditLearnerProfile from '../Learner/EditLearnerProfile';
 import EditInstructorProfile from '../Instructor/EditInstructorProfile';
 
-import './App.css';
+// CSS COMPONENTS:
+import './CSS/App.css';
+import './CSS/FlexLayout.css';
+import './CSS/Element.css';
+import './CSS/Button.css';
+import './CSS/2LearnerRegForm.css';
+import './CSS/SelectInstructor.css';
+import './CSS/LearnerProfile.css';
+import './CSS/Challenge.css';
+import './CSS/Success.css';
 
 function App() {
   const dispatch = useDispatch();

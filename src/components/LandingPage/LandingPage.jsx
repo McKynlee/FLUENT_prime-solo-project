@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './LandingPage.css';
+
+// CUSTOM COMPONENTS:
+// import './LandingPage.css';
 import img from '../images/fluent-logo.png';
 
 function LandingPage() {
-  const [heading, setHeading] = useState('Welcome to');
   const history = useHistory();
 
   const learnerRegistration = () => {
@@ -15,42 +16,76 @@ function LandingPage() {
     history.push('/instructor/registration');
   }
 
+  const userLogin = () => {
+    history.push('/login');
+  }
+
   return (
-    <div className="container">
-      <h2>{heading}</h2>
-      <img className="landing-logo" src={img} />
-      <h3>Foreign Language Universal Engagement Tool</h3>
-      <h4>A personalized way to practice a foreign language!</h4>
-
-      <h4>Register to either:</h4>
-
-      <div className="landing-learner">
-        <button onClick={learnerRegistration}
-        >
-          Become a Learner:
+    <div className="text-center">
+      <h1><em>Welcome to the </em><br />
+        Foreign Language Universal Engagement Tool
+      </h1>
+      <img className="landing-logo"
+        src={img} alt="FLUENT logo" />
+      <h2>A personalized way to practice a foreign language!</h2>
+      <button type="login"
+        className="btn margin-btm"
+        onClick={userLogin}
+      >
+        Login
         </button>
-
-        <p>1. Tell us about so so that we
-          tailor your learning experience.</p>
-        <p>2. Complete languages to enhance your
-            reading, listening, speaking and writing abilities. </p>
-        <p>3. Pair with an instructor and receive
-           feedback to take your skills to the next level!</p>
-        <p><em>Watch the demo here</em></p>
+      <div>
+        Or Register to:
       </div>
 
-      <div className="landing-instructor">
-        <button onClick={instructorRegistration}>
-          Become an Instructor:
+      <div className="main-flex-container">
+        <div className="sub-container-left">
+          <button className="btn"
+            onClick={learnerRegistration}
+          >
+            Become a Learner:
         </button>
-        <p>1. Create a bio so learners can know
-        who you are.
-        </p>
-        <p>2. Set limit on how many learners you would like to work with. </p>
-        <p>3. Pair with a learners and give them real-world language
-          advice to help them grow!</p>
-        <p><em>Watch the demo here</em></p>
+          <ol>
+            <li>
+              We get to know you.
+          </li>
+            <li>
+              Complete challenges <br />& earn points!
+          </li>
+            <li>
+              Receive tailored feedback.
+          </li>
+          </ol>
+          <button type="popup" className="btn_asLink">
+            <em>Watch the demo here</em>
+          </button>
+        </div>
+
+        <div className="sub-container-right">
+          <button className="btn"
+            onClick={instructorRegistration}>
+            Become an Instructor:
+        </button>
+          <ol>
+            <li>
+              Tell learners who you are.
+          </li>
+            <li>
+              We protect your <br />availability.
+            </li>
+
+            <li>
+              Share your expertise!
+          </li>
+          </ol>
+          <button type="popup" className="btn_asLink">
+            <em>Watch the demo here</em>
+          </button>
+        </div>
+
       </div>
+
+
     </div>
   );
 }

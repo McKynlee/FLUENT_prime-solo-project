@@ -1,0 +1,107 @@
+html,
+body,
+#react-root {
+  height: 100%;
+  background-color: #dbf6e9;
+  color: #31326f;
+}
+
+body {
+  /* font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif; */
+  font-family: Georgia, Times, Times New Roman, serif;
+  /* font-family: Gill Sans, Gill Sans MT, Calibri, sans-serif; */
+  margin: 0;
+}
+
+
+/* --------------------------------------------------------------------------------
+Alert
+-------------------------------------------------------------------------------- */
+
+.alert {
+  box-sizing: border-box;
+  padding: 15px 10px;
+  margin: 15px 0;
+  border: 2px solid #e01616;
+  background-color: #efefef;
+  border-radius: 3px;
+  color: #e01616;
+  font-size: 0.8rem;
+}
+
+/* --------------------------------------------------------------------------------
+DETAILED ADD-ONS
+-------------------------------------------------------------------------------- */
+
+.margin-btm {
+  margin-bottom: 1rem;
+}
+
+
+
+.teal-underline {
+  text-decoration: underline;
+text-decoration-color: #9ddfd3;
+}
+
+span.teal-underline {
+margin-right: 1rem;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-left {
+  text-align: left;
+} 
+
+.make-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------------
+2LearnerRegForm.jsx - Select Instructor Layout 
+-------------------------------------------------------------------------------- */
+
+.learner-instructor-section {
+  border: 0.2rem solid black;
+}
+
+.learner-instructor-avatar {
+  height: 10rem;
+}
+
+/* --------------------------------------------------------------------------------
+LearnerProfilePage.jsx
+-------------------------------------------------------------------------------- */
+
+.learner-profile-personal {
+  border: 0.2rem solid black;
+}
+/* -----------------------------------------------
+LearnerReviewPage.jsx
+-------------------------------------------------- */
+.learner-review-table, th, tr, td {
+  border: 0.2rem solid black;
+  border-collapse: collapse;
+}
+
+.learner-table-feedback-row {
+  color: whitesmoke;
+  background-color: teal;
+}
+
+/* -----------------------------------------------
+InstructorProfilePage.jsx
+-------------------------------------------------- */
+
+.instructor-review-table, th, tr, td {
+  border: 0.2rem solid black;
+  border-collapse: collapse;
+}
+
+.instructor-table-feedback-row {
+  background-color: #9ddfd3;
+}
