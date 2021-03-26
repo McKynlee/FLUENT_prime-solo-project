@@ -95,7 +95,8 @@ function LearnerReviewFeedback() {
                   <td>
                     {dayOfWeek}, {submission.month}-{submission.day}-{submission.year}
                   </td>
-                  <td rowspan="2"><img src={submission.picture_url} /></td>
+                  <td rowspan="2"><img className="img-submissions"
+                    src={submission.picture_url} /></td>
                   <td>{submission.picture_description}</td>
                   <td rowspan="2">{submission.word}</td>
                   <td>{submission.word_sentence}</td>
