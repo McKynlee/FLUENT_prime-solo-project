@@ -35,6 +35,7 @@ import './CSS/Button.css';
 import './CSS/2LearnerRegForm.css';
 import './CSS/SelectInstructor.css';
 import './CSS/LearnerProfile.css';
+import './CSS/Challenge.css';
 
 function App() {
   const dispatch = useDispatch();

@@ -159,52 +159,107 @@ function InfoPage() {
   } //end submitChallenge
 
   return (
-    <div className="container">
-      <h1>Welcome, {user.first_name}</h1>
+    <div className="text-center">
+      <h1 className="teal-underline">Welcome, {user.first_name}</h1>
       <h2>{welcomeMessage}</h2>
 
-      <form onSubmit={submitChallenge}>
-        <section className='challenge-picture-section'>
-          <h4>La primera misión:</h4>
-          <p><em>The first mission:</em></p>
-          <label>Describe esta foto:
-            <textarea rows="4" cols="50"
-              value={photoDescription}
-              onClick={() => onWordClick(photoDescription)}
-              onChange={(event) => setPhotoDescription(event.target.value)}
-              placeholder="Describe this photo"></textarea>
-          </label>
-          <img src={imageSRC} alt="randomly-generated photo" />
-        </section>
+      <div className="flex-container-column">
+        <form onSubmit={submitChallenge}>
 
-        <section className='challenge-word-section'>
-          <h4>La segunda misión:</h4>
-          <p><em>The second mission:</em></p>
-          <label>Escribe una frase con esta palabra: {randomWord}
-            <textarea rows="4" cols="50"
-              value={wordSentence}
-              onClick={() => onWordClick(wordSentence)}
-              onChange={(event) => setWordSentence(event.target.value)}
-              placeholder="Write a complete sentence using this word.">
-            </textarea>
-          </label>
-        </section>
+          {/* PHOTO CHALLENGE SECTION */}
+          <div className="sub-container-top">
+            <section className='challenge-picture-section'>
+              <div>
+                <div className="challenge-mission-title">
+                  <h4>
+                    <span className="count">
+                      1.
+                    </span>
+                    La primera misión:
+                    </h4>
+                  <div><em>The first mission:</em></div>
+                </div>
+                <img className="challenge"
+                  src={imageSRC}
+                  alt="randomly-generated photo" />
+              </div>
 
-        <section className='challenge-word-section'>
-          <h4>Preguntas generales:</h4>
-          <p><em>General questions:</em></p>
-          <label>
-            <textarea value={qForInstructor}
-              onChange={(event) => setQForInstructor(event.target.value)}
-              placeholder="Write any questions you have for your instructor.">
-            </textarea>
-          </label>
-        </section>
+              <div className="flex-container-column half-width">
+                <label className="teal-underline">Describe la foto:
+                  <br />
+                  <textarea rows="10" cols="30"
+                    value={photoDescription}
+                    onClick={() => onWordClick(photoDescription)}
+                    onChange={(event) => setPhotoDescription(event.target.value)}
+                    placeholder="Describe the photo"></textarea>
+                  <div className="teal-background"><em>
+                    Click inside the box to hear your answer spoken aloud in Spanish!
+                  </em></div>
+                </label>
+              </div>
 
-        <button>
-          Submit
+            </section>
+          </div>
+
+
+          {/* WORD CHALLENGE SECTION */}
+          <div className="sub-container-middle">
+            <section>
+              <div className="challenge-mission-title">
+                <h4>
+                  <span className="count">2.</span>
+                La segunda misión:</h4>
+                <div><em>The second mission:</em></div>
+                <div className="word margin-sm-top">"{randomWord}"</div>
+              </div>
+
+              <div className="flex-container-column half-width">
+                <label className="teal-underline">Escribe una frase con la palabra:
+                <textarea rows="7" cols="35"
+                    value={wordSentence}
+                    onClick={() => onWordClick(wordSentence)}
+                    onChange={(event) => setWordSentence(event.target.value)}
+                    placeholder="Write a complete sentence using the Spanish word on the left.">
+                  </textarea>
+                  <div className="teal-background "><em>
+                    Click inside the box to hear your answer spoken aloud in Spanish!
+                  </em></div>
+                </label>
+              </div>
+
+            </section>
+          </div>
+
+          <div className="sub-container-bottom">
+            <section className=''>
+              <div>
+                <h4>
+                  <span className="count">
+                    3.
+                </span>
+                Preguntas generales:
+                </h4>
+                <div><em>General questions:</em></div>
+              </div>
+
+              <div className="flex-container-column half-width">
+                <label>
+                  <textarea rows="4" cols="40"
+                    value={qForInstructor}
+                    onChange={(event) => setQForInstructor(event.target.value)}
+                    placeholder="Write any questions you have for your instructor.">
+                  </textarea>
+                </label>
+              </div>
+
+            </section>
+          </div>
+
+          <button type="submit" className="btn">
+            Submit
         </button>
-      </form>
+        </form>
+      </div>
       {/* <LogOutButton className="btn" /> */}
     </div >
   );
