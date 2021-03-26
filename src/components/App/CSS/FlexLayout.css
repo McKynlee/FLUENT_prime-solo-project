@@ -3,12 +3,12 @@ LAYOUT TEMPLATES (used in multiple components)
 -------------------------------------------------------------------------------- */
 
 .detail-card {
-  background-color: #a6a9b6;
+  background-color: #E6E5E5;
   padding: 1rem 2rem;
   margin: 0 0.5rem;
   width: 75%;
   height: 100%;
-  border-radius: 2rem;
+  /* border-radius: 2rem; */
   box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;
 }
 
@@ -48,14 +48,19 @@ LAYOUT TEMPLATES (used in multiple components)
   margin-top: 1rem;
 }
 
+/* .flex-container-column.align-space-around {
+  justify-content: center;
+  align-items: flex-start;
+} */
+
 /* top/middle/bottom style like on Challenge page */
 .sub-container-top, .sub-container-middle, .sub-container-bottom {
-  background-color: #a6a9b6;
+  background-color: #E6E5E5;
   padding: 1rem 2rem;
   margin: 1rem auto;
   width: 75%;
   height: 100%;
-  border-radius: 2rem;
+  /* border-radius: 2rem; */
   box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;
 }
 
@@ -70,12 +75,12 @@ LAYOUT TEMPLATES (used in multiple components)
 
 /* left/right style like Landing Page */
 .sub-container-left, .sub-container-right {
-  background-color: #a6a9b6;
+  background-color: #E6E5E5;
   padding: 1rem 2rem;
   margin: 0 0.5rem;
   width: 20rem;
   height: 100%;
-  border-radius: 2rem;
+  /* border-radius: 2rem; */
   box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3; 
 }
   

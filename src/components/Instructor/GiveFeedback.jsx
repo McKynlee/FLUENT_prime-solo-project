@@ -176,7 +176,7 @@ function InstructorGiveFeedback() {
                 </textarea>
               </td>
               <td>
-                <button>
+                <button className="btn-navy-gray">
                   Submit Feedback
                 </button>
               </td>
@@ -185,7 +185,8 @@ function InstructorGiveFeedback() {
           </tbody>
         </table>
       </form>
-      <button onClick={onCancel}>
+      <button className="btn-navy-gray"
+        onClick={onCancel}>
         Go Back
       </button>
     </div>

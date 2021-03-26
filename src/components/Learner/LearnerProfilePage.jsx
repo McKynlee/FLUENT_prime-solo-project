@@ -77,6 +77,7 @@ function LearnerProfile() {
           {monedaLanguage}!
         </div>
       </div>
+      <div><em>'Monedas' are coins you earn each time you submit a challenge.</em></div>
 
       <button type="challenge" className="btn"
         onClick={() => history.push('/challenge')}>

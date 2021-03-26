@@ -11,6 +11,11 @@ body {
   margin: 0;
 }
 
+/* .hero-img {
+  background-image: url("../../images/flags.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
 
 /* --------------------------------------------------------------------------------
 Alert
@@ -67,7 +72,7 @@ margin-right: 1rem;
 
 .learner-instructor-avatar {
   height: 10rem;
-}
+} */
 
 /* --------------------------------------------------------------------------------
 LearnerProfilePage.jsx
@@ -94,10 +99,11 @@ InstructorProfilePage.jsx
 -------------------------------------------------- */
 
 .instructor-review-table, th, tr, td {
-  border: 0.2rem solid black;
+  border: 0.2rem solid #31326f;
   border-collapse: collapse;
 }
 
 .instructor-table-feedback-row {
-  background-color: #9ddfd3;
+  background-color: #a6a9b6;
+  color: #31326f;
 }
