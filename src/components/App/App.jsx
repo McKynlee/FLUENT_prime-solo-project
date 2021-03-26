@@ -34,6 +34,7 @@ import './CSS/Element.css';
 import './CSS/Button.css';
 import './CSS/2LearnerRegForm.css';
 import './CSS/SelectInstructor.css';
+import './CSS/LearnerProfile.css';
 
 function App() {
   const dispatch = useDispatch();
