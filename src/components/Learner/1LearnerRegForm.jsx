@@ -200,7 +200,7 @@ function LearnerRegistration1() {
         </div>
 
         {/* <div className="registration-container"> */}
-        <div className="sub-container-left">
+        <div className="sub-container-right">
           <h3 className="teal-underline">Your Log-In Information:</h3>
           <h4>
             Your email address and password will be
