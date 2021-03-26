@@ -21,21 +21,24 @@ function LandingPage() {
   }
 
   return (
-    <div className="text-center hero-img">
-      <div className="hero-text"></div>
-      <h1><em>Welcome to the </em><br />
+    <div className="text-center">
+      <div className="hero-img">
+        <div className="hero-text">
+          <h1><em>Welcome to the </em><br />
         Foreign Language Universal Engagement Tool
       </h1>
-      <img className="landing-logo"
-        src={img} alt="FLUENT logo" />
-      <h2>A personalized way to practice a foreign language!</h2>
+          <img className="landing-logo"
+            src={img} alt="FLUENT logo" />
+          <h2>A personalized way to practice a foreign language!</h2>
+        </div>
+      </div>
       <button type="login"
         className="btn margin-btm"
         onClick={userLogin}
       >
         Login
         </button>
-      <div>
+      <div className="margin-sm-top">
         Or Register to:
       </div>
 
@@ -44,7 +47,7 @@ function LandingPage() {
           <button className="btn"
             onClick={learnerRegistration}
           >
-            Become a Learner:
+            Become a Learner
         </button>
           <ol>
             <li>
@@ -65,7 +68,7 @@ function LandingPage() {
         <div className="sub-container-right">
           <button className="btn"
             onClick={instructorRegistration}>
-            Become an Instructor:
+            Become an Instructor
         </button>
           <ol>
             <li>
