@@ -55,6 +55,13 @@ Button
   padding: 0.25rem;
 }
 
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
 .delete-btn{
   background-color: red;
   color: whitesmoke;

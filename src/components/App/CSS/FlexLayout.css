@@ -1,39 +1,54 @@
 /* --------------------------------------------------------------------------------
-LAYOUT TEMPLATES
+LAYOUT TEMPLATES (used in multiple components)
 -------------------------------------------------------------------------------- */
-.main-container{
+
+.detail-card {
+  background-color: #a6a9b6;
+  padding: 1rem 2rem;
+  margin: 0 0.5rem;
+  width: 75%;
+  height: 100%;
+  border-radius: 2rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;
+}
+
+.landing-logo {
+  width: 10rem;
+}
+
+.text-center{
   text-align: center;
-  }
+}
+
+.margin-top {
+  margin-top: 5rem;
+}
   
-  .landing-logo {
-    width: 10rem;
-  }
-  
-  .second-main-container {
+.main-flex-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   margin-top: 1rem;
-  }
+}
   
-  .sub-container-left, .sub-container-right {
-    background-color: #a6a9b6;
-    padding: 1rem 2rem;
-    margin: 0 0.5rem;
-    width: 20rem;
-    height: 100;
-    border-radius: 2rem;
-    box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3; 
-  }
+.sub-container-left, .sub-container-right {
+  background-color: #a6a9b6;
+  padding: 1rem 2rem;
+  margin: 0 0.5rem;
+  width: 20rem;
+  height: 100%;
+  border-radius: 2rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3; 
+}
   
-  .sub-container-left ol, .sub-container-right ol {
-    list-style: none;
-    counter-reset: user-explanation-counter;
-    padding: 1rem;
-    width: 75%;
-    margin: auto;
-  }
+.sub-container-left ol, .sub-container-right ol {
+  list-style: none;
+  counter-reset: user-explanation-counter;
+  padding: 1rem;
+  width: 75%;
+  margin: auto;
+}
   
   .sub-container-left ol li, .sub-container-right ol li {
     counter-increment: user-explanation-counter;
@@ -110,6 +125,3 @@ LAYOUT TEMPLATES
     box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
   }
   
-  .margin-top {
-    margin-top: 5rem;
-  }

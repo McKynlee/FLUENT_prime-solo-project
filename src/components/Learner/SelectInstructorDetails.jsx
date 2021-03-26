@@ -52,6 +52,7 @@ function SelectInstructorDetails() {
           registerUser(learnerInfo);
 
           swal("You're all set- Welcome to F.L.U.E.N.T.!", {
+            // button: { confirm: { className: 'btn' } },
             icon: "success",
           });
         }
@@ -75,26 +76,45 @@ function SelectInstructorDetails() {
 
 
   return (
-    <div>
-      <h1>Instructor Details</h1>
+    <div className="main-flex-container text-center">
+      <div className="detail-card">
+        <h1 className="teal-underline">Instructor Details</h1>
 
-      <section className="select-instructor-details"
-        key={instructorDetails.instructorID}
-        value={instructorDetails.instructorID}
-      >
-        <div>{instructorDetails.first_name} {instructorDetails.last_name}</div>
-        <div>{instructorDetails.pronoun}</div>
-        <img src={instructorDetails.avatar} />
-        <h4>A little bit about </h4>
-        <div>{instructorDetails.bio}</div>
-      </section>
+        <section
+          key={instructorDetails.instructorID}
+          value={instructorDetails.instructorID}
+        >
+          <div className="instructor-name-container">
+            <h2>
+              {instructorDetails.first_name} {instructorDetails.last_name}
+              <div className="pronouns">
+                ({instructorDetails.pronoun})
+              </div>
+            </h2>
+          </div>
 
-      <button onClick={() => onSelectInstructor(instructorDetails)}>
-        Select this Instructor
+          <img className="detail-avatar"
+            src={instructorDetails.avatar}
+            alt="Self-representative photo selected by instructor." />
+          <h3 className="teal-underline">
+            A little bit about {instructorDetails.first_name}:
+          </h3>
+          <div>{instructorDetails.bio}</div>
+        </section>
+
+        <div className="btn-container margin-top">
+          <button type="return" className='btn'
+            onClick={backToList}>
+            Back to All Instructors
+        </button>
+
+          <button type="submit" className="btn"
+            onClick={() => onSelectInstructor(instructorDetails)}>
+            Select this Instructor
       </button>
-      <button onClick={backToList}>
-        Back to Available Instructors
-      </button>
+        </div>
+
+      </div>
     </div>
   )
 }

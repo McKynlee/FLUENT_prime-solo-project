@@ -21,14 +21,15 @@ function LandingPage() {
   }
 
   return (
-    <div className="main-container">
+    <div className="text-center">
       <h1><em>Welcome to the </em><br />
         Foreign Language Universal Engagement Tool
       </h1>
       <img className="landing-logo"
         src={img} alt="FLUENT logo" />
-      <h3>A personalized way to practice a foreign language!</h3>
-      <button className="btn margin-btm"
+      <h2>A personalized way to practice a foreign language!</h2>
+      <button type="login"
+        className="btn margin-btm"
         onClick={userLogin}
       >
         Login
@@ -37,7 +38,7 @@ function LandingPage() {
         Or Register to:
       </div>
 
-      <div className="second-main-container">
+      <div className="main-flex-container">
         <div className="sub-container-left">
           <button className="btn"
             onClick={learnerRegistration}
@@ -55,7 +56,7 @@ function LandingPage() {
               Receive tailored feedback.
           </li>
           </ol>
-          <button className="btn_asLink">
+          <button type="popup" className="btn_asLink">
             <em>Watch the demo here</em>
           </button>
         </div>
@@ -77,7 +78,7 @@ function LandingPage() {
               Share your expertise!
           </li>
           </ol>
-          <button className="btn_asLink">
+          <button type="popup" className="btn_asLink">
             <em>Watch the demo here</em>
           </button>
         </div>

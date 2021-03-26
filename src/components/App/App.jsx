@@ -28,10 +28,12 @@ import EditLearnerProfile from '../Learner/EditLearnerProfile';
 import EditInstructorProfile from '../Instructor/EditInstructorProfile';
 
 // CSS COMPONENTS:
-import './App.css';
-import './Layout.css';
-import './Element.css';
-import './Button.css';
+import './CSS/App.css';
+import './CSS/FlexLayout.css';
+import './CSS/Element.css';
+import './CSS/Button.css';
+import './CSS/2LearnerRegForm.css';
+import './CSS/SelectInstructor.css';
 
 function App() {
   const dispatch = useDispatch();
