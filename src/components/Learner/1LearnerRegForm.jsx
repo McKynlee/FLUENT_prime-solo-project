@@ -98,7 +98,7 @@ function LearnerRegistration1() {
       <div className="main-flex-container margin-top">
         <div className="sub-container-left make-flex ">
           <div className="text-align-center">
-            <h3>Personal Information:</h3>
+            <h3 className="teal-underline">Personal Information:</h3>
             <h4>
               We use this information to tailor your learning experience!
       </h4>
@@ -201,7 +201,7 @@ function LearnerRegistration1() {
 
         {/* <div className="registration-container"> */}
         <div className="sub-container-left">
-          <h3>Your Log-In Information:</h3>
+          <h3 className="teal-underline">Your Log-In Information:</h3>
           <h4>
             Your email address and password will be
             your log-in credentials each time you return to F.L.U.E.N.T.

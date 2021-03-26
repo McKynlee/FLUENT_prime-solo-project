@@ -43,6 +43,8 @@ LAYOUT TEMPLATES (used in multiple components)
   justify-content: center;
   margin-top: 1rem;
 }
+
+/* top/middle/bottom style like on Challenge page */
 .sub-container-top, .sub-container-middle, .sub-container-bottom {
   background-color: #a6a9b6;
   padding: 1rem 2rem;
