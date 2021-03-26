@@ -1,0 +1,33 @@
+.moneda-announcement {
+  z-index: +1;
+}
+
+.moneda-number {
+  font-size: 2rem;
+}
+
+.moneda-star-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12rem;
+  margin: 1rem;
+}
+
+.star-image {
+  position: absolute;
+  height: 12rem;
+  /* z-index: -1; */
+}
+
+.streak-title {
+  background-color: #31326f;
+  color: #9ddfd3;
+  font-size: 1.25rem;
+  width: 75%;
+  margin: auto;
+  border-radius: 2rem;
+  padding: 1rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem#a6a9b6; 
+}
+

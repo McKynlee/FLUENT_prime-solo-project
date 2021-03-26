@@ -31,6 +31,14 @@ LAYOUT TEMPLATES (used in multiple components)
 .main-flex-container {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.flex-container-column {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 1rem;

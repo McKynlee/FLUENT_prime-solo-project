@@ -4,6 +4,7 @@ import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import starImg from '../images/star.png';
 
 function LearnerProfile() {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ function LearnerProfile() {
     streakDescription = "You're at the very beginning of a new submission streak!"
   }
   if (submissionStreak === 1) {
-    streakDescription = "You're 1 day into your new submission streak!"
+    streakDescription = `You're 1 day into your new submission streak!`
   }
   if (submissionStreak > 1) {
     streakDescription = `You have a ${submissionStreak}-day submission streak - keep it up!`
@@ -59,39 +60,105 @@ function LearnerProfile() {
 
   ///////////////////// RENDER JSX ///////////////////////
   return (
-    <div className="container">
+    <div className="text-center">
       <h1>{user.first_name}, you're on your way to being F.L.U.E.N.T!</h1>
-      <p>
+      <h2 className="streak-title">
         {streakDescription}
-      </p>
-      <div className='learner-profile-moneda'>
-        You have {learner.moneda_count} {monedaLanguage}!
+      </h2>
+      <div className='moneda-star-container'>
+        <img src={starImg} alt="star" className="star-image" />
+        <div className="moneda-announcement">
+          You have <br />
+          <span className="moneda-number">{learner.moneda_count}</span>
+          <br />
+          {monedaLanguage}!
+        </div>
       </div>
 
-      <div className="learner-profile-personal">
-        <h4>Your Information:</h4>
-        <p>First name: {user.first_name}</p>
-        <p>Last name: {user.last_name}</p>
-        <p>Preferred Pronouns: {user.pronouns}</p>
-        <p>Language you're learning: {user.language}</p>
-        <p>Skill level in above language: {learner.skill_level}</p>
-        <p>Username: {user.username}</p>
-        <button onClick={editLearnerInfo}>
-          Edit Your Information
+      <button type="challenge" className="btn"
+        onClick={() => history.push('/challenge')}>
+        New Challenge
+</button>
+      <div className="main-flex-container">
+        <div className="flex-container-column">
+          <h3 className="teal-underline">
+            Your Information:
+          </h3>
+          <div className="sub-container-left">
+            <p><span className="teal-underline">
+              First name:</span> {user.first_name}
+            </p>
+            <p>
+              <span className="teal-underline">Last name:</span>
+              {user.last_name}
+            </p>
+            <p>
+              <span className="teal-underline">
+                Preferred Pronouns:
+              </span>
+              {user.pronouns}
+            </p>
+            <p>
+              <span className="teal-underline">
+                Language you're learning:
+              </span>
+              {user.language}
+            </p>
+            <p>
+              <span className="teal-underline">
+                Skill level in above language:
+              </span>
+              {learner.skill_level}
+            </p>
+            <p>
+              <span className="teal-underline">
+                Username:
+              </span>
+              {user.username}
+            </p>
+            <button type="edit" className="btn"
+              onClick={editLearnerInfo}>
+              Edit Your Information
         </button>
+          </div>
+        </div>
+
+        <div className="flex-container-column">
+          <h3 className="teal-underline">
+            Your Instructor:
+          </h3>
+          <div className="sub-container-right">
+            <p>
+              <span className="teal-underline">
+                Name:
+              </span>
+              {pairedInstructor.first_name}
+            </p>
+            <p>
+              <span className="teal-underline">
+                Last name:
+              </span>
+              {pairedInstructor.last_name}
+            </p>
+            <p>
+              <span className="teal-underline">
+                Preferred Pronouns:
+              </span>
+              {pairedInstructor.pronoun}
+            </p>
+            <p>
+              <span className="teal-underline">
+                A little about {pairedInstructor.first_name}:
+              </span>
+              {pairedInstructor.bio}
+            </p>
+            <img src={pairedInstructor.avatar} alt={pairedInstructor.first_name} />
+            {/* <p>Language taught: {pairedInstructor.languages_taught}</p> */}
+          </div>
+        </div>
       </div>
 
-      <div className="learner-profile-personal">
-        <h4>Your Instructor:</h4>
-        <p>Name: {pairedInstructor.first_name}</p>
-        <p>Last name: {pairedInstructor.last_name}</p>
-        <p>Preferred Pronouns: {pairedInstructor.pronoun}</p>
-        <p>A little about {pairedInstructor.first_name}: {pairedInstructor.bio}</p>
-        <img src={pairedInstructor.avatar} alt={pairedInstructor.first_name} />
-        <p>Language taught: {pairedInstructor.languages_taught}</p>
-      </div>
-
-      <LogOutButton className="btn" />
+      <LogOutButton className="btn margin-top" />
     </div>
   );
 }
