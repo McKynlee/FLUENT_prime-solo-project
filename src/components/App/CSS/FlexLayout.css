@@ -43,7 +43,26 @@ LAYOUT TEMPLATES (used in multiple components)
   justify-content: center;
   margin-top: 1rem;
 }
-  
+.sub-container-top, .sub-container-middle, .sub-container-bottom {
+  background-color: #a6a9b6;
+  padding: 1rem 2rem;
+  margin: 1rem auto;
+  width: 75%;
+  height: 100%;
+  border-radius: 2rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;
+}
+
+/* top/middle/bottom style like on Challenge page */
+.sub-container-top section, 
+.sub-container-middle section, 
+.sub-container-bottom section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+/* laft/right style like Landing Page */
 .sub-container-left, .sub-container-right {
   background-color: #a6a9b6;
   padding: 1rem 2rem;
@@ -101,6 +120,7 @@ LAYOUT TEMPLATES (used in multiple components)
     padding-left: 0;
   }
 
+  /* CONTROL <ol> NUMBER DESIGN: */
   .sub-container-left ol li:nth-child(even):before,
   .sub-container-right ol li:nth-child(even):before {
     content: counter(user-explanation-counter);

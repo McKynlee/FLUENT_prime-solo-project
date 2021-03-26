@@ -1,6 +1,10 @@
 /* --------------------------------------------------------------------------------
 ELEMENT TEMPLATES
 -------------------------------------------------------------------------------- */
+.half-width {
+  max-width: 50%;
+}
+
 img {
   max-width: 50%;
   border-radius: 2rem;
@@ -11,11 +15,6 @@ input {
   margin-bottom: 10px;
   border-radius: 0.4rem;
 }
-
-select {
-  margin: 0.5rem;
-  max-width: 7rem;
-  }
 
 /* .meter = Progress Bar on registration: */
 .meter { 
@@ -51,4 +50,23 @@ select {
     inset 0 -2px 6px rgba(0,0,0,0.4);
   position: relative;
   overflow: hidden;
+}
+
+select {
+  margin: 0.5rem;
+  max-width: 7rem;
+  }
+
+.teal-background {
+  background-color: #9ddfd3;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+textarea {
+  border-radius: 1rem;
+  border: 0.15rem solid #31326f;
+  padding: 1rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;
+  margin: 1rem;
 }
