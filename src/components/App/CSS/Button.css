@@ -5,14 +5,17 @@ Button
 .btn, .btn-navy-gray {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #9ddfd3;
+  /* border-color: #9ddfd3; */
   border-width: 1px 1px 3px;
-  border-radius: 0.5rem;
+  border-radius: 5px;
   background-color: #31326f;
   color: #dbf6e9;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
+  border-color: #31326f;
+  outline: none;
+  border-style: none;
 }
 
 .btn-navy-gray:hover {
@@ -20,8 +23,8 @@ Button
   padding: 10px 20px;
   border-color: #9ddfd3;
   border-width: 1px 1px 3px;
-  border-radius: 0.5rem;
-  background-color: #a6a9b6;
+  border-radius: 5px;
+  background-color: #E6E5E5;
   color: #31326f;
   font-size: 1.1rem;
   outline: 0;
@@ -57,7 +60,8 @@ Button
   border-radius: 0;
   background: none;
   font: inherit;
-  color: #dbf6e9;
+  color: #31326f;
+  padding: 0.25rem;
 }
 
 .btn_asLink:hover {
