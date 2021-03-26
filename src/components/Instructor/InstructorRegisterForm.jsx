@@ -93,7 +93,7 @@ function InstructorRegisterForm() {
       )}
 
       <div className="main-flex-container margin-top">
-        <div className="sub-container-top ">
+        <div className="sub-container-left make-flex ">
           <h3 className="teal-underline">Personal Information:</h3>
           <h4>
             We use this information to let learners know a bit
@@ -217,11 +217,11 @@ function InstructorRegisterForm() {
               </select>
             </label>
           </div>
+        </div>
 
 
 
-
-
+        <div className="sub-container-right">
           <h3 className="teal-underline margin-md-top">Your Log-In Information:</h3>
           <h4>
             your email address and password will be
@@ -252,7 +252,7 @@ function InstructorRegisterForm() {
             </label>
           </div>
           <div>
-            <input className="btn margin-sm-top" type="submit" name="submit" value="Register" />
+            <input className="btn margin-top" type="submit" name="submit" value="Register" />
           </div>
         </div>
       </div>
