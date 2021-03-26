@@ -37,7 +37,7 @@ LAYOUT TEMPLATES (used in multiple components)
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
 }
 
 .flex-container-column {

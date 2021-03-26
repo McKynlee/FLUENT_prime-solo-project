@@ -13,17 +13,17 @@ function Nav() {
   // Condition rendering nav links depending on whether logged in or not:
   let loginProfile = {
     path: '/login',
-    text: 'Login',
+    text: 'LOGIN',
   };
 
   if (user.id > 0) {
     if (user.type === 'instructor') {
       loginProfile.path = '/instructor';
-      loginProfile.text = 'Your Profile';
+      loginProfile.text = 'YOUR PROFILE';
     }
     else if (user.type === 'learner') {
       loginProfile.path = '/learner';
-      loginProfile.text = 'Your Profile';
+      loginProfile.text = 'YOUR PROFILE';
     }
   }
 
@@ -31,7 +31,7 @@ function Nav() {
 
   let registerChallenge = {
     path: '/learner/registration',
-    text: 'Register to learn'
+    text: 'REGISTER TO LEARN'
   }
 
   if (user.id > 0) {
@@ -41,7 +41,7 @@ function Nav() {
     }
     else if (user.type === 'learner') {
       registerChallenge.path = '/challenge',
-        registerChallenge.text = 'New Challenge'
+        registerChallenge.text = 'NEW CHALLENGE'
     }
   }
 
@@ -49,17 +49,17 @@ function Nav() {
 
   let reviewSubmissions = {
     path: '/instructor/registration',
-    text: 'Register to instruct'
+    text: 'REGISTER TO INSTRUCT'
   };
 
   if (user.id > 0) {
     if (user.type === 'instructor') {
       reviewSubmissions.path = '/instructor/review';
-      reviewSubmissions.text = 'Review Submissions';
+      reviewSubmissions.text = 'REVIEW SUBMISSIONS';
     }
     else if (user.type === 'learner') {
       reviewSubmissions.path = '/learner/review';
-      reviewSubmissions.text = 'Review Submissions';
+      reviewSubmissions.text = 'REVIEW SUBMISSIONS';
     }
   }
 
@@ -88,12 +88,9 @@ function Nav() {
 
         <div className="nav-logo-container">
           <Link to={homeProfile.path}>
-            <img className="nav-logo-img" src={img} alt="FLUENT logo" />
+            <img className="nav-logo-img" src={img} alt="F.L.U.E.N.T. logo" />
 
           </Link>
-          {/* <div className="nav-logo-title">
-            Foreign Language Universal Engagement Tool
-          </div> */}
         </div>
 
         <div>
