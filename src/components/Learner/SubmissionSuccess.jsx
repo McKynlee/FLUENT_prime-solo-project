@@ -6,6 +6,9 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+// CUSTOM COMPONENTS:
+import starImg from '../images/star.png';
+
 function SubmissionSuccess() {
   const history = useHistory();
 
@@ -18,14 +21,25 @@ function SubmissionSuccess() {
   // console.log('learner:', learner);
 
   return (
-    <div>
+    <div className="text-center">
       <h1>¡Buen trabajo, {user.first_name}!</h1>
       <h2>Nice work!</h2>
-      <div>
-        You have {learner.moneda_count} monedas!
+
+      <div className='moneda-star-container-xl'>
+        <img src={starImg} alt="star"
+          className="star-image-xl" />
+        <div className="moneda-announcement">
+          You now have
+          <div className="moneda-number-xl">
+            {learner.moneda_count}
+          </div>
+          monedas!
+        </div>
       </div>
 
-      <button onClick={() => history.push('/challenge')}>
+      <button type="challenge"
+        className="btn"
+        onClick={() => history.push('/challenge')}>
         Complete Another Challenge
       </button>
     </div>

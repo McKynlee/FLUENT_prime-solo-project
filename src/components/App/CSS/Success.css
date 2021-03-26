@@ -1,0 +1,18 @@
+.moneda-number-xl {
+  font-size: 7rem;
+}
+
+.moneda-star-container-xl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+}
+
+.star-image-xl {
+  position: absolute;
+  height: 30rem;
+  /* z-index: -1; */
+}
