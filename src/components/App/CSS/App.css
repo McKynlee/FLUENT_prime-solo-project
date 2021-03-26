@@ -37,8 +37,6 @@ DETAILED ADD-ONS
   margin-bottom: 1rem;
 }
 
-
-
 .teal-underline {
   text-decoration: underline;
 text-decoration-color: #9ddfd3;
@@ -65,26 +63,26 @@ margin-right: 1rem;
 2LearnerRegForm.jsx - Select Instructor Layout 
 -------------------------------------------------------------------------------- */
 
-.learner-instructor-section {
+/* .learner-instructor-section {
   border: 0.2rem solid black;
 }
 
 .learner-instructor-avatar {
   height: 10rem;
-}
+} */
 
 /* --------------------------------------------------------------------------------
 LearnerProfilePage.jsx
 -------------------------------------------------------------------------------- */
 
-.learner-profile-personal {
+/* .learner-profile-personal {
   border: 0.2rem solid black;
-}
+} */
 /* -----------------------------------------------
 LearnerReviewPage.jsx
 -------------------------------------------------- */
 .learner-review-table, th, tr, td {
-  border: 0.2rem solid black;
+  border: 0.2rem solid #31326f;
   border-collapse: collapse;
 }
 
@@ -98,10 +96,11 @@ InstructorProfilePage.jsx
 -------------------------------------------------- */
 
 .instructor-review-table, th, tr, td {
-  border: 0.2rem solid black;
+  border: 0.2rem solid #31326f;
   border-collapse: collapse;
 }
 
 .instructor-table-feedback-row {
-  background-color: #9ddfd3;
+  background-color: #a6a9b6;
+  color: #31326f;
 }

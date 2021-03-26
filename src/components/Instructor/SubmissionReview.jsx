@@ -164,7 +164,7 @@ function InstructorReviewSubmissions() {
               <>
                 <tr key={i}>
                   <td>
-                    <div>{correspondingLearnerName}'s response:</div>
+                    <div><span className="teal-underline">{correspondingLearnerName}'s</span> response:</div>
                     <div>({correspondingLearnerPronoun})</div>
                     <div>Self-assessed skill level: {correspondingLearnerSkill}</div>
                   </td>
