@@ -54,12 +54,12 @@ function InstructorProfile() {
         >
           <div className="sub-container-left make-flex ">
             <h3 className="teal-underline">Your Information:</h3>
-            <div>Name: {thisInstructor.first_name} {thisInstructor.last_name}</div>
-            <div>Preferred Pronouns:{thisInstructor.pronoun}</div>
-            <div>Username: {user.username}</div>
-            <div>Languages you can teach: {thisInstructor.languages_taught}</div>
+            <div><span className="teal-underline">Name:</span> {thisInstructor.first_name} {thisInstructor.last_name}</div>
+            <div><span className="teal-underline">Preferred Pronouns:</span>{thisInstructor.pronoun}</div>
+            <div><span className="teal-underline">Username:</span> {user.username}</div>
+            <div><span className="teal-underline">Languages you can teach:</span> {thisInstructor.languages_taught}</div>
 
-            <div>Bio: </div>
+            <div><span className="teal-underline">Bio:</span> </div>
             <div>{thisInstructor.bio}</div>
 
             <img className="detail-avatar"
