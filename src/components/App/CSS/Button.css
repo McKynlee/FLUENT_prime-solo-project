@@ -62,7 +62,30 @@ Button
   margin-top: 1rem;
 }
 
-.delete-btn{
+.delete-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-color: #9ddfd3;
+  border-width: 1px 1px 3px;
+  border-radius: 0.5rem;
   background-color: red;
-  color: whitesmoke;
-  }
+  color: #31326f;
+  font-weight: bolder;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  display: inline-block;
+  padding: 10px 20px;
+  border-color: #9ddfd3;
+  border-width: 1px 1px 3px;
+  border-radius: 0.5rem;
+  background-color: #31326f;
+  color: red;
+  font-weight: bolder;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+}
