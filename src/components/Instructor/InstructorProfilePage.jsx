@@ -44,51 +44,62 @@ function InstructorProfile() {
   }
 
   return (
-    <div className="instructor-container">
-      <h1>Instructor Profile</h1>
+    <div className="text-center">
+      <h1>{thisInstructor.first_name}, you're helping others become F.L.U.E.N.T!</h1>
 
-      <section className="instructor-profile"
-        key={thisInstructor.instructorId}
-        value={thisInstructor.instructorId}
-      >
-        <h4>Your Information:</h4>
-        <div>Name: {thisInstructor.first_name} {thisInstructor.last_name}</div>
-        <div>Preferred Pronouns:{thisInstructor.pronoun}</div>
-        <div>Username: {user.username}</div>
-        <div>Languages you can teach: {thisInstructor.languages_taught}</div>
-        <img src={thisInstructor.avatar} />
-        <div>Bio: </div>
-        <div>{thisInstructor.bio}</div>
-        <button onClick={editInstructorInfo}>
-          Edit Your Information
+      <div className="main-flex-container margin-top">
+        <section className="instructor-profile"
+          key={thisInstructor.instructorId}
+          value={thisInstructor.instructorId}
+        >
+          <div className="sub-container-left make-flex ">
+            <h3 className="teal-underline">Your Information:</h3>
+            <div>Name: {thisInstructor.first_name} {thisInstructor.last_name}</div>
+            <div>Preferred Pronouns:{thisInstructor.pronoun}</div>
+            <div>Username: {user.username}</div>
+            <div>Languages you can teach: {thisInstructor.languages_taught}</div>
+
+            <div>Bio: </div>
+            <div>{thisInstructor.bio}</div>
+
+            <img className="detail-avatar"
+              src={thisInstructor.avatar} />
+          </div>
+
+          <button type="edit" className="btn margin-sm-top"
+            onClick={editInstructorInfo}>
+            Edit Your Information
         </button>
-      </section>
+        </section>
 
-      <section>
-        <h4>Your learners:</h4>
-        <div>{learnerCountLanguage}</div>
-        <ul>
-          {learnerList.map((learner, i) => {
-            if (learner.user_id) {
-              return (
-                <li key={i}>
-                  {learner.first_name} {learner.last_name}, {learner.pronouns},
+        <div className="sub-container-top ">
+          <section>
+            <h4>Your learners:</h4>
+            <div>{learnerCountLanguage}</div>
+            <ul>
+              {learnerList.map((learner, i) => {
+                if (learner.user_id) {
+                  return (
+                    <li key={i}>
+                      {learner.first_name} {learner.last_name}, {learner.pronouns},
               is learning {learner.language} and self-ranked at level
-                  {learner.skill_level} out of 5.  Contact {learner.first_name} at {learner.username}</li>
-              )
-            }
-          })}
-        </ul>
-        {(Number(thisInstructor.learner_count) > 0) ?
-          <button onClick={reviewSubmissions}>
-            Review Your Learner's Submissions
+                      {learner.skill_level} out of 5.  Contact {learner.first_name} at {learner.username}</li>
+                  )
+                }
+              })}
+            </ul>
+            {(Number(thisInstructor.learner_count) > 0) ?
+              <button onClick={reviewSubmissions}>
+                Review Your Learner's Submissions
           </button>
-          : <></>}
+              : <></>}
 
-      </section>
+          </section>
+        </div>
+      </div>
 
       {/* <LogOutButton className="btn" /> */}
-    </div>
+    </div >
   );
 }
 
