@@ -68,7 +68,7 @@ LAYOUT TEMPLATES (used in multiple components)
   justify-content: space-around;
 }
 
-/* laft/right style like Landing Page */
+/* left/right style like Landing Page */
 .sub-container-left, .sub-container-right {
   background-color: #a6a9b6;
   padding: 1rem 2rem;
