@@ -4,6 +4,8 @@ import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
+// CUSTOM COMPONENTS:
 import starImg from '../images/star.png';
 
 function LearnerProfile() {
@@ -65,6 +67,7 @@ function LearnerProfile() {
       <h2 className="streak-title">
         {streakDescription}
       </h2>
+
       <div className='moneda-star-container'>
         <img src={starImg} alt="star" className="star-image" />
         <div className="moneda-announcement">
