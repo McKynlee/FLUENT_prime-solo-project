@@ -94,74 +94,96 @@ function LearnerRegistration2() {
   ////////////////////// JSX TO RENDER /////////////////////
   return (
     <div>
-      <h2>Choose Your Instructor:</h2>
-      <h3><em>Step 2 of 2</em></h3>
-      <div class="meter full">
-        <span></span>
+      <div className="text-center">
+        <h1>Choose Your Instructor:</h1>
+        <h2><em>Step 2 of 2</em></h2>
+        <div class="meter full">
+          <span></span>
+        </div>
+        <p><em>*Required</em></p>
       </div>
-      <p><em>*Required</em></p>
-      {errors.registrationMessage && (
-        <h3 className="alert" role="alert">
-          {errors.registrationMessage}
-        </h3>
-      )}
 
-      {/* LOOP THROUGH INSTRUCTOR LIST */}
-      {instructorList.map((instructor) => {
-        //Only render instructors whose learner_capacity is
-        //greater than current learner_count
-        let availableInstructors = [];
-
-        if (instructor.learner_capacity > Number(instructor.learner_count)) {
-          availableInstructors.push(instructor)
-        }
+      <div>
+        {errors.registrationMessage && (
+          <h3 className="alert" role="alert">
+            {errors.registrationMessage}
+          </h3>
+        )}
 
 
-        {/* LOOP THROUGH ONLY AVAILABLE INSTRUCTORS FROM INSTRUCTOR LIST */ }
-        return (
-          availableInstructors.map((availableInstructor, i) => {
-            // Set "learnerCountDescription" based on how many learners the
-            // instructor is already working with:
-            let learnerCountDescription = 'learners';
+        {/* FLEX CONTAINER */}
+        {/* <div className="instructors-container"> */}
+        <div className="grid-container">
+          {/* LOOP THROUGH INSTRUCTOR LIST */}
+          {instructorList.map((instructor) => {
+            //Only render instructors whose learner_capacity is
+            //greater than current learner_count
+            let availableInstructors = [];
 
-            if (Number(availableInstructor.learner_count) === 1) {
-              learnerCountDescription = `${availableInstructor.first_name} 
+            if (instructor.learner_capacity > Number(instructor.learner_count)) {
+              availableInstructors.push(instructor)
+            }
+
+
+            {/* LOOP THROUGH ONLY AVAILABLE INSTRUCTORS FROM INSTRUCTOR LIST */ }
+            return (
+              availableInstructors.map((availableInstructor, i) => {
+                // Set "learnerCountDescription" based on how many learners the
+                // instructor is already working with:
+                let learnerCountDescription = 'learners';
+
+                if (Number(availableInstructor.learner_count) === 1) {
+                  learnerCountDescription = `${availableInstructor.first_name} 
               is currently working with ${Number(availableInstructor.learner_count)} 
               other learner`
-            }
-            if (Number(availableInstructor.learner_count) > 1) {
-              learnerCountDescription = `${availableInstructor.first_name} 
+                }
+                if (Number(availableInstructor.learner_count) > 1) {
+                  learnerCountDescription = `${availableInstructor.first_name} 
               is currently working with ${Number(availableInstructor.learner_count)} 
               other learners`
-            }
-            if (Number(availableInstructor.learner_count) === 0) {
-              learnerCountDescription = `${availableInstructor.first_name} 
+                }
+                if (Number(availableInstructor.learner_count) === 0) {
+                  learnerCountDescription = `${availableInstructor.first_name} 
               is not currently working with any other learners`
-            }
+                }
 
-            return (
-              <section className="learner-instructor-section"
-                key={i}
-                value={availableInstructor.instructorID}
-              >
-                <div>{availableInstructor.first_name} {availableInstructor.last_name}</div>
-                <div>{availableInstructor.pronoun}</div>
-                <img className="learner-instructor-avatar"
-                  src={availableInstructor.avatar} alt="Representative photo selected by instructor" />
-                <div>{learnerCountDescription}</div>
-                <button onClick={() => onMoreInfo(availableInstructor.user_id)}>
-                  More Info
-                </button>
-                <button onClick={() => onSelectInstructor(availableInstructor)}>
-                  Select Instructor
-                </button>
-              </section>
+                return (
+                  // <section className="learner-instructor-section"
+                  // <section className="individ-instructor-card"
+                  <section className="grid-item"
+                    key={i}
+                    value={availableInstructor.instructorID}
+                  >
+                    <div>{availableInstructor.first_name} {availableInstructor.last_name}</div>
+                    <div>({availableInstructor.pronoun})</div>
+                    <div className="registration-avatar-container">
+                      <img className="instructor-avatar-registration"
+                        src={availableInstructor.avatar}
+                        alt="Representative photo selected by instructor" />
+                    </div>
+                    <div className="text-center">
+                      {learnerCountDescription}
+                    </div>
+                    <div className="btn-container">
+                      <button type="more" className="btn btn_sizeSm"
+                        onClick={() => onMoreInfo(availableInstructor.user_id)}>
+                        More Info
+                      </button>
+                      <button type="submit" className="btn btn_sizeSm"
+                        onClick={() => onSelectInstructor(availableInstructor)}>
+                        Select Instructor
+                      </button>
+                    </div>
+                  </section>
 
+                )
+              })
             )
-          })
-        )
-      })}
+          })}
+        </div>
 
+
+      </div>
     </div>
   );
 }

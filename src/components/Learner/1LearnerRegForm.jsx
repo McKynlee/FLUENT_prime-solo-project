@@ -80,10 +80,10 @@ function LearnerRegistration1() {
   }; // end goToStep2
 
   return (
-    <form className="main-container" onSubmit={goToStep2}>
+    <form className="text-center" onSubmit={goToStep2}>
       <div className="text-align-center ">
-        <h2 className="teal-underline">Register to become FLUENT:</h2>
-        <h3><em>Step 1 of 2</em></h3>
+        <h1 className="teal-underline">Register to become FLUENT:</h1>
+        <h2><em>Step 1 of 2</em></h2>
         <div className="meter half">
           <span></span>
         </div>
@@ -95,7 +95,7 @@ function LearnerRegistration1() {
         </h3>
       )}
 
-      <div className="second-main-container margin-top">
+      <div className="main-flex-container margin-top">
         <div className="sub-container-left make-flex ">
           <div className="text-align-center">
             <h3>Personal Information:</h3>

@@ -2,10 +2,8 @@
 ELEMENT TEMPLATES
 -------------------------------------------------------------------------------- */
 img {
-  display: inline-block;
-  max-width: 25rem;
-  min-width: 5rem;
-  margin: auto
+  max-width: 50%;
+  border-radius: 2rem;
 }
 
 input {
