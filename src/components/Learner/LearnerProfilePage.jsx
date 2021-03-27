@@ -95,10 +95,11 @@ function LearnerProfile() {
           onClick={editLearnerInfo}>
           EDIT YOUR INFO
         </button>
-        <button type="edit" className="btn_asLink"
-          onClick={goToInstructorDetail}>
-          INSTRUCTOR {(pairedInstructor) && (pairedInstructor.first_name.toUpperCase())}'S INFO
-        </button>
+        {(pairedInstructor.user_id) && (
+          <button type="edit" className="btn_asLink"
+            onClick={goToInstructorDetail}>
+            INSTRUCTOR {pairedInstructor.first_name.toUpperCase()}'S INFO
+          </button>)}
       </div>
 
 

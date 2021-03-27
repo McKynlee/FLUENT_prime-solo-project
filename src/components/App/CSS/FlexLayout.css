@@ -11,7 +11,7 @@ LAYOUT TEMPLATES (used in multiple components)
 }
 
 .go-to-step-2 {
-  margin: 130px 0 0 75px;
+  margin: auto;
 }
 
 .landing-logo {
