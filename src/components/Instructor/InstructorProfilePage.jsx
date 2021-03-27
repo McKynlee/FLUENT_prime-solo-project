@@ -52,7 +52,7 @@ function InstructorProfile() {
           key={thisInstructor.instructorId}
           value={thisInstructor.instructorId}
         >
-          <div className="sub-container-left make-flex ">
+          {/* <div className="sub-container-left make-flex ">
             <h3 className="teal-underline">Your Information:</h3>
             <div><span className="teal-underline">Name:</span> {thisInstructor.first_name} {thisInstructor.last_name}</div>
             <div><span className="teal-underline">Preferred Pronouns:</span>{thisInstructor.pronoun}</div>
@@ -64,7 +64,9 @@ function InstructorProfile() {
 
             <img className="detail-avatar"
               src={thisInstructor.avatar} />
-          </div>
+          </div> */}
+          <img className="detail-avatar"
+            src={thisInstructor.avatar} />
 
           <button type="edit" className="btn margin-sm-top"
             onClick={editInstructorInfo}>
