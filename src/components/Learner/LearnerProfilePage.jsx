@@ -62,7 +62,7 @@ function LearnerProfile() {
 
   ///////////////////// RENDER JSX ///////////////////////
   return (
-    <div className="text-center">
+    <div className="text-center margin-top">
       <h1>{user.first_name}, you're on your way to being F.L.U.E.N.T!</h1>
       <h2 className="streak-title">
         {streakDescription}
@@ -81,7 +81,7 @@ function LearnerProfile() {
 
       <button type="challenge" className="btn"
         onClick={() => history.push('/challenge')}>
-        New Challenge
+        NEW CHALLENGE
 </button>
       <div className="main-flex-container">
         <div className="flex-container-column">
@@ -122,7 +122,7 @@ function LearnerProfile() {
             </p>
             <button type="edit" className="btn"
               onClick={editLearnerInfo}>
-              Edit Your Information
+              EDIT YOUR INFO
         </button>
           </div>
         </div>

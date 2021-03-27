@@ -89,7 +89,7 @@ function EditLearnerProfile() {
       text: "This will officially change your info to match your edits.",
       buttons: {
         cancel: 'Cancel',
-        confirm: { text: 'Confirm', className: 'btn' }
+        confirm: { text: 'Confirm', className: 'swal-btn' }
       },
     })
       .then((update) => {
@@ -175,7 +175,7 @@ function EditLearnerProfile() {
       icon: "warning",
       buttons: {
         cancel: 'Cancel',
-        confirm: { text: 'Confirm', className: 'delete-btn' }
+        confirm: { text: 'Confirm', className: 'swal-delete-btn' }
       },
       dangerMode: true,
     })

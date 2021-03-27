@@ -68,7 +68,7 @@ function InstructorProfile() {
 
           <button type="edit" className="btn margin-sm-top"
             onClick={editInstructorInfo}>
-            Edit Your Information
+            EDIT YOUR INFO
         </button>
         </section>
 
@@ -99,7 +99,7 @@ function InstructorProfile() {
                 {(Number(thisInstructor.learner_count) > 0) ?
                   <button className="btn"
                     onClick={reviewSubmissions}>
-                    Review Your Learner's Submissions
+                    REVIEW SUBMISSIONS
           </button>
                   : <></>}
               </div>

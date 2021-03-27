@@ -55,7 +55,7 @@ function LearnerRegistration2() {
       text: "This will finalize your registration.",
       buttons: {
         cancel: 'Cancel',
-        confirm: { text: 'Confirm', className: 'btn' }
+        confirm: { text: 'Confirm', className: 'swal-btn' }
       },
     })
       .then((register) => {
@@ -169,11 +169,11 @@ function LearnerRegistration2() {
                     <div className="btn-container">
                       <button type="more" className="btn btn_sizeSm"
                         onClick={() => onMoreInfo(availableInstructor.user_id)}>
-                        More Info
+                        MORE INFO
                       </button>
                       <button type="submit" className="btn btn_sizeSm"
                         onClick={() => onSelectInstructor(availableInstructor)}>
-                        Select Instructor
+                        SELECT INSTRUCTOR
                       </button>
                     </div>
                   </section>

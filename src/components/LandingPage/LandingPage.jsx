@@ -36,7 +36,7 @@ function LandingPage() {
         className="btn margin-btm"
         onClick={userLogin}
       >
-        Login
+        LOGIN
         </button>
       <div className="margin-sm-top">
         Or Register to:
@@ -47,7 +47,7 @@ function LandingPage() {
           <button className="btn"
             onClick={learnerRegistration}
           >
-            Become a Learner
+            BECOME A LEARNER
         </button>
           <ol>
             <li>
@@ -68,7 +68,7 @@ function LandingPage() {
         <div className="sub-container-right">
           <button className="btn"
             onClick={instructorRegistration}>
-            Become an Instructor
+            BECOME AN INSTRUCTOR
         </button>
           <ol>
             <li>

@@ -42,8 +42,9 @@ function SelectInstructorDetails() {
       title: `Pair with ${selectedInstructor.first_name}?`,
       text: "This will finalize your registration.",
       buttons: {
+        // cancel: { text: 'Cancel', className: 'cancel-btn' },
         cancel: 'Cancel',
-        confirm: { text: 'Confirm', className: 'btn' }
+        confirm: { text: 'Confirm', className: 'swal-btn' }
       },
     })
       .then((register) => {
@@ -105,12 +106,12 @@ function SelectInstructorDetails() {
         <div className="btn-container margin-top">
           <button type="return" className='btn'
             onClick={backToList}>
-            Back to All Instructors
+            BACK TO ALL INSTRUCTORS
         </button>
 
           <button type="submit" className="btn"
             onClick={() => onSelectInstructor(instructorDetails)}>
-            Select this Instructor
+            SELECT THIS INSTRUCTOR
       </button>
         </div>
 
