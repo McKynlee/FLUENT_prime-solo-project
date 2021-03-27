@@ -25,10 +25,10 @@ Alert
   box-sizing: border-box;
   padding: 15px 10px;
   margin: 15px 0;
-  border: 2px solid #e01616;
-  background-color: #efefef;
+  border: 2px solid #EC524B;
+  background-color: #50514f;
   border-radius: 3px;
-  color: #e01616;
+  color: #EC524B;
   font-size: 0.8rem;
 }
 
@@ -56,11 +56,6 @@ margin-right: 1rem;
 .text-align-left {
   text-align: left;
 } 
-
-.make-flex {
-  display: flex;
-  flex-direction: column;
-}
 
 /* --------------------------------------------------------------------------------
 2LearnerRegForm.jsx - Select Instructor Layout 
@@ -104,6 +99,6 @@ InstructorProfilePage.jsx
 }
 
 .instructor-table-feedback-row {
-  background-color: #a6a9b6;
+  background-color: #E6E5E5;
   color: #31326f;
 }

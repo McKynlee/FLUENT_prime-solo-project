@@ -60,7 +60,7 @@ function LandingPage() {
               Receive tailored feedback.
           </li>
           </ol>
-          <button type="popup" className="btn_asLink">
+          <button type="popup" className="btn_asLink margin-top">
             <em>Watch the demo here</em>
           </button>
         </div>
@@ -82,7 +82,7 @@ function LandingPage() {
               Share your expertise!
           </li>
           </ol>
-          <button type="popup" className="btn_asLink">
+          <button type="popup" className="btn_asLink margin-top">
             <em>Watch the demo here</em>
           </button>
         </div>

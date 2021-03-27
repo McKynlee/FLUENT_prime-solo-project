@@ -80,11 +80,12 @@ function LearnerRegistration1() {
   }; // end goToStep2
 
   return (
-    <form className="text-center" onSubmit={goToStep2}>
-      <div className="text-align-center ">
+    <form onSubmit={goToStep2}>
+
+      <div className="text-center">
         <h1 className="teal-underline">Register to become FLUENT:</h1>
         <h2><em>Step 1 of 2</em></h2>
-        <div className="meter half">
+        <div className="meter half ">
           <span></span>
         </div>
       </div>
@@ -96,17 +97,17 @@ function LearnerRegistration1() {
       )}
 
       <div className="main-flex-container margin-top">
-        <div className="sub-container-left make-flex ">
-          <div className="text-align-center">
+        <div className="sub-container-left make-flex">
+          <div >
             <h3 className="teal-underline">Personal Information:</h3>
             <h4>
               We use this information to tailor your learning experience!
-      </h4>
+            </h4>
             <p><em>*Denotes a required field.</em></p>
             <div>
               <label htmlFor="firstName">
                 First Name:*
-          <input
+                <input
                   type="text"
                   name="firstName"
                   value={firstName}
@@ -153,7 +154,8 @@ function LearnerRegistration1() {
               </label>
             </div>
 
-            <div>
+
+            <div className="select-dropdown-container">
               <label htmlFor="language">
                 Language You Want to Learn:*
           <select
@@ -177,7 +179,8 @@ function LearnerRegistration1() {
               </label>
             </div>
 
-            <div>
+
+            <div className="select-dropdown-container">
               <label htmlFor="language">
                 Current Skill Level with your Selected Language:*
           <select
@@ -199,17 +202,19 @@ function LearnerRegistration1() {
           </div>
         </div>
 
+
+
         {/* <div className="registration-container"> */}
-        <div className="sub-container-right">
+        <div className="sub-container-right make-flex-column">
           <h3 className="teal-underline">Your Log-In Information:</h3>
           <h4>
             Your email address and password will be
             your log-in credentials each time you return to F.L.U.E.N.T.
-        </h4>
-          <div>
+          </h4>
+          <div className="login-container">
             <label htmlFor="username">
               Email address:*
-          <input
+              <input
                 type="text"
                 name="username"
                 value={username}
@@ -221,7 +226,7 @@ function LearnerRegistration1() {
           <div>
             <label htmlFor="password">
               Password:*
-          <input
+          <input className="password-input"
                 type="password"
                 name="password"
                 value={password}
@@ -230,9 +235,15 @@ function LearnerRegistration1() {
               />
             </label>
           </div>
-          <div>
-            <input className="btn margin-top" type="submit" name="submit" value="Go to Step 2" />
+
+
+          <div className="go-to-step-2">
+            <button type="submit" name="submit"
+              className="btn margin-top">Go to Step 2
+            </button>
           </div>
+
+
         </div>
       </div>
     </form>

@@ -8,36 +8,8 @@ LAYOUT TEMPLATES (used in multiple components)
   margin: 0 0.5rem;
   width: 75%;
   height: 100%;
-  /* border-radius: 2rem; */
+  border-radius: 5px;
   box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;
-}
-
-.landing-logo {
-  width: 10rem;
-}
-
-.text-center{
-  text-align: center;
-}
-
-.margin-sm-top {
-  margin-top: 1rem;
-}
-
-.margin-md-top {
-  margin-top: 2.5rem;
-}
-
-.margin-top {
-  margin-top: 5rem;
-}
-  
-.main-flex-container {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  /* margin-top: 1rem; */
 }
 
 .flex-container-column {
@@ -48,20 +20,57 @@ LAYOUT TEMPLATES (used in multiple components)
   margin-top: 1rem;
 }
 
-/* .flex-container-column.align-space-around {
-  justify-content: center;
+.go-to-step-2 {
+  margin: 130px 0 0 75px;
+}
+
+.landing-logo {
+  width: 10rem;
+}
+
+.make-flex {
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
-} */
+  justify-content: flex-start;
+}
+
+.make-flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.margin-sm-top {
+  margin-top: 10px;
+}
+
+.margin-md-top {
+  margin-top: 25px;
+}
+
+.margin-top {
+  margin-top: 50px;
+}
+  
+.main-flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 
 /* top/middle/bottom style like on Challenge page */
 .sub-container-top, .sub-container-middle, .sub-container-bottom {
-  background-color: #E6E5E5;
+  /* background-color: #E6E5E5; */
   padding: 1rem 2rem;
   margin: 1rem auto;
   width: 75%;
   height: 100%;
   /* border-radius: 2rem; */
-  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;
+  /* box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3; */
 }
 
 /* top/middle/bottom style like on Challenge page */
@@ -75,13 +84,13 @@ LAYOUT TEMPLATES (used in multiple components)
 
 /* left/right style like Landing Page */
 .sub-container-left, .sub-container-right {
-  background-color: #E6E5E5;
+  /* background-color: #E6E5E5; */
   padding: 1rem 2rem;
   margin: 0 0.5rem;
   width: 20rem;
   height: 100%;
-  /* border-radius: 2rem; */
-  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3; 
+  /* border-radius: 5px; */
+  /* box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;  */
 }
   
 .sub-container-left ol, .sub-container-right ol {
@@ -166,5 +175,9 @@ LAYOUT TEMPLATES (used in multiple components)
     color: #dbf6e9;
     font-size: 110%;
     box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
+  }
+  
+  .text-center{
+    text-align: center;
   }
   

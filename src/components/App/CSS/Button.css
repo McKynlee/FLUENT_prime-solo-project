@@ -16,6 +16,7 @@ Button
   border-color: #31326f;
   outline: none;
   border-style: none;
+  margin: 20px;
 }
 
 .btn-navy-gray:hover {
@@ -29,6 +30,7 @@ Button
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
+  margin: 20px;
 }
 
 .btn_sizeMin {
@@ -61,15 +63,17 @@ Button
   background: none;
   font: inherit;
   color: #31326f;
-  padding: 0.25rem;
+  padding: 10px;
+  margin: 20px;
 }
 
 .btn_asLink:hover {
   background-color: #31326f;
-  border-radius: 1rem;
+  border-radius: 5px;
   box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
   color: #9ddfd3;
-  padding: 0.25rem;
+  padding: 10px;
+  margin: 20px;
 }
 
 .btn-container {
@@ -82,10 +86,10 @@ Button
 .delete-btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #9ddfd3;
+  border-color: #50514F;
   border-width: 1px 1px 3px;
-  border-radius: 0.5rem;
-  background-color: red;
+  border-radius: 5px;
+  background-color: #EC524B;
   color: #31326f;
   font-weight: bolder;
   font-size: 1.1rem;
@@ -96,11 +100,11 @@ Button
 .delete-btn:hover {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #9ddfd3;
+  border-color: #50514F;
   border-width: 1px 1px 3px;
-  border-radius: 0.5rem;
+  border-radius: 5px;
   background-color: #31326f;
-  color: red;
+  color: #EC524B;
   font-weight: bolder;
   font-size: 1.1rem;
   outline: 0;
