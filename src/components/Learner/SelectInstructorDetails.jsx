@@ -98,6 +98,7 @@ function SelectInstructorDetails() {
           value={instructorDetails.instructorID}
         >
           <div className="instructor-name-container">
+
             <h2>
               {instructorDetails.first_name} {instructorDetails.last_name}
               <div className="pronouns">

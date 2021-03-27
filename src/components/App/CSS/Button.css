@@ -15,7 +15,7 @@ Button
   border-color: #31326f;
   outline: none;
   border-style: none;
-  margin: 20px;
+  margin-top: 20px;
 }
 
 /* .btn_asLink makes buttons look like links */
@@ -41,11 +41,13 @@ Button
 }
 
 .btn-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin: 1rem auto;
+  display: grid;
+  grid-template-columns: repeat(2 1fr);
+  grid-column-gap: 10px;
+  /* flex-direction: row; */
+  /* justify-content: space-around;
+  /* align-items: center; */
+  /* margin: 1rem auto; */
   width: 100%;
 }
 

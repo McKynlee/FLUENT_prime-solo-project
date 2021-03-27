@@ -25,11 +25,15 @@ Alert
   box-sizing: border-box;
   padding: 15px 10px;
   margin: 15px 0;
-  border: 2px solid #EC524B;
-  background-color: #50514f;
-  border-radius: 3px;
-  color: #EC524B;
-  font-size: 0.8rem;
+  /* border: 2px solid #EC524B; */
+  background-color: #31326f;
+  /* border-radius: 3px; */
+  color: white;
+  font-size: 1rem;
+  font-weight: bolder;
+  text-align: center
+  /* border-top: 2px solid #EC524B; */
+  /* border-bottom: 2px solid #EC524B; */
 }
 
 /* --------------------------------------------------------------------------------
@@ -99,6 +103,6 @@ InstructorProfilePage.jsx
 }
 
 .instructor-table-feedback-row {
-  background-color: #E6E5E5;
+  background-color: white;
   color: #31326f;
 }
