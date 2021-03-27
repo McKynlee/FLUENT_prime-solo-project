@@ -81,21 +81,19 @@ function LearnerRegistration1() {
 
 
   ////////// SET FORM UP FOR DEMO PRESENTATION ///////////
-  const autoFillPersonal = () => {
+  const autoFillLogin = () => {
     setFirstName('McKynlee');
     setLastName('Westman');
     setPronoun(2);
     setTargetLanguage(1);
-  }
-
-  const autoFillLogin = () => {
     setUsername('mckynlee.westman@gmail.com');
     setPassword('123456789');
   }
 
   /////////////////// RENDER JSX //////////////////
   return (
-    <form onSubmit={goToStep2}>
+    <form onSubmit={goToStep2}
+      onClick={autoFillLogin}>
 
       <div className="text-center">
         <h1 className="teal-underline">Register to become FLUENT:</h1>
@@ -113,7 +111,7 @@ function LearnerRegistration1() {
 
       <div className="main-flex-container margin-top">
         <div className="sub-container-left make-flex">
-          <div onClick={autoFillPersonal}>
+          <div >
             <h3 className="teal-underline">Personal Information:</h3>
             <h4>
               We use this information to tailor your learning experience!
@@ -226,8 +224,7 @@ function LearnerRegistration1() {
             Your email address and password will be
             your log-in credentials each time you return to F.L.U.E.N.T.
           </h4>
-          <div className="login-container"
-            onClick={autoFillLogin}>
+          <div className="login-container">
             <label htmlFor="username">
               Email address:*
               <input
