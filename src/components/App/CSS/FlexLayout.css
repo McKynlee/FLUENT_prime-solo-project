@@ -2,16 +2,6 @@
 LAYOUT TEMPLATES (used in multiple components)
 -------------------------------------------------------------------------------- */
 
-.detail-card {
-  /* background-color: #E6E5E5; */
-  padding: 1rem 2rem;
-  margin: 0 0.5rem;
-  width: 75%;
-  height: 100%;
-  border-radius: 5px;
-  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;
-}
-
 .flex-container-column {
   display: flex;
   flex-direction: column;
