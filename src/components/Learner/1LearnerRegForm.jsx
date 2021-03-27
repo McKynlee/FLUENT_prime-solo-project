@@ -252,7 +252,7 @@ function LearnerRegistration1() {
 
           <div className="go-to-step-2">
             <button type="submit" name="submit"
-              className="btn margin-top">Go to Step 2
+              className="btn margin-top">GO TO STEP 2
             </button>
           </div>
 

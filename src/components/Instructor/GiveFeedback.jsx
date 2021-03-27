@@ -69,7 +69,7 @@ function InstructorGiveFeedback() {
       text: "This will share your feedback with the learner.",
       buttons: {
         cancel: 'Cancel',
-        confirm: { text: 'Confirm', className: 'btn' }
+        confirm: { text: 'Confirm', className: 'swal-btn' }
       },
     })
       .then((submit) => {
@@ -104,7 +104,7 @@ function InstructorGiveFeedback() {
       icon: "warning",
       buttons: {
         cancel: 'Cancel',
-        confirm: { text: 'Confirm', className: 'delete-btn' }
+        confirm: { text: 'Confirm', className: 'swal-delete-btn' }
       },
       dangerMode: true,
     })
@@ -177,7 +177,7 @@ function InstructorGiveFeedback() {
               </td>
               <td>
                 <button className="btn-navy-gray">
-                  Submit Feedback
+                  SUBMIT FEEDBACK
                 </button>
               </td>
             </tr>
@@ -187,7 +187,7 @@ function InstructorGiveFeedback() {
       </form>
       <button className="btn-navy-gray"
         onClick={onCancel}>
-        Go Back
+        GO BACK
       </button>
     </div>
   )

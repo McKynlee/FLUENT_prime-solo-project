@@ -197,7 +197,7 @@ function InstructorReviewSubmissions() {
                       DELETE
                     </button>) : (<button className="btn-navy-gray"
                       onClick={() => giveFeedback(submission.submission_id)}>
-                      Give Feedback
+                      GIVE FEEDBACK
                     </button>)}
                   </td>
                 </tr>

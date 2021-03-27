@@ -40,7 +40,7 @@ function SubmissionSuccess() {
       <button type="challenge"
         className="btn"
         onClick={() => history.push('/challenge')}>
-        Complete Another Challenge
+        COMPLETE ANOTHER CHALLENGE
       </button>
     </div>
   )

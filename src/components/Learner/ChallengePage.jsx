@@ -133,7 +133,7 @@ function InfoPage() {
       title: "Submit this challenge?",
       buttons: {
         cancel: 'Cancel',
-        confirm: { text: 'Confirm', className: 'btn' }
+        confirm: { text: 'Confirm', className: 'swal-btn' }
       },
     })
       .then((confirmSubmit) => {
@@ -256,7 +256,7 @@ function InfoPage() {
           </div>
 
           <button type="submit" className="btn">
-            Submit
+            SUBMIT
         </button>
         </form>
       </div>
