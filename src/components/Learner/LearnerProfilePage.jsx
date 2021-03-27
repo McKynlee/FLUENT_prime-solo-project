@@ -69,7 +69,7 @@ function LearnerProfile() {
       </h2>
 
       <div className='moneda-star-container'>
-        <img src={starImg} alt="star" className="star-image" />
+        <img src={starImg} alt="star" className="star-img" />
         <div className="moneda-announcement">
           You have <br />
           <span className="moneda-number">{learner.moneda_count}</span>
@@ -83,13 +83,29 @@ function LearnerProfile() {
         onClick={() => history.push('/challenge')}>
         NEW CHALLENGE
 </button>
-      <div className="main-flex-container">
-        <div className="flex-container-column">
-          <h3 className="teal-underline">
+
+      <div className="btn-container-profile">
+        <button type="edit" className="btn_asLink"
+          onClick={editLearnerInfo}>
+          EDIT YOUR INFO
+        </button>
+        <button type="edit" className="btn_asLink"
+          onClick={editLearnerInfo}>
+          INSTRUCTOR {pairedInstructor.first_name.toUpperCase()}'S INFO
+        </button>
+      </div>
+
+
+
+
+
+      {/* <div className="main-flex-container">
+        <div className="flex-container-column"> */}
+      {/* <h3 className="teal-underline">
             Your Information:
-          </h3>
-          <div className="sub-container-left">
-            <p><span className="teal-underline">
+          </h3> */}
+      {/* <div className="sub-container-left"> */}
+      {/* <p><span className="teal-underline">
               First name:</span> {user.first_name}
             </p>
             <p>
@@ -119,19 +135,19 @@ function LearnerProfile() {
                 Username:
               </span>
               {user.username}
-            </p>
-            <button type="edit" className="btn"
+        </p> */}
+      {/* <button type="edit" className="btn"
               onClick={editLearnerInfo}>
               EDIT YOUR INFO
-        </button>
+            </button>
           </div>
-        </div>
+        </div> */}
 
-        <div className="flex-container-column">
-          <h3 className="teal-underline">
+      {/* <div className="flex-container-column"> */}
+      {/* <h3 className="teal-underline">
             Your Instructor:
-          </h3>
-          <div className="sub-container-right">
+          </h3> */}
+      {/* <div className="sub-container-right">
             <p>
               <span className="teal-underline">
                 Name:
@@ -158,9 +174,9 @@ function LearnerProfile() {
             </p>
             <img src={pairedInstructor.avatar} alt={pairedInstructor.first_name} />
             {/* <p>Language taught: {pairedInstructor.languages_taught}</p> */}
-          </div>
-        </div>
-      </div>
+      {/* </div>  */}
+      {/* </div>
+      </div> */}
 
       <LogOutButton className="btn margin-top" />
     </div>
