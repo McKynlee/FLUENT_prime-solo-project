@@ -60,6 +60,12 @@ function LearnerProfile() {
   } // end editLearnerInfo
 
 
+  ///////////////////// HANDLE INSTRUCTOR DETAILS ///////////////////////
+  const goToInstructorDetail = () => {
+    console.log('pairedInstructor.instructorID:', pairedInstructor.instructorID);
+    history.push(`/learner/instructor/details/${pairedInstructor.instructorID}`)
+  }
+
   ///////////////////// RENDER JSX ///////////////////////
   return (
     <div className="text-center margin-top">
@@ -82,7 +88,7 @@ function LearnerProfile() {
       <button type="challenge" className="btn"
         onClick={() => history.push('/challenge')}>
         NEW CHALLENGE
-</button>
+      </button>
 
       <div className="btn-container-profile">
         <button type="edit" className="btn_asLink"
@@ -90,7 +96,7 @@ function LearnerProfile() {
           EDIT YOUR INFO
         </button>
         <button type="edit" className="btn_asLink"
-          onClick={editLearnerInfo}>
+          onClick={goToInstructorDetail}>
           INSTRUCTOR {pairedInstructor.first_name.toUpperCase()}'S INFO
         </button>
       </div>
