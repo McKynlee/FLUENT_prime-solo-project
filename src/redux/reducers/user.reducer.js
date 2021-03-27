@@ -5,7 +5,8 @@ const userReducer = (state = {
   language: '',
   pronouns: '',
   type: '',
-  username: ''
+  username: '',
+  instructor_id: 0
 }, action) => {
   switch (action.type) {
     case 'SET_USER':

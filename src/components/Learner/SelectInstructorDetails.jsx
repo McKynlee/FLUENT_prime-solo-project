@@ -8,12 +8,16 @@ import { useEffect } from 'react';
 function SelectInstructorDetails() {
   const history = useHistory();
   const dispatch = useDispatch();
+
+  ///////////////////// HANDLE PASSED URL PARAM ///////////////////////
   const idParam = useParams(':id');
   const instructorIdParam = idParam.id
 
   console.log('idParam:', idParam);
   console.log('instructorIdParam:', instructorIdParam);
 
+
+  ///////////////////// FETCH INTRUCTOR INFO ///////////////////////
   // on page load, ask for specific instructor info from reducer:
   useEffect(() => {
     dispatch({
@@ -22,14 +26,22 @@ function SelectInstructorDetails() {
     });
   }, []);
 
+
+  //////////////// BRING IN INFO FROM REDUCERS /////////////////////
+
   // Bring in specific instructor details from reducer:
   const instructorDetails = useSelector(store => store.thisInstructor);
   console.log('instructor details:', instructorDetails);
 
-  // Bring in learner info to register them if they select instructor:
+  // Bring in user info to register when they select instructor:
   const learnerInfo = useSelector(store => store.user);
 
+  // Bring in learner info (if exists) to render different features
+  // If this is an already-registered learner getting here from their profile page:
+  const registeredLearner = useSelector(store => store.learner);
+  console.log('selectInstructor page "learner":', registeredLearner);
 
+  ///////////////////// HANDLE SELECT INSTRUCTOR ///////////////////////
   // on Click of 'Select Instructor', pair instructor_id with learner
   const onSelectInstructor = (selectedInstructor) => {
     console.log('selectedInstructorId:', selectedInstructor);
@@ -103,17 +115,23 @@ function SelectInstructorDetails() {
           <div>{instructorDetails.bio}</div>
         </section>
 
-        <div className="btn-container margin-top">
-          <button type="return" className='btn'
-            onClick={backToList}>
-            BACK TO ALL INSTRUCTORS
-        </button>
-
-          <button type="submit" className="btn"
-            onClick={() => onSelectInstructor(instructorDetails)}>
-            SELECT THIS INSTRUCTOR
+        {registeredLearner.id > 0 ?
+          (<button className='btn'
+            onClick={() => history.push('/learner')}>
+            BACK TO YOUR PROFILE
+          </button>) :
+          (<div className="btn-container margin-top">
+            <button type="return" className='btn'
+              onClick={backToList}>
+              BACK TO ALL INSTRUCTORS
       </button>
-        </div>
+
+            <button type="submit" className="btn"
+              onClick={() => onSelectInstructor(instructorDetails)}>
+              SELECT THIS INSTRUCTOR
+    </button>
+          </div>)}
+
 
       </div>
     </div>
