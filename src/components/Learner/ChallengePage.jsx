@@ -180,7 +180,7 @@ function InfoPage() {
 
           {/* PHOTO CHALLENGE SECTION */}
           <div className="sub-container-top">
-            <section className='challenge-picture-section'>
+            <section className='make-flex-column'>
               <div>
                 <div className="challenge-mission-title">
                   <h4>
@@ -199,15 +199,20 @@ function InfoPage() {
               <div className="flex-container-column half-width">
                 <label className="teal-underline">Describe la foto:
                   <br />
-                  <textarea rows="5" cols="30"
+                  <textarea rows="5" cols="20"
                     value={photoDescription}
-                    onClick={() => onWordClick(photoDescription)}
                     onChange={(event) => setPhotoDescription(event.target.value)}
                     placeholder="Describe the photo"></textarea>
-                  <div className="teal-background"><em>
+                  {/* <div className="teal-background"><em>
                     Click inside the box to hear your answer spoken aloud in Spanish!
-                  </em></div>
+                  </em></div> */}
                 </label>
+                <div>
+                  <button type="button" className="btn btn_sizeMin"
+                    onClick={() => onWordClick(photoDescription)}>
+                    CLICK TO HEAR YOUR ANSWER
+                  </button>
+                </div>
               </div>
 
             </section>
@@ -215,8 +220,8 @@ function InfoPage() {
 
 
           {/* WORD CHALLENGE SECTION */}
-          <div className="sub-container-middle">
-            <section>
+          <div className="sub-container-middle ">
+            <section className="make-flex-column">
               <div className="challenge-mission-title">
                 <h4>
                   <span className="count">2.</span>
@@ -227,23 +232,28 @@ function InfoPage() {
 
               <div className="flex-container-column half-width">
                 <label className="teal-underline">Escribe una frase con la palabra:
-                <textarea rows="3" cols="35"
+                <textarea rows="3" cols="30"
                     value={wordSentence}
-                    onClick={() => onWordClick(wordSentence)}
                     onChange={(event) => setWordSentence(event.target.value)}
                     placeholder="Write a complete sentence using the Spanish word on the left.">
                   </textarea>
-                  <div className="teal-background "><em>
+                  {/* <div className="teal-background "><em>
                     Click inside the box to hear your answer spoken aloud in Spanish!
-                  </em></div>
+                  </em></div> */}
                 </label>
+                <div>
+                  <button type="button" className="btn btn_sizeMin"
+                    onClick={() => onWordClick(wordSentence)}>
+                    CLICK TO HEAR YOUR ANSWER
+                  </button>
+                </div>
               </div>
 
             </section>
           </div>
 
           <div className="sub-container-bottom">
-            <section className=''>
+            <section className='make-flex-column'>
               <div>
                 <h4>
                   <span className="count">
