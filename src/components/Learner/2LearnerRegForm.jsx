@@ -154,7 +154,9 @@ function LearnerRegistration2() {
                     key={i}
                     value={availableInstructor.instructorID}
                   >
-                    <div>{availableInstructor.first_name} {availableInstructor.last_name}</div>
+                    <h4 className="instructor-name">
+                      {availableInstructor.first_name} {availableInstructor.last_name}
+                    </h4>
                     <div>({availableInstructor.pronoun})</div>
                     <div className="registration-avatar-container">
                       <img className="instructor-avatar-registration"
