@@ -3,7 +3,7 @@ LAYOUT TEMPLATES (used in multiple components)
 -------------------------------------------------------------------------------- */
 
 .detail-card {
-  background-color: #E6E5E5;
+  /* background-color: #E6E5E5; */
   padding: 1rem 2rem;
   margin: 0 0.5rem;
   width: 75%;
