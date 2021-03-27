@@ -97,7 +97,7 @@ function LearnerProfile() {
         </button>
         <button type="edit" className="btn_asLink"
           onClick={goToInstructorDetail}>
-          INSTRUCTOR {pairedInstructor.first_name.toUpperCase()}'S INFO
+          INSTRUCTOR {(pairedInstructor) && (pairedInstructor.first_name.toUpperCase())}'S INFO
         </button>
       </div>
 
