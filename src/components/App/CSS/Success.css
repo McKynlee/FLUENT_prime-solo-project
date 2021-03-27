@@ -6,13 +6,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30rem;
+  height: 40rem;
   margin: 1rem;
   font-size: 1.5rem;
 }
 
 .star-image-xl {
   position: absolute;
-  height: 30rem;
+  height: 40rem;
   /* z-index: -1; */
 }

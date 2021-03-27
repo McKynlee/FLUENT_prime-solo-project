@@ -232,7 +232,7 @@ function InfoPage() {
 
               <div className="flex-container-column half-width">
                 <label className="teal-underline">Escribe una frase con la palabra:
-                <textarea rows="3" cols="30"
+                <textarea rows="3" cols="20"
                     value={wordSentence}
                     onChange={(event) => setWordSentence(event.target.value)}
                     placeholder="Write a complete sentence using the Spanish word on the left.">
@@ -266,7 +266,7 @@ function InfoPage() {
 
               <div className="flex-container-column half-width">
                 <label>
-                  <textarea rows="4" cols="40"
+                  <textarea rows="4" cols="20"
                     value={qForInstructor}
                     onChange={(event) => setQForInstructor(event.target.value)}
                     placeholder="Write any questions you have for your instructor.">
