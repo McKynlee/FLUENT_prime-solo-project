@@ -1,11 +1,11 @@
 .grid-container {
   display: grid;
-  margin: 1rem;
+  margin: auto;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(6rem, 100%);
   grid-gap: 0;
   justify-content: center;
-  width: 100%;
+  width: 90%;
 }
 
 .grid-item {
