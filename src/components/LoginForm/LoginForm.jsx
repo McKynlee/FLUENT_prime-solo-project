@@ -25,43 +25,52 @@ function LoginForm() {
     }
   }; // end login
 
+  ///////////////// HANDLE AUTO FILL FOR DEMO PRESENTATION /////////////
+  const autoFillLogin = () => {
+    setUsername('luigi@gmail.com');
+    setPassword('123456789');
+  }
+
   return (
     <form className="detail-card text-center margin-top"
       onSubmit={login}>
-      <h1 className="teal-underline">
-        Login
+      <div onClick={autoFillLogin}>
+        <h1 className="teal-underline">
+          Login
       </h1>
-      {errors.loginMessage && (
-        <h3 className="alert" role="alert">
-          {errors.loginMessage}
-        </h3>
-      )}
-      <div>
-        <label htmlFor="username">
-          Username:
+        {errors.loginMessage && (
+          <h3 className="alert" role="alert">
+            {errors.loginMessage}
+          </h3>
+        )}
+        <div>
+          <label htmlFor="username">
+            Email Address:
           <input
-            type="text"
-            name="username"
-            required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password">
-          Password:
+              type="text"
+              name="username"
+              required
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="password">
+            Password:
           <input
-            type="password"
-            name="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
+              type="password"
+              name="password"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </label>
+        </div>
       </div>
+
       <div>
-        <input className="btn margin-sm-top" type="submit" name="submit" value="Log In" />
+        <input className="btn margin-sm-top" type="submit" name="submit" value="LOG IN" />
       </div>
     </form>
   );
