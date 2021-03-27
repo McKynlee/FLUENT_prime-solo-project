@@ -126,6 +126,7 @@ function InfoPage() {
 
 
   ///////////////////SEND INPUTS TO SAGA://///////////////
+
   // dispatch: imageSRC, photoDescription, wordSentence, randomWord, learner.id, qForInstructor
   // When form is submitted, save inputs to db:
   const submitChallenge = () => {
@@ -158,9 +159,20 @@ function InfoPage() {
       });
   } //end submitChallenge
 
+
+  /////////////////// HANDLE AUTO FILL FOR DEMO /////////////////
+  const autoFillChallenge = () => {
+    setPhotoDescription('Creo que es un dia muy lindo.');
+    setWordSentence('No entiendo la pregunta.');
+    setQForInstructor('Do you have any fiction book recommendations for beginner Spanish?');
+  }
+
   return (
-    <div className="text-center">
-      <h1 className="teal-underline">Welcome, {user.first_name}</h1>
+    <div className="text-center margin-top"
+      onClick={autoFillChallenge}>
+      <h1 className="teal-underline">
+        Welcome, {user.first_name}
+      </h1>
       <h2>{welcomeMessage}</h2>
 
       <div className="flex-container-column">
@@ -187,7 +199,7 @@ function InfoPage() {
               <div className="flex-container-column half-width">
                 <label className="teal-underline">Describe la foto:
                   <br />
-                  <textarea rows="10" cols="30"
+                  <textarea rows="5" cols="30"
                     value={photoDescription}
                     onClick={() => onWordClick(photoDescription)}
                     onChange={(event) => setPhotoDescription(event.target.value)}
@@ -215,7 +227,7 @@ function InfoPage() {
 
               <div className="flex-container-column half-width">
                 <label className="teal-underline">Escribe una frase con la palabra:
-                <textarea rows="7" cols="35"
+                <textarea rows="3" cols="35"
                     value={wordSentence}
                     onClick={() => onWordClick(wordSentence)}
                     onChange={(event) => setWordSentence(event.target.value)}

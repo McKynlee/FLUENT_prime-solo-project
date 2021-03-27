@@ -80,7 +80,7 @@ function LearnerRegistration1() {
   }; // end goToStep2
 
 
-  ////////// SET FORM UP FOR DEMO PRESENTATION ///////////
+  ////////// HANDLE AUTO FILL FOR DEMO PRESENTATION ///////////
   const autoFillLogin = () => {
     setFirstName('McKynlee');
     setLastName('Westman');
