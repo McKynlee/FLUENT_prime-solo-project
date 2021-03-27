@@ -97,7 +97,7 @@ function SelectInstructorDetails() {
             src={instructorDetails.avatar}
             alt="Self-representative photo selected by instructor." />
           <h3 className="teal-underline">
-            A little bit about {instructorDetails.first_name}:
+            A little about {instructorDetails.first_name}:
           </h3>
           <div>{instructorDetails.bio}</div>
         </section>

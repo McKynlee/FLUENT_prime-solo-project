@@ -1,7 +1,6 @@
 /* --------------------------------------------------------------------------------
 Button
 -------------------------------------------------------------------------------- */
-
 .btn, .btn-navy-gray {
   display: inline-block;
   padding: 10px 20px;
@@ -17,43 +16,6 @@ Button
   outline: none;
   border-style: none;
   margin: 20px;
-}
-
-.btn-navy-gray:hover {
-  display: inline-block;
-  padding: 10px 20px;
-  border-color: #9ddfd3;
-  border-width: 1px 1px 3px;
-  border-radius: 5px;
-  background-color: #E6E5E5;
-  color: #31326f;
-  font-size: 1.1rem;
-  outline: 0;
-  cursor: pointer;
-  margin: 20px;
-}
-
-.btn_sizeMin {
-  min-height: 50px;
-  min-width: 100px;
-}
-
-.btn_sizeSm {
-  padding: 10px 15px;
-  font-size: 0.8rem;
-  width: 75px;
-  margin: 0 25px;
-}
-
-.btn_sizeFull {
-  display: block;
-  width: 100%;
-}
-
-.btn:not([disabled]):hover, .btn:hover {
-  background-color: #9ddfd3;
-  color: #31326f;
-  text-decoration: none;
 }
 
 /* .btn_asLink makes buttons look like links */
@@ -82,7 +44,47 @@ Button
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-top: 1rem;
+  align-items: center;
+  margin: 1rem auto;
+  width: 100%;
+}
+
+.btn-navy-gray:hover {
+  display: inline-block;
+  padding: 10px 20px;
+  border-color: #9ddfd3;
+  border-width: 1px 1px 3px;
+  border-radius: 5px;
+  background-color: #E6E5E5;
+  color: #31326f;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.btn:not([disabled]):hover, .btn:hover {
+  background-color: #9ddfd3;
+  color: #31326f;
+  text-decoration: none;
+}
+
+.btn_sizeMin {
+  min-height: 50px;
+  min-width: 100px;
+}
+
+.btn_sizeSm {
+  padding: 10px 15px;
+  font-size: 0.8rem;
+  width: 90px;
+  height: 50px;
+  margin: 0 15px;
+}
+
+.btn_sizeFull {
+  display: block;
+  width: 100%;
 }
 
 .delete-btn {
