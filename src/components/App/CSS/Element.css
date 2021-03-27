@@ -7,28 +7,26 @@ ELEMENT TEMPLATES
 
 img {
   max-width: 50%;
-  border-radius: 2rem;
+  border-radius: 5px;
 }
 
 img.img-submissions{
   max-width: 100%;
-  border-radius: 2rem;
+  border-radius: 5px;
 }
 
-input {
-  margin: 0.5rem;
-  margin-bottom: 10px;
-  border-radius: 0.4rem;
+input, select, textarea {
+  margin: 10px;
 }
 
 /* .meter = Progress Bar on registration: */
 .meter { 
   width: 50%;
-  margin: auto;
+  margin: 30px auto;
   height: 20px;  
   position: relative;
-  background: #a6a9b6;
-  border-radius: 25px;
+  background: #E6E5E5;
+  border-radius: 5px;
   padding: 10px;
   box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
   box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
@@ -42,30 +40,38 @@ input {
 }
 
 .meter > span {
-  /* width: 50%; */
   display: block;
   height: 100%;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  background-color: rgb(43,194,83);
+  background-color: #9ddfd3;
   box-shadow: 
-    inset 0 2px 9px  rgba(255,255,255,0.3),
-    inset 0 -2px 6px rgba(0,0,0,0.4);
+    inset 0 2px 9px  #E6E5E5,
+    inset 0 -2px 6px #31326f;
   position: relative;
   overflow: hidden;
 }
 
+.password-input {
+margin-left: 42px;
+}
+
 select {
-  margin: 0.5rem;
-  max-width: 7rem;
+  width: 9rem;
+  justify-self: flex-end;
+  margin-left: 98px;
   }
+
+.select-dropdown-container {
+  margin: 10px 0;
+}
 
 .teal-background {
   background-color: #9ddfd3;
   padding: 0.5rem;
-  border-radius: 1rem;
+  border-radius: 5px;
 }
 
 textarea {
