@@ -116,7 +116,7 @@ function SelectInstructorDetails() {
           <div>{instructorDetails.bio}</div>
         </section>
 
-        {registeredLearner.user_id === learnerInfo.id ?
+        {learnerInfo.id && registeredLearner.user_id === learnerInfo.id ?
           (<button className='btn margin-top'
             onClick={() => history.push('/learner')}>
             BACK TO YOUR PROFILE
