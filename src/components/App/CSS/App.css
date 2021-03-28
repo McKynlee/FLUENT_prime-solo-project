@@ -24,16 +24,19 @@ Alert
 .alert {
   box-sizing: border-box;
   padding: 15px 10px;
-  margin: 15px 0;
+  margin: 40px auto;
   /* border: 2px solid #EC524B; */
-  background-color: #31326f;
-  /* border-radius: 3px; */
-  color: white;
+  background-color: white;
+  text-decoration: underline;
+  text-decoration-color: #EC524B;
+  border-radius: 5px;
+  color: #31326f;
   font-size: 1rem;
   font-weight: bolder;
-  text-align: center
+  text-align: center;
   /* border-top: 2px solid #EC524B; */
   /* border-bottom: 2px solid #EC524B; */
+  width: 75%;
 }
 
 /* --------------------------------------------------------------------------------

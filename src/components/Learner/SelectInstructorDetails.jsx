@@ -117,7 +117,7 @@ function SelectInstructorDetails() {
         </section>
 
         {registeredLearner.user_id === learnerInfo.id ?
-          (<button className='btn'
+          (<button className='btn margin-top'
             onClick={() => history.push('/learner')}>
             BACK TO YOUR PROFILE
           </button>) :
@@ -125,7 +125,7 @@ function SelectInstructorDetails() {
             <button type="return" className='btn'
               onClick={backToList}>
               BACK TO ALL INSTRUCTORS
-      </button>
+            </button>
 
             <button type="submit" className="btn"
               onClick={() => onSelectInstructor(instructorDetails)}>
