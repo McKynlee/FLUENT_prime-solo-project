@@ -53,11 +53,15 @@ Button
 
 .btn-container-profile {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
   /* margin: 1rem auto; */
-  width: 100%;
+  width: 75%;
+  background-color: white;
+  margin: 100px auto;
+  border-radius: 5px;
+  padding: 0 20px 20px;
 }
 
 .btn-navy-gray:hover {

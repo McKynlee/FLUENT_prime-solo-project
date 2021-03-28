@@ -202,9 +202,9 @@ function EditLearnerProfile() {
   ////////////////// RENDER JSX ////////////////////
   return (
     <div>
-      <form className="text-center"
+      <form
         onSubmit={onSubmitEdit}>
-        <div>
+        <div className="text-center">
           <h1 className="teal-underline">
             Update Your Info:
         </h1>
@@ -217,13 +217,14 @@ function EditLearnerProfile() {
         )}
 
         <div className="main-flex-container margin-top">
-          <div className="sub-container-top ">
+          <div className="sub-container-left make-flex">
             <h3 className="teal-underline">Personal Information:</h3>
             <h4>
               We use this information to tailor your learning experience!
       </h4>
             <p><em>*Denotes a required field.</em></p>
-            <div>
+
+            <div className="input-full">
               <label htmlFor="firstName">
                 First Name:
           <input
@@ -236,11 +237,11 @@ function EditLearnerProfile() {
               </label>
             </div>
 
-            <div>
-              <label htmlFor="lastName">
+            <div className="input-full">
+              <label
+                htmlFor="lastName">
                 Last Name:
-          <input
-                  type="text"
+          <input type="text"
                   name="lastName"
                   value={lastName}
                   required
@@ -249,7 +250,7 @@ function EditLearnerProfile() {
               </label>
             </div>
 
-            <div>
+            <div className="input-full">
               <label htmlFor="pronoun">
                 Your Preferred Pronouns:
           <select
@@ -275,7 +276,7 @@ function EditLearnerProfile() {
               </label>
             </div>
 
-            <div>
+            <div className="input-full">
               <label htmlFor="language">
                 Language You Want to Learn:
           <select
@@ -299,7 +300,7 @@ function EditLearnerProfile() {
               </label>
             </div>
 
-            <div>
+            <div className="input-full">
               <label htmlFor="language">
                 Current Skill Level with your Selected Language:
           <select
@@ -318,24 +319,35 @@ function EditLearnerProfile() {
                 </select>
               </label>
             </div>
+          </div>
 
-            <h3 className="teal-underline">Your Log-In Information:</h3>
-            <h4>
-              your email address and password will be
-              your log-in credentials each time you return to F.L.U.E.N.T.
-        </h4>
+
+          <div className="sub-container-right make-flex-column">
             <div>
-              <label htmlFor="username">
-                Email address:
+              <h3 className="teal-underline">Your Log-In Information:</h3>
+              <h4>
+                your email address and password will be
+                your log-in credentials each time you return to F.L.U.E.N.T.
+        </h4>
+              <div>
+                <label htmlFor="username">
+                  Email address:
           <input
-                  type="text"
-                  name="username"
-                  value={username}
-                  required
-                  onChange={(event) => setUsername(event.target.value)}
-                />
-              </label>
-              <input className="btn" type="submit" name="submit" value="Update Your Info" />
+                    type="text"
+                    name="username"
+                    value={username}
+                    required
+                    onChange={(event) => setUsername(event.target.value)}
+                  />
+                </label>
+
+                <div>
+                  <button className="btn" type="submit" name="submit">
+                    UPDATE
+                </button>
+                </div>
+
+              </div>
             </div>
           </div>
         </div>

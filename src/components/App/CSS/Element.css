@@ -6,15 +6,9 @@ ELEMENT TEMPLATES
 }
 
 img {
-  /* max-width: 50%; */
   border-radius: 5px;
   align-self: center;
 }
-
-/* img.img-submissions{
-  max-width: 100%;
-  border-radius: 5px;
-} */
 
 input, select, textarea {
     margin: 10px 0;
@@ -24,8 +18,16 @@ input, select, textarea {
     border-style: none;
     border: 1px solid white;
     padding: 5px 10px;
+    width: 100%;
 }
 
+.input-full {
+  width: 100%;
+}
+
+label input {
+  width: 93%;
+}
 
 label {
   display: flex;
@@ -35,6 +37,18 @@ label {
 
 .landing-logo {
   width: 10rem;
+}
+
+.margin-sm-top {
+  margin-top: 10px;
+}
+
+.margin-md-top {
+  margin-top: 25px;
+}
+
+.margin-top {
+  margin-top: 40px;
 }
 
 /* .meter = Progress Bar on registration: */
@@ -72,15 +86,11 @@ label {
   overflow: hidden;
 }
 
-select {
-  width: 100%;
-  justify-self: flex-end;
-  }
-
 textarea {
   font-size: 16px;
   width: 100%;
   font-family: 'Noto Sans', sans-serif;
   background-color: #dbf6e9;
   color: #31326f;
+  border-radius: 5px;
 }

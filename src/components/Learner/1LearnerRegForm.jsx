@@ -146,8 +146,7 @@ function LearnerRegistration1() {
             <div className="select-dropdown-container">
               <label htmlFor="pronoun">
                 Your Preferred Pronouns:*
-          <select
-                  type="text"
+          <select type="text"
                   name="pronoun"
                   value={pronoun}
                   required
@@ -168,7 +167,7 @@ function LearnerRegistration1() {
             </div>
 
 
-            <div className="select-dropdown-container">
+            <div className="select-dropdown-container" >
               <label htmlFor="language">
                 Language You Want to Learn:*
           <select
@@ -217,7 +216,6 @@ function LearnerRegistration1() {
 
 
 
-        {/* <div className="registration-container"> */}
         <div className="sub-container-right make-flex-column">
           <h3 className="teal-underline">Your Log-In Information:</h3>
           <h4>

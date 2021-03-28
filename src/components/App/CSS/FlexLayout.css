@@ -33,18 +33,6 @@ LAYOUT TEMPLATES (used in multiple components)
   align-items: flex-start;
   justify-content: space-between;
 }
-
-.margin-sm-top {
-  margin-top: 10px;
-}
-
-.margin-md-top {
-  margin-top: 25px;
-}
-
-.margin-top {
-  margin-top: 40px;
-}
   
 .main-flex-container {
   display: flex;
