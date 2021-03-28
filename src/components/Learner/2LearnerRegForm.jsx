@@ -119,8 +119,6 @@ function LearnerRegistration2() {
         )}
 
 
-        {/* FLEX CONTAINER */}
-        {/* <div className="instructors-container"> */}
         <div className="grid-container">
           {/* LOOP THROUGH INSTRUCTOR LIST */}
           {instructorList.map((instructor) => {
@@ -156,8 +154,6 @@ function LearnerRegistration2() {
                 }
 
                 return (
-                  // <section className="learner-instructor-section"
-                  // <section className="individ-instructor-card"
                   <section className="grid-item"
                     key={i}
                     value={availableInstructor.instructorID}

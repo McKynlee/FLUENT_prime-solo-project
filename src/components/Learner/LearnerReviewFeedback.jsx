@@ -34,92 +34,91 @@ function LearnerReviewFeedback() {
 
   return (
     <div>
-      <h1>Learner Review Feedback</h1>
-      <table className="learner-review-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>
-              Date Submitted
-            </th>
-            <th>
-              Given Image
-            </th>
-            <th>
-              Image Description
-            </th>
-            <th>
-              Given Word
-            </th>
-            <th>
-              Sentence with Word
-            </th>
-            <th>
-              Q & A
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {submissionList.map((submission, i) => {
 
-            // Render correct Day-of-week for when submitted date:
-            let dayOfWeek;
-            if (submission.DOW === 0) {
-              dayOfWeek = 'Sunday';
-            }
-            if (submission.DOW === 1) {
-              dayOfWeek = 'Monday';
-            }
-            if (submission.DOW === 2) {
-              dayOfWeek = 'Tuesday';
-            }
-            if (submission.DOW === 3) {
-              dayOfWeek = 'Wednesday';
-            }
-            if (submission.DOW === 4) {
-              dayOfWeek = 'Thursday';
-            }
-            if (submission.DOW === 5) {
-              dayOfWeek = 'Friday';
-            }
-            if (submission.DOW === 6) {
-              dayOfWeek = 'Saturday';
-            }
+      <div className="text-center margin-top teal-underline">
+        <h1>Review Your Submissions</h1>
+      </div>
 
-            return (
-              <>
-                <tr key={i}>
-                  <td>
-                    Your response:
-                  </td>
-                  <td>
-                    {dayOfWeek}, {submission.month}-{submission.day}-{submission.year}
-                  </td>
-                  <td rowspan="2"><img className="img-submissions"
-                    src={submission.picture_url} /></td>
-                  <td>{submission.picture_description}</td>
-                  <td rowspan="2">{submission.word}</td>
-                  <td>{submission.word_sentence}</td>
-                  <td>{submission.q_for_instructor}</td>
-                </tr>
-                <tr className="learner-table-feedback-row">
-                  <td>
-                    Instructor's Feedback:
-                  </td>
-                  <td></td>
-                  <td>{submission.instructor_pic_response}</td>
-                  <td>{submission.instructor_word_response}</td>
-                  <td>{submission.instructor_q_response}</td>
-                </tr>
-              </>
-            );
-          })}
+      <div className="grid-container-submissions">
+        {submissionList.map((submission, i) => {
+
+          // Render correct Day-of-week for when submitted date:
+          let dayOfWeek;
+          if (submission.DOW === 0) {
+            dayOfWeek = 'Sunday';
+          }
+          if (submission.DOW === 1) {
+            dayOfWeek = 'Monday';
+          }
+          if (submission.DOW === 2) {
+            dayOfWeek = 'Tuesday';
+          }
+          if (submission.DOW === 3) {
+            dayOfWeek = 'Wednesday';
+          }
+          if (submission.DOW === 4) {
+            dayOfWeek = 'Thursday';
+          }
+          if (submission.DOW === 5) {
+            dayOfWeek = 'Friday';
+          }
+          if (submission.DOW === 6) {
+            dayOfWeek = 'Saturday';
+          }
+
+          return (
+            <section className="grid-item-submissions"
+              key={i}>
+
+              <div className="date-submitted">
+                {dayOfWeek}, {submission.month}-{submission.day}-{submission.year}
+              </div>
+
+              <div className="margin-sm-top make-flex-submissions">
+                <div className="half-width">
+                  <img className="img-submissions"
+                    src={submission.picture_url} />
+                </div>
+                <div className="half-width">
+                  {submission.picture_description}
+                </div>
+              </div>
 
 
-        </tbody>
-      </table>
+              <div className="margin-sm-top make-flex-submissions-word">
+                <div className="given-word">
+                  {submission.word}
+                </div>
+                <div className="half-width">
+                  {submission.word_sentence}
+                </div>
+              </div>
+
+              <div className="margin-sm-top make-flex-submissions-q">
+                <div>
+                  Q & A: {submission.q_for_instructor}
+                </div>
+              </div>
+
+              <button className="btn center">
+                INSTRUCTOR'S RESPONSE
+              </button>
+              {/* DISPLAY THE FOLLOWING ONCLICK: */}
+              {/* Instructor's Feedback:
+                {submission.instructor_pic_response}
+              {submission.instructor_word_response}
+              {submission.instructor_q_response} */}
+
+
+
+            </section>
+          );
+
+        })}
+      </div>
+
     </div >
   )
 }
 
-export default LearnerReviewFeedback
+export default LearnerReviewFeedback;

@@ -22,7 +22,7 @@ LAYOUT TEMPLATES (used in multiple components)
 
 .make-flex {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
 }
