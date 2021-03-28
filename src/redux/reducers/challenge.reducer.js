@@ -10,7 +10,7 @@ const submissionReducer = (state = [{
   word_sentence: '',
   q_for_instructor: '',
   time_stamp: '',
-
+  responseShowing: false,
   instructor_feedback_id: 0,
   inst_picture_description: '',
   inst_word_sentence: '',
