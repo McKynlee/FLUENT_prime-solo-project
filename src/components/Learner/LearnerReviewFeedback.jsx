@@ -117,14 +117,17 @@ function LearnerReviewFeedback() {
               </div>
 
               <div className="margin-sm-top make-flex-submissions-q">
-                <div>
-                  Q & A: {submission.q_for_instructor}
+                <div className="half-width">
+                  Question:
+                  </div>
+                <div className="half-width">
+                  {submission.q_for_instructor}
                 </div>
               </div>
 
               <button value={submission.submission_id}
                 onClick={(event) => toggleResponse(event.target.value)}
-                className="btn center margin-bottom">
+                className="btn center add-margin">
                 INSTRUCTOR'S RESPONSE
               </button>
 
@@ -133,13 +136,20 @@ function LearnerReviewFeedback() {
               {submission.response_showing && (
                 <div class="instructor-response">
                   <div className="feedback">
-                    Photo: {submission.instructor_pic_response}
+                    <div className="half-width">Photo:</div>
+                    <div className="half-width">
+                      {submission.instructor_pic_response}
+                    </div>
                   </div>
                   <div className="feedback">
-                    Word: {submission.instructor_word_response}
+                    <div className="half-width">Word:</div>
+                    <div className="half-width">{submission.instructor_word_response}</div>
                   </div>
                   <div className="feedback">
-                    A: {submission.instructor_q_response}
+                    <div className="half-width">Answer:</div>
+                    <div className="half-width">
+                      {submission.instructor_q_response}
+                    </div>
                   </div>
                 </div>
               )}
