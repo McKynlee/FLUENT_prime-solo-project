@@ -2,12 +2,14 @@
 // alongside corresponding instructor feedback
 // path: '/learner/review'
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function LearnerReviewFeedback() {
   const dispatch = useDispatch();
 
+
+  ////////////////// BRING IN DATA FROM REDUCERS ////////////////////
   // Bring in logged in user's data:
   const user = useSelector((store) => store.user);
   // console.log('learner profile user:', user);
@@ -18,6 +20,7 @@ function LearnerReviewFeedback() {
   // console.log('learner:', learner);
 
 
+  ////////////////// GET CHALLENGE SUBMISSIONS ////////////////////
   // On page load, ask for all submissions corresponding with logged-in learner ID:
   useEffect(() => {
     dispatch({
@@ -32,6 +35,10 @@ function LearnerReviewFeedback() {
   console.log('submissions:', submissionList);
 
 
+  ////////////////// VARIABLE FOR TOGGLING FEEDBACK ////////////////////
+  const [showResponse, setShowResponse] = useState(true);
+
+  ////////////////// RENDER JSX ////////////////////
   return (
     <div>
 
@@ -65,6 +72,21 @@ function LearnerReviewFeedback() {
           if (submission.DOW === 6) {
             dayOfWeek = 'Saturday';
           }
+
+
+          /////// HANDLE INSTRUCTOR RESPONSE TOGGLE ////////////
+          //add boolean value to individual submission object:
+
+          const toggleResponse = (clickedEvent) => {
+            console.log('toggleResponse clickedEvent:', clickedEvent);
+            console.log('submission with responseShowing?', submission);
+
+            if (submission.submission_id === Number(clickedEvent)) {
+              submission.response_showing = showResponse;
+            }
+            setShowResponse(!showResponse);
+          }
+
 
           return (
             <section className="grid-item-submissions"
@@ -100,14 +122,27 @@ function LearnerReviewFeedback() {
                 </div>
               </div>
 
-              <button className="btn center">
+              <button value={submission.submission_id}
+                onClick={(event) => toggleResponse(event.target.value)}
+                className="btn center margin-bottom">
                 INSTRUCTOR'S RESPONSE
               </button>
-              {/* DISPLAY THE FOLLOWING ONCLICK: */}
-              {/* Instructor's Feedback:
-                {submission.instructor_pic_response}
-              {submission.instructor_word_response}
-              {submission.instructor_q_response} */}
+
+              {/* TOGGLE THE FOLLOWING ONCLICK: */}
+
+              {submission.response_showing && (
+                <div class="instructor-response">
+                  <div className="feedback">
+                    Photo: {submission.instructor_pic_response}
+                  </div>
+                  <div className="feedback">
+                    Word: {submission.instructor_word_response}
+                  </div>
+                  <div className="feedback">
+                    A: {submission.instructor_q_response}
+                  </div>
+                </div>
+              )}
 
 
 
