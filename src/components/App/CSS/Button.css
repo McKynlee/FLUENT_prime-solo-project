@@ -112,6 +112,35 @@ Button
   /* margin: 20px; */
 }
 
+.challenge-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-width: 1px 1px 3px;
+  border-radius: 5px;
+  background-color: #31326f;
+  color: white;
+  font-size: 18px;
+  outline: 0;
+  cursor: pointer;
+  outline: none;
+  border-style: none;
+  margin-top: 10px;
+}
+
+.challenge-btn:hover {
+  display: inline-block;
+  padding: 10px 20px;
+  border-width: 1px 1px 3px;
+  border-radius: 5px;
+  background-color: #9ddfd3;
+  color: #31326f;
+  font-size: 18px;
+  outline: 0;
+  cursor: pointer;
+  outline: none;
+  border-style: none;
+}
+
 .delete-btn {
   display: inline-block;
   padding: 10px 20px;
