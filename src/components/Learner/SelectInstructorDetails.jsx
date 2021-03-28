@@ -89,7 +89,7 @@ function SelectInstructorDetails() {
 
 
   return (
-    <div className="main-flex-container text-center">
+    <div className="main-flex-container text-center margin-top">
       <div className="detail-card">
         <h1 className="teal-underline">Instructor Details</h1>
 
@@ -116,7 +116,7 @@ function SelectInstructorDetails() {
           <div>{instructorDetails.bio}</div>
         </section>
 
-        {registeredLearner.id > 0 ?
+        {registeredLearner.user_id === learnerInfo.id ?
           (<button className='btn'
             onClick={() => history.push('/learner')}>
             BACK TO YOUR PROFILE

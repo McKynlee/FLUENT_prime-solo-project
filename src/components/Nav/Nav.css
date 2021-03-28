@@ -12,19 +12,6 @@
   text-decoration: none;
 }
 
-.nav-logo-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-logo-img {
-  height: 5rem;
-  border-radius: 0;
-  width: 100%;
-}
-
 .navLink {
   display: inline-block;
   color: white;
@@ -45,4 +32,17 @@
   background-color: #9ddfd3;
   color: #31326f;
   border-radius: 5px;
+}
+
+.nav-logo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo-img {
+  height: 5rem;
+  border-radius: 0;
+  width: 50%;
 }

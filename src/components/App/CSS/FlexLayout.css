@@ -10,12 +10,9 @@ LAYOUT TEMPLATES (used in multiple components)
   margin-top: 1rem;
 }
 
-.go-to-step-2 {
-  margin: auto;
-}
-
-.landing-logo {
-  width: 10rem;
+.login-container {
+  width: 100%;
+  /* min-height: 300px; */
 }
 
 .make-flex {
@@ -41,7 +38,7 @@ LAYOUT TEMPLATES (used in multiple components)
 }
 
 .margin-top {
-  margin-top: 50px;
+  margin-top: 40px;
 }
   
 .main-flex-container {
