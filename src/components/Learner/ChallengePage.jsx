@@ -168,49 +168,50 @@ function InfoPage() {
   }
 
   return (
-    <div className="text-center margin-top"
+    <div className="margin-top"
       onClick={autoFillChallenge}>
-      <h1 className="teal-underline">
-        Welcome, {user.first_name}
-      </h1>
-      <h2>{welcomeMessage}</h2>
+      <div className="text-center">
+        <h1 className="teal-underline">
+          Welcome, {user.first_name}
+        </h1>
+        <h2>{welcomeMessage}</h2>
+      </div>
 
       <div className="flex-container-column">
         <form onSubmit={submitChallenge}>
 
           {/* PHOTO CHALLENGE SECTION */}
-          <div className="sub-container-top">
-            <section className='make-flex-column'>
-              <div>
-                <div className="challenge-mission-title">
-                  <h4>
-                    <span className="count">
-                      1.
-                    </span>
-                    La primera misión:
+          <div className="sub-container-top challenge">
+            <section className=''>
+
+              <div className="challenge-mission-title">
+                <div className="count">
+                  1.
+                    </div>
+                <h4>
+                  La primera misión:
                     </h4>
-                  <div><em>The first mission:</em></div>
-                </div>
-                <img className="challenge"
+                <h4><em>The first mission:</em></h4>
+
+                <img className="challenge-img"
                   src={imageSRC}
                   alt="randomly-generated photo" />
               </div>
 
-              <div className="flex-container-column half-width">
-                <label className="teal-underline">Describe la foto:
-                  <br />
-                  <textarea rows="5" cols="20"
+              <div className="challenge-flex-container-column">
+                <label>Describe la foto:
+                  <textarea rows="5" cols="15"
                     value={photoDescription}
                     onChange={(event) => setPhotoDescription(event.target.value)}
-                    placeholder="Describe the photo"></textarea>
+                    placeholder="Describe the photo."></textarea>
                   {/* <div className="teal-background"><em>
                     Click inside the box to hear your answer spoken aloud in Spanish!
                   </em></div> */}
                 </label>
                 <div>
-                  <button type="button" className="btn btn_sizeMin"
+                  <button type="button" className="challenge-btn"
                     onClick={() => onWordClick(photoDescription)}>
-                    CLICK TO HEAR YOUR ANSWER
+                    HEAR YOUR ANSWER
                   </button>
                 </div>
               </div>
@@ -220,31 +221,28 @@ function InfoPage() {
 
 
           {/* WORD CHALLENGE SECTION */}
-          <div className="sub-container-middle ">
+          <div className="sub-container-middle challenge">
             <section className="make-flex-column">
+
               <div className="challenge-mission-title">
-                <h4>
-                  <span className="count">2.</span>
-                La segunda misión:</h4>
+                <div className="count">2.</div>
+                <h4>La segunda misión:</h4>
                 <div><em>The second mission:</em></div>
-                <div className="word margin-sm-top">"{randomWord}"</div>
+                <div className="word">{randomWord}</div>
               </div>
 
-              <div className="flex-container-column half-width">
-                <label className="teal-underline">Escribe una frase con la palabra:
-                <textarea rows="3" cols="20"
+              <div className="challenge-flex-container-column">
+                <label>Escribe una frase con la palabra:
+                <textarea rows="4" cols="15"
                     value={wordSentence}
                     onChange={(event) => setWordSentence(event.target.value)}
                     placeholder="Write a complete sentence using the Spanish word on the left.">
                   </textarea>
-                  {/* <div className="teal-background "><em>
-                    Click inside the box to hear your answer spoken aloud in Spanish!
-                  </em></div> */}
                 </label>
                 <div>
-                  <button type="button" className="btn btn_sizeMin"
+                  <button type="button" className="challenge-btn"
                     onClick={() => onWordClick(wordSentence)}>
-                    CLICK TO HEAR YOUR ANSWER
+                    HEAR YOUR ANSWER
                   </button>
                 </div>
               </div>
@@ -252,20 +250,20 @@ function InfoPage() {
             </section>
           </div>
 
-          <div className="sub-container-bottom">
+          <div className="sub-container-bottom challenge">
             <section className='make-flex-column'>
               <div>
+                <div className="count">
+                  3.
+                </div>
                 <h4>
-                  <span className="count">
-                    3.
-                </span>
-                Preguntas generales:
+                  Preguntas generales:
                 </h4>
                 <div><em>General questions:</em></div>
               </div>
 
-              <div className="flex-container-column half-width">
-                <label>
+              <div className="challenge-flex-container-column">
+                <label>Preguntas generales:
                   <textarea rows="4" cols="20"
                     value={qForInstructor}
                     onChange={(event) => setQForInstructor(event.target.value)}
@@ -276,10 +274,11 @@ function InfoPage() {
 
             </section>
           </div>
-
-          <button type="submit" className="btn">
-            SUBMIT
+          <div className="text-center">
+            <button type="submit" className="btn">
+              SUBMIT
         </button>
+          </div>
         </form>
       </div>
       {/* <LogOutButton className="btn" /> */}
