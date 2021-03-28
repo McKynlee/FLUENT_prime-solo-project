@@ -14,6 +14,14 @@ function LearnerRegistration2() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+
+  ////////////////////// HANDLE ERROR MESSAGE /////////////////////
+  // If the registration page gives an error, send user back to home page:
+  if (errors.registrationMessage) {
+    history.push('/home');
+  }
+
+
   ////////////////////// BRING IN USER REDUCER DATA /////////////////////
   // Bring in saved user inputs so instructor_id can be added:
   const user = useSelector(store => store.user)
@@ -94,10 +102,10 @@ function LearnerRegistration2() {
   ////////////////////// JSX TO RENDER /////////////////////
   return (
     <div>
-      <div className="text-center">
+      <div className="text-center margin-top">
         <h1>Choose Your Instructor:</h1>
         <h2><em>Step 2 of 2</em></h2>
-        <div class="meter full">
+        <div className="meter full">
           <span></span>
         </div>
         <p><em>*Required</em></p>

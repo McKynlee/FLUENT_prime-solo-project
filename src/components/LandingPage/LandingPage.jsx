@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // CUSTOM COMPONENTS:
 // import './LandingPage.css';
@@ -7,6 +8,9 @@ import img from '../images/fluent-logo.png';
 
 function LandingPage() {
   const history = useHistory();
+
+  // Bring in any existing errors from errors reducer:
+  const errors = useSelector((store) => store.errors);
 
   const learnerRegistration = () => {
     history.push('/learner/registration');
@@ -19,6 +23,7 @@ function LandingPage() {
   const userLogin = () => {
     history.push('/login');
   }
+
 
   return (
     <div className="text-center">
@@ -41,6 +46,12 @@ function LandingPage() {
       <div className="margin-sm-top">
         Or Register to:
       </div>
+
+      {errors.registrationMessage && (
+        <h3 className="alert" role="alert">
+          {errors.registrationMessage}
+        </h3>
+      )}
 
       <div className="main-flex-container">
         <div className="sub-container-left">

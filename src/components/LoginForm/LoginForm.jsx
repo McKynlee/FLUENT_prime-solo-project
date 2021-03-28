@@ -32,18 +32,14 @@ function LoginForm() {
   }
 
   return (
-    <form className="detail-card text-center margin-top"
+    <form className="margin-top login-container"
       onSubmit={login}>
       <div onClick={autoFillLogin}>
-        <h1 className="teal-underline">
+        <h1 className="teal-underline text-center">
           Login
       </h1>
-        {errors.loginMessage && (
-          <h3 className="alert" role="alert">
-            {errors.loginMessage}
-          </h3>
-        )}
-        <div>
+
+        <div className="login-form margin-top">
           <label htmlFor="username">
             Email Address:
           <input
@@ -54,8 +50,6 @@ function LoginForm() {
               onChange={(event) => setUsername(event.target.value)}
             />
           </label>
-        </div>
-        <div>
           <label htmlFor="password">
             Password:
           <input
@@ -69,8 +63,8 @@ function LoginForm() {
         </div>
       </div>
 
-      <div>
-        <input className="btn margin-sm-top" type="submit" name="submit" value="LOG IN" />
+      <div className="text-center margin-top">
+        <input className="btn" type="submit" name="submit" value="LOG IN" />
       </div>
     </form>
   );
