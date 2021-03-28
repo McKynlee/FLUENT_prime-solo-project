@@ -64,7 +64,7 @@ function LoginForm() {
       </div>
 
       <div className="text-center margin-top">
-        <input className="btn" type="submit" name="submit" value="LOG IN" />
+        <button className="btn" type="submit" name="submit">LOG IN</button>
       </div>
     </form>
   );
