@@ -235,8 +235,6 @@ function LearnerRegistration1() {
                 onChange={(event) => setUsername(event.target.value)}
               />
             </label>
-          </div>
-          <div>
             <label htmlFor="password">
               Password:*
           <input className="password-input"
@@ -250,9 +248,9 @@ function LearnerRegistration1() {
           </div>
 
 
-          <div className="go-to-step-2">
+          <div>
             <button type="submit" name="submit"
-              className="btn margin-top">GO TO STEP 2
+              className="btn">GO TO STEP 2
             </button>
           </div>
 

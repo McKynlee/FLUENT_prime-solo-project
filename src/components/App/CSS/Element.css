@@ -6,30 +6,36 @@ ELEMENT TEMPLATES
 }
 
 img {
-  max-width: 50%;
+  /* max-width: 50%; */
   border-radius: 5px;
+  align-self: center;
 }
 
-img.img-submissions{
+/* img.img-submissions{
   max-width: 100%;
   border-radius: 5px;
-}
+} */
 
 input, select, textarea {
-  margin: 10px 0;
+    margin: 10px 0;
     color: gray;
     border-color: gray;
     outline: none;
     border-style: none;
     border: 1px solid white;
     padding: 5px 10px;
-    width: 100%;
 }
+
 
 label {
   display: flex;
   flex-direction: column;
 }
+
+.landing-logo {
+  width: 10rem;
+}
+
 /* .meter = Progress Bar on registration: */
 .meter { 
   width: 50%;
@@ -46,10 +52,10 @@ label {
 .half > span {
   width: 50%;
 }
-.meter .full > span {
+.meter.full > span {
   width: 100%;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .meter > span {
@@ -65,31 +71,22 @@ label {
   overflow: hidden;
 }
 
-.password-input {
-margin-left: 42px;
-}
-
 select {
-  width: 9rem;
+  width: 100%;
   justify-self: flex-end;
-  margin-left: 98px;
   }
 
-.select-dropdown-container {
+/* .select-dropdown-container {
   margin: 10px 0;
-}
+} */
 
-.teal-background {
+/* .teal-background {
   background-color: #9ddfd3;
   padding: 0.5rem;
   border-radius: 5px;
-}
+} */
 
 textarea {
-  border-radius: 1rem;
-  border: 0.15rem solid #31326f;
-  padding: 1rem;
-  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;
-  margin: 1rem;
   font-size: 2rem;
+  width: 100%;
 }
