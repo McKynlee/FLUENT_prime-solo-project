@@ -85,24 +85,25 @@ function LearnerProfile() {
       </div>
       <div><em>'Monedas' are coins you earn each time you submit a challenge.</em></div>
 
-      <button type="challenge" className="btn"
+      <button type="challenge" className="btn margin-sm-top"
         onClick={() => history.push('/challenge')}>
         NEW CHALLENGE
       </button>
 
       <div className="btn-container-profile">
-        <button type="edit" className="btn_asLink"
+        <button type="edit" className="btn"
           onClick={editLearnerInfo}>
           EDIT YOUR INFO
         </button>
         {(pairedInstructor.user_id) && (
-          <button type="edit" className="btn_asLink"
+          <button type="edit" className="btn"
             onClick={goToInstructorDetail}>
             INSTRUCTOR {pairedInstructor.first_name.toUpperCase()}'S INFO
           </button>)}
-      </div>
 
-      <LogOutButton className="btn margin-top" />
+
+        <LogOutButton className="btn" />
+      </div>
     </div>
   );
 }
