@@ -38,7 +38,8 @@ import './CSS/LearnerProfile.css';
 import './CSS/Challenge.css';
 import './CSS/Success.css';
 import './CSS/ConditionalThemes.css';
-import './CSS/InstructorProfile.css'
+import './CSS/InstructorProfile.css';
+import './CSS/SubmissionReview.css';
 
 function App() {
   const dispatch = useDispatch();
