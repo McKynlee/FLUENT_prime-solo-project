@@ -119,6 +119,21 @@ margin: 20px 15px 0;
   /* margin: 20px; */
 }
 
+.cancel-btn:hover {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #31326f;
+  color: white;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+  border-color: #31326f;
+  outline: none;
+  border-style: none;
+  /* margin: 20px; */
+}
+
 .challenge-btn {
   display: inline-block;
   padding: 10px 20px;
@@ -177,8 +192,9 @@ margin: 20px 15px 0;
 }
 
 .profile-btn-width {
-width: 200px;
-height: 75px;
+width: 210px;
+height: 45px;
+font-size: 75%;
 }
 
 .swal-btn {
