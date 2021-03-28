@@ -54,14 +54,13 @@ Button
 .btn-container-profile {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  /* margin: 1rem auto; */
-  width: 75%;
-  background-color: white;
+  /* max-width: 300px; */
+  /* background-color: white; */
   margin: 100px auto;
   border-radius: 5px;
-  padding: 0 20px 20px;
+  padding: 10px;
 }
 
 .btn-navy-gray:hover {
@@ -94,6 +93,10 @@ Button
   font-size: 0.8rem;
   width: 120px;
   height: 50px;
+}
+
+.btn-space {
+margin: 20px 15px 0;
 }
 
 .btn_sizeFull {
@@ -171,6 +174,11 @@ Button
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
+}
+
+.profile-btn-width {
+width: 200px;
+height: 75px;
 }
 
 .swal-btn {

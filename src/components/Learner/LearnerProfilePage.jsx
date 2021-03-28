@@ -91,18 +91,18 @@ function LearnerProfile() {
       </button>
 
       <div className="btn-container-profile">
-        <button type="edit" className="btn"
+        <button type="edit" className="btn profile-btn-width"
           onClick={editLearnerInfo}>
           EDIT YOUR INFO
         </button>
         {(pairedInstructor.user_id) && (
-          <button type="edit" className="btn"
+          <button type="edit" className="btn profile-btn-width btn-space"
             onClick={goToInstructorDetail}>
             INSTRUCTOR {pairedInstructor.first_name.toUpperCase()}'S INFO
           </button>)}
 
 
-        <LogOutButton className="btn" />
+        <LogOutButton className="btn profile-btn-width" />
       </div>
     </div>
   );
