@@ -28,7 +28,7 @@ function LoginForm() {
   ///////////////// HANDLE AUTO FILL FOR DEMO PRESENTATION /////////////
   const autoFillLogin = () => {
     setUsername('luigi@gmail.com');
-    setPassword('123456789');
+    setPassword('one');
   }
 
   return (

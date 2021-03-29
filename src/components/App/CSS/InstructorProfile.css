@@ -1,8 +1,8 @@
 .learner-list {
-  width: 90%;
-  border: 0.25rem dotted #9ddfd3;
+  /* width: 90%; */
+  border: 0.25rem solid #9ddfd3;
   padding: 1rem;
-  margin: 1rem;
+  margin: 1rem auto;
   border-radius: 1rem;
 }
 

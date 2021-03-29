@@ -44,39 +44,29 @@ function InstructorProfile() {
   }
 
   return (
-    <div className="text-center">
-      <h1>{thisInstructor.first_name}, you're helping others become F.L.U.E.N.T!</h1>
+    <div className="text-center margin-top">
+      <h1 className="teal-underline">{thisInstructor.first_name}, you're helping others become F.L.U.E.N.T!</h1>
 
-      <div className="main-flex-container margin-top">
+      <div className="main-flex-container-column margin-top">
         <section className="instructor-profile"
           key={thisInstructor.instructorId}
           value={thisInstructor.instructorId}
         >
-          {/* <div className="sub-container-left make-flex ">
-            <h3 className="teal-underline">Your Information:</h3>
-            <div><span className="teal-underline">Name:</span> {thisInstructor.first_name} {thisInstructor.last_name}</div>
-            <div><span className="teal-underline">Preferred Pronouns:</span>{thisInstructor.pronoun}</div>
-            <div><span className="teal-underline">Username:</span> {user.username}</div>
-            <div><span className="teal-underline">Languages you can teach:</span> {thisInstructor.languages_taught}</div>
-
-            <div><span className="teal-underline">Bio:</span> </div>
-            <div>{thisInstructor.bio}</div>
-
-            <img className="detail-avatar"
+          <div>
+            <img className="img-instructor-profile "
               src={thisInstructor.avatar} />
-          </div> */}
-          <img className="detail-avatar"
-            src={thisInstructor.avatar} />
+          </div>
 
-          <button type="edit" className="btn margin-sm-top"
-            onClick={editInstructorInfo}>
-            EDIT YOUR INFO
+          <div>
+            <button type="edit" className="btn margin-sm-top"
+              onClick={editInstructorInfo}>
+              EDIT YOUR INFO
         </button>
+          </div>
         </section>
 
-        <div >
-
-          <section className="flex-container-column  align-space-around">
+        <div className="flex-container-column-inst-profile ">
+          <section >
             <div className="sub-container-top">
               <div className="flex-container-column">
                 <h4 className="teal-underline">Your learners:</h4>

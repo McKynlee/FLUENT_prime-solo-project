@@ -10,6 +10,16 @@ LAYOUT TEMPLATES (used in multiple components)
   margin-top: 1rem;
 }
 
+.flex-container-column-inst-profile {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
 .login-container {
   width: 100%;
   /* min-height: 300px; */
@@ -41,6 +51,12 @@ LAYOUT TEMPLATES (used in multiple components)
   justify-content: center;
 }
 
+.main-flex-container-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
 
 /* top/middle/bottom style like on Challenge page */
 .sub-container-top, .sub-container-middle, .sub-container-bottom {
