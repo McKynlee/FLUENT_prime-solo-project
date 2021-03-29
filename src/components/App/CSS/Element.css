@@ -14,6 +14,11 @@ img {
   align-self: center;
 }
 
+.img-instructor-profile {
+  width: 75%;
+  margin: auto;
+}
+
 input, select, textarea {
     margin: 10px 0;
     color: #615C5C;

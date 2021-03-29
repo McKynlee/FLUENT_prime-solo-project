@@ -188,7 +188,7 @@ function EditLearnerProfile() {
         //   icon: "success",
         // });
       });
-  }
+  } // end cancelEdit
 
 
   ////////////////// HANDLE DELETE ////////////////////
@@ -244,7 +244,7 @@ function EditLearnerProfile() {
 
       <div className="main-flex-container margin-top">
         <div className="sub-container-left make-flex-column">
-          <h3 className="teal-underline">Personal Information:</h3>
+          <h2 className="teal-underline">Personal Information:</h2>
           <h4>
             We use this information to tailor your learning experience!
       </h4>
@@ -350,7 +350,7 @@ function EditLearnerProfile() {
 
         <div className="sub-container-right make-flex-column">
           <div>
-            <h3 className="teal-underline">Your Log-In Information:</h3>
+            <h2 className="teal-underline">Your Log-In Information:</h2>
             <h4>
               your email address and password will be
               your log-in credentials each time you return to F.L.U.E.N.T.
@@ -377,7 +377,6 @@ function EditLearnerProfile() {
                   UPDATE
                 </button>
               </div>
-
             </div>
           </div>
         </div>
