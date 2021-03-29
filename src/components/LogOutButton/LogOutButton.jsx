@@ -17,7 +17,7 @@ function LogOutButton(props) {
         payload: { onComplete: () => history.push('/home') }
       })}
     >
-      Log Out
+      LOG OUT
     </button>
   );
 }

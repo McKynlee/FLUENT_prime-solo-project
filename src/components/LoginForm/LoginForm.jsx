@@ -25,43 +25,46 @@ function LoginForm() {
     }
   }; // end login
 
+  ///////////////// HANDLE AUTO FILL FOR DEMO PRESENTATION /////////////
+  const autoFillLogin = () => {
+    setUsername('luigi@gmail.com');
+    setPassword('one');
+  }
+
   return (
-    <form className="detail-card text-center margin-top"
+    <form className="margin-top login-container"
       onSubmit={login}>
-      <h1 className="teal-underline">
-        Login
+      <div onClick={autoFillLogin}>
+        <h1 className="teal-underline text-center">
+          Login
       </h1>
-      {errors.loginMessage && (
-        <h3 className="alert" role="alert">
-          {errors.loginMessage}
-        </h3>
-      )}
-      <div>
-        <label htmlFor="username">
-          Username:
+
+        <div className="login-form margin-top">
+          <label htmlFor="username">
+            Email Address:
           <input
-            type="text"
-            name="username"
-            required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password">
-          Password:
+              type="text"
+              name="username"
+              required
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+          </label>
+          <label htmlFor="password">
+            Password:
           <input
-            type="password"
-            name="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
+              type="password"
+              name="password"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </label>
+        </div>
       </div>
-      <div>
-        <input className="btn margin-sm-top" type="submit" name="submit" value="Log In" />
+
+      <div className="text-center margin-top">
+        <button className="btn" type="submit" name="submit">LOG IN</button>
       </div>
     </form>
   );

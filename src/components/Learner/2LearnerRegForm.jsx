@@ -14,6 +14,14 @@ function LearnerRegistration2() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+
+  ////////////////////// HANDLE ERROR MESSAGE /////////////////////
+  // If the registration page gives an error, send user back to home page:
+  if (errors.registrationMessage) {
+    history.push('/home');
+  }
+
+
   ////////////////////// BRING IN USER REDUCER DATA /////////////////////
   // Bring in saved user inputs so instructor_id can be added:
   const user = useSelector(store => store.user)
@@ -55,7 +63,7 @@ function LearnerRegistration2() {
       text: "This will finalize your registration.",
       buttons: {
         cancel: 'Cancel',
-        confirm: { text: 'Confirm', className: 'btn' }
+        confirm: { text: 'Confirm', className: 'swal-btn' }
       },
     })
       .then((register) => {
@@ -94,10 +102,10 @@ function LearnerRegistration2() {
   ////////////////////// JSX TO RENDER /////////////////////
   return (
     <div>
-      <div className="text-center">
+      <div className="text-center margin-top">
         <h1>Choose Your Instructor:</h1>
         <h2><em>Step 2 of 2</em></h2>
-        <div class="meter full">
+        <div className="meter full">
           <span></span>
         </div>
         <p><em>*Required</em></p>
@@ -111,8 +119,6 @@ function LearnerRegistration2() {
         )}
 
 
-        {/* FLEX CONTAINER */}
-        {/* <div className="instructors-container"> */}
         <div className="grid-container">
           {/* LOOP THROUGH INSTRUCTOR LIST */}
           {instructorList.map((instructor) => {
@@ -148,13 +154,13 @@ function LearnerRegistration2() {
                 }
 
                 return (
-                  // <section className="learner-instructor-section"
-                  // <section className="individ-instructor-card"
                   <section className="grid-item"
                     key={i}
                     value={availableInstructor.instructorID}
                   >
-                    <div>{availableInstructor.first_name} {availableInstructor.last_name}</div>
+                    <h4 className="instructor-name">
+                      {availableInstructor.first_name} {availableInstructor.last_name}
+                    </h4>
                     <div>({availableInstructor.pronoun})</div>
                     <div className="registration-avatar-container">
                       <img className="instructor-avatar-registration"
@@ -167,11 +173,11 @@ function LearnerRegistration2() {
                     <div className="btn-container">
                       <button type="more" className="btn btn_sizeSm"
                         onClick={() => onMoreInfo(availableInstructor.user_id)}>
-                        More Info
+                        MORE INFO
                       </button>
                       <button type="submit" className="btn btn_sizeSm"
                         onClick={() => onSelectInstructor(availableInstructor)}>
-                        Select Instructor
+                        SELECT INSTRUCTOR
                       </button>
                     </div>
                   </section>

@@ -1,10 +1,26 @@
-.instructor-name-container {
-  background-color: #31326f;
-  color: #9ddfd3;
-  border-radius: 2rem;
-  padding: 1rem;
+.detail-avatar {
+  /* background-color: #9ddfd3;
+  padding: 1rem; */
   margin: 1rem auto;
+  /* border: 0.15rem solid #31326f; */
+  /* box-shadow: 0.25rem 0.25rem 0.25rem #9ddfd3; */
+}
+
+.detail-card {
+  /* background-color: white; */
   width: 75%;
+  height: 100%;
+  /* border-radius: 5px;
+  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3; */
+}
+
+.instructor-name-container {
+  /* background-color: #31326f;
+  color: #9ddfd3; */
+  /* border-radius: 5px; */
+  /* padding: 1rem; */
+  margin: 3rem auto 1rem;
+  /* width: 40%; */
 }
 
 .pronouns {
@@ -12,10 +28,3 @@
   margin-top: 0.5rem;
 }
 
-.detail-avatar {
-  background-color: #9ddfd3;
-  padding: 1rem;
-  margin: 1rem auto;
-  border: 0.15rem solid #31326f;
-  box-shadow: 0.25rem 0.25rem 0.25rem#31326f;
-}

@@ -60,16 +60,22 @@ function LearnerProfile() {
   } // end editLearnerInfo
 
 
+  ///////////////////// HANDLE INSTRUCTOR DETAILS ///////////////////////
+  const goToInstructorDetail = () => {
+    console.log('pairedInstructor.instructorID:', pairedInstructor.instructorID);
+    history.push(`/learner/instructor/details/${pairedInstructor.instructorID}`)
+  }
+
   ///////////////////// RENDER JSX ///////////////////////
   return (
-    <div className="text-center">
+    <div className="text-center margin-top">
       <h1>{user.first_name}, you're on your way to being F.L.U.E.N.T!</h1>
       <h2 className="streak-title">
         {streakDescription}
       </h2>
 
       <div className='moneda-star-container'>
-        <img src={starImg} alt="star" className="star-image" />
+        <img src={starImg} alt="star" className="star-img" />
         <div className="moneda-announcement">
           You have <br />
           <span className="moneda-number">{learner.moneda_count}</span>
@@ -79,90 +85,25 @@ function LearnerProfile() {
       </div>
       <div><em>'Monedas' are coins you earn each time you submit a challenge.</em></div>
 
-      <button type="challenge" className="btn"
+      <button type="challenge" className="btn margin-sm-top"
         onClick={() => history.push('/challenge')}>
-        New Challenge
-</button>
-      <div className="main-flex-container">
-        <div className="flex-container-column">
-          <h3 className="teal-underline">
-            Your Information:
-          </h3>
-          <div className="sub-container-left">
-            <p><span className="teal-underline">
-              First name:</span> {user.first_name}
-            </p>
-            <p>
-              <span className="teal-underline">Last name:</span>
-              {user.last_name}
-            </p>
-            <p>
-              <span className="teal-underline">
-                Preferred Pronouns:
-              </span>
-              {user.pronouns}
-            </p>
-            <p>
-              <span className="teal-underline">
-                Language you're learning:
-              </span>
-              {user.language}
-            </p>
-            <p>
-              <span className="teal-underline">
-                Skill level in above language:
-              </span>
-              {learner.skill_level}
-            </p>
-            <p>
-              <span className="teal-underline">
-                Username:
-              </span>
-              {user.username}
-            </p>
-            <button type="edit" className="btn"
-              onClick={editLearnerInfo}>
-              Edit Your Information
+        NEW CHALLENGE
+      </button>
+
+      <div className="btn-container-profile">
+        <button type="edit" className="btn profile-btn-width"
+          onClick={editLearnerInfo}>
+          EDIT YOUR INFO
         </button>
-          </div>
-        </div>
+        {(pairedInstructor.user_id) && (
+          <button type="edit" className="btn profile-btn-width btn-space"
+            onClick={goToInstructorDetail}>
+            INSTRUCTOR {pairedInstructor.first_name.toUpperCase()}'S INFO
+          </button>)}
 
-        <div className="flex-container-column">
-          <h3 className="teal-underline">
-            Your Instructor:
-          </h3>
-          <div className="sub-container-right">
-            <p>
-              <span className="teal-underline">
-                Name:
-              </span>
-              {pairedInstructor.first_name}
-            </p>
-            <p>
-              <span className="teal-underline">
-                Last name:
-              </span>
-              {pairedInstructor.last_name}
-            </p>
-            <p>
-              <span className="teal-underline">
-                Preferred Pronouns:
-              </span>
-              {pairedInstructor.pronoun}
-            </p>
-            <p>
-              <span className="teal-underline">
-                A little about {pairedInstructor.first_name}:
-              </span>
-              {pairedInstructor.bio}
-            </p>
-            <img src={pairedInstructor.avatar} alt={pairedInstructor.first_name} />
-            {/* <p>Language taught: {pairedInstructor.languages_taught}</p> */}
-          </div>
-        </div>
+
+        <LogOutButton className="btn profile-btn-width" />
       </div>
-
-      <LogOutButton className="btn margin-top" />
     </div>
   );
 }

@@ -75,8 +75,8 @@ function InstructorRegisterForm() {
   }; // end registerInstructor
 
   return (
-    <form className="text-center" onSubmit={registerInstructor}>
-      <div>
+    <form onSubmit={registerInstructor}>
+      <div className="text-center">
         <h1 className="teal-underline">
           Register to help others become FLUENT:
       </h1>
@@ -93,14 +93,14 @@ function InstructorRegisterForm() {
       )}
 
       <div className="main-flex-container margin-top">
-        <div className="sub-container-left make-flex ">
+        <div className="sub-container-left make-flex-column ">
           <h3 className="teal-underline">Personal Information:</h3>
           <h4>
             We use this information to let learners know a bit
             about you as they select their instructor.
       </h4>
           <p><em>*Denotes a required field.</em></p>
-          <div>
+          <div className="input-full">
             <label htmlFor="firstName">
               First Name:
           <input
@@ -113,7 +113,7 @@ function InstructorRegisterForm() {
             </label>
           </div>
 
-          <div>
+          <div className="input-full">
             <label htmlFor="lastName">
               Last Name:
           <input
@@ -126,7 +126,7 @@ function InstructorRegisterForm() {
             </label>
           </div>
 
-          <div>
+          <div className="select-dropdown-container input-full">
             <label htmlFor="pronoun">
               Your Preferred Pronouns:
           <select
@@ -150,7 +150,7 @@ function InstructorRegisterForm() {
             </label>
           </div>
 
-          <div>
+          <div className="select-dropdown-container input-full">
             <label htmlFor="language">
               Language you are able to teach:
           <select
@@ -174,7 +174,7 @@ function InstructorRegisterForm() {
             </label>
           </div>
 
-          <div>
+          <div className="select-dropdown-container input-full">
             <label htmlFor="avatar">
               Insert an image URL that represents you:
           <input type="text" value={avatar}
@@ -185,7 +185,8 @@ function InstructorRegisterForm() {
           <div>
             <label htmlFor="bio">
               Tell us a little about yourself:
-          <textarea rows="2" cols="30"
+          <textarea className="bg-white"
+                rows="2" cols="29"
                 value={bio}
                 onChange={(event) => setBio(event.target.value)}>
                 Bio
@@ -193,7 +194,7 @@ function InstructorRegisterForm() {
             </label>
           </div>
 
-          <div>
+          <div className="select-dropdown-container input-full">
             <label htmlFor="capacity margin-sm-top">
               Maximum learners with whom you'd like to work:
           <select
@@ -221,13 +222,13 @@ function InstructorRegisterForm() {
 
 
 
-        <div className="sub-container-right">
-          <h3 className="teal-underline margin-md-top">Your Log-In Information:</h3>
+        <div className="sub-container-right make-flex-column">
+          <h3 className="teal-underline">Your Log-In Information:</h3>
           <h4>
             your email address and password will be
             your log-in credentials each time you return to F.L.U.E.N.T.
         </h4>
-          <div>
+          <div className="login-container input-full">
             <label htmlFor="username">
               Email address:
           <input
@@ -239,7 +240,7 @@ function InstructorRegisterForm() {
               />
             </label>
           </div>
-          <div>
+          <div className="input-full">
             <label htmlFor="password">
               Password:
           <input
@@ -252,7 +253,9 @@ function InstructorRegisterForm() {
             </label>
           </div>
           <div>
-            <input className="btn margin-top" type="submit" name="submit" value="Register" />
+            <button className="btn margin-top" type="submit">
+              REGISTER
+            </button>
           </div>
         </div>
       </div>

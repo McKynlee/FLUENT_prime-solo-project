@@ -7,17 +7,15 @@ body,
 }
 
 body {
-  /* font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif; */
-  font-family: Georgia, Times, Times New Roman, serif;
-  /* font-family: Gill Sans, Gill Sans MT, Calibri, sans-serif; */
+  font-family: 'Noto Sans', sans-serif;
   margin: 0;
 }
 
-.hero-img {
+/* .hero-img {
   background-image: url("../../images/flags.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-}
+} */
 
 /* --------------------------------------------------------------------------------
 Alert
@@ -26,12 +24,19 @@ Alert
 .alert {
   box-sizing: border-box;
   padding: 15px 10px;
-  margin: 15px 0;
-  border: 2px solid #e01616;
-  background-color: #efefef;
-  border-radius: 3px;
-  color: #e01616;
-  font-size: 0.8rem;
+  margin: 40px auto;
+  /* border: 2px solid #EC524B; */
+  background-color: white;
+  text-decoration: underline;
+  text-decoration-color: #EC524B;
+  border-radius: 5px;
+  color: #31326f;
+  font-size: 1rem;
+  font-weight: bolder;
+  text-align: center;
+  /* border-top: 2px solid #EC524B; */
+  /* border-bottom: 2px solid #EC524B; */
+  width: 75%;
 }
 
 /* --------------------------------------------------------------------------------
@@ -59,17 +64,12 @@ margin-right: 1rem;
   text-align: left;
 } 
 
-.make-flex {
-  display: flex;
-  flex-direction: column;
-}
-
 /* --------------------------------------------------------------------------------
 2LearnerRegForm.jsx - Select Instructor Layout 
 -------------------------------------------------------------------------------- */
 
-/* .learner-instructor-section {
-  border: 0.2rem solid black;
+.learner-instructor-section {
+  border: 0.2rem solid #31326f;
 }
 
 .learner-instructor-avatar {
@@ -80,9 +80,9 @@ margin-right: 1rem;
 LearnerProfilePage.jsx
 -------------------------------------------------------------------------------- */
 
-/* .learner-profile-personal {
-  border: 0.2rem solid black;
-} */
+.learner-profile-personal {
+  border: 0.2rem solid #31326f;
+}
 /* -----------------------------------------------
 LearnerReviewPage.jsx
 -------------------------------------------------- */
@@ -92,8 +92,8 @@ LearnerReviewPage.jsx
 }
 
 .learner-table-feedback-row {
-  color: whitesmoke;
-  background-color: teal;
+  color: #31326f;
+  background-color: #9ddfd3;
 }
 
 /* -----------------------------------------------
@@ -106,6 +106,6 @@ InstructorProfilePage.jsx
 }
 
 .instructor-table-feedback-row {
-  background-color: #a6a9b6;
+  background-color: white;
   color: #31326f;
 }

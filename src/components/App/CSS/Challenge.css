@@ -1,24 +1,50 @@
-img.challenge {
+.challenge {
+background: white;
+}
+
+.challenge-img {
   border: 0.15rem solid #31326f;
-  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;
-  margin: 1rem;
-  width: 40rem;
+  /* box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3; */
+  margin: 20px 20px 20px 0px;
+  height: 20rem;
+}
+
+.challenge-mission-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: flex-start;
+}
+
+.challenge-mission-title h4 {
+  margin: 5px 0;
 }
 
 .count {
-  margin-right: 1rem;
+  margin-bottom: 20px;
   border-radius: 50%;
   padding: 10px;
   height: 20px;
   width: 20px;
   background-color: #31326f;
   text-align:center;
-  color: #dbf6e9;
+  color: white;
   font-size: 110%;
   box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
 }
 
+.sub-container-top section label, 
+.sub-container-middle section label, 
+.sub-container-bottom section label {
+  margin-top: 62px;
+}
+
 .word {
-  text-decoration: none;
   font-size: 250%;
+  align-self: center;
+  border: 1px solid #9ddfd3;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 20px 0;
 }
