@@ -57,13 +57,34 @@ function InstructorReviewSubmissions() {
     const instructorUserId = submission.instructors_userId
     console.log('instructorUserId:', instructorUserId);
 
-    dispatch({
-      type: 'DELETE_FEEDBACK',
-      payload: {
-        feedbackId,
-        instructorUserId
-      }
+    // Confirm that instructor wants to delete feedback
+    swal({
+      title: 'Delete this feedback?',
+      text: "This set of feedback will be permanently deleted.",
+      icon: "warning",
+      buttons: {
+        cancel: 'Cancel',
+        confirm: { text: 'Confirm', className: 'swal-delete-btn' }
+      },
+      dangerMode: true,
     })
+      .then((deleteFeedback) => {
+        if (deleteFeedback) {
+
+          // Delete instructor's feedback:
+          dispatch({
+            type: 'DELETE_FEEDBACK',
+            payload: {
+              feedbackId,
+              instructorUserId
+            }
+          })
+          swal("Your feedback has been deleted!", {
+            icon: "success",
+          });
+        }
+      });
+
   } // end deleteFeedback
 
 
