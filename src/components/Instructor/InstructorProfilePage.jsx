@@ -67,24 +67,39 @@ function InstructorProfile() {
 
         <div className="flex-container-column-inst-profile ">
           <section >
-            <div className="sub-container-top">
+            <div>
               <div className="flex-container-column">
                 <h4 className="teal-underline">Your learners:</h4>
                 <div>{learnerCountLanguage}</div>
               </div>
-              <div className="learner-list">
-                <ul>
-                  {learnerList.map((learner, i) => {
-                    if (learner.user_id) {
-                      return (
-                        <li key={i}>
-                          <span className="teal-underline">{learner.first_name} {learner.last_name}</span>, {learner.pronouns},
-              is learning {learner.language} and self-ranked at level
-                          {learner.skill_level} out of 5.  Contact {learner.first_name} at {learner.username}</li>
-                      )
-                    }
-                  })}
-                </ul>
+              <div >
+
+                {learnerList.map((learner, i) => {
+                  if (learner.user_id) {
+                    return (
+                      <section key={i} className="learner-list">
+                        <div className="quarter-width">
+                          <div className="teal-underline ">
+                            {learner.first_name} {learner.last_name}
+                          </div>
+                          <div>
+                            ({learner.pronouns})
+                          </div>
+                        </div>
+
+                        <div className="seventy-five-width ">
+                          <div>
+                            is learning {learner.language} and self-ranked at level {learner.skill_level} out of 5.
+                        </div>
+                          <div>
+                            Contact {learner.first_name} at {learner.username}
+                          </div>
+                        </div>
+                      </section>
+                    )
+                  }
+                })}
+
               </div>
 
               <div>
