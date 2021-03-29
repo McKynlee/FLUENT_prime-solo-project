@@ -2,44 +2,6 @@
 LAYOUT TEMPLATES (used in multiple components)
 -------------------------------------------------------------------------------- */
 
-.detail-card {
-  background-color: #a6a9b6;
-  padding: 1rem 2rem;
-  margin: 0 0.5rem;
-  width: 75%;
-  height: 100%;
-  border-radius: 2rem;
-  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;
-}
-
-.landing-logo {
-  width: 10rem;
-}
-
-.text-center{
-  text-align: center;
-}
-
-.margin-sm-top {
-  margin-top: 1rem;
-}
-
-.margin-md-top {
-  margin-top: 2.5rem;
-}
-
-.margin-top {
-  margin-top: 5rem;
-}
-  
-.main-flex-container {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
 .flex-container-column {
   display: flex;
   flex-direction: column;
@@ -48,20 +10,59 @@ LAYOUT TEMPLATES (used in multiple components)
   margin-top: 1rem;
 }
 
-/* .flex-container-column.align-space-around {
+.flex-container-column-inst-profile {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  align-items: center;
   justify-content: center;
+  margin-top: 2rem;
+  width: 100%
+}
+
+.login-container {
+  width: 100%;
+  /* min-height: 300px; */
+}
+
+.login-form {
+  width: 25%;
+  margin: auto;
+}
+
+.make-flex {
+  display: flex;
+  flex-direction: row;
   align-items: flex-start;
-} */
+  justify-content: flex-start;
+}
+
+.make-flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+  
+.main-flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.main-flex-container-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
 
 /* top/middle/bottom style like on Challenge page */
 .sub-container-top, .sub-container-middle, .sub-container-bottom {
-  background-color: #a6a9b6;
-  padding: 1rem 2rem;
   margin: 1rem auto;
-  width: 75%;
-  height: 100%;
-  border-radius: 2rem;
-  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;
+  width: 100%;
 }
 
 /* top/middle/bottom style like on Challenge page */
@@ -70,18 +71,22 @@ LAYOUT TEMPLATES (used in multiple components)
 .sub-container-bottom section {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 35px;
+  border: 1px solid #31326f;
+  border-radius: 5px;
 }
 
 /* left/right style like Landing Page */
 .sub-container-left, .sub-container-right {
-  background-color: #a6a9b6;
+  /* background-color: white; */
   padding: 1rem 2rem;
   margin: 0 0.5rem;
   width: 20rem;
   height: 100%;
-  border-radius: 2rem;
-  box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3; 
+  /* border-radius: 5px; */
+  /* box-shadow: 0.25rem 0.25rem 0.25rem#9ddfd3;  */
 }
   
 .sub-container-left ol, .sub-container-right ol {
@@ -145,7 +150,7 @@ LAYOUT TEMPLATES (used in multiple components)
     width: 20px;
     background-color: #31326f;
     text-align:center;
-    color: #dbf6e9;
+    color: white;
     font-size: 110%;
     box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
   }
@@ -163,8 +168,12 @@ LAYOUT TEMPLATES (used in multiple components)
     width: 20px;
     background-color: #31326f;
     text-align:center;
-    color: #dbf6e9;
+    color: white;
     font-size: 110%;
     box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
+  }
+  
+  .text-center{
+    text-align: center;
   }
   

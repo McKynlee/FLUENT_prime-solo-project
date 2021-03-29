@@ -1,11 +1,22 @@
 .learner-list {
-  width: 90%;
-  border: 0.25rem dotted #9ddfd3;
-  padding: 1rem;
-  margin: 1rem;
-  border-radius: 1rem;
+  /* width: 100%; */
+  /* border: 0.25rem solid #9ddfd3; */
+  padding: 10px;
+  margin: 1rem auto; 
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  height: 85px;
 }
 
-.learner-list li {
-  margin: 1rem;
+.quarter-width {
+  width: 25%;
+}
+
+.seventy-five-width {
+  width: 75%;
 }

@@ -20,7 +20,8 @@ router.get('/learner/:userId', (req, res) => {
   "instructor_feedback".picture_description as "instructor_pic_response", 
   "instructor_feedback".word_sentence as "instructor_word_response", 
   "instructor_feedback".q_for_instructor as "instructor_q_response", 
-  "instructor_feedback".time_stamp as "instructor_time_stamp", "instructors".id
+  "instructor_feedback".time_stamp as "instructor_time_stamp", 
+  "instructor_feedback".response_showing, "instructors".id
   FROM "learner_submissions"
   JOIN "learners" ON "learners".id = "learner_submissions".learner_id
   JOIN "users" ON "users".id = "learners".user_id

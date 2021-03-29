@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // CUSTOM COMPONENTS:
 // import './LandingPage.css';
@@ -7,6 +8,9 @@ import img from '../images/fluent-logo.png';
 
 function LandingPage() {
   const history = useHistory();
+
+  // Bring in any existing errors from errors reducer:
+  const errors = useSelector((store) => store.errors);
 
   const learnerRegistration = () => {
     history.push('/learner/registration');
@@ -20,31 +24,41 @@ function LandingPage() {
     history.push('/login');
   }
 
+
   return (
-    <div className="text-center hero-img">
-      <div className="hero-text"></div>
-      <h1><em>Welcome to the </em><br />
+    <div className="text-center">
+      <div className="hero-img">
+        <div className="hero-text">
+          <h1><em>Welcome to the </em><br />
         Foreign Language Universal Engagement Tool
       </h1>
-      <img className="landing-logo"
-        src={img} alt="FLUENT logo" />
-      <h2>A personalized way to practice a foreign language!</h2>
+          <img className="landing-logo"
+            src={img} alt="FLUENT logo" />
+          <h2>A personalized way to practice a foreign language!</h2>
+        </div>
+      </div>
       <button type="login"
         className="btn margin-btm"
         onClick={userLogin}
       >
-        Login
+        LOGIN
         </button>
-      <div>
+      <div className="margin-sm-top">
         Or Register to:
       </div>
+
+      {errors.registrationMessage && (
+        <h3 className="alert" role="alert">
+          {errors.registrationMessage}
+        </h3>
+      )}
 
       <div className="main-flex-container">
         <div className="sub-container-left">
           <button className="btn"
             onClick={learnerRegistration}
           >
-            Become a Learner:
+            BECOME A LEARNER
         </button>
           <ol>
             <li>
@@ -57,7 +71,7 @@ function LandingPage() {
               Receive tailored feedback.
           </li>
           </ol>
-          <button type="popup" className="btn_asLink">
+          <button type="popup" className="btn_asLink margin-top">
             <em>Watch the demo here</em>
           </button>
         </div>
@@ -65,7 +79,7 @@ function LandingPage() {
         <div className="sub-container-right">
           <button className="btn"
             onClick={instructorRegistration}>
-            Become an Instructor:
+            BECOME AN INSTRUCTOR
         </button>
           <ol>
             <li>
@@ -79,7 +93,7 @@ function LandingPage() {
               Share your expertise!
           </li>
           </ol>
-          <button type="popup" className="btn_asLink">
+          <button type="popup" className="btn_asLink margin-top">
             <em>Watch the demo here</em>
           </button>
         </div>

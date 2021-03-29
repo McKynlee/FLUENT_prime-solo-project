@@ -19,7 +19,7 @@ function InstructorRegisterPage() {
             history.push('/login');
           }}
         >
-          Login
+          LOGIN
         </button>
       </center> */}
     </div>

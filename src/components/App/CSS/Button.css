@@ -1,52 +1,21 @@
 /* --------------------------------------------------------------------------------
 Button
 -------------------------------------------------------------------------------- */
-
 .btn, .btn-navy-gray {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #9ddfd3;
+  /* border-color: #9ddfd3; */
   border-width: 1px 1px 3px;
-  border-radius: 0.5rem;
+  border-radius: 5px;
   background-color: #31326f;
-  color: #dbf6e9;
+  color: white;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
-}
-
-.btn-navy-gray:hover {
-  display: inline-block;
-  padding: 10px 20px;
-  border-color: #9ddfd3;
-  border-width: 1px 1px 3px;
-  border-radius: 0.5rem;
-  background-color: #a6a9b6;
-  color: #31326f;
-  font-size: 1.1rem;
-  outline: 0;
-  cursor: pointer;
-}
-
-.btn_sizeMin {
-  min-height: 50px;
-  min-width: 100px;
-}
-
-.btn_sizeSm {
-  padding: 10px 15px;
-  font-size: 0.8rem;
-}
-
-.btn_sizeFull {
-  display: block;
-  width: 100%;
-}
-
-.btn:not([disabled]):hover, .btn:hover {
-  background-color: #9ddfd3;
-  color: #31326f;
-  text-decoration: none;
+  border-color: #31326f;
+  outline: none;
+  border-style: none;
+  margin-top: 20px;
 }
 
 /* .btn_asLink makes buttons look like links */
@@ -57,31 +26,186 @@ Button
   border-radius: 0;
   background: none;
   font: inherit;
-  color: #dbf6e9;
+  color: #31326f;
+  padding: 10px;
+  margin: 20px;
 }
 
 .btn_asLink:hover {
   background-color: #31326f;
-  border-radius: 1rem;
-  box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3;
-  color: #9ddfd3;
-  padding: 0.25rem;
+  border-radius: 5px;
+  /* box-shadow: 0.15rem 0.15rem 0.15rem #9ddfd3; */
+  color: white;
+  padding: 10px;
+  margin: 20px;
 }
 
 .btn-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  /* flex-direction: row; */
+  /* justify-content: space-around;
+  /* align-items: center; */
+  /* margin: 1rem auto; */
+  width: 100%;
+}
+
+.btn-container-profile {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  margin-top: 1rem;
+  justify-content: center;
+  align-items: center;
+  /* max-width: 300px; */
+  /* background-color: white; */
+  margin: 100px auto;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.btn-navy-gray-feedback {
+  display: inline-block;
+  padding: 10px 20px;
+  /* border-color: #9ddfd3; */
+  border-width: 1px 1px 3px;
+  border-radius: 5px;
+  background-color: #31326f;
+  color: white;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+  border-color: #31326f;
+  outline: none;
+  border-style: none;
+  margin-top: 20px;
+  width: 270px;
+}
+
+.btn-navy-gray:hover {
+  display: inline-block;
+  padding: 10px 20px;
+  border-color: #9ddfd3;
+  border-width: 1px 1px 3px;
+  border-radius: 5px;
+  background-color: white;
+  color: #31326f;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.btn-navy-gray-feedback:hover {
+  display: inline-block;
+  padding: 10px 20px;
+  border-color: #9ddfd3;
+  border-width: 1px 1px 3px;
+  border-radius: 5px;
+  background-color: #9ddfd3;
+  color: #31326f;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+  border-color: #31326f;
+  outline: none;
+  border-style: none;
+  margin: 20px;
+  width: 270px;
+}
+
+.btn:not([disabled]):hover, .btn:hover {
+  background-color: #9ddfd3;
+  color: #31326f;
+  text-decoration: none;
+}
+
+.btn_sizeMin {
+  min-height: 50px;
+  min-width: 100px;
+}
+
+.btn_sizeSm {
+  padding: 10px 15px;
+  font-size: 0.8rem;
+  width: 120px;
+  height: 50px;
+}
+
+.btn-space {
+margin: 20px 15px 0;
+}
+
+.btn_sizeFull {
+  display: block;
+  width: 100%;
+}
+
+.cancel-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: white;
+  color: #31326f;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+  border-color: #31326f;
+  outline: none;
+  border-style: none;
+  /* margin: 20px; */
+}
+
+.cancel-btn:hover {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #31326f;
+  color: white;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+  border-color: #31326f;
+  outline: none;
+  border-style: none;
+  /* margin: 20px; */
+}
+
+.challenge-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-width: 1px 1px 3px;
+  border-radius: 5px;
+  background-color: #31326f;
+  color: white;
+  font-size: 18px;
+  outline: 0;
+  cursor: pointer;
+  outline: none;
+  border-style: none;
+  margin-top: 10px;
+}
+
+.challenge-btn:hover {
+  display: inline-block;
+  padding: 10px 20px;
+  border-width: 1px 1px 3px;
+  border-radius: 5px;
+  background-color: #9ddfd3;
+  color: #31326f;
+  font-size: 18px;
+  outline: 0;
+  cursor: pointer;
+  outline: none;
+  border-style: none;
 }
 
 .delete-btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #9ddfd3;
+  border-color: #50514F;
   border-width: 1px 1px 3px;
-  border-radius: 0.5rem;
-  background-color: red;
+  border-radius: 5px;
+  background-color: #EC524B;
   color: #31326f;
   font-weight: bolder;
   font-size: 1.1rem;
@@ -92,13 +216,68 @@ Button
 .delete-btn:hover {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #9ddfd3;
+  border-color: #50514F;
   border-width: 1px 1px 3px;
-  border-radius: 0.5rem;
+  border-radius: 5px;
   background-color: #31326f;
-  color: red;
+  color: #EC524B;
   font-weight: bolder;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
+}
+
+.feedback-btn-container {
+text-align: right;
+margin-right: 10px;
+}
+
+.feedback-give-btn {
+width: 275px;
+margin: 20px 50px;
+}
+
+.feedback-give-btn-container {
+  margin: auto;
+  text-align: center;
+}
+
+.profile-btn-width {
+width: 210px;
+height: 45px;
+font-size: 75%;
+}
+
+.swal-btn {
+  display: inline-block;
+  padding: 6px 12px;
+  /* border-color: #9ddfd3; */
+  /* border-width: 1px 1px 3px; */
+  border-radius: 5px;
+  background-color: #31326f;
+  color: #dbf6e9;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+  /* border-color: #31326f; */
+  outline: none;
+  border-style: none;
+  margin: 20px;
+}
+
+.swal-delete-btn {
+  display: inline-block;
+  padding: 9px 12px;
+  /* border-color: #9ddfd3; */
+  /* border-width: 1px 1px 3px; */
+  border-radius: 5px;
+  background-color: #EC524B;
+  color: #31326f;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+  /* border-color: #31326f; */
+  outline: none;
+  border-style: none;
+  margin: 20px;
 }

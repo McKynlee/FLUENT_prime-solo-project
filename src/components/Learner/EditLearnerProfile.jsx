@@ -89,7 +89,7 @@ function EditLearnerProfile() {
       text: "This will officially change your info to match your edits.",
       buttons: {
         cancel: 'Cancel',
-        confirm: { text: 'Confirm', className: 'btn' }
+        confirm: { text: 'Confirm', className: 'swal-btn' }
       },
     })
       .then((update) => {
@@ -164,6 +164,33 @@ function EditLearnerProfile() {
       });
   }; // end onSubmitEdit
 
+  ////////////////// HANDLE CANCEL ////////////////////
+  const cancelEdit = () => {
+    console.log('cancelEdit');
+
+    // Confirm cancel edit
+    swal({
+      title: 'Cancel Editing?',
+      text: "Any edits you made will be lost.",
+      icon: "warning",
+      buttons: {
+        cancel: 'Back to Edit',
+        confirm: { text: 'Confirm', className: 'btn' }
+      },
+      dangerMode: true,
+    })
+      .then((cancelEdit) => {
+        if (cancelEdit) {
+          // Send user back to profile page:
+          history.push('/learner')
+        }
+        // swal("Your account has been deleted!", {
+        //   icon: "success",
+        // });
+      });
+  } // end cancelEdit
+
+
   ////////////////// HANDLE DELETE ////////////////////
   const deleteAccount = () => {
     console.log('deleteAccount');
@@ -175,7 +202,7 @@ function EditLearnerProfile() {
       icon: "warning",
       buttons: {
         cancel: 'Cancel',
-        confirm: { text: 'Confirm', className: 'delete-btn' }
+        confirm: { text: 'Confirm', className: 'swal-delete-btn' }
       },
       dangerMode: true,
     })
@@ -202,124 +229,128 @@ function EditLearnerProfile() {
   ////////////////// RENDER JSX ////////////////////
   return (
     <div>
-      <form className="text-center"
-        onSubmit={onSubmitEdit}>
-        <div>
-          <h1 className="teal-underline">
-            Update Your Info:
+      {/* <form> */}
+      <div className="text-center">
+        <h1 className="teal-underline">
+          Update Your Info:
         </h1>
+      </div>
+
+      {errors.registrationMessage && (
+        <h3 className="alert" role="alert">
+          {errors.registrationMessage}
+        </h3>
+      )}
+
+      <div className="main-flex-container margin-top">
+        <div className="sub-container-left make-flex-column">
+          <h2 className="teal-underline">Personal Information:</h2>
+          <h4>
+            We use this information to tailor your learning experience!
+      </h4>
+          <p><em>*Denotes a required field.</em></p>
+
+          <div className="input-full">
+            <label htmlFor="firstName">
+              First Name:
+          <input
+                type="text"
+                name="firstName"
+                value={firstName}
+                required
+                onChange={(event) => setFirstName(event.target.value)}
+              />
+            </label>
+          </div>
+
+          <div className="input-full">
+            <label
+              htmlFor="lastName">
+              Last Name:
+          <input type="text"
+                name="lastName"
+                value={lastName}
+                required
+                onChange={(event) => setLastName(event.target.value)}
+              />
+            </label>
+          </div>
+
+          <div className="input-full">
+            <label htmlFor="pronoun">
+              Your Preferred Pronouns:
+          <select
+                type="text"
+                name="pronoun"
+                value={pronoun}
+                required
+                onChange={(event) => setPronoun(event.target.value)}
+              >
+                <option value=''>Choose One</option>
+                {pronounList.map((pronoun) => {
+
+                  return (
+                    <option key={pronoun.id}
+                      value={pronoun.pronoun}
+                      selectedOrNot
+                    >
+                      {pronoun.pronoun}
+                    </option>
+                  )
+                })}
+              </select>
+            </label>
+          </div>
+
+          <div className="input-full">
+            <label htmlFor="language">
+              Language You Want to Learn:
+          <select
+                type="text"
+                name="language"
+                value={targetLanguage}
+                required
+                onChange={(event) => setTargetLanguage(event.target.value)}
+              >
+                <option value=''>Choose One</option>
+                {languageList.map((language) => {
+                  return (
+                    <option key={language.id}
+                      value={language.name}
+                    >
+                      {language.name}
+                    </option>
+                  )
+                })}
+              </select>
+            </label>
+          </div>
+
+          <div className="input-full">
+            <label htmlFor="language">
+              Current Skill Level with your Selected Language:
+          <select
+                type="text"
+                name="skill"
+                value={languageSkill}
+                required
+                onChange={(event) => setLanguageSkill(event.target.value)}
+              >
+                <option value=''>Choose One</option>
+                <option value='1'>1: I know a few words.</option>
+                <option value='2'>2: I can kind of make a sentence.</option>
+                <option value='3'>3: I'm feeling strong with writing sentences.</option>
+                <option value='4'>4: I can speak some.</option>
+                <option value='5'>5: I can speak well, maybe just some grammar tweaks.</option>
+              </select>
+            </label>
+          </div>
         </div>
 
-        {errors.registrationMessage && (
-          <h3 className="alert" role="alert">
-            {errors.registrationMessage}
-          </h3>
-        )}
 
-        <div className="main-flex-container margin-top">
-          <div className="sub-container-top ">
-            <h3 className="teal-underline">Personal Information:</h3>
-            <h4>
-              We use this information to tailor your learning experience!
-      </h4>
-            <p><em>*Denotes a required field.</em></p>
-            <div>
-              <label htmlFor="firstName">
-                First Name:
-          <input
-                  type="text"
-                  name="firstName"
-                  value={firstName}
-                  required
-                  onChange={(event) => setFirstName(event.target.value)}
-                />
-              </label>
-            </div>
-
-            <div>
-              <label htmlFor="lastName">
-                Last Name:
-          <input
-                  type="text"
-                  name="lastName"
-                  value={lastName}
-                  required
-                  onChange={(event) => setLastName(event.target.value)}
-                />
-              </label>
-            </div>
-
-            <div>
-              <label htmlFor="pronoun">
-                Your Preferred Pronouns:
-          <select
-                  type="text"
-                  name="pronoun"
-                  value={pronoun}
-                  required
-                  onChange={(event) => setPronoun(event.target.value)}
-                >
-                  <option value=''>Choose One</option>
-                  {pronounList.map((pronoun) => {
-
-                    return (
-                      <option key={pronoun.id}
-                        value={pronoun.pronoun}
-                        selectedOrNot
-                      >
-                        {pronoun.pronoun}
-                      </option>
-                    )
-                  })}
-                </select>
-              </label>
-            </div>
-
-            <div>
-              <label htmlFor="language">
-                Language You Want to Learn:
-          <select
-                  type="text"
-                  name="language"
-                  value={targetLanguage}
-                  required
-                  onChange={(event) => setTargetLanguage(event.target.value)}
-                >
-                  <option value=''>Choose One</option>
-                  {languageList.map((language) => {
-                    return (
-                      <option key={language.id}
-                        value={language.name}
-                      >
-                        {language.name}
-                      </option>
-                    )
-                  })}
-                </select>
-              </label>
-            </div>
-
-            <div>
-              <label htmlFor="language">
-                Current Skill Level with your Selected Language:
-          <select
-                  type="text"
-                  name="skill"
-                  value={languageSkill}
-                  required
-                  onChange={(event) => setLanguageSkill(event.target.value)}
-                >
-                  <option value=''>Choose One</option>
-                  <option value='1'>1: I know a few words.</option>
-                  <option value='2'>2: I can kind of make a sentence.</option>
-                  <option value='3'>3: I'm feeling strong with writing sentences.</option>
-                  <option value='4'>4: I can speak some.</option>
-                  <option value='5'>5: I can speak well, maybe just some grammar tweaks.</option>
-                </select>
-              </label>
-            </div>
-
-            <h3 className="teal-underline">Your Log-In Information:</h3>
+        <div className="sub-container-right make-flex-column">
+          <div>
+            <h2 className="teal-underline">Your Log-In Information:</h2>
             <h4>
               your email address and password will be
               your log-in credentials each time you return to F.L.U.E.N.T.
@@ -335,11 +366,22 @@ function EditLearnerProfile() {
                   onChange={(event) => setUsername(event.target.value)}
                 />
               </label>
-              <input className="btn" type="submit" name="submit" value="Update Your Info" />
+
+              <div>
+                <button onClick={cancelEdit}
+                  className="cancel-btn" type="cancel" name="cancel">
+                  CANCEL
+                </button>
+                <button onClick={onSubmitEdit}
+                  className="btn btn-space" type="submit" name="submit">
+                  UPDATE
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </form>
+      </div>
+      {/* </form> */}
 
       <div className="text-center margin-top">
         <button

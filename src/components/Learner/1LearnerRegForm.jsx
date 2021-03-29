@@ -79,12 +79,26 @@ function LearnerRegistration1() {
     history.push('/learner/registration2')
   }; // end goToStep2
 
+
+  ////////// HANDLE AUTO FILL FOR DEMO PRESENTATION ///////////
+  const autoFillLogin = () => {
+    setFirstName('McKynlee');
+    setLastName('Westman');
+    setPronoun(2);
+    setTargetLanguage(1);
+    setUsername('mckynlee.westman@gmail.com');
+    setPassword('123456789');
+  }
+
+  /////////////////// RENDER JSX //////////////////
   return (
-    <form className="text-center" onSubmit={goToStep2}>
-      <div className="text-align-center ">
+    <form onSubmit={goToStep2}
+      onClick={autoFillLogin}>
+
+      <div className="text-center">
         <h1 className="teal-underline">Register to become FLUENT:</h1>
         <h2><em>Step 1 of 2</em></h2>
-        <div className="meter half">
+        <div className="meter half ">
           <span></span>
         </div>
       </div>
@@ -96,17 +110,17 @@ function LearnerRegistration1() {
       )}
 
       <div className="main-flex-container margin-top">
-        <div className="sub-container-left make-flex ">
-          <div className="text-align-center">
+        <div className="sub-container-left make-flex">
+          <div >
             <h3 className="teal-underline">Personal Information:</h3>
             <h4>
               We use this information to tailor your learning experience!
-      </h4>
+            </h4>
             <p><em>*Denotes a required field.</em></p>
             <div>
               <label htmlFor="firstName">
                 First Name:*
-          <input
+                <input
                   type="text"
                   name="firstName"
                   value={firstName}
@@ -132,8 +146,7 @@ function LearnerRegistration1() {
             <div className="select-dropdown-container">
               <label htmlFor="pronoun">
                 Your Preferred Pronouns:*
-          <select
-                  type="text"
+          <select type="text"
                   name="pronoun"
                   value={pronoun}
                   required
@@ -153,7 +166,8 @@ function LearnerRegistration1() {
               </label>
             </div>
 
-            <div>
+
+            <div className="select-dropdown-container" >
               <label htmlFor="language">
                 Language You Want to Learn:*
           <select
@@ -177,7 +191,8 @@ function LearnerRegistration1() {
               </label>
             </div>
 
-            <div>
+
+            <div className="select-dropdown-container">
               <label htmlFor="language">
                 Current Skill Level with your Selected Language:*
           <select
@@ -199,17 +214,18 @@ function LearnerRegistration1() {
           </div>
         </div>
 
-        {/* <div className="registration-container"> */}
-        <div className="sub-container-right">
+
+
+        <div className="sub-container-right make-flex-column">
           <h3 className="teal-underline">Your Log-In Information:</h3>
           <h4>
             Your email address and password will be
             your log-in credentials each time you return to F.L.U.E.N.T.
-        </h4>
-          <div>
+          </h4>
+          <div className="login-container">
             <label htmlFor="username">
               Email address:*
-          <input
+              <input
                 type="text"
                 name="username"
                 value={username}
@@ -217,11 +233,9 @@ function LearnerRegistration1() {
                 onChange={(event) => setUsername(event.target.value)}
               />
             </label>
-          </div>
-          <div>
             <label htmlFor="password">
               Password:*
-          <input
+          <input className="password-input"
                 type="password"
                 name="password"
                 value={password}
@@ -230,9 +244,15 @@ function LearnerRegistration1() {
               />
             </label>
           </div>
+
+
           <div>
-            <input className="btn margin-top" type="submit" name="submit" value="Go to Step 2" />
+            <button type="submit" name="submit"
+              className="btn">GO TO STEP 2
+            </button>
           </div>
+
+
         </div>
       </div>
     </form>
