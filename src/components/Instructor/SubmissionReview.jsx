@@ -124,28 +124,27 @@ function InstructorReviewSubmissions() {
               <div className="main-feedback-container">
                 <div className="make-flex-feedback-header">
                   <div className="learner-response">
+
                     <div className="learner-name-response">
                       <span className="teal-underline">
                         {correspondingLearnerName}'s
                         </span>
                         response:
                     </div>
+
                     <div className="tiny-margin">({correspondingLearnerPronoun})</div>
                     <div>Self-assessed skill level: {correspondingLearnerSkill}</div>
                   </div>
+
                   <div className="date-submitted">
                     {dayOfWeek}, {submission.month}-{submission.day}-{submission.year}
                   </div>
                 </div>
 
+
                 <div className="instructor-review-submissions-container">
-
-                  <div className="">
-
-
-
-
-                    <div className="margin-sm-top make-flex-submissions">
+                  <div className="half-width tiny-top-margin">
+                    <div className="margin-sm-top make-flex-feedback">
                       <div className="half-width">
                         <img className="img-submissions"
                           src={submission.picture_url}
@@ -156,7 +155,7 @@ function InstructorReviewSubmissions() {
                       </div>
                     </div>
 
-                    <div className="margin-sm-top make-flex-submissions-word">
+                    <div className="margin-sm-top make-flex-feedback-word">
                       <div className="given-word">
                         {submission.word}
                       </div>
@@ -165,7 +164,7 @@ function InstructorReviewSubmissions() {
                       </div>
                     </div>
 
-                    <div className="margin-sm-top make-flex-submissions-q">
+                    <div className="margin-sm-top make-flex-feedback-q">
                       <div className="half-width">
                         Question:
                   </div>
@@ -180,14 +179,14 @@ function InstructorReviewSubmissions() {
                     <div>
                       Your Feedback:
                     </div>
-                    <div className="feedback">
 
+                    <div className="feedback photo-feedback">
                       <div className="quarter-width">Photo:</div>
                       <div className="seventy-five-width">
                         {submission.instructor_pic_response}
                       </div>
                     </div>
-                    <div className="feedback">
+                    <div className="feedback word-feedback">
                       <div className="quarter-width">
                         Word:
                   </div>
@@ -195,7 +194,7 @@ function InstructorReviewSubmissions() {
                         {submission.instructor_word_response}
                       </div>
                     </div>
-                    <div className="feedback">
+                    <div className="feedback answer-feedback">
                       <div className="quarter-width">Answer:</div>
                       <div className="seventy-five-width">
                         {submission.instructor_q_response}
@@ -204,17 +203,16 @@ function InstructorReviewSubmissions() {
                   </div>
                 </div>
 
-
-                {/* <td>{existingFeedback}</td> */}
-                {submission.feedback_id ?
-                  (<button className="delete-btn"
-                    onClick={() => deleteFeedback(submission)}>
-                    DELETE YOUR FEEDBACK
-                  </button>) : (<button className="btn-navy-gray-feedback"
-                    onClick={() => giveFeedback(submission.submission_id)}>
-                    GIVE FEEDBACK
-                  </button>)}
-
+                <div className="feedback-btn-container">
+                  {submission.feedback_id ?
+                    (<button className="delete-btn"
+                      onClick={() => deleteFeedback(submission)}>
+                      DELETE YOUR FEEDBACK
+                    </button>) : (<button className="btn-navy-gray-feedback"
+                      onClick={() => giveFeedback(submission.submission_id)}>
+                      GIVE FEEDBACK
+                    </button>)}
+                </div>
               </div>
             </section>
           );
