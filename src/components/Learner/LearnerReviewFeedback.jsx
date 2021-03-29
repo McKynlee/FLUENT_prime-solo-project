@@ -135,7 +135,7 @@ function LearnerReviewFeedback() {
               {/* TOGGLE THE FOLLOWING ONCLICK: */}
 
               {submission.response_showing && (
-                <div class="instructor-response">
+                <div className="instructor-response">
                   <div className="feedback">
                     <div className="half-width">Photo:</div>
                     <div className="half-width">

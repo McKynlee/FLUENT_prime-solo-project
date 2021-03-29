@@ -196,7 +196,7 @@ function InstructorReviewSubmissions() {
                   </div>
 
 
-                  <div class="instructor-response">
+                  <div className="instructor-response">
                     <div>
                       Your Feedback:
                     </div>

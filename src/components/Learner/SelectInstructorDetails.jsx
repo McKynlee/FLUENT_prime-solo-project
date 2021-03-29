@@ -41,13 +41,14 @@ function SelectInstructorDetails() {
   const registeredLearner = useSelector(store => store.learner);
   console.log('selectInstructor page "learner":', registeredLearner);
 
+
   ///////////////////// HANDLE SELECT INSTRUCTOR ///////////////////////
   // on Click of 'Select Instructor', pair instructor_id with learner
   const onSelectInstructor = (selectedInstructor) => {
-    console.log('selectedInstructorId:', selectedInstructor);
+    console.log('selectedInstructorId:', selectedInstructor.user_id);
 
     // Update learner info with selected instructor_id:
-    learnerInfo.instructor_id = Number(selectedInstructor.id);
+    learnerInfo.instructor_id = selectedInstructor;
 
     // Alert learner to confirm that this is their instructor choice:
     swal({
