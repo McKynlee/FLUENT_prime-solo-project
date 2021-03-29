@@ -72,141 +72,154 @@ function InstructorReviewSubmissions() {
   return (
     <div>
 
+      <div className="text-center margin-top teal-underline">
+        <h1>Review Learner Submissions</h1>
+      </div>
 
-      {/* W3 schools non-React example:
-      <div class="popup" onclick={myFunction}>Click me!
-        <span class="popuptext" id="myPopup">Popup text...</span>
-      </div> */}
+      <div className="">
+        {submissionList.map((submission, i) => {
 
+          // Render learner's name next to submission row:
+          let correspondingLearnerName;
+          let correspondingLearnerPronoun;
+          let correspondingLearnerSkill;
 
-
-      <h1>Instructor Review Submissions</h1>
-      <table className="instructor-review-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>
-              When Submitted
-            </th>
-            <th>
-              Given Image
-            </th>
-            <th>
-              Image Description
-            </th>
-            <th>
-              Given Word
-            </th>
-            <th>
-              Sentence with Word
-            </th>
-            <th>
-              Q & A
-            </th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {submissionList.map((submission, i) => {
-            // Render a delete button at end of row if feedback
-            // already exists
-            let existingFeedback = <button
-              onClick={() => giveFeedback(submission.submission_id)}>
-              Give Feedback
-            </button>;
-            // if (submission.feedback_id) {
-            //   existingFeedback = <button className="delete-btn"
-            //     onClick={() => deleteFeedback(submission)}>
-            //     DELETE
-            //     </button>
-            // }
-
-            // Render learner's name next to submission row:
-            let correspondingLearnerName;
-            let correspondingLearnerPronoun;
-            let correspondingLearnerSkill;
-
-            for (let learner of learnerList) {
-              if (learner.learner_id === submission.learner_id) {
-                correspondingLearnerName = learner.first_name;
-                correspondingLearnerPronoun = learner.pronouns;
-                correspondingLearnerSkill = learner.skill_level;
-              }
+          for (let learner of learnerList) {
+            if (learner.learner_id === submission.learner_id) {
+              correspondingLearnerName = learner.first_name;
+              correspondingLearnerPronoun = learner.pronouns;
+              correspondingLearnerSkill = learner.skill_level;
             }
+          }
 
-            // Render correct Day-of-week for when submitted date:
-            let dayOfWeek;
-            if (submission.DOW === 0) {
-              dayOfWeek = 'Sunday';
-            }
-            if (submission.DOW === 1) {
-              dayOfWeek = 'Monday';
-            }
-            if (submission.DOW === 2) {
-              dayOfWeek = 'Tuesday';
-            }
-            if (submission.DOW === 3) {
-              dayOfWeek = 'Wednesday';
-            }
-            if (submission.DOW === 4) {
-              dayOfWeek = 'Thursday';
-            }
-            if (submission.DOW === 5) {
-              dayOfWeek = 'Friday';
-            }
-            if (submission.DOW === 6) {
-              dayOfWeek = 'Saturday';
-            }
+          // Render correct Day-of-week for when submitted date:
+          let dayOfWeek;
+          if (submission.DOW === 0) {
+            dayOfWeek = 'Sunday';
+          }
+          if (submission.DOW === 1) {
+            dayOfWeek = 'Monday';
+          }
+          if (submission.DOW === 2) {
+            dayOfWeek = 'Tuesday';
+          }
+          if (submission.DOW === 3) {
+            dayOfWeek = 'Wednesday';
+          }
+          if (submission.DOW === 4) {
+            dayOfWeek = 'Thursday';
+          }
+          if (submission.DOW === 5) {
+            dayOfWeek = 'Friday';
+          }
+          if (submission.DOW === 6) {
+            dayOfWeek = 'Saturday';
+          }
 
 
 
-            return (
-              <>
-                <tr key={i}>
-                  <td>
-                    <div><span className="teal-underline">{correspondingLearnerName}'s</span> response:</div>
-                    <div>({correspondingLearnerPronoun})</div>
+          return (
+            <section className="make-flex-column"
+              key={i}>
+              <div className="main-feedback-container">
+                <div className="make-flex-feedback-header">
+                  <div className="learner-response">
+                    <div className="learner-name-response">
+                      <span className="teal-underline">
+                        {correspondingLearnerName}'s
+                        </span>
+                        response:
+                    </div>
+                    <div className="tiny-margin">({correspondingLearnerPronoun})</div>
                     <div>Self-assessed skill level: {correspondingLearnerSkill}</div>
-                  </td>
-                  <td>
+                  </div>
+                  <div className="date-submitted">
                     {dayOfWeek}, {submission.month}-{submission.day}-{submission.year}
-                  </td>
-                  <td rowspan="2">
-                    <img className="img-submissions"
-                      src={submission.picture_url}
-                      alt="randomly-generated photo for learner challenge" />
-                  </td>
-                  <td>{submission.picture_description}</td>
-                  <td rowspan="2">{submission.word}</td>
-                  <td>{submission.word_sentence}</td>
-                  <td>{submission.q_for_instructor}</td>
-                  <td></td>
-                </tr>
-                <tr className="instructor-table-feedback-row">
-                  <td>
-                    Your Feedback:
-                  </td>
-                  <td></td>
-                  <td>{submission.instructor_pic_response}</td>
-                  <td>{submission.instructor_word_response}</td>
-                  <td>{submission.instructor_q_response}</td>
-                  {/* <td>{existingFeedback}</td> */}
-                  <td>{submission.feedback_id ?
-                    (<button className="delete-btn"
-                      onClick={() => deleteFeedback(submission)}>
-                      DELETE
-                    </button>) : (<button className="btn-navy-gray"
-                      onClick={() => giveFeedback(submission.submission_id)}>
-                      GIVE FEEDBACK
-                    </button>)}
-                  </td>
-                </tr>
-              </>
-            );
-          })}
+                  </div>
+                </div>
 
-        </tbody>
-      </table >
+                <div className="instructor-review-submissions-container">
+
+                  <div className="">
+
+
+
+
+                    <div className="margin-sm-top make-flex-submissions">
+                      <div className="half-width">
+                        <img className="img-submissions"
+                          src={submission.picture_url}
+                          alt="randomly-generated photo for learner challenge" />
+                      </div>
+                      <div className="half-width">
+                        {submission.picture_description}
+                      </div>
+                    </div>
+
+                    <div className="margin-sm-top make-flex-submissions-word">
+                      <div className="given-word">
+                        {submission.word}
+                      </div>
+                      <div className="half-width">
+                        {submission.word_sentence}
+                      </div>
+                    </div>
+
+                    <div className="margin-sm-top make-flex-submissions-q">
+                      <div className="half-width">
+                        Question:
+                  </div>
+                      <div className="half-width">
+                        {submission.q_for_instructor}
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="instructor-response">
+                    <div>
+                      Your Feedback:
+                    </div>
+                    <div className="feedback">
+
+                      <div className="quarter-width">Photo:</div>
+                      <div className="seventy-five-width">
+                        {submission.instructor_pic_response}
+                      </div>
+                    </div>
+                    <div className="feedback">
+                      <div className="quarter-width">
+                        Word:
+                  </div>
+                      <div className="seventy-five-width">
+                        {submission.instructor_word_response}
+                      </div>
+                    </div>
+                    <div className="feedback">
+                      <div className="quarter-width">Answer:</div>
+                      <div className="seventy-five-width">
+                        {submission.instructor_q_response}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                {/* <td>{existingFeedback}</td> */}
+                {submission.feedback_id ?
+                  (<button className="delete-btn"
+                    onClick={() => deleteFeedback(submission)}>
+                    DELETE YOUR FEEDBACK
+                  </button>) : (<button className="btn-navy-gray-feedback"
+                    onClick={() => giveFeedback(submission.submission_id)}>
+                    GIVE FEEDBACK
+                  </button>)}
+
+              </div>
+            </section>
+          );
+        })}
+      </div>
 
     </div >
   )
