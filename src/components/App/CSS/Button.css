@@ -101,11 +101,14 @@ Button
   border-color: #9ddfd3;
   border-width: 1px 1px 3px;
   border-radius: 5px;
-  background-color: white;
+  background-color: #9ddfd3;
   color: #31326f;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
+  border-color: #31326f;
+  outline: none;
+  border-style: none;
   margin: 20px;
   width: 270px;
 }
@@ -222,6 +225,11 @@ margin: 20px 15px 0;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
+}
+
+.feedback-btn-container {
+text-align: right;
+margin-right: 10px;
 }
 
 .profile-btn-width {
