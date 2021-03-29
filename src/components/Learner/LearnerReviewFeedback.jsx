@@ -99,7 +99,8 @@ function LearnerReviewFeedback() {
               <div className="margin-sm-top make-flex-submissions">
                 <div className="half-width">
                   <img className="img-submissions"
-                    src={submission.picture_url} />
+                    src={submission.picture_url}
+                    alt="randomly-generated photo for learner challenge" />
                 </div>
                 <div className="half-width">
                   {submission.picture_description}

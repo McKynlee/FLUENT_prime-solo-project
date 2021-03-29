@@ -58,9 +58,45 @@
 }
 
 .instructor-response {
-  width: 100%;
+  max-width: 50%;
   margin: 0 auto 10px ;
   align-self: center;
+  background-color: #dbf6e9;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.instructor-review-submissions-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+
+}
+
+.learner-name-response {
+  font-size: 115%;
+}
+
+.learner-response {
+max-width: 100%;
+width: 50%;
+}
+
+.main-feedback-container {
+  max-width: 100%;
+  margin: 20px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.make-flex-feedback-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .make-flex-submissions {
@@ -96,4 +132,8 @@
   border-radius: 5px;
   padding: 10px;
   height: 70px;
+}
+
+.tiny-margin {
+  margin: 5px 0;
 }
