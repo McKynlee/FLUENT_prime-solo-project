@@ -115,80 +115,124 @@ function InstructorGiveFeedback() {
       });
   }
 
+  ////////// MANAGE AUTOFILL FOR DEMO PRESENTATION ///////////////
+  const autoFill = () => {
+    setPicDescription('A complete sentence might be: Yo veo un perrito negra en la foto.');
+    setWordSentence('This is a tough one- ver is conjugated as "veo" for the "yo" tense: "Digo, "hola" cada vez que veo a mis amigos".');
+    setAnswerToQ('I actually LOVE to salsa dance, especially Cuban style- check out Rueda de Casino!');
+  }
+
   //////////////////// RENDER JSX ////////////////////////
   return (
     <div>
-      <h1>Give Feedback to your Learner</h1>
-      <form onSubmit={onSubmitFeedback}>
-        <table className="instructor-review-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th>
-                Given Image
-            </th>
-              <th>
-                Image Description
-            </th>
-              <th>
-                Given Word
-            </th>
-              <th>
-                Sentence with Word
-            </th>
-              <th>
-                Q & A
-            </th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                LearnerName's response:
-                  </td>
-              <td rowspan="2">
-                <img src={submissionDetails.picture_url}
-                  alt="randomly-generated photo for learner challenge" />
-              </td>
-              <td>{submissionDetails.picture_description}</td>
-              <td rowspan="2">{submissionDetails.word}</td>
-              <td>{submissionDetails.word_sentence}</td>
-              <td>{submissionDetails.q_for_instructor}</td>
-              <td></td>
-            </tr>
-            <tr className="instructor-table-feedback-row">
-              <td>
-                Your Feedback:
-              </td>
-              <td><textarea value={picDescription}
-                onChange={(event) => setPicDescription(event.target.value)}
-              ></textarea></td>
-              <td>
-                <textarea value={wordSentence}
-                  onChange={(event) => setWordSentence(event.target.value)}>
-                </textarea>
-              </td>
-              <td>
-                <textarea value={answerToQ}
-                  onChange={(event) => setAnswerToQ(event.target.value)}
-                >
-                </textarea>
-              </td>
-              <td>
-                <button className="btn-navy-gray">
-                  SUBMIT FEEDBACK
-                </button>
-              </td>
-            </tr>
+      <div className="text-center margin-top teal-underline">
+        <h1>Give Feedback</h1>
+      </div>
 
-          </tbody>
-        </table>
-      </form>
-      <button className="btn-navy-gray"
-        onClick={onCancel}>
-        GO BACK
+      <div>
+        <section onClick={autoFill}
+          className="make-flex-column">
+          <div className="main-feedback-container">
+            <div className="make-flex-feedback-header">
+              <div className="learner-response">
+
+                <div className="learner-name-response">
+                  Learner's response:
+                </div>
+
+
+
+                <div className="instructor-review-submissions-container">
+                  <div className=" tiny-top-margin">
+                    <div className="margin-sm-top make-flex-feedback">
+                      <div className="half-width">
+                        <img className="img-submissions"
+                          src={submissionDetails.picture_url}
+                          alt="randomly-generated photo for learner challenge" />
+                      </div>
+                      <div className="half-width">
+                        {submissionDetails.picture_description}
+                      </div>
+                    </div>
+
+                    <div className="margin-sm-top make-flex-feedback-word">
+                      <div className="given-word">
+                        {submissionDetails.word}
+                      </div>
+                      <div className="half-width">
+                        {submissionDetails.word_sentence}
+                      </div>
+                    </div>
+
+                    <div className="margin-sm-top make-flex-feedback-q">
+                      <div className="half-width">
+                        Question:
+                  </div>
+                      <div className="half-width">
+                        {submissionDetails.q_for_instructor}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="instructor-response-give">
+                <div>
+                  Your Feedback:
+                    </div>
+
+                <div className="feedback photo-feedback">
+                  <div className="quarter-width">Photo:</div>
+                  <div className="seventy-five-width">
+                    <textarea className="give-feedback-textarea-photo"
+                      value={picDescription}
+                      onChange={(event) => setPicDescription(event.target.value)}
+                    ></textarea>
+                  </div>
+                </div>
+                <div className="feedback word-feedback">
+                  <div className="quarter-width">
+                    Word:
+                  </div>
+                  <div className="seventy-five-width">
+                    <textarea className="give-feedback-textarea-word"
+                      value={wordSentence}
+                      onChange={(event) => setWordSentence(event.target.value)}>
+                    </textarea>
+                  </div>
+                </div>
+                <div className="feedback answer-feedback-give">
+                  <div className="quarter-width">Answer:</div>
+                  <div className="seventy-five-width">
+                    <textarea className="give-feedback-textarea-answer"
+                      value={answerToQ}
+                      onChange={(event) => setAnswerToQ(event.target.value)}
+                    >
+                    </textarea>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div className="feedback-give-btn-container">
+
+        <button className="btn-navy-gray feedback-give-btn"
+          onClick={onCancel}>
+          GO BACK
       </button>
+
+        <button onClick={onSubmitFeedback}
+          className="btn-navy-gray feedback-give-btn">
+          SUBMIT FEEDBACK
+        </button>
+
+      </div>
+
     </div>
   )
 }

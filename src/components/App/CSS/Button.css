@@ -232,6 +232,16 @@ text-align: right;
 margin-right: 10px;
 }
 
+.feedback-give-btn {
+width: 275px;
+margin: 20px 50px;
+}
+
+.feedback-give-btn-container {
+  margin: auto;
+  text-align: center;
+}
+
 .profile-btn-width {
 width: 210px;
 height: 45px;

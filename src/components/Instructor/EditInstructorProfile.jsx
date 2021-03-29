@@ -186,11 +186,8 @@ function EditInstructorProfile() {
       .then((cancelEdit) => {
         if (cancelEdit) {
           // Send user back to profile page:
-          history.push('/learner')
+          history.push('/instructor')
         }
-        // swal("Your account has been deleted!", {
-        //   icon: "success",
-        // });
       });
   } // end cancelEdit
 

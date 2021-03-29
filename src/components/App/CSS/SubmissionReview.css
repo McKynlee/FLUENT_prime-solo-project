@@ -3,6 +3,11 @@
   margin-bottom: 40px;
   }
 
+  .answer-feedback-give {
+    height: 69px;
+    margin-bottom: 40px;
+    }
+
 .center {
   margin: 30px auto;
 }
@@ -22,6 +27,21 @@
   flex-direction: row;
   justify-content: flex-start;
 }
+
+.give-feedback-textarea-answer {
+  width: 300px;
+  height: 40px;
+ }
+
+.give-feedback-textarea-photo {
+ width: 300px;
+ height: 175px;
+}
+
+.give-feedback-textarea-word {
+  width: 300px;
+  height: 70px;
+ }
 
 .given-word {
   font-size: 150%;
@@ -65,6 +85,15 @@
 .instructor-response {
   width: 50%;
   margin: auto;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.instructor-response-give {
+  width: 50%;
+  margin: 25px auto 0;
   padding: 0 10px;
   display: flex;
   flex-direction: column;
