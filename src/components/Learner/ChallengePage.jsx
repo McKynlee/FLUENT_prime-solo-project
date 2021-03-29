@@ -164,7 +164,7 @@ function InfoPage() {
   const autoFillChallenge = () => {
     setPhotoDescription('Creo que es un dia muy lindo.');
     setWordSentence('No entiendo la pregunta.');
-    setQForInstructor('Do you have any fiction book recommendations for beginner Spanish?');
+    setQForInstructor('Can you help me understand the difference between the formal and informal "you"?');
   }
 
   return (

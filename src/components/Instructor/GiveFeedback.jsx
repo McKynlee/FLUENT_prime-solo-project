@@ -119,7 +119,7 @@ function InstructorGiveFeedback() {
   const autoFill = () => {
     setPicDescription('A complete sentence might be: Yo veo un perrito negra en la foto.');
     setWordSentence('This is a tough one- ver is conjugated as "veo" for the "yo" tense: "Digo, "hola" cada vez que veo a mis amigos".');
-    setAnswerToQ('I actually LOVE to salsa dance, especially Cuban style- check out Rueda de Casino!');
+    setAnswerToQ('Absolutely! The informal "tu" is used to speak to people with whom you are intimately friendly, or who are younger/less experienced than you are in general. The formal "Usted" is a safer default to use, as if conveys respect for the person with whom you are speaking.');
   }
 
   //////////////////// RENDER JSX ////////////////////////
