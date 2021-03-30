@@ -161,15 +161,15 @@ function InfoPage() {
 
 
   /////////////////// HANDLE AUTO FILL FOR DEMO /////////////////
-  const autoFillChallenge = () => {
-    setPhotoDescription('Creo que es un dia muy lindo.');
-    setWordSentence('No entiendo la pregunta.');
-    setQForInstructor('Can you help me understand the difference between the formal and informal "you"?');
-  }
+  // const autoFillChallenge = () => {
+  //   setPhotoDescription('Creo que es un dia muy lindo.');
+  //   setWordSentence('No entiendo la pregunta.');
+  //   setQForInstructor('Can you help me understand the difference between the formal and informal "you"?');
+  // }
 
   return (
-    <div className="margin-top"
-      onClick={autoFillChallenge}>
+    <div className="margin-top">
+      {/* onClick={autoFillChallenge}> */}
       <div className="text-center">
         <h1 className="teal-underline">
           Welcome, {user.first_name}
