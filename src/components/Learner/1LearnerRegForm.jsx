@@ -81,19 +81,19 @@ function LearnerRegistration1() {
 
 
   ////////// HANDLE AUTO FILL FOR DEMO PRESENTATION ///////////
-  const autoFillLogin = () => {
-    setFirstName('McKynlee');
-    setLastName('Westman');
-    setPronoun(2);
-    setTargetLanguage(1);
-    setUsername('mckynlee.westman@gmail.com');
-    setPassword('123456789');
-  }
+  // const autoFillLogin = () => {
+  //   setFirstName('McKynlee');
+  //   setLastName('Westman');
+  //   setPronoun(2);
+  //   setTargetLanguage(1);
+  //   setUsername('mckynlee.westman@gmail.com');
+  //   setPassword('123456789');
+  // }
 
   /////////////////// RENDER JSX //////////////////
   return (
-    <form onSubmit={goToStep2}
-      onClick={autoFillLogin}>
+    <form onSubmit={goToStep2}>
+      {/* onClick={autoFillLogin}> */}
 
       <div className="text-center">
         <h1 className="teal-underline">Register to become FLUENT:</h1>

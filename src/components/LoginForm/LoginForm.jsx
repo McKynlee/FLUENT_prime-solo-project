@@ -26,15 +26,16 @@ function LoginForm() {
   }; // end login
 
   ///////////////// HANDLE AUTO FILL FOR DEMO PRESENTATION /////////////
-  const autoFillLogin = () => {
-    setUsername('luigi@gmail.com');
-    setPassword('one');
-  }
+  // const autoFillLogin = () => {
+  //   setUsername('luigi@gmail.com');
+  //   setPassword('one');
+  // }
 
   return (
     <form className="margin-top login-container"
       onSubmit={login}>
-      <div onClick={autoFillLogin}>
+      <div>
+        {/* onClick={autoFillLogin}> */}
         <h1 className="teal-underline text-center">
           Login
       </h1>
