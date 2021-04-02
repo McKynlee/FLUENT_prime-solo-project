@@ -31,11 +31,11 @@ function LearnerRegistration1() {
 
   // Pull in pronouns from pronounReducer:
   const pronounList = useSelector((store) => store.pronouns)
-  // console.log('pronounList:', pronounList);
+  console.log('pronounList:', pronounList);
 
   // Pull in languages from languageReducer:
   const languageList = useSelector((store) => store.languages)
-  // console.log('languageList:', languageList);
+  console.log('languageList:', languageList);
 
   // All the info a user needs to register (learner OR instructor):
   const [username, setUsername] = useState('');

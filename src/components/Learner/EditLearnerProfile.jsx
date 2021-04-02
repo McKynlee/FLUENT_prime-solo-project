@@ -345,6 +345,13 @@ function EditLearnerProfile() {
               </select>
             </label>
           </div>
+          <div className="delete-btn-margin">
+            <button
+              type="delete" className="delete-btn"
+              onClick={deleteAccount}>
+              DELETE ACCOUNT
+            </button>
+          </div>
         </div>
 
 
@@ -383,13 +390,6 @@ function EditLearnerProfile() {
       </div>
       {/* </form> */}
 
-      <div className="text-center margin-top">
-        <button
-          type="delete" className="delete-btn"
-          onClick={deleteAccount}>
-          DELETE ACCOUNT
-    </button>
-      </div>
     </div>
 
   );
