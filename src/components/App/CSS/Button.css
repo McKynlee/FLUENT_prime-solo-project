@@ -227,6 +227,10 @@ margin: 20px 15px 0;
   cursor: pointer;
 }
 
+.delete-btn-margin {
+  margin-top: 150px;
+}
+
 .feedback-btn-container {
 text-align: right;
 margin-right: 10px;
