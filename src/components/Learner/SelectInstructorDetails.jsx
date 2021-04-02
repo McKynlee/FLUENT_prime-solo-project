@@ -48,7 +48,7 @@ function SelectInstructorDetails() {
     console.log('selectedInstructorId:', selectedInstructor.user_id);
 
     // Update learner info with selected instructor_id:
-    learnerInfo.instructor_id = selectedInstructor;
+    learnerInfo.instructor_id = selectedInstructor.instructorId;
 
     // Alert learner to confirm that this is their instructor choice:
     swal({
