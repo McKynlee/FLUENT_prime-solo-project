@@ -11,6 +11,8 @@ This application is a solution to the loneliness and lack of context experienced
 
 ![Learner Challenge Page (Part 2)](./wireframes/fluent-challenge2.png)
 
+
+### Learners receive positive reinforcement each time they log in:
 ![Learner Profile ](./wireframes/fluent-profile.png)
 
 ## Built with:
