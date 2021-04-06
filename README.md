@@ -1,6 +1,13 @@
 
-# EDA Project
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+# F.L.U.E.N.T. application
+
+This application is a solution to the loneliness and lack of context experienced during self-directed foreign language study.  Users may register as either Learners or Instructors.  Learners choose from available instructors to pair with someone who will receive their submissions the language challenges and give them feedback.  Learners can hear their written answers spoken aloud in a native accent of the language they are learning!  Learners receive positive reinforcement by earning coins and keeping their activity streak going, and have tailored greeetings to help them feel more personally connected to the foreign language.  Instructors set a limit of how many Learners they would like to be paired with, and when their limit is reached, they will no longer appear as an available instructor in that language.  Instructors share tailored feedback to their paired Learners' submissions, providing context and interaction to what was a lonely experience.
+
+![Landing Page](..png)
+
+## Built with:
+
+React, Redux, Express, Node, Passport, PostgreSQL, HTML, CSS, JS, Lorem Picsum API, and the JS Web Speech API.
 
 
 ## Prerequisites
@@ -11,9 +18,10 @@ Before you get started, make sure you have the following software installed on y
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Nodemon](https://nodemon.io/)
 
+
 ## Create database and table
 
-Create a new database called `fluent_db` and run all of the SQL queries found in the database.sql file in this repo:
+Create a new database called `fluent_db` and run all of the SQL queries found in the database.sql.
 
 
 ## Development Setup Instructions
@@ -28,7 +36,7 @@ Create a new database called `fluent_db` and run all of the SQL queries found in
 - Run `npm run server`
 - Run `npm run client`
 - Navigate to `localhost:3000`
-- 
+
 
 ## Production Build
 
@@ -47,4 +55,6 @@ Directory Structure:
 - `server/` contains the Express App
 
 
+## Acknowledgement
 
+Thanks to [Prime Digital Academy](https://www.primeacademy.io/) who equipped and helped me to make this application a reality.
