@@ -1,19 +1,38 @@
 
 # F.L.U.E.N.T. application
 
-This application is a solution to the loneliness and lack of context experienced during self-directed foreign language study.  Users may register as either Learners or Instructors.  Learners choose from available instructors to pair with someone who will receive their submissions the language challenges and give them feedback.  Learners can hear their written answers spoken aloud in a native accent of the language they are learning!  Learners receive positive reinforcement by earning coins and keeping their activity streak going, and have tailored greeetings to help them feel more personally connected to the foreign language.  Instructors set a limit of how many Learners they would like to be paired with, and when their limit is reached, they will no longer appear as an available instructor in that language.  Instructors share tailored feedback to their paired Learners' submissions, providing context and interaction to what was a lonely experience.
+This application is a solution to the loneliness and lack of context experienced during self-directed foreign language study.  
+
+
+Users may register as either Learners or Instructors.  
 
 ![Landing Page](./wireframes/fluent-landing.png)
 
+
+Learners choose from available instructors to pair with someone who will receive their submissions the language challenges and give them feedback.  
+
 ![Learner Choose Instructor](./wireframes/fluent-choose.png)
+
+
+Learners can hear their written answers spoken aloud in a native accent of the language they are learning!    
 
 ![Learner Challenge Page (Part 1)](./wireframes/fluent-challenge.png)
 
 ![Learner Challenge Page (Part 2)](./wireframes/fluent-challenge2.png)
 
 
-### Learners receive positive reinforcement each time they log in:
+Learners receive positive reinforcement by earning coins and keeping their activity streak going, and have tailored greeetings to help them feel more personally connected to the foreign language.
+
 ![Learner Profile ](./wireframes/fluent-profile.png)
+
+Instructors set a limit of how many Learners they would like to be paired with, and when their limit is reached, they will no longer appear as an available instructor in that language.  
+
+![Instructor Profile ](./wireframes/fluent-instructor.png)
+
+Instructors share tailored feedback to their paired Learners' submissions, providing context and interaction to what was a lonely experience.
+
+![Instructor Feedback ](./wireframes/fluent-feedback.png)
+
 
 ## Built with:
 
