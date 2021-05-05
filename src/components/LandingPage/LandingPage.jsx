@@ -73,7 +73,7 @@ function LandingPage() {
           </ol>
 
           <div>
-            <div>Watch the demo here</div>
+            <div className="margin-top">Watch the demo here</div>
             <div className="vimeo-video-container">
               <iframe
                 src="https://player.vimeo.com/video/545281292?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
@@ -108,7 +108,7 @@ function LandingPage() {
           </ol>
 
           <div>
-            <div>Watch the demo here</div>
+            <div className="margin-top">Watch the demo here</div>
             <div className="vimeo-video-container">
               <iframe
                 src="https://player.vimeo.com/video/545281367?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
