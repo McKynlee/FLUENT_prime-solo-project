@@ -90,7 +90,7 @@ CREATE TABLE "instructors_languages"(
 );
 
   CREATE TABLE "lorem_picsum" (
-     "id" SERIAL PRIMARY KEY,
+    "id" SERIAL PRIMARY KEY,
     "photo_id" INT NOT NULL
     );
 

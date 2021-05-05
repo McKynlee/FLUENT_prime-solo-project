@@ -71,9 +71,22 @@ function LandingPage() {
               Receive tailored feedback.
           </li>
           </ol>
-          <button type="popup" className="btn_asLink margin-top">
-            <em>Watch the demo here</em>
-          </button>
+
+          <div>
+            <div>Watch the demo here</div>
+            <div className="vimeo-video-container">
+              <iframe
+                src="https://player.vimeo.com/video/545281292?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                className="vimeo-video"
+                allowfullscreen title="learnerPath.mp4">
+              </iframe>
+            </div>
+            <script src="https://player.vimeo.com/api/player.js">
+            </script>
+
+          </div>
         </div>
 
         <div className="sub-container-right">
@@ -93,13 +106,24 @@ function LandingPage() {
               Share your expertise!
           </li>
           </ol>
-          <button type="popup" className="btn_asLink margin-top">
-            <em>Watch the demo here</em>
-          </button>
+
+          <div>
+            <div>Watch the demo here</div>
+            <div className="vimeo-video-container">
+              <iframe
+                src="https://player.vimeo.com/video/545281367?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                frameborder="0"
+                title="instructorPath.mp4"
+                allow="autoplay; fullscreen; picture-in-picture"
+                className="vimeo-video"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <script src="https://player.vimeo.com/api/player.js">
+            </script>
+          </div>
         </div>
-
       </div>
-
 
     </div>
   );
